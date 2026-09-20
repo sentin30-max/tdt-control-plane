@@ -1,0 +1,43 @@
+{
+  "hito_a": "PASS",
+  "authoritative": false,
+  "context": {
+    "context_id": "557c3667-1c83-4d04-96be-70e8f658d464",
+    "execution_id": "8b1ab254-eb5e-49ef-bf5e-c82f31592b17",
+    "nonce": "fc25432a-9b42-4088-95ee-87de2b1ec5de",
+    "operands": [
+      19,
+      23
+    ],
+    "task": "add_integers",
+    "authoritative": false
+  },
+  "result": {
+    "context_id": "557c3667-1c83-4d04-96be-70e8f658d464",
+    "execution_id": "8b1ab254-eb5e-49ef-bf5e-c82f31592b17",
+    "context_digest": "366c718899899bdb27b1a81902f6a38793475f1ae7dd9dce56ba12755b15ca89",
+    "status": "SUCCEEDED",
+    "executor": "CodexCodeExecutor",
+    "payload": {
+      "sum": 42
+    },
+    "evidence": {
+      "thread_id": "01a0bfe5-709e-7600-b16f-1ac516ec735e",
+      "exit_code": 0,
+      "wire_digest": "e8dc97718f102a9f504e97f1afefcc3da8046f5c34fa99b88ff875825114a26e",
+      "tool_calls": 0
+    },
+    "failure": null
+  },
+  "result_digest": "a83dff90407232c1738140e1bc34ba2cd111954c26745287329f99eddf4df884",
+  "cost_attestation": {
+    "checked_at": 1789925857.805,
+    "ordinary_usage_allowed": true,
+    "remaining_primary": 65,
+    "remaining_weekly": 1,
+    "credit_balance": 0,
+    "paid_fallback_allowed": false
+  },
+  "po_manual_transport": "NONE",
+  "correlation_verified": true
+}

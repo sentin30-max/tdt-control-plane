@@ -1,0 +1,26 @@
+{
+  "hito": "A",
+  "cli_version": "0.155.0-alpha.9",
+  "invocation": "python -m tdt_control_plane --codex <existing-cli> --cost-attestation <fresh-local-snapshot> --output evidence/hito-a-e2e.json",
+  "tests": {
+    "command": "python -m unittest discover -s tests -v",
+    "passed": 8,
+    "failures": 0
+  },
+  "source_sha256": {
+    "tdt_control_plane/__init__.py": "efcc4e05c86163146b887b6f478cae6c1da32f1e803059bb2a6fbee336819dcb",
+    "tdt_control_plane/__main__.py": "0a539968f6ab3592a43e92381c37bdae2b7696f410d3d661867b5e036f01d3a1",
+    "tests/test_transport.py": "31fb470f04fbb3eb914a695a79cb9224d57034276cc74f30b45fb938d0b1a80b",
+    "tdt_control_plane/contracts.py": "a219c7d65302045aa41abe32138fc074231b128be16720ae68c4cbbec9b97a10",
+    "tdt_control_plane/executor.py": "545bca3eaadae199825d35431789b96bbd450bbc4970bb50a12e757cbc3f34e8"
+  },
+  "evidence_sha256": "fc651f8cbbc0cfe4de02560c53fea7f322b070c1cf92fdc59ac7615bfff498e1",
+  "limitations": [
+    "Cost snapshot is checked externally; no unattended quota refresh implemented",
+    "Synchronous process-local adapter; no restart recovery",
+    "Bounded arithmetic task with no tool calls",
+    "Requires existing desktop-user authentication and available included quota",
+    "Hito B-F not started; pending Advisor review"
+  ],
+  "authoritative": false
+}
