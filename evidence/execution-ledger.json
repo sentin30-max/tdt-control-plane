@@ -1,0 +1,642 @@
+{
+  "authoritative": false,
+  "ledgers": {
+    "quality": {
+      "executions": [
+        {
+          "execution_id": "0f316be9-9d60-4f23-93c7-b6e1f6466503",
+          "task_id": "eac8a9fb-0f32-4cf2-823c-51fa42a217fd",
+          "context_id": "17d6a6e2a36f60ff70ad47ea259b84f9f60a4e5ce6517f570edd927095e30963",
+          "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+          "role": "ADVISOR",
+          "status": "INGESTED",
+          "attempts": 1,
+          "classification": "ACCEPTED",
+          "result_digest": "0ee99591580f6e935b66f217ec0742fceab41939c3559623c7834af1d2144511"
+        },
+        {
+          "execution_id": "0df66d0e-2cb9-4ef5-b025-67167f973d54",
+          "task_id": "b4fe0283-4999-440e-ad06-ccc505fc2a7c",
+          "context_id": "279422accbafb36fe7cf5c4dce99e5c09f673bdc6db96ab77ef889a8ee56664e",
+          "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+          "role": "DEVELOPMENT",
+          "status": "INGESTED",
+          "attempts": 1,
+          "classification": "ACCEPTED",
+          "result_digest": "2815f055e864b6a9a573991ef97b8fd6dd0fcb5ef9092b588772aa12bfca6e9d"
+        }
+      ],
+      "events": [
+        {
+          "seq": 1,
+          "execution_id": "0f316be9-9d60-4f23-93c7-b6e1f6466503",
+          "kind": "REGISTERED",
+          "detail": "5dfa7e93911a8c446064a1c2646f4e3b73801b5688e074071ca33ec06ab68078"
+        },
+        {
+          "seq": 2,
+          "execution_id": "0f316be9-9d60-4f23-93c7-b6e1f6466503",
+          "kind": "DISPATCHED",
+          "detail": ""
+        },
+        {
+          "seq": 3,
+          "execution_id": "0f316be9-9d60-4f23-93c7-b6e1f6466503",
+          "kind": "ACCEPTED",
+          "detail": "0ee99591580f6e935b66f217ec0742fceab41939c3559623c7834af1d2144511"
+        },
+        {
+          "seq": 4,
+          "execution_id": "0df66d0e-2cb9-4ef5-b025-67167f973d54",
+          "kind": "REGISTERED",
+          "detail": "736797d399c8e616920f9e593c5d7333edb949bd88d13e47900feb341836cd3f"
+        },
+        {
+          "seq": 5,
+          "execution_id": "0df66d0e-2cb9-4ef5-b025-67167f973d54",
+          "kind": "DISPATCHED",
+          "detail": ""
+        },
+        {
+          "seq": 6,
+          "execution_id": "0df66d0e-2cb9-4ef5-b025-67167f973d54",
+          "kind": "ACCEPTED",
+          "detail": "2815f055e864b6a9a573991ef97b8fd6dd0fcb5ef9092b588772aa12bfca6e9d"
+        }
+      ]
+    },
+    "continuity": {
+      "executions": [
+        {
+          "execution_id": "e25a7108-49ab-595f-b42d-8d7712eff994",
+          "task_id": "b8f681df-9566-5398-9a54-33966afd2f04",
+          "context_id": "1a44cff22a3b24758e69c37bc6c4323febe91bcd4921127c86b8f60c1ca3aced",
+          "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+          "role": "ADVISOR",
+          "status": "INGESTED",
+          "attempts": 1,
+          "classification": "ACCEPTED",
+          "result_digest": "4af0f55164b9d12b11f9f84912ec88a97a8df91826ab699e834479371ff40e01"
+        },
+        {
+          "execution_id": "28e38c92-9607-58a1-82d8-59f38ee7cea3",
+          "task_id": "b8f681df-9566-5398-9a54-33966afd2f04",
+          "context_id": "66bf83312c47de7245b394f4d3b2388a80c6fe7383d1804b41c7435cb9360f57",
+          "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+          "role": "DEVELOPMENT",
+          "status": "INGESTED",
+          "attempts": 1,
+          "classification": "ACCEPTED",
+          "result_digest": "64f475086c566189a9af8a373de66a56638f9028b000044c365dc87917dbe994"
+        },
+        {
+          "execution_id": "e45312c3-a33f-58d9-9ff4-7b9f6ee1156b",
+          "task_id": "b8f681df-9566-5398-9a54-33966afd2f04",
+          "context_id": "55c27a3dd0ae2666ec841730c6cc04c3ea8992e01a07858ab6786601324fe88c",
+          "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+          "role": "ADVISOR",
+          "status": "INGESTED",
+          "attempts": 1,
+          "classification": "ACCEPTED",
+          "result_digest": "2cc967a38f8623b6ee8583baafe5e638b008266196ed6da3f9fe55dc194393b7"
+        },
+        {
+          "execution_id": "016aeb94-e123-5138-8040-a0ad605dfe1e",
+          "task_id": "b8f681df-9566-5398-9a54-33966afd2f04",
+          "context_id": "0a17941b974fd43e00dbf8e3eea2c7fbff523bbc4e61f7e9fff1f89861218ee8",
+          "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+          "role": "DEVELOPMENT",
+          "status": "ISOLATED",
+          "attempts": 1,
+          "classification": "DEPENDENCY_FAILURE",
+          "result_digest": null
+        },
+        {
+          "execution_id": "bb223107-2fbc-57cc-823d-2bffc814eed4",
+          "task_id": "ba3f7977-f712-57e6-878f-b18a928e105d",
+          "context_id": "5ecb4a441bbe70d2c4bee5f95abd9ad2822ef529e66709f29405bf21593c473b",
+          "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+          "role": "ADVISOR",
+          "status": "INGESTED",
+          "attempts": 1,
+          "classification": "ACCEPTED",
+          "result_digest": "7b064c592699c7b2f2166486855f4ceb75467e5296357777b1c4326713bce6c4"
+        },
+        {
+          "execution_id": "f8de2655-84ab-5785-9c98-4473c4b030e2",
+          "task_id": "ba3f7977-f712-57e6-878f-b18a928e105d",
+          "context_id": "14c9112997725d0e1ab17f217642f931682e3b66eacec14442db7b5c32658d5c",
+          "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+          "role": "CODE_EXECUTOR",
+          "status": "INGESTED",
+          "attempts": 1,
+          "classification": "ACCEPTED",
+          "result_digest": "7bda6e1fcab6bd85ed83f3d95aac5dcea57616147d5390e56051c9f34c6c27c1"
+        },
+        {
+          "execution_id": "d5697e69-6c8b-5068-aea9-180e5c219cc9",
+          "task_id": "b0a2166f-b77b-5414-bf13-885a4b39c38b",
+          "context_id": "f886c7572662a0bca3b267b0049888ff94d62b5f47469801955fd2b6a0989d8d",
+          "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+          "role": "ADVISOR",
+          "status": "INGESTED",
+          "attempts": 2,
+          "classification": "ACCEPTED",
+          "result_digest": "940e9e12cc080160ba578f5f3151b00d623381dc65ec00822bba59584b58ff10"
+        },
+        {
+          "execution_id": "8ad94c1c-3f04-5528-9abf-261c35de6877",
+          "task_id": "b0a2166f-b77b-5414-bf13-885a4b39c38b",
+          "context_id": "1c20647bcdf8a5782d77e91adb62c5ea91f6f813664af2d3e876923417a96d60",
+          "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+          "role": "CODE_EXECUTOR",
+          "status": "INGESTED",
+          "attempts": 2,
+          "classification": "ACCEPTED",
+          "result_digest": "d202cb51ed98897775a938dbf06e9c7146f7cf6ad5bd3d9c2b771734562b112a"
+        },
+        {
+          "execution_id": "d42c3af6-e8f1-5c9a-bbe1-10647cc47611",
+          "task_id": "2c83b869-41e3-5da2-9757-7e78e7d6d265",
+          "context_id": "9677360f598ce222a084561de6c1d4e41dcad2b942e4c37e5f701b8248730cd3",
+          "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+          "role": "ADVISOR",
+          "status": "INGESTED",
+          "attempts": 1,
+          "classification": "ACCEPTED",
+          "result_digest": "401583f5a4a2bf8d193cfd1d6918c6c9f356985d24f262020983d94d7963576a"
+        },
+        {
+          "execution_id": "b195e42b-a49a-506a-9e9e-d80e62107640",
+          "task_id": "2c83b869-41e3-5da2-9757-7e78e7d6d265",
+          "context_id": "f7507bec43be0490c066ccdfc89cdab210cceb61ff32bcfd93dd8547f0503b8f",
+          "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+          "role": "DEVELOPMENT",
+          "status": "ISOLATED",
+          "attempts": 1,
+          "classification": "DEPENDENCY_FAILURE",
+          "result_digest": null
+        },
+        {
+          "execution_id": "6e9da1c3-3163-51ae-b538-d72f8a1265a7",
+          "task_id": "b225b778-313d-5d0f-8fc7-ab0a2119b6b3",
+          "context_id": "fa9f33e59a25e82ff507b0a2ccc0998352f977706b40e44527a8ec796f1ce9d9",
+          "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+          "role": "ADVISOR",
+          "status": "INGESTED",
+          "attempts": 1,
+          "classification": "ACCEPTED",
+          "result_digest": "862d9be4fae49938b71971afcaa2c45ee9ceb63501ab9bd1df95a091858aabf1"
+        },
+        {
+          "execution_id": "ca5ad7fc-5cad-5e66-9356-5064326fef33",
+          "task_id": "b225b778-313d-5d0f-8fc7-ab0a2119b6b3",
+          "context_id": "8cf116177aca5cfb0df5f4af50947410cb1722dc6a44028bf7217a7a237fcb24",
+          "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+          "role": "CODE_EXECUTOR",
+          "status": "INGESTED",
+          "attempts": 1,
+          "classification": "ACCEPTED",
+          "result_digest": "ca6906f2bdc0831b911ede9985e718187b02d5998118c82577037f556085f329"
+        },
+        {
+          "execution_id": "afb51ae5-93c6-5720-bdcb-eead0754d8d7",
+          "task_id": "b978f112-ac9b-5afb-a5d3-78da6a29525a",
+          "context_id": "ac6be2fac74667d1c4938b65f6a2c6640790e77afd7af2d0a30b2bfcd9f290d7",
+          "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+          "role": "ADVISOR",
+          "status": "INGESTED",
+          "attempts": 1,
+          "classification": "ACCEPTED",
+          "result_digest": "7a9d58f8261fcb9a25744c0c2d0576b2dbf200f4c7e44f68d8a581a0a3e8d659"
+        },
+        {
+          "execution_id": "56f64c3e-edb8-59c6-95bb-01a49c87fc51",
+          "task_id": "b978f112-ac9b-5afb-a5d3-78da6a29525a",
+          "context_id": "7831be74d0dfd357e7ffb162c65b5e602afc2ac3324a713e9135114bfbef57b5",
+          "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+          "role": "CODE_EXECUTOR",
+          "status": "INGESTED",
+          "attempts": 1,
+          "classification": "ACCEPTED",
+          "result_digest": "ff81ba618c40431dcb816e10bc03a77121c4e730ebfb5b560009398bd02e5487"
+        },
+        {
+          "execution_id": "56adaba0-4abb-58b4-a11d-4f28f375f1bf",
+          "task_id": "fa8afc34-e127-569f-b26b-24793a4e2cdd",
+          "context_id": "098e7ef484e5f5c283676e26a9584e32e847507af48856d13dd0c0d78e9d35af",
+          "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+          "role": "ADVISOR",
+          "status": "INGESTED",
+          "attempts": 1,
+          "classification": "ACCEPTED",
+          "result_digest": "68bc4de09e27bbe1eae0b3ea8581cac4b601ee69b015b7daf92855260736d09b"
+        }
+      ],
+      "events": [
+        {
+          "seq": 1,
+          "execution_id": "e25a7108-49ab-595f-b42d-8d7712eff994",
+          "kind": "REGISTERED",
+          "detail": "dbf17e45d8c2af3f5093b3b5c25700eee517fec9c3471b2ea518477ab4b88fff"
+        },
+        {
+          "seq": 2,
+          "execution_id": "e25a7108-49ab-595f-b42d-8d7712eff994",
+          "kind": "DISPATCHED",
+          "detail": ""
+        },
+        {
+          "seq": 3,
+          "execution_id": "e25a7108-49ab-595f-b42d-8d7712eff994",
+          "kind": "ACCEPTED",
+          "detail": "4af0f55164b9d12b11f9f84912ec88a97a8df91826ab699e834479371ff40e01"
+        },
+        {
+          "seq": 4,
+          "execution_id": "28e38c92-9607-58a1-82d8-59f38ee7cea3",
+          "kind": "REGISTERED",
+          "detail": "aaadaa644af69a3d1b029959952a4cf0872e707232fbdac3e9869193c5165bdf"
+        },
+        {
+          "seq": 5,
+          "execution_id": "28e38c92-9607-58a1-82d8-59f38ee7cea3",
+          "kind": "DISPATCHED",
+          "detail": ""
+        },
+        {
+          "seq": 6,
+          "execution_id": "28e38c92-9607-58a1-82d8-59f38ee7cea3",
+          "kind": "ACCEPTED",
+          "detail": "64f475086c566189a9af8a373de66a56638f9028b000044c365dc87917dbe994"
+        },
+        {
+          "seq": 7,
+          "execution_id": "e45312c3-a33f-58d9-9ff4-7b9f6ee1156b",
+          "kind": "REGISTERED",
+          "detail": "b1e1562601b1b4fc690bd838e7744944ac2eb5aee691042d4044ce1c0ebc5ca6"
+        },
+        {
+          "seq": 8,
+          "execution_id": "e45312c3-a33f-58d9-9ff4-7b9f6ee1156b",
+          "kind": "DISPATCHED",
+          "detail": ""
+        },
+        {
+          "seq": 9,
+          "execution_id": "e45312c3-a33f-58d9-9ff4-7b9f6ee1156b",
+          "kind": "ACCEPTED",
+          "detail": "2cc967a38f8623b6ee8583baafe5e638b008266196ed6da3f9fe55dc194393b7"
+        },
+        {
+          "seq": 10,
+          "execution_id": "016aeb94-e123-5138-8040-a0ad605dfe1e",
+          "kind": "REGISTERED",
+          "detail": "1bb77eeb3e4db750de1e6771d8fe835e6a04f5862b60d2f212eee9c41d15b049"
+        },
+        {
+          "seq": 11,
+          "execution_id": "016aeb94-e123-5138-8040-a0ad605dfe1e",
+          "kind": "DISPATCHED",
+          "detail": ""
+        },
+        {
+          "seq": 12,
+          "execution_id": "016aeb94-e123-5138-8040-a0ad605dfe1e",
+          "kind": "DEPENDENCY_FAILURE",
+          "detail": ""
+        },
+        {
+          "seq": 13,
+          "execution_id": "bb223107-2fbc-57cc-823d-2bffc814eed4",
+          "kind": "REGISTERED",
+          "detail": "5a2edce76017d520a205138424e78b65727032189e7780c53d0378250bfdb7bf"
+        },
+        {
+          "seq": 14,
+          "execution_id": "bb223107-2fbc-57cc-823d-2bffc814eed4",
+          "kind": "DISPATCHED",
+          "detail": ""
+        },
+        {
+          "seq": 15,
+          "execution_id": "bb223107-2fbc-57cc-823d-2bffc814eed4",
+          "kind": "ACCEPTED",
+          "detail": "7b064c592699c7b2f2166486855f4ceb75467e5296357777b1c4326713bce6c4"
+        },
+        {
+          "seq": 16,
+          "execution_id": "f8de2655-84ab-5785-9c98-4473c4b030e2",
+          "kind": "REGISTERED",
+          "detail": "2d439b72ddb4e61dd2fcf867f548b344ec6f2c192e481f7c1f54bbef95f2cf76"
+        },
+        {
+          "seq": 17,
+          "execution_id": "f8de2655-84ab-5785-9c98-4473c4b030e2",
+          "kind": "DISPATCHED",
+          "detail": ""
+        },
+        {
+          "seq": 18,
+          "execution_id": "f8de2655-84ab-5785-9c98-4473c4b030e2",
+          "kind": "ACCEPTED",
+          "detail": "7bda6e1fcab6bd85ed83f3d95aac5dcea57616147d5390e56051c9f34c6c27c1"
+        },
+        {
+          "seq": 19,
+          "execution_id": "d5697e69-6c8b-5068-aea9-180e5c219cc9",
+          "kind": "REGISTERED",
+          "detail": "ad93eb3c7ce6df9ed7867759c9289becaaee6fc27a75db0f1243710aabc5d136"
+        },
+        {
+          "seq": 20,
+          "execution_id": "d5697e69-6c8b-5068-aea9-180e5c219cc9",
+          "kind": "DISPATCHED",
+          "detail": ""
+        },
+        {
+          "seq": 21,
+          "execution_id": "d5697e69-6c8b-5068-aea9-180e5c219cc9",
+          "kind": "INVALID_RESULT",
+          "detail": ""
+        },
+        {
+          "seq": 22,
+          "execution_id": "bb223107-2fbc-57cc-823d-2bffc814eed4",
+          "kind": "DUPLICATE_NOOP",
+          "detail": "7b064c592699c7b2f2166486855f4ceb75467e5296357777b1c4326713bce6c4"
+        },
+        {
+          "seq": 23,
+          "execution_id": "f8de2655-84ab-5785-9c98-4473c4b030e2",
+          "kind": "DUPLICATE_NOOP",
+          "detail": "7bda6e1fcab6bd85ed83f3d95aac5dcea57616147d5390e56051c9f34c6c27c1"
+        },
+        {
+          "seq": 24,
+          "execution_id": "d5697e69-6c8b-5068-aea9-180e5c219cc9",
+          "kind": "BOUNDED_READ_ONLY_REGENERATION",
+          "detail": ""
+        },
+        {
+          "seq": 25,
+          "execution_id": "d5697e69-6c8b-5068-aea9-180e5c219cc9",
+          "kind": "DISPATCHED",
+          "detail": ""
+        },
+        {
+          "seq": 26,
+          "execution_id": "d5697e69-6c8b-5068-aea9-180e5c219cc9",
+          "kind": "ACCEPTED",
+          "detail": "940e9e12cc080160ba578f5f3151b00d623381dc65ec00822bba59584b58ff10"
+        },
+        {
+          "seq": 27,
+          "execution_id": "8ad94c1c-3f04-5528-9abf-261c35de6877",
+          "kind": "REGISTERED",
+          "detail": "eec1ee958861ebd8fa38cb26998f20deb0f3245de7220cd25167eb4b1877bda6"
+        },
+        {
+          "seq": 28,
+          "execution_id": "8ad94c1c-3f04-5528-9abf-261c35de6877",
+          "kind": "DISPATCHED",
+          "detail": ""
+        },
+        {
+          "seq": 29,
+          "execution_id": "8ad94c1c-3f04-5528-9abf-261c35de6877",
+          "kind": "INVALID_RESULT",
+          "detail": ""
+        },
+        {
+          "seq": 30,
+          "execution_id": "8ad94c1c-3f04-5528-9abf-261c35de6877",
+          "kind": "SANITIZED_FAILURE_DETAIL",
+          "detail": "EXECUTOR_FAILURE"
+        },
+        {
+          "seq": 31,
+          "execution_id": "bb223107-2fbc-57cc-823d-2bffc814eed4",
+          "kind": "DUPLICATE_NOOP",
+          "detail": "7b064c592699c7b2f2166486855f4ceb75467e5296357777b1c4326713bce6c4"
+        },
+        {
+          "seq": 32,
+          "execution_id": "f8de2655-84ab-5785-9c98-4473c4b030e2",
+          "kind": "DUPLICATE_NOOP",
+          "detail": "7bda6e1fcab6bd85ed83f3d95aac5dcea57616147d5390e56051c9f34c6c27c1"
+        },
+        {
+          "seq": 33,
+          "execution_id": "d5697e69-6c8b-5068-aea9-180e5c219cc9",
+          "kind": "DUPLICATE_NOOP",
+          "detail": "940e9e12cc080160ba578f5f3151b00d623381dc65ec00822bba59584b58ff10"
+        },
+        {
+          "seq": 34,
+          "execution_id": "8ad94c1c-3f04-5528-9abf-261c35de6877",
+          "kind": "BOUNDED_READ_ONLY_REGENERATION",
+          "detail": ""
+        },
+        {
+          "seq": 35,
+          "execution_id": "8ad94c1c-3f04-5528-9abf-261c35de6877",
+          "kind": "DISPATCHED",
+          "detail": ""
+        },
+        {
+          "seq": 36,
+          "execution_id": "8ad94c1c-3f04-5528-9abf-261c35de6877",
+          "kind": "ACCEPTED",
+          "detail": "d202cb51ed98897775a938dbf06e9c7146f7cf6ad5bd3d9c2b771734562b112a"
+        },
+        {
+          "seq": 37,
+          "execution_id": "d42c3af6-e8f1-5c9a-bbe1-10647cc47611",
+          "kind": "REGISTERED",
+          "detail": "e61eac56f6fe85c0c044f830aa8c46508a489e2fc8602236236ef925ab3ac815"
+        },
+        {
+          "seq": 38,
+          "execution_id": "d42c3af6-e8f1-5c9a-bbe1-10647cc47611",
+          "kind": "DISPATCHED",
+          "detail": ""
+        },
+        {
+          "seq": 39,
+          "execution_id": "d42c3af6-e8f1-5c9a-bbe1-10647cc47611",
+          "kind": "ACCEPTED",
+          "detail": "401583f5a4a2bf8d193cfd1d6918c6c9f356985d24f262020983d94d7963576a"
+        },
+        {
+          "seq": 40,
+          "execution_id": "b195e42b-a49a-506a-9e9e-d80e62107640",
+          "kind": "REGISTERED",
+          "detail": "c55a923e48d63b5fc9b104ef4577fa89a16399cfb4e607ba0e16464fb404d032"
+        },
+        {
+          "seq": 41,
+          "execution_id": "b195e42b-a49a-506a-9e9e-d80e62107640",
+          "kind": "DISPATCHED",
+          "detail": ""
+        },
+        {
+          "seq": 42,
+          "execution_id": "b195e42b-a49a-506a-9e9e-d80e62107640",
+          "kind": "DEPENDENCY_FAILURE",
+          "detail": ""
+        },
+        {
+          "seq": 43,
+          "execution_id": "6e9da1c3-3163-51ae-b538-d72f8a1265a7",
+          "kind": "REGISTERED",
+          "detail": "d76fe3af6dc72fdf78c97302ac70b8c4a87aabe081c103dc79033864978c7c52"
+        },
+        {
+          "seq": 44,
+          "execution_id": "6e9da1c3-3163-51ae-b538-d72f8a1265a7",
+          "kind": "DISPATCHED",
+          "detail": ""
+        },
+        {
+          "seq": 45,
+          "execution_id": "6e9da1c3-3163-51ae-b538-d72f8a1265a7",
+          "kind": "ACCEPTED",
+          "detail": "862d9be4fae49938b71971afcaa2c45ee9ceb63501ab9bd1df95a091858aabf1"
+        },
+        {
+          "seq": 46,
+          "execution_id": "ca5ad7fc-5cad-5e66-9356-5064326fef33",
+          "kind": "REGISTERED",
+          "detail": "ec03b5a20a51a5c12024d068d579e0a0ea238a4dfbc6827696da2cac403d93b5"
+        },
+        {
+          "seq": 47,
+          "execution_id": "ca5ad7fc-5cad-5e66-9356-5064326fef33",
+          "kind": "DISPATCHED",
+          "detail": ""
+        },
+        {
+          "seq": 48,
+          "execution_id": "ca5ad7fc-5cad-5e66-9356-5064326fef33",
+          "kind": "ACCEPTED",
+          "detail": "ca6906f2bdc0831b911ede9985e718187b02d5998118c82577037f556085f329"
+        },
+        {
+          "seq": 49,
+          "execution_id": "afb51ae5-93c6-5720-bdcb-eead0754d8d7",
+          "kind": "REGISTERED",
+          "detail": "cccb0f98390475a81810844a27bf618bbe7ac3dff3e5ab4616fd45bca6547f3c"
+        },
+        {
+          "seq": 50,
+          "execution_id": "afb51ae5-93c6-5720-bdcb-eead0754d8d7",
+          "kind": "DISPATCHED",
+          "detail": ""
+        },
+        {
+          "seq": 51,
+          "execution_id": "afb51ae5-93c6-5720-bdcb-eead0754d8d7",
+          "kind": "ACCEPTED",
+          "detail": "7a9d58f8261fcb9a25744c0c2d0576b2dbf200f4c7e44f68d8a581a0a3e8d659"
+        },
+        {
+          "seq": 52,
+          "execution_id": "56f64c3e-edb8-59c6-95bb-01a49c87fc51",
+          "kind": "REGISTERED",
+          "detail": "626b3b9df0d41e40950edfcca5f23b0f609c2b72bbc23d08d24bb1e04e8a0275"
+        },
+        {
+          "seq": 53,
+          "execution_id": "56f64c3e-edb8-59c6-95bb-01a49c87fc51",
+          "kind": "DISPATCHED",
+          "detail": ""
+        },
+        {
+          "seq": 54,
+          "execution_id": "56f64c3e-edb8-59c6-95bb-01a49c87fc51",
+          "kind": "ACCEPTED",
+          "detail": "ff81ba618c40431dcb816e10bc03a77121c4e730ebfb5b560009398bd02e5487"
+        },
+        {
+          "seq": 55,
+          "execution_id": "56adaba0-4abb-58b4-a11d-4f28f375f1bf",
+          "kind": "REGISTERED",
+          "detail": "8cbe16818f5be85ec851526281d1ed9341236b4703093acf883e5172bfb502ef"
+        },
+        {
+          "seq": 56,
+          "execution_id": "56adaba0-4abb-58b4-a11d-4f28f375f1bf",
+          "kind": "DISPATCHED",
+          "detail": ""
+        },
+        {
+          "seq": 57,
+          "execution_id": "56adaba0-4abb-58b4-a11d-4f28f375f1bf",
+          "kind": "ACCEPTED",
+          "detail": "68bc4de09e27bbe1eae0b3ea8581cac4b601ee69b015b7daf92855260736d09b"
+        },
+        {
+          "seq": 58,
+          "execution_id": "6e9da1c3-3163-51ae-b538-d72f8a1265a7",
+          "kind": "DUPLICATE_NOOP",
+          "detail": "862d9be4fae49938b71971afcaa2c45ee9ceb63501ab9bd1df95a091858aabf1"
+        },
+        {
+          "seq": 59,
+          "execution_id": "ca5ad7fc-5cad-5e66-9356-5064326fef33",
+          "kind": "DUPLICATE_NOOP",
+          "detail": "ca6906f2bdc0831b911ede9985e718187b02d5998118c82577037f556085f329"
+        },
+        {
+          "seq": 60,
+          "execution_id": "afb51ae5-93c6-5720-bdcb-eead0754d8d7",
+          "kind": "DUPLICATE_NOOP",
+          "detail": "7a9d58f8261fcb9a25744c0c2d0576b2dbf200f4c7e44f68d8a581a0a3e8d659"
+        },
+        {
+          "seq": 61,
+          "execution_id": "56f64c3e-edb8-59c6-95bb-01a49c87fc51",
+          "kind": "DUPLICATE_NOOP",
+          "detail": "ff81ba618c40431dcb816e10bc03a77121c4e730ebfb5b560009398bd02e5487"
+        },
+        {
+          "seq": 62,
+          "execution_id": "56adaba0-4abb-58b4-a11d-4f28f375f1bf",
+          "kind": "DUPLICATE_NOOP",
+          "detail": "68bc4de09e27bbe1eae0b3ea8581cac4b601ee69b015b7daf92855260736d09b"
+        },
+        {
+          "seq": 63,
+          "execution_id": "6e9da1c3-3163-51ae-b538-d72f8a1265a7",
+          "kind": "DUPLICATE_NOOP",
+          "detail": "862d9be4fae49938b71971afcaa2c45ee9ceb63501ab9bd1df95a091858aabf1"
+        },
+        {
+          "seq": 64,
+          "execution_id": "ca5ad7fc-5cad-5e66-9356-5064326fef33",
+          "kind": "DUPLICATE_NOOP",
+          "detail": "ca6906f2bdc0831b911ede9985e718187b02d5998118c82577037f556085f329"
+        },
+        {
+          "seq": 65,
+          "execution_id": "afb51ae5-93c6-5720-bdcb-eead0754d8d7",
+          "kind": "DUPLICATE_NOOP",
+          "detail": "7a9d58f8261fcb9a25744c0c2d0576b2dbf200f4c7e44f68d8a581a0a3e8d659"
+        },
+        {
+          "seq": 66,
+          "execution_id": "56f64c3e-edb8-59c6-95bb-01a49c87fc51",
+          "kind": "DUPLICATE_NOOP",
+          "detail": "ff81ba618c40431dcb816e10bc03a77121c4e730ebfb5b560009398bd02e5487"
+        },
+        {
+          "seq": 67,
+          "execution_id": "56adaba0-4abb-58b4-a11d-4f28f375f1bf",
+          "kind": "DUPLICATE_NOOP",
+          "detail": "68bc4de09e27bbe1eae0b3ea8581cac4b601ee69b015b7daf92855260736d09b"
+        }
+      ]
+    }
+  }
+}
