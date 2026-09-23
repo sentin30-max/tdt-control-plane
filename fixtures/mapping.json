@@ -1,0 +1,269 @@
+{
+  "mapping": [
+    {
+      "id": "support_closed",
+      "subject": "Support",
+      "fact_class": "lifecycle",
+      "scope": "Support",
+      "source": "support_close",
+      "pointer": "destination_state",
+      "authority": "lifecycle",
+      "supersedes": [],
+      "requires": {
+        "executed": true,
+        "resolution": "PERMITIDA"
+      }
+    },
+    {
+      "id": "d6_preserved",
+      "subject": "D6",
+      "fact_class": "reopened",
+      "scope": "D6",
+      "source": "support_close",
+      "pointer": "preservation/d6_reopened",
+      "authority": "preservation",
+      "supersedes": [],
+      "requires": {}
+    },
+    {
+      "id": "sprint2_historical",
+      "subject": "Sprint2",
+      "fact_class": "baseline",
+      "scope": "Sprint2",
+      "source": "consumption",
+      "pointer": "previous_official_baseline/status",
+      "authority": "consumption",
+      "supersedes": [],
+      "requires": {}
+    },
+    {
+      "id": "sprint2_not_reaudited",
+      "subject": "Sprint2",
+      "fact_class": "reaudited",
+      "scope": "Sprint2",
+      "source": "support_close",
+      "pointer": "preservation/sprint2_reaudited",
+      "authority": "preservation",
+      "supersedes": [],
+      "requires": {}
+    },
+    {
+      "id": "support_consumed",
+      "subject": "Support",
+      "fact_class": "baseline",
+      "scope": "Support",
+      "source": "consumption",
+      "pointer": "status",
+      "authority": "consumption",
+      "supersedes": [],
+      "requires": {}
+    },
+    {
+      "id": "resistance_open",
+      "subject": "Resistance",
+      "fact_class": "lifecycle",
+      "scope": "Resistance",
+      "source": "resistance_open",
+      "pointer": "destination_state",
+      "authority": "lifecycle",
+      "supersedes": [],
+      "requires": {
+        "executed": true,
+        "resolution": "PERMITIDA"
+      }
+    },
+    {
+      "id": "resistance_audit",
+      "subject": "Resistance",
+      "fact_class": "lifecycle",
+      "scope": "Resistance",
+      "source": "resistance_lifecycle",
+      "pointer": "current_state",
+      "authority": "lifecycle",
+      "supersedes": [
+        "resistance_open"
+      ],
+      "requires": {
+        "executed": true,
+        "resolution": "PERMITIDA",
+        "prior_transition/executed": true,
+        "prior_transition/previous_state": "ABIERTO",
+        "prior_transition/current_state": "EN_ELABORACION",
+        "previous_state": "EN_ELABORACION"
+      }
+    },
+    {
+      "id": "evaluated",
+      "subject": "Resistance",
+      "fact_class": "evaluated_baseline",
+      "scope": "Resistance",
+      "source": "resistance_lifecycle",
+      "pointer": "evaluated_code_baseline",
+      "authority": "identity",
+      "supersedes": [],
+      "requires": {}
+    },
+    {
+      "id": "blocker",
+      "subject": "Resistance",
+      "fact_class": "execution_blocker",
+      "scope": "Resistance",
+      "source": "execution_blocker",
+      "pointer": "record_type",
+      "authority": "execution",
+      "supersedes": [],
+      "requires": {}
+    },
+    {
+      "id": "domain_not_determined",
+      "subject": "Resistance",
+      "fact_class": "domain_defects",
+      "scope": "Resistance",
+      "source": "execution_blocker",
+      "pointer": "material_defects",
+      "authority": "execution",
+      "supersedes": [],
+      "requires": {}
+    }
+  ],
+  "authority_catalog": {
+    "lifecycle": {
+      "fact_classes": [
+        "lifecycle"
+      ],
+      "scopes": [
+        "Support",
+        "Resistance"
+      ],
+      "sources": [
+        "support_close",
+        "resistance_open",
+        "resistance_lifecycle"
+      ]
+    },
+    "preservation": {
+      "fact_classes": [
+        "reopened",
+        "reaudited"
+      ],
+      "scopes": [
+        "D6",
+        "Sprint2"
+      ],
+      "sources": [
+        "support_close"
+      ]
+    },
+    "consumption": {
+      "fact_classes": [
+        "baseline"
+      ],
+      "scopes": [
+        "Sprint2",
+        "Support"
+      ],
+      "sources": [
+        "consumption"
+      ]
+    },
+    "identity": {
+      "fact_classes": [
+        "evaluated_baseline"
+      ],
+      "scopes": [
+        "Resistance"
+      ],
+      "sources": [
+        "resistance_lifecycle"
+      ]
+    },
+    "execution": {
+      "fact_classes": [
+        "execution_blocker",
+        "domain_defects"
+      ],
+      "scopes": [
+        "Resistance"
+      ],
+      "sources": [
+        "execution_blocker"
+      ]
+    }
+  },
+  "queries": [
+    {
+      "name": "support_closed",
+      "subject": "Support",
+      "fact_class": "lifecycle",
+      "scope": "Support"
+    },
+    {
+      "name": "d6_preserved",
+      "subject": "D6",
+      "fact_class": "reopened",
+      "scope": "D6"
+    },
+    {
+      "name": "sprint2_historical",
+      "subject": "Sprint2",
+      "fact_class": "baseline",
+      "scope": "Sprint2"
+    },
+    {
+      "name": "sprint2_not_reaudited",
+      "subject": "Sprint2",
+      "fact_class": "reaudited",
+      "scope": "Sprint2"
+    },
+    {
+      "name": "support_consumed",
+      "subject": "Support",
+      "fact_class": "baseline",
+      "scope": "Support"
+    },
+    {
+      "name": "resistance_audit",
+      "subject": "Resistance",
+      "fact_class": "lifecycle",
+      "scope": "Resistance"
+    },
+    {
+      "name": "evaluated",
+      "subject": "Resistance",
+      "fact_class": "evaluated_baseline",
+      "scope": "Resistance"
+    },
+    {
+      "name": "blocker",
+      "subject": "Resistance",
+      "fact_class": "execution_blocker",
+      "scope": "Resistance"
+    },
+    {
+      "name": "domain_not_determined",
+      "subject": "Resistance",
+      "fact_class": "domain_defects",
+      "scope": "Resistance"
+    }
+  ],
+  "protected": [
+    "Trader AI",
+    "Sprint2",
+    "Support",
+    "D6",
+    "Resistance",
+    "TEF",
+    "Governance",
+    "evaluated baselines"
+  ],
+  "open_decisions": [
+    {
+      "subject": "valid_range_opportunity_capability",
+      "requirement": "EXISTS",
+      "placement": "UNRESOLVED_PLACEMENT",
+      "scope": "product-placement",
+      "review_trigger_reached": false,
+      "authority_required": "PO"
+    }
+  ]
+}

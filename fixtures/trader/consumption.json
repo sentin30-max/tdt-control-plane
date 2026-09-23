@@ -1,0 +1,43 @@
+{
+  "lot_id": "LOTE-DOC-SUPPORT-CIERRE-001",
+  "status": "CONSUMADO",
+  "profile": "REFORZADO",
+  "consumption_basis": {
+    "manifest_sha256": "ec5ed8de626c5b30dce22c9efbc0c3eff170e36cef7ff4b7e0cabb37c7c43660",
+    "documentation_sync": "SATISFACTORIA",
+    "verification_commit": "3018831921c927a826c4b8962eb16c493321af79",
+    "verification_id": "DOCSYNC-D0539930C672448087779A8FBA59A423",
+    "verification_output_hash": "594330ede1b1b0e41fe091c153c97bbc0e70fbc334545618b5bcdf872ef53a3f",
+    "deterministic_hash_gate": true,
+    "historical_bytes_required_for_current_close": false
+  },
+  "previous_official_baseline": {
+    "id": "LOTE-DOC-SPRINT2-CIERRE-001_CONSUMADO",
+    "status": "CONSUMADO / OFICIAL_VIGENTE_HISTORICAL_BASELINE",
+    "sha256": "e6326533ad6189aaa6121f06070fc3feba1579f3fa12d80ba12d652ce530678e",
+    "manifest_sha256": "867c213279b767123cb0f9891afd41a87f481da3dd436cd3da73151416af9da2",
+    "reaudited": false,
+    "historical_bytes_recovered": false
+  },
+  "officialized_outputs": [
+    {"path": "documentation/lots/LOTE-DOC-SUPPORT-CIERRE-001/MANUAL_OPERATIVO_TDT_v0.20.3.candidate.md", "documental_state_after_consumption": "OFICIAL_VIGENTE", "sha256": "ef72e02f23fd2af135595f060305a9667d8fc1a917575f42ac6782795538ae00"},
+    {"path": "documentation/lots/LOTE-DOC-SUPPORT-CIERRE-001/PROJECT_STATE.candidate.md", "documental_state_after_consumption": "OFICIAL_VIGENTE", "sha256": "c948b726cffde45067f043ac72d267a71b599cd939798d98965f5bae778318c6"},
+    {"path": "documentation/lots/LOTE-DOC-SUPPORT-CIERRE-001/PROJECT_HISTORY.candidate.md", "documental_state_after_consumption": "OFICIAL_VIGENTE", "sha256": "51180590da5bc1bebc6e0b5307548bfd4326d2cd4fee8fd26508380837f6112d"},
+    {"path": "documentation/lots/LOTE-DOC-SUPPORT-CIERRE-001/DOCUMENTATION_AUDIT.candidate.md", "documental_state_after_consumption": "OFICIAL_VIGENTE", "sha256": "6ebfb85dc7b355c108c01a8fa0d0a46577cf5d68e0155ae91ebae12e74c2581c"},
+    {"path": "documentation/lots/LOTE-DOC-SUPPORT-CIERRE-001/DOCUMENTATION_REGISTRY.candidate.md", "documental_state_after_consumption": "OFICIAL_VIGENTE", "sha256": "67e28b628a7672834144c6fa76fbb1b92106143d6c5b35e854b5d42192dfb389"},
+    {"path": "documentation/lots/LOTE-DOC-SUPPORT-CIERRE-001/CHAT_HANDOFF.candidate.md", "documental_state_after_consumption": "OFICIAL_VIGENTE", "sha256": "bbdf9b9715c5ca9a72e704092a4efbc2577c9b082e983fdc1e272f32a05be575"}
+  ],
+  "supersession": [
+    {"document": "MANUAL_OPERATIVO_TDT_v0.20.2.md", "new_state": "OFICIAL_SUSTITUIDO", "replaced_by": "MANUAL_OPERATIVO_TDT_v0.20.3.candidate.md"}
+  ],
+  "support_assurance_preserved": {
+    "audit_version": "T01-T06-A",
+    "functional_validation": "167/167 PASS",
+    "a3_final": "SATISFACTORIA",
+    "a4_final": "SATISFACTORIA",
+    "a5_final": "CONFORME",
+    "material_support_defect_found": false,
+    "historical_adverse_results_preserved": true
+  },
+  "next_contractual_transition": "SUPPORT APROBADO -> CERRADO"
+}

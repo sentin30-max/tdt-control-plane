@@ -1,0 +1,53 @@
+{
+  "schema_version": "2",
+  "unit": "RESISTANCE",
+  "evaluated_code_baseline": "46828c1658b5328f65fd23ad2e350a19e54039ae",
+  "audit_dossier_head": "f43c730a63f3e9442a39826598df9971ffe51f6f",
+  "audit_request": "audits/resistance/RESISTANCE-AUDIT-REQUEST-46828C1658B5/request.json",
+  "previous_state": "EN_ELABORACION",
+  "event": "SOMETER_AUDITORIA",
+  "resolution": "PERMITIDA",
+  "current_state": "EN_AUDITORIA",
+  "executed": true,
+  "audit_intensity": "REFORZADA",
+  "a3_assignee": "GROQ_FREE/openai/gpt-oss-120b:A3:RESISTANCE-A3-INSTANCE-46828C1658B5",
+  "a3_independence_required": false,
+  "a4_assignee": "GROQ_FREE/openai/gpt-oss-120b:A4:RESISTANCE-INDEPENDENT-INSTANCE-A4-46828C1658B5",
+  "a4_independence_required": true,
+  "a4_independent_instance": "RESISTANCE-INDEPENDENT-INSTANCE-A4-46828C1658B5",
+  "preconditions": {
+    "evaluable_version_ready": true,
+    "traceability_ready": true,
+    "a1_ready": true,
+    "a2_ready": true,
+    "audit_intensity_determined": true,
+    "a3_assignment_ready": true,
+    "a4_assignment_ready": true,
+    "a4_independence_ready": true,
+    "audit_input_consumable": true,
+    "other_material_preconditions": "SATISFIED"
+  },
+  "normative_basis": [
+    "TEF-04 SOMETER_AUDITORIA transition: EN_ELABORACION -> EN_AUDITORIA when audit material and assignments are ready",
+    "TEF-03 A1/A2 determined before A3/A4 execution",
+    "TEF-03 reinforced A4 additional independence and adverse-result preservation",
+    "TEF-03 section 39 non-compensable A5 composition remains pending"
+  ],
+  "pending_stages": ["A3", "A4", "A5"],
+  "forbidden_conclusions_not_declared": [
+    "A3_SATISFACTORIA",
+    "A4_SATISFACTORIA",
+    "A5_CONFORME",
+    "APROBADO",
+    "CERRADO"
+  ],
+  "prior_transition": {
+    "previous_state": "ABIERTO",
+    "event": "INICIAR_ELABORACION",
+    "resolution": "PERMITIDA",
+    "current_state": "EN_ELABORACION",
+    "executed": true
+  },
+  "product_owner_decision_required": false,
+  "next_event_candidate": "EJECUTAR_A3_A4"
+}

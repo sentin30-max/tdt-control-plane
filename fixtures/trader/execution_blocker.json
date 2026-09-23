@@ -1,0 +1,59 @@
+{
+  "record_type": "EXECUTION_BLOCKER_NOT_AUDIT_RESULT",
+  "timestamp_utc": "2026-09-16T20:31:42.9574330Z",
+  "request_id": "RESISTANCE-AUDIT-REQUEST-46828C1658B5",
+  "evaluated_code_baseline": "46828c1658b5328f65fd23ad2e350a19e54039ae",
+  "inspected_repository_head": "d352794ae08a62a8fc9dfa34439b07300a461c3f",
+  "lifecycle": "EN_AUDITORIA",
+  "input_sha256": {
+    "request.json": "62afe73032f00b8d5ec6e27fb96c01be99fdd5fc990b0860bb117db3be3164ea",
+    "A3_INPUT.md": "3b0c8c980d4d2c711e117f111a22481313d5235b643312b4063eb20636425d14",
+    "A4_INPUT.md": "f651d25d2cae718cbe41a29e498050a28fb2d3b88969bfe12b74be6be49e3b46",
+    "EVIDENCE_MANIFEST.json": "dfb0c71de0becad68a90839a5fbdcc7b623c8f8170a7e78dc296d787057c0488"
+  },
+  "a3_executed": false,
+  "a3_result": "NOT_EXECUTED",
+  "a3_output": null,
+  "a3_output_consumable": false,
+  "a3_material_findings": [],
+  "a4_executed": false,
+  "a4_independent_instance": "RESISTANCE-INDEPENDENT-INSTANCE-A4-46828C1658B5",
+  "a4_result": "NOT_EXECUTED",
+  "a4_output": null,
+  "a4_output_consumable": false,
+  "a4_material_findings": [],
+  "a4_negative_findings_preserved": "NOT_APPLICABLE_NO_PROVIDER_OUTPUT",
+  "a3_a4_contradiction": "NOT_DETERMINABLE",
+  "material_defects": "NOT_DETERMINABLE_CONTROLS_NOT_EXECUTED",
+  "remediation_required": "OPERATIONAL_ONLY_IDENTIFIED",
+  "a5_ready": false,
+  "a5_executed": false,
+  "a5_result": "PENDING",
+  "operational_blockers": [
+    {
+      "id": "EXEC-01",
+      "minimum_remediation": "Make the existing authorized Groq credential available to the execution runtime without disclosing it in audit artifacts",
+      "evidence": "GROQ_API_KEY absent in process (sandbox and host), User and Machine environment",
+      "impact": "Assigned Groq API calls cannot authenticate locally"
+    },
+    {
+      "id": "EXEC-02",
+      "minimum_remediation": "Provide a Resistance request execution route within the existing capability; do not execute Support or create another infrastructure",
+      "evidence": ".github/workflows/tef-support-independent-audit.yml invokes tools/tef_support_a4_final_runner.py and is fixed to Support",
+      "impact": "The inspected remote workflow cannot dispatch the Resistance request"
+    },
+    {
+      "id": "EXEC-03",
+      "minimum_remediation": "Use existing provider call capability with concrete baseline-pinned evidence, separately preserved raw outputs and a consumability gate before A5",
+      "evidence": "tools/tef_support_audit_runner.py main reads only A3_INPUT.md and A4_INPUT.md; does not load EVIDENCE_MANIFEST.json artifact contents; invokes compose_a5 immediately after A4",
+      "impact": "Unmodified execution does not deliver concrete source evidence and does not enforce the requested pre-A5 consumability review"
+    }
+  ],
+  "next_tef_operation": "Execute A3 and independent A4 after restoring the operational prerequisites; then evaluate consumability before A5",
+  "codex_required": true,
+  "exact_task": "Use the existing Groq free capability and assigned Resistance instances to deliver baseline-pinned concrete evidence for C1-C14 and required attacks, preserve separate raw outputs and request/input/output digests, check consumability and conflicts, then compose A5 only if eligible. Do not modify production, frozen dossier, or lifecycle; do not rerun Support or create new infrastructure.",
+  "product_owner_decision_required": false,
+  "production_modified": false,
+  "frozen_dossier_modified": false,
+  "provider_requests_sent": 0
+}

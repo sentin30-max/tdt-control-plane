@@ -1,0 +1,32 @@
+{
+  "schema_version": "1",
+  "object": "SUPPORT T01-T06-A",
+  "source_state": "APROBADO",
+  "event": "CERRAR",
+  "destination_state": "CERRADO",
+  "resolution": "PERMITIDA",
+  "executed": true,
+  "basis": {
+    "technical_approval_commit": "e19af679e343541e06ca30f4a94b43f97e93c543",
+    "a5_final": "CONFORME",
+    "documentary_lot": "LOTE-DOC-SUPPORT-CIERRE-001",
+    "documentary_lot_status": "CONSUMADO",
+    "documentary_lot_consumption_commit": "b377c0cab923b60a98057daaab6619b1ccb40f94",
+    "documentacion_sincronizada": "SATISFACTORIA",
+    "verification_commit": "3018831921c927a826c4b8962eb16c493321af79",
+    "blocking_obligations_remaining": [],
+    "normative_transition": "TEF-04 §35.1 APROBADO + CERRAR -> CERRADO"
+  },
+  "preservation": {
+    "support_audit_version": "T01-T06-A",
+    "functional_validation": "167/167 PASS",
+    "a3_final": "SATISFACTORIA",
+    "a4_final": "SATISFACTORIA",
+    "a5_final": "CONFORME",
+    "material_support_defect_found": false,
+    "historical_adverse_results_preserved": true,
+    "d6_reopened": false,
+    "sprint2_reaudited": false
+  },
+  "next_unit": "RESISTANCE"
+}

@@ -1,0 +1,37 @@
+{
+  "repository": "sentin30-max/tdt-TRADER-AI",
+  "revision": "af9f8a392f95363e86c5636aefa5c55494715f6c",
+  "mode": "PINNED_READ_ONLY_FIXTURE",
+  "sources": {
+    "support_close": {
+      "path": "audits/support/SUPPORT-AUDIT-REQUEST-379D5E2BF2104042/LIFECYCLE_CLOSE_RESULT.json",
+      "sha256": "0aa09d7a57083635f19ef6d49efd7e4021fa8ea23b9361671082f1601c8eeed5",
+      "file": "support_close.json"
+    },
+    "consumption": {
+      "path": "documentation/lots/LOTE-DOC-SUPPORT-CIERRE-001/LOTE-DOC-SUPPORT-CIERRE-001_CONSUMADO.json",
+      "sha256": "e0fe90f1b885c4c41ae364ca868b23b866ddacfa0f6d5d5b4729f38362e7027c",
+      "file": "consumption.json"
+    },
+    "manifest": {
+      "path": "documentation/lots/LOTE-DOC-SUPPORT-CIERRE-001/MANIFEST.json",
+      "sha256": "ec5ed8de626c5b30dce22c9efbc0c3eff170e36cef7ff4b7e0cabb37c7c43660",
+      "file": "manifest.json"
+    },
+    "resistance_open": {
+      "path": "audits/resistance/RESISTANCE_OPEN_RESULT.json",
+      "sha256": "56f75a1f662e37f7102bf65c833a353020776947410c47fcd32a0f7fcb152f43",
+      "file": "resistance_open.json"
+    },
+    "resistance_lifecycle": {
+      "path": "sprint3/resistance/RESISTANCE_LIFECYCLE_RESULT.json",
+      "sha256": "436728b0b81ecac933c8068ed9bda2bd3cf07764f363a0f8c02a124dd5c7dca6",
+      "file": "resistance_lifecycle.json"
+    },
+    "execution_blocker": {
+      "path": "audits/resistance/RESISTANCE-AUDIT-REQUEST-46828C1658B5/EXECUTION_BLOCKER.json",
+      "sha256": "c6002682a66bd2d50eabcec4c238d02d7b73ee66147c3037e8a692bb29b959eb",
+      "file": "execution_blocker.json"
+    }
+  }
+}

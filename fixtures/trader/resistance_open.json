@@ -1,0 +1,42 @@
+{
+  "schema_version": "1",
+  "unit": "RESISTANCE",
+  "sprint": 3,
+  "area": "CONTEXT",
+  "source_state": "NO_ABIERTO",
+  "event": "ABRIR",
+  "destination_state": "ABIERTO",
+  "resolution": "PERMITIDA",
+  "executed": true,
+  "authority_basis": [
+    "Product Owner current instruction: after valid Support close, open Resistance and continue automatically",
+    "Sprint-3 order already determined: Support -> Resistance -> Liquidity -> Volume -> EMAs",
+    "Support lifecycle close commit d45d22d99dd1a3f4dba129d2deb78a99093d8079",
+    "LOTE-DOC-SUPPORT-CIERRE-001_CONSUMADO commit b377c0cab923b60a98057daaab6619b1ccb40f94",
+    "DOCUMENTACION_SINCRONIZADA verification commit 3018831921c927a826c4b8962eb16c493321af79 item 6 PASS: Support:CERRADO -> Resistance:ABIERTO"
+  ],
+  "initial_scope": {
+    "concept": "Resistance",
+    "type": "Sprint-3 Context deliverable",
+    "coordination": "Separate deliverable coordinated with Support; no demonstrated internal precedence between Support and Resistance beyond already-consumed delivery order",
+    "must_preserve": [
+      "Support T01-T06-A closed baseline",
+      "167/167 Support validation",
+      "more context != more vetoes",
+      "absence of confirmation != adverse evidence",
+      "rigor != no trade",
+      "opportunity conservation",
+      "ranges and micro-movement opportunities"
+    ],
+    "anti_goals": [
+      "do not reopen Support",
+      "do not require cumulative confluence by default",
+      "do not make Resistance an automatic veto",
+      "do not collapse Support and Resistance into one artifact"
+    ]
+  },
+  "support_reopened": false,
+  "precedence_reopened": false,
+  "product_owner_decision_required": false,
+  "next_event_candidate": "INICIAR_ELABORACION"
+}

@@ -1,0 +1,51 @@
+{
+  "lot_id": "LOTE-DOC-SUPPORT-CIERRE-001",
+  "status": "PREPARADO",
+  "profile": "REFORZADO",
+  "purpose": "Consolidacion documental del cierre contractual de Support y continuidad a Resistance",
+  "previous_official_baseline": {
+    "id": "LOTE-DOC-SPRINT2-CIERRE-001_CONSUMADO",
+    "status": "CONSUMADO / OFICIAL_VIGENTE",
+    "sha256": "e6326533ad6189aaa6121f06070fc3feba1579f3fa12d80ba12d652ce530678e",
+    "manifest_sha256": "867c213279b767123cb0f9891afd41a87f481da3dd436cd3da73151416af9da2",
+    "historical_bytes_required": false,
+    "consumption_rule": "GOVERNANCE §12.11.4"
+  },
+  "current_inputs": [
+    {"id": "SUPPORT_AUDIT_VERSION", "value": "T01-T06-A"},
+    {"id": "SUPPORT_FUNCTIONAL_VALIDATION", "value": "167/167 PASS"},
+    {"id": "A3_FINAL", "value": "SATISFACTORIA"},
+    {"id": "A4_FINAL", "value": "SATISFACTORIA", "commit": "8087b7ba29af88a95106e7eb95fe4bfad216a47c"},
+    {"id": "A5_FINAL", "value": "CONFORME"},
+    {"id": "SUPPORT_TECHNICAL_STATE", "value": "APROBADO", "commit": "e19af679e343541e06ca30f4a94b43f97e93c543"},
+    {"id": "MATERIAL_SUPPORT_DEFECT_FOUND", "value": "NO"}
+  ],
+  "historical_adverse_chain_preserved": [
+    "244209c6818ba02582d780fc61d74bca6774745b",
+    "d2ca3d3e90c0047551745e1f8e8d926c5a564ac7",
+    "a3a8c8b23301026b6ba64eece5670c740e14137b",
+    "8087b7ba29af88a95106e7eb95fe4bfad216a47c"
+  ],
+  "outputs": [
+    {"path": "documentation/lots/LOTE-DOC-SUPPORT-CIERRE-001/MANUAL_OPERATIVO_TDT_v0.20.3.candidate.md", "owner": "Manual Operativo", "version": "v0.20.3.candidate", "sha256": "ef72e02f23fd2af135595f060305a9667d8fc1a917575f42ac6782795538ae00"},
+    {"path": "documentation/lots/LOTE-DOC-SUPPORT-CIERRE-001/PROJECT_STATE.candidate.md", "owner": "PROJECT_STATE", "version": "support-close-001", "sha256": "c948b726cffde45067f043ac72d267a71b599cd939798d98965f5bae778318c6"},
+    {"path": "documentation/lots/LOTE-DOC-SUPPORT-CIERRE-001/PROJECT_HISTORY.candidate.md", "owner": "PROJECT_HISTORY", "version": "support-close-001", "sha256": "51180590da5bc1bebc6e0b5307548bfd4326d2cd4fee8fd26508380837f6112d"},
+    {"path": "documentation/lots/LOTE-DOC-SUPPORT-CIERRE-001/DOCUMENTATION_AUDIT.candidate.md", "owner": "DOCUMENTATION_AUDIT", "version": "support-close-001", "sha256": "6ebfb85dc7b355c108c01a8fa0d0a46577cf5d68e0155ae91ebae12e74c2581c"},
+    {"path": "documentation/lots/LOTE-DOC-SUPPORT-CIERRE-001/DOCUMENTATION_REGISTRY.candidate.md", "owner": "DOCUMENTATION_REGISTRY", "version": "support-close-001", "sha256": "67e28b628a7672834144c6fa76fbb1b92106143d6c5b35e854b5d42192dfb389"},
+    {"path": "documentation/lots/LOTE-DOC-SUPPORT-CIERRE-001/CHAT_HANDOFF.candidate.md", "owner": "CHAT_HANDOFF", "version": "support-close-001", "sha256": "bbdf9b9715c5ca9a72e704092a4efbc2577c9b082e983fdc1e272f32a05be575"}
+  ],
+  "relations": [
+    {"type": "REFERENCIA", "from": "LOTE-DOC-SUPPORT-CIERRE-001", "to": "LOTE-DOC-SPRINT2-CIERRE-001_CONSUMADO"},
+    {"type": "SUSTITUYE_AL_CONSUMARSE", "from": "MANUAL_OPERATIVO_TDT_v0.20.3.candidate.md", "to": "MANUAL_OPERATIVO_TDT_v0.20.2.md"},
+    {"type": "TRANSICION", "from": "SUPPORT:APROBADO", "to": "SUPPORT:CERRADO"},
+    {"type": "CONTINUIDAD", "from": "SUPPORT:CERRADO", "to": "RESISTANCE:ABIERTO"}
+  ],
+  "roles": {
+    "producer": "Arquitectura Tecnica / continuidad Sprint-3",
+    "document_owners": ["Manual Operativo", "PROJECT_STATE", "PROJECT_HISTORY", "DOCUMENTATION_AUDIT", "DOCUMENTATION_REGISTRY", "CHAT_HANDOFF"],
+    "sync_executor": "Arquitectura Tecnica",
+    "sync_verifier": "Independent Groq executor through GitHub Actions"
+  },
+  "unaffected": ["GOVERNANCE", "ENGINEERING_GUIDE", "ROADMAP"],
+  "anti_reopen": ["Support A1", "Support A2", "Support A3", "Support A4", "Support A5", "167 cases", "T01-T06-A", "D6", "Sprint 2", "Sprint 2 handoff"]
+}
