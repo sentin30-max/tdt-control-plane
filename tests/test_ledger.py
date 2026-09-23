@@ -81,6 +81,24 @@ class LedgerTests(unittest.TestCase):
         self.l.claim(self.eid)
         with self.assertRaises(ValueError):
             self.l.claim(self.eid)
+
+    def test_read_only_regeneration_same_identity_once(self):
+        self.l.claim(self.eid)
+        self.l.fail(self.eid,'INVALID_RESULT')
+        self.l.regenerate_read_only_result(self.eid)
+        self.l.claim(self.eid)
+        self.l.fail(self.eid,'INVALID_RESULT')
+        with self.assertRaisesRegex(ValueError,'REGENERATION_NOT_SAFE'):
+            self.l.regenerate_read_only_result(self.eid)
+        self.assertEqual(self.l.recover(self.eid)['attempts'],2)
+
+    def test_running_timeout_and_tool_violation_cannot_regenerate(self):
+        self.l.claim(self.eid)
+        with self.assertRaises(ValueError):self.l.regenerate_read_only_result(self.eid)
+        self.l.fail(self.eid,'TIMEOUT')
+        with self.assertRaises(ValueError):self.l.regenerate_read_only_result(self.eid)
+        self.l.fail(self.eid,'DEPENDENCY_FAILURE')
+        with self.assertRaises(ValueError):self.l.regenerate_read_only_result(self.eid)
         self.l.fail(self.eid, "TIMEOUT")
         with self.assertRaises(ValueError):
             self.l.claim(self.eid)

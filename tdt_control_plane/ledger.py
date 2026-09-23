@@ -73,6 +73,26 @@ class Ledger:
             self.db.execute("UPDATE executions SET status=?,classification=? WHERE id=?", (status, code, eid))
             self._event(eid, code)
 
+    def regenerate_read_only_result(self, eid):
+        """One bounded regeneration, same identity, only after a completed failed call.
+
+        Not for RUNNING/TIMEOUT: those must remain isolated until reconciled.
+        No effectful operation can use this path.
+        """
+        self.db.execute('BEGIN IMMEDIATE')
+        try:
+            row = self.recover(eid)
+            if (row['status'] != 'ISOLATED' or row['classification'] != 'INVALID_RESULT'
+                    or row['attempts'] >= 2 or row['result'] is not None
+                    or row['context']['authority']['tools'] != []):
+                raise ValueError('REGENERATION_NOT_SAFE')
+            self.db.execute("UPDATE executions SET status='RETRYABLE' WHERE id=?", (eid,))
+            self._event(eid, 'BOUNDED_READ_ONLY_REGENERATION')
+            self.db.execute('COMMIT')
+        except Exception:
+            self.db.execute('ROLLBACK')
+            raise
+
     def ingest(self, eid, raw, current_revision, current_sources):
         self.db.execute("BEGIN IMMEDIATE")
         try:

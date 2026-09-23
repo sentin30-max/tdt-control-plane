@@ -68,6 +68,8 @@ class ResolutionTests(unittest.TestCase):
         self.assertNotIn('implementation_specification',contexts[0]['inputs'])
         self.assertEqual(set(contexts[0]['inputs']['claims']),{'resistance_audit'})
         self.assertNotIn('support_close',contexts[0]['source_digests'])
+        self.assertEqual(set(contexts[0]['inputs']['source_evidence']),{'resistance_audit'})
+        self.assertEqual(contexts[0]['inputs']['claims']['resistance_audit']['fact_class'],'lifecycle')
         self.assertEqual(len({digest(c['authority']) for c in contexts}),3)
 
     def test_unresolved_claim_blocks_projection(self):

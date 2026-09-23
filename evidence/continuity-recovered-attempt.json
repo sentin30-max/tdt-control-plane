@@ -1,0 +1,1616 @@
+{
+  "authoritative": false,
+  "executions_verified": 2,
+  "records": [
+    {
+      "authoritative": false,
+      "context": {
+        "after_completion": "CONTROL_PLANE_VERIFY_THEN_ADVISOR_REVIEW",
+        "authoritative": false,
+        "authority": {
+          "can_do": [
+            "review",
+            "refute",
+            "classify",
+            "propose_destination"
+          ],
+          "cannot_do": [
+            "product_decision",
+            "self_approval",
+            "mutate_authority",
+            "modify_protected",
+            "spend"
+          ],
+          "tools": []
+        },
+        "context_id": "5ecb4a441bbe70d2c4bee5f95abd9ad2822ef529e66709f29405bf21593c473b",
+        "done_when": [
+          "Return evidenced structured result within role authority"
+        ],
+        "execution_id": "bb223107-2fbc-57cc-823d-2bffc814eed4",
+        "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+        "inputs": {
+          "claims": {
+            "domain_not_determined": {
+              "authoritative": false,
+              "fact_class": "domain_defects",
+              "historical": [],
+              "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+              "scope": "Resistance",
+              "sources": [
+                "execution_blocker"
+              ],
+              "status": "RESOLVED",
+              "subject": "Resistance",
+              "value": "NOT_DETERMINABLE_CONTROLS_NOT_EXECUTED"
+            },
+            "evaluated": {
+              "authoritative": false,
+              "fact_class": "evaluated_baseline",
+              "historical": [],
+              "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+              "scope": "Resistance",
+              "sources": [
+                "resistance_lifecycle"
+              ],
+              "status": "RESOLVED",
+              "subject": "Resistance",
+              "value": "46828c1658b5328f65fd23ad2e350a19e54039ae"
+            },
+            "resistance_audit": {
+              "authoritative": false,
+              "fact_class": "lifecycle",
+              "historical": [
+                "resistance_open"
+              ],
+              "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+              "scope": "Resistance",
+              "sources": [
+                "resistance_lifecycle"
+              ],
+              "status": "RESOLVED",
+              "subject": "Resistance",
+              "value": "EN_AUDITORIA"
+            },
+            "support_closed": {
+              "authoritative": false,
+              "fact_class": "lifecycle",
+              "historical": [],
+              "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+              "scope": "Support",
+              "sources": [
+                "support_close"
+              ],
+              "status": "RESOLVED",
+              "subject": "Support",
+              "value": "CERRADO"
+            }
+          },
+          "open_decisions": [
+            {
+              "authority_required": "PO",
+              "placement": "UNRESOLVED_PLACEMENT",
+              "requirement": "EXISTS",
+              "review_trigger_reached": false,
+              "scope": "product-placement",
+              "subject": "valid_range_opportunity_capability"
+            }
+          ],
+          "permitted_destinations": [
+            "ADVISOR",
+            "DEVELOPMENT",
+            "CODE_EXECUTOR"
+          ],
+          "requirements": [
+            "No protected writes",
+            "Preserve unresolved placement",
+            "No audit/domain conflation",
+            "Advisor review after every material result"
+          ],
+          "review_target": {
+            "artifact": {
+              "domain_not_determined": {
+                "authoritative": false,
+                "fact_class": "domain_defects",
+                "historical": [],
+                "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+                "scope": "Resistance",
+                "sources": [
+                  "execution_blocker"
+                ],
+                "status": "RESOLVED",
+                "subject": "Resistance",
+                "value": "NOT_DETERMINABLE_CONTROLS_NOT_EXECUTED"
+              },
+              "evaluated": {
+                "authoritative": false,
+                "fact_class": "evaluated_baseline",
+                "historical": [],
+                "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+                "scope": "Resistance",
+                "sources": [
+                  "resistance_lifecycle"
+                ],
+                "status": "RESOLVED",
+                "subject": "Resistance",
+                "value": "46828c1658b5328f65fd23ad2e350a19e54039ae"
+              },
+              "resistance_audit": {
+                "authoritative": false,
+                "fact_class": "lifecycle",
+                "historical": [
+                  "resistance_open"
+                ],
+                "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+                "scope": "Resistance",
+                "sources": [
+                  "resistance_lifecycle"
+                ],
+                "status": "RESOLVED",
+                "subject": "Resistance",
+                "value": "EN_AUDITORIA"
+              },
+              "support_closed": {
+                "authoritative": false,
+                "fact_class": "lifecycle",
+                "historical": [],
+                "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+                "scope": "Support",
+                "sources": [
+                  "support_close"
+                ],
+                "status": "RESOLVED",
+                "subject": "Support",
+                "value": "CERRADO"
+              }
+            },
+            "kind": "seed_result",
+            "purpose": "Two authorized read-only computations over the fixture; no Trader operation",
+            "verification_basis": "Pinned source byte hashes, explicit applicability predicates and fact-scoped authority mapping checked by the read-only source adapter. Relevant source excerpts are in inputs.source_evidence.",
+            "verified": true
+          },
+          "source_evidence": {
+            "domain_not_determined": {
+              "authority_descriptor": {
+                "fact_classes": [
+                  "execution_blocker",
+                  "domain_defects"
+                ],
+                "scopes": [
+                  "Resistance"
+                ],
+                "sources": [
+                  "execution_blocker"
+                ]
+              },
+              "byte_digest_verified": true,
+              "checks_passed": true,
+              "contract_checks": {},
+              "pointer": "material_defects",
+              "source": "execution_blocker",
+              "value": "NOT_DETERMINABLE_CONTROLS_NOT_EXECUTED"
+            },
+            "evaluated": {
+              "authority_descriptor": {
+                "fact_classes": [
+                  "evaluated_baseline"
+                ],
+                "scopes": [
+                  "Resistance"
+                ],
+                "sources": [
+                  "resistance_lifecycle"
+                ]
+              },
+              "byte_digest_verified": true,
+              "checks_passed": true,
+              "contract_checks": {},
+              "pointer": "evaluated_code_baseline",
+              "source": "resistance_lifecycle",
+              "value": "46828c1658b5328f65fd23ad2e350a19e54039ae"
+            },
+            "resistance_audit": {
+              "authority_descriptor": {
+                "fact_classes": [
+                  "lifecycle"
+                ],
+                "scopes": [
+                  "Support",
+                  "Resistance"
+                ],
+                "sources": [
+                  "support_close",
+                  "resistance_open",
+                  "resistance_lifecycle"
+                ]
+              },
+              "byte_digest_verified": true,
+              "checks_passed": true,
+              "contract_checks": {
+                "executed": true,
+                "previous_state": "EN_ELABORACION",
+                "prior_transition/current_state": "EN_ELABORACION",
+                "prior_transition/executed": true,
+                "prior_transition/previous_state": "ABIERTO",
+                "resolution": "PERMITIDA"
+              },
+              "pointer": "current_state",
+              "source": "resistance_lifecycle",
+              "value": "EN_AUDITORIA"
+            },
+            "support_closed": {
+              "authority_descriptor": {
+                "fact_classes": [
+                  "lifecycle"
+                ],
+                "scopes": [
+                  "Support",
+                  "Resistance"
+                ],
+                "sources": [
+                  "support_close",
+                  "resistance_open",
+                  "resistance_lifecycle"
+                ]
+              },
+              "byte_digest_verified": true,
+              "checks_passed": true,
+              "contract_checks": {
+                "executed": true,
+                "resolution": "PERMITIDA"
+              },
+              "pointer": "destination_state",
+              "source": "support_close",
+              "value": "CERRADO"
+            }
+          },
+          "work": {
+            "current_operation": 0,
+            "instructions": "Operation 0: produce a sorted lifecycle list of [subject,state] for Resistance and Support, preserve evaluated_baseline, placement and domain_defects. Operation 1: count CERRADO and EN_AUDITORIA entries from the prior list as closed_units and auditing_units, preserve placement and set trader_modified false. Execute only current_operation. Exact artifact keys for operation 0: lifecycle,evaluated_baseline,placement,domain_defects. Exact artifact keys for operation 1: closed_units,auditing_units,placement,trader_modified.",
+            "previous_result": {
+              "artifact": {
+                "domain_not_determined": {
+                  "authoritative": false,
+                  "fact_class": "domain_defects",
+                  "historical": [],
+                  "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+                  "scope": "Resistance",
+                  "sources": [
+                    "execution_blocker"
+                  ],
+                  "status": "RESOLVED",
+                  "subject": "Resistance",
+                  "value": "NOT_DETERMINABLE_CONTROLS_NOT_EXECUTED"
+                },
+                "evaluated": {
+                  "authoritative": false,
+                  "fact_class": "evaluated_baseline",
+                  "historical": [],
+                  "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+                  "scope": "Resistance",
+                  "sources": [
+                    "resistance_lifecycle"
+                  ],
+                  "status": "RESOLVED",
+                  "subject": "Resistance",
+                  "value": "46828c1658b5328f65fd23ad2e350a19e54039ae"
+                },
+                "resistance_audit": {
+                  "authoritative": false,
+                  "fact_class": "lifecycle",
+                  "historical": [
+                    "resistance_open"
+                  ],
+                  "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+                  "scope": "Resistance",
+                  "sources": [
+                    "resistance_lifecycle"
+                  ],
+                  "status": "RESOLVED",
+                  "subject": "Resistance",
+                  "value": "EN_AUDITORIA"
+                },
+                "support_closed": {
+                  "authoritative": false,
+                  "fact_class": "lifecycle",
+                  "historical": [],
+                  "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+                  "scope": "Support",
+                  "sources": [
+                    "support_close"
+                  ],
+                  "status": "RESOLVED",
+                  "subject": "Support",
+                  "value": "CERRADO"
+                }
+              },
+              "kind": "seed_result",
+              "purpose": "Two authorized read-only computations over the fixture; no Trader operation",
+              "verification_basis": "Pinned source byte hashes, explicit applicability predicates and fact-scoped authority mapping checked by the read-only source adapter. Relevant source excerpts are in inputs.source_evidence.",
+              "verified": true
+            }
+          }
+        },
+        "objective": "Complete two authorized fixture computations under Advisor-first routing",
+        "protected": [
+          "Trader AI",
+          "Sprint2",
+          "Support",
+          "D6",
+          "Resistance",
+          "TEF",
+          "Governance",
+          "evaluated baselines"
+        ],
+        "role": "ADVISOR",
+        "schema_version": 1,
+        "scope": "control-plane-fixture",
+        "source_digests": {
+          "execution_blocker": "c6002682a66bd2d50eabcec4c238d02d7b73ee66147c3037e8a692bb29b959eb",
+          "mapping_contract": "83aa8cefa43cccf7546f8b78309a1959ab485250682bb517037716fb3ba1728c",
+          "resistance_lifecycle": "436728b0b81ecac933c8068ed9bda2bd3cf07764f363a0f8c02a124dd5c7dca6",
+          "support_close": "0aa09d7a57083635f19ef6d49efd7e4021fa8ea23b9361671082f1601c8eeed5"
+        },
+        "task_id": "ba3f7977-f712-57e6-878f-b18a928e105d"
+      },
+      "context_digest": "5a2edce76017d520a205138424e78b65727032189e7780c53d0378250bfdb7bf",
+      "cost_attestation": {
+        "checked_at": 1790159414.194,
+        "credit_balance": 0,
+        "ordinary_usage_allowed": true,
+        "paid_fallback_allowed": false,
+        "remaining_primary": 15,
+        "remaining_weekly": 87
+      },
+      "result": {
+        "artifact": "{\"review_target\":\"seed_result\",\"review_status\":\"NO_MATERIAL_REFUTATION_ESTABLISHED\",\"checks\":{\"lifecycle\":\"Support closure and Resistance audit state match supplied applicable lifecycle evidence; historical ABIERTO does not contradict the supplied transition chain.\",\"evaluated_baseline\":\"The exact supplied baseline is supported by a separate fact-scoped authority descriptor.\",\"domain_defects\":\"Controls were not executed; audit lifecycle evidence establishes neither domain correctness nor absence of defects.\",\"placement\":\"UNRESOLVED_PLACEMENT must remain unresolved. The PO review trigger is false and neither computation requires selecting placement.\",\"authority\":\"Resolved claims and adapter verification do not confer authority on the Advisor or executor. Source hash verification is reported by the supplied adapter, not independently reproduced in this review.\"},\"proposed_handoff\":{\"destination\":\"CODE_EXECUTOR\",\"current_operation\":0,\"constraints\":[\"Produce only lifecycle, evaluated_baseline, placement and domain_defects.\",\"Sort lifecycle by subject: Resistance before Support.\",\"Preserve the exact evaluated baseline, unresolved placement and undetermined domain-defect value.\",\"Do not execute operation 1 yet.\",\"Perform no protected writes.\",\"Return the material result through control-plane verification and Advisor review.\"],\"authorization_granted\":false},\"po_decision_required\":false}",
+        "context_digest": "5a2edce76017d520a205138424e78b65727032189e7780c53d0378250bfdb7bf",
+        "context_id": "5ecb4a441bbe70d2c4bee5f95abd9ad2822ef529e66709f29405bf21593c473b",
+        "effects": [],
+        "evidence_refs": [
+          "support_close",
+          "resistance_lifecycle",
+          "execution_blocker"
+        ],
+        "execution_id": "bb223107-2fbc-57cc-823d-2bffc814eed4",
+        "findings": [
+          "The seed is a supported input to operation 0, not evidence that either requested computation has been completed.",
+          "RESOLVED domain_defects denotes a resolved statement of indeterminacy, not resolved defects.",
+          "The evaluated baseline is an identifier; no supplied evidence establishes that current code matches it or passes domain controls.",
+          "Placement is supplied separately in open_decisions; its absence from the seed claims does not authorize dropping it from the computation.",
+          "The supplied evidence reports applicability and digest checks, but does not expose raw source bytes or the mapping contract text for independent verification."
+        ],
+        "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+        "next_destination": "CODE_EXECUTOR",
+        "outcome": "SUCCEEDED",
+        "proposals": [
+          "Route operation 0 to CODE_EXECUTOR under existing fixture authorization; this routing proposal grants no authority.",
+          "Require control-plane verification and Advisor review of operation 0 before advancing to operation 1.",
+          "Preserve unresolved placement without PO escalation because no placement decision is currently necessary."
+        ],
+        "protected_scope_touched": [],
+        "rationale": "The supplied excerpts support the seed's four claims within their stated fact scopes. No material contradiction or necessary product decision is established. Propose CODE_EXECUTOR for operation 0 only, subject to control-plane authorization and subsequent Advisor review.",
+        "role": "ADVISOR",
+        "task_id": "ba3f7977-f712-57e6-878f-b18a928e105d"
+      },
+      "result_digest": "7b064c592699c7b2f2166486855f4ceb75467e5296357777b1c4326713bce6c4",
+      "runtime_thread_id": "01a0cdd1-049a-7580-9b44-63ebba8e7ddd",
+      "tool_calls": 0
+    },
+    {
+      "authoritative": false,
+      "context": {
+        "after_completion": "CONTROL_PLANE_VERIFY_THEN_ADVISOR_REVIEW",
+        "authoritative": false,
+        "authority": {
+          "can_do": [
+            "bounded_computation"
+          ],
+          "cannot_do": [
+            "product_decision",
+            "self_approval",
+            "mutate_authority",
+            "modify_protected",
+            "spend"
+          ],
+          "tools": []
+        },
+        "context_id": "14c9112997725d0e1ab17f217642f931682e3b66eacec14442db7b5c32658d5c",
+        "done_when": [
+          "Return evidenced structured result within role authority"
+        ],
+        "execution_id": "f8de2655-84ab-5785-9c98-4473c4b030e2",
+        "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+        "inputs": {
+          "claims": {
+            "domain_not_determined": {
+              "authoritative": false,
+              "fact_class": "domain_defects",
+              "historical": [],
+              "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+              "scope": "Resistance",
+              "sources": [
+                "execution_blocker"
+              ],
+              "status": "RESOLVED",
+              "subject": "Resistance",
+              "value": "NOT_DETERMINABLE_CONTROLS_NOT_EXECUTED"
+            },
+            "evaluated": {
+              "authoritative": false,
+              "fact_class": "evaluated_baseline",
+              "historical": [],
+              "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+              "scope": "Resistance",
+              "sources": [
+                "resistance_lifecycle"
+              ],
+              "status": "RESOLVED",
+              "subject": "Resistance",
+              "value": "46828c1658b5328f65fd23ad2e350a19e54039ae"
+            },
+            "resistance_audit": {
+              "authoritative": false,
+              "fact_class": "lifecycle",
+              "historical": [
+                "resistance_open"
+              ],
+              "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+              "scope": "Resistance",
+              "sources": [
+                "resistance_lifecycle"
+              ],
+              "status": "RESOLVED",
+              "subject": "Resistance",
+              "value": "EN_AUDITORIA"
+            },
+            "support_closed": {
+              "authoritative": false,
+              "fact_class": "lifecycle",
+              "historical": [],
+              "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+              "scope": "Support",
+              "sources": [
+                "support_close"
+              ],
+              "status": "RESOLVED",
+              "subject": "Support",
+              "value": "CERRADO"
+            }
+          },
+          "implementation_specification": {
+            "authorized": true,
+            "contract": "Operation 0: produce a sorted lifecycle list of [subject,state] for Resistance and Support, preserve evaluated_baseline, placement and domain_defects. Operation 1: count CERRADO and EN_AUDITORIA entries from the prior list as closed_units and auditing_units, preserve placement and set trader_modified false. Execute only current_operation. Exact artifact keys for operation 0: lifecycle,evaluated_baseline,placement,domain_defects. Exact artifact keys for operation 1: closed_units,auditing_units,placement,trader_modified.",
+            "scope": "read-only fixture computation"
+          },
+          "open_decisions": [
+            {
+              "authority_required": "PO",
+              "placement": "UNRESOLVED_PLACEMENT",
+              "requirement": "EXISTS",
+              "review_trigger_reached": false,
+              "scope": "product-placement",
+              "subject": "valid_range_opportunity_capability"
+            }
+          ],
+          "prior_result_digest": "7b064c592699c7b2f2166486855f4ceb75467e5296357777b1c4326713bce6c4",
+          "requirements": [
+            "No protected writes",
+            "Preserve unresolved placement",
+            "No audit/domain conflation",
+            "Advisor review after every material result"
+          ],
+          "source_evidence": {
+            "domain_not_determined": {
+              "authority_descriptor": {
+                "fact_classes": [
+                  "execution_blocker",
+                  "domain_defects"
+                ],
+                "scopes": [
+                  "Resistance"
+                ],
+                "sources": [
+                  "execution_blocker"
+                ]
+              },
+              "byte_digest_verified": true,
+              "checks_passed": true,
+              "contract_checks": {},
+              "pointer": "material_defects",
+              "source": "execution_blocker",
+              "value": "NOT_DETERMINABLE_CONTROLS_NOT_EXECUTED"
+            },
+            "evaluated": {
+              "authority_descriptor": {
+                "fact_classes": [
+                  "evaluated_baseline"
+                ],
+                "scopes": [
+                  "Resistance"
+                ],
+                "sources": [
+                  "resistance_lifecycle"
+                ]
+              },
+              "byte_digest_verified": true,
+              "checks_passed": true,
+              "contract_checks": {},
+              "pointer": "evaluated_code_baseline",
+              "source": "resistance_lifecycle",
+              "value": "46828c1658b5328f65fd23ad2e350a19e54039ae"
+            },
+            "resistance_audit": {
+              "authority_descriptor": {
+                "fact_classes": [
+                  "lifecycle"
+                ],
+                "scopes": [
+                  "Support",
+                  "Resistance"
+                ],
+                "sources": [
+                  "support_close",
+                  "resistance_open",
+                  "resistance_lifecycle"
+                ]
+              },
+              "byte_digest_verified": true,
+              "checks_passed": true,
+              "contract_checks": {
+                "executed": true,
+                "previous_state": "EN_ELABORACION",
+                "prior_transition/current_state": "EN_ELABORACION",
+                "prior_transition/executed": true,
+                "prior_transition/previous_state": "ABIERTO",
+                "resolution": "PERMITIDA"
+              },
+              "pointer": "current_state",
+              "source": "resistance_lifecycle",
+              "value": "EN_AUDITORIA"
+            },
+            "support_closed": {
+              "authority_descriptor": {
+                "fact_classes": [
+                  "lifecycle"
+                ],
+                "scopes": [
+                  "Support",
+                  "Resistance"
+                ],
+                "sources": [
+                  "support_close",
+                  "resistance_open",
+                  "resistance_lifecycle"
+                ]
+              },
+              "byte_digest_verified": true,
+              "checks_passed": true,
+              "contract_checks": {
+                "executed": true,
+                "resolution": "PERMITIDA"
+              },
+              "pointer": "destination_state",
+              "source": "support_close",
+              "value": "CERRADO"
+            }
+          },
+          "work": {
+            "current_operation": 0,
+            "instructions": "Operation 0: produce a sorted lifecycle list of [subject,state] for Resistance and Support, preserve evaluated_baseline, placement and domain_defects. Operation 1: count CERRADO and EN_AUDITORIA entries from the prior list as closed_units and auditing_units, preserve placement and set trader_modified false. Execute only current_operation. Exact artifact keys for operation 0: lifecycle,evaluated_baseline,placement,domain_defects. Exact artifact keys for operation 1: closed_units,auditing_units,placement,trader_modified.",
+            "previous_result": {
+              "artifact": {
+                "domain_not_determined": {
+                  "authoritative": false,
+                  "fact_class": "domain_defects",
+                  "historical": [],
+                  "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+                  "scope": "Resistance",
+                  "sources": [
+                    "execution_blocker"
+                  ],
+                  "status": "RESOLVED",
+                  "subject": "Resistance",
+                  "value": "NOT_DETERMINABLE_CONTROLS_NOT_EXECUTED"
+                },
+                "evaluated": {
+                  "authoritative": false,
+                  "fact_class": "evaluated_baseline",
+                  "historical": [],
+                  "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+                  "scope": "Resistance",
+                  "sources": [
+                    "resistance_lifecycle"
+                  ],
+                  "status": "RESOLVED",
+                  "subject": "Resistance",
+                  "value": "46828c1658b5328f65fd23ad2e350a19e54039ae"
+                },
+                "resistance_audit": {
+                  "authoritative": false,
+                  "fact_class": "lifecycle",
+                  "historical": [
+                    "resistance_open"
+                  ],
+                  "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+                  "scope": "Resistance",
+                  "sources": [
+                    "resistance_lifecycle"
+                  ],
+                  "status": "RESOLVED",
+                  "subject": "Resistance",
+                  "value": "EN_AUDITORIA"
+                },
+                "support_closed": {
+                  "authoritative": false,
+                  "fact_class": "lifecycle",
+                  "historical": [],
+                  "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+                  "scope": "Support",
+                  "sources": [
+                    "support_close"
+                  ],
+                  "status": "RESOLVED",
+                  "subject": "Support",
+                  "value": "CERRADO"
+                }
+              },
+              "kind": "seed_result",
+              "purpose": "Two authorized read-only computations over the fixture; no Trader operation",
+              "verification_basis": "Pinned source byte hashes, explicit applicability predicates and fact-scoped authority mapping checked by the read-only source adapter. Relevant source excerpts are in inputs.source_evidence.",
+              "verified": true
+            }
+          }
+        },
+        "objective": "Complete two authorized fixture computations under Advisor-first routing",
+        "protected": [
+          "Trader AI",
+          "Sprint2",
+          "Support",
+          "D6",
+          "Resistance",
+          "TEF",
+          "Governance",
+          "evaluated baselines"
+        ],
+        "role": "CODE_EXECUTOR",
+        "schema_version": 1,
+        "scope": "control-plane-fixture",
+        "source_digests": {
+          "execution_blocker": "c6002682a66bd2d50eabcec4c238d02d7b73ee66147c3037e8a692bb29b959eb",
+          "mapping_contract": "83aa8cefa43cccf7546f8b78309a1959ab485250682bb517037716fb3ba1728c",
+          "resistance_lifecycle": "436728b0b81ecac933c8068ed9bda2bd3cf07764f363a0f8c02a124dd5c7dca6",
+          "support_close": "0aa09d7a57083635f19ef6d49efd7e4021fa8ea23b9361671082f1601c8eeed5"
+        },
+        "task_id": "ba3f7977-f712-57e6-878f-b18a928e105d"
+      },
+      "context_digest": "2d439b72ddb4e61dd2fcf867f548b344ec6f2c192e481f7c1f54bbef95f2cf76",
+      "cost_attestation": {
+        "checked_at": 1790159414.194,
+        "credit_balance": 0,
+        "ordinary_usage_allowed": true,
+        "paid_fallback_allowed": false,
+        "remaining_primary": 15,
+        "remaining_weekly": 87
+      },
+      "result": {
+        "artifact": "{\"lifecycle\":[[\"Resistance\",\"EN_AUDITORIA\"],[\"Support\",\"CERRADO\"]],\"evaluated_baseline\":\"46828c1658b5328f65fd23ad2e350a19e54039ae\",\"placement\":\"UNRESOLVED_PLACEMENT\",\"domain_defects\":\"NOT_DETERMINABLE_CONTROLS_NOT_EXECUTED\"}",
+        "context_digest": "2d439b72ddb4e61dd2fcf867f548b344ec6f2c192e481f7c1f54bbef95f2cf76",
+        "context_id": "14c9112997725d0e1ab17f217642f931682e3b66eacec14442db7b5c32658d5c",
+        "effects": [],
+        "evidence_refs": [
+          "support_close",
+          "resistance_lifecycle",
+          "execution_blocker",
+          "mapping_contract"
+        ],
+        "execution_id": "f8de2655-84ab-5785-9c98-4473c4b030e2",
+        "findings": [
+          "Audit lifecycle does not establish domain-defect results; controls remain not executed."
+        ],
+        "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+        "next_destination": "NONE",
+        "outcome": "SUCCEEDED",
+        "proposals": [],
+        "protected_scope_touched": [],
+        "rationale": "Executed only operation 0 over supplied data, sorting lifecycle entries by subject and preserving the evaluated baseline, unresolved placement, and domain-defect value.",
+        "role": "CODE_EXECUTOR",
+        "task_id": "ba3f7977-f712-57e6-878f-b18a928e105d"
+      },
+      "result_digest": "7bda6e1fcab6bd85ed83f3d95aac5dcea57616147d5390e56051c9f34c6c27c1",
+      "runtime_thread_id": "01a0cdd1-7aec-7811-a6fa-92a4de8ada6e",
+      "tool_calls": 0
+    },
+    {
+      "authoritative": false,
+      "context": {
+        "after_completion": "CONTROL_PLANE_VERIFY_THEN_ADVISOR_REVIEW",
+        "authoritative": false,
+        "authority": {
+          "can_do": [
+            "review",
+            "refute",
+            "classify",
+            "propose_destination"
+          ],
+          "cannot_do": [
+            "product_decision",
+            "self_approval",
+            "mutate_authority",
+            "modify_protected",
+            "spend"
+          ],
+          "tools": []
+        },
+        "context_id": "f886c7572662a0bca3b267b0049888ff94d62b5f47469801955fd2b6a0989d8d",
+        "done_when": [
+          "Return evidenced structured result within role authority"
+        ],
+        "execution_id": "d5697e69-6c8b-5068-aea9-180e5c219cc9",
+        "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+        "inputs": {
+          "claims": {
+            "domain_not_determined": {
+              "authoritative": false,
+              "fact_class": "domain_defects",
+              "historical": [],
+              "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+              "scope": "Resistance",
+              "sources": [
+                "execution_blocker"
+              ],
+              "status": "RESOLVED",
+              "subject": "Resistance",
+              "value": "NOT_DETERMINABLE_CONTROLS_NOT_EXECUTED"
+            },
+            "evaluated": {
+              "authoritative": false,
+              "fact_class": "evaluated_baseline",
+              "historical": [],
+              "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+              "scope": "Resistance",
+              "sources": [
+                "resistance_lifecycle"
+              ],
+              "status": "RESOLVED",
+              "subject": "Resistance",
+              "value": "46828c1658b5328f65fd23ad2e350a19e54039ae"
+            },
+            "resistance_audit": {
+              "authoritative": false,
+              "fact_class": "lifecycle",
+              "historical": [
+                "resistance_open"
+              ],
+              "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+              "scope": "Resistance",
+              "sources": [
+                "resistance_lifecycle"
+              ],
+              "status": "RESOLVED",
+              "subject": "Resistance",
+              "value": "EN_AUDITORIA"
+            },
+            "support_closed": {
+              "authoritative": false,
+              "fact_class": "lifecycle",
+              "historical": [],
+              "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+              "scope": "Support",
+              "sources": [
+                "support_close"
+              ],
+              "status": "RESOLVED",
+              "subject": "Support",
+              "value": "CERRADO"
+            }
+          },
+          "open_decisions": [
+            {
+              "authority_required": "PO",
+              "placement": "UNRESOLVED_PLACEMENT",
+              "requirement": "EXISTS",
+              "review_trigger_reached": false,
+              "scope": "product-placement",
+              "subject": "valid_range_opportunity_capability"
+            }
+          ],
+          "permitted_destinations": [
+            "ADVISOR",
+            "DEVELOPMENT",
+            "CODE_EXECUTOR"
+          ],
+          "prior_result_digest": "7bda6e1fcab6bd85ed83f3d95aac5dcea57616147d5390e56051c9f34c6c27c1",
+          "requirements": [
+            "No protected writes",
+            "Preserve unresolved placement",
+            "No audit/domain conflation",
+            "Advisor review after every material result"
+          ],
+          "review_target": {
+            "artifact": {
+              "domain_defects": "NOT_DETERMINABLE_CONTROLS_NOT_EXECUTED",
+              "evaluated_baseline": "46828c1658b5328f65fd23ad2e350a19e54039ae",
+              "lifecycle": [
+                [
+                  "Resistance",
+                  "EN_AUDITORIA"
+                ],
+                [
+                  "Support",
+                  "CERRADO"
+                ]
+              ],
+              "placement": "UNRESOLVED_PLACEMENT"
+            },
+            "kind": "code_result",
+            "operation": 0,
+            "verified": true
+          },
+          "source_evidence": {
+            "domain_not_determined": {
+              "authority_descriptor": {
+                "fact_classes": [
+                  "execution_blocker",
+                  "domain_defects"
+                ],
+                "scopes": [
+                  "Resistance"
+                ],
+                "sources": [
+                  "execution_blocker"
+                ]
+              },
+              "byte_digest_verified": true,
+              "checks_passed": true,
+              "contract_checks": {},
+              "pointer": "material_defects",
+              "source": "execution_blocker",
+              "value": "NOT_DETERMINABLE_CONTROLS_NOT_EXECUTED"
+            },
+            "evaluated": {
+              "authority_descriptor": {
+                "fact_classes": [
+                  "evaluated_baseline"
+                ],
+                "scopes": [
+                  "Resistance"
+                ],
+                "sources": [
+                  "resistance_lifecycle"
+                ]
+              },
+              "byte_digest_verified": true,
+              "checks_passed": true,
+              "contract_checks": {},
+              "pointer": "evaluated_code_baseline",
+              "source": "resistance_lifecycle",
+              "value": "46828c1658b5328f65fd23ad2e350a19e54039ae"
+            },
+            "resistance_audit": {
+              "authority_descriptor": {
+                "fact_classes": [
+                  "lifecycle"
+                ],
+                "scopes": [
+                  "Support",
+                  "Resistance"
+                ],
+                "sources": [
+                  "support_close",
+                  "resistance_open",
+                  "resistance_lifecycle"
+                ]
+              },
+              "byte_digest_verified": true,
+              "checks_passed": true,
+              "contract_checks": {
+                "executed": true,
+                "previous_state": "EN_ELABORACION",
+                "prior_transition/current_state": "EN_ELABORACION",
+                "prior_transition/executed": true,
+                "prior_transition/previous_state": "ABIERTO",
+                "resolution": "PERMITIDA"
+              },
+              "pointer": "current_state",
+              "source": "resistance_lifecycle",
+              "value": "EN_AUDITORIA"
+            },
+            "support_closed": {
+              "authority_descriptor": {
+                "fact_classes": [
+                  "lifecycle"
+                ],
+                "scopes": [
+                  "Support",
+                  "Resistance"
+                ],
+                "sources": [
+                  "support_close",
+                  "resistance_open",
+                  "resistance_lifecycle"
+                ]
+              },
+              "byte_digest_verified": true,
+              "checks_passed": true,
+              "contract_checks": {
+                "executed": true,
+                "resolution": "PERMITIDA"
+              },
+              "pointer": "destination_state",
+              "source": "support_close",
+              "value": "CERRADO"
+            }
+          },
+          "work": {
+            "current_operation": 1,
+            "instructions": "Operation 0: produce a sorted lifecycle list of [subject,state] for Resistance and Support, preserve evaluated_baseline, placement and domain_defects. Operation 1: count CERRADO and EN_AUDITORIA entries from the prior list as closed_units and auditing_units, preserve placement and set trader_modified false. Execute only current_operation. Exact artifact keys for operation 0: lifecycle,evaluated_baseline,placement,domain_defects. Exact artifact keys for operation 1: closed_units,auditing_units,placement,trader_modified.",
+            "previous_result": {
+              "artifact": {
+                "domain_defects": "NOT_DETERMINABLE_CONTROLS_NOT_EXECUTED",
+                "evaluated_baseline": "46828c1658b5328f65fd23ad2e350a19e54039ae",
+                "lifecycle": [
+                  [
+                    "Resistance",
+                    "EN_AUDITORIA"
+                  ],
+                  [
+                    "Support",
+                    "CERRADO"
+                  ]
+                ],
+                "placement": "UNRESOLVED_PLACEMENT"
+              },
+              "kind": "code_result",
+              "operation": 0,
+              "verified": true
+            }
+          }
+        },
+        "objective": "Complete two authorized fixture computations under Advisor-first routing",
+        "protected": [
+          "Trader AI",
+          "Sprint2",
+          "Support",
+          "D6",
+          "Resistance",
+          "TEF",
+          "Governance",
+          "evaluated baselines"
+        ],
+        "role": "ADVISOR",
+        "schema_version": 1,
+        "scope": "control-plane-fixture",
+        "source_digests": {
+          "execution_blocker": "c6002682a66bd2d50eabcec4c238d02d7b73ee66147c3037e8a692bb29b959eb",
+          "mapping_contract": "83aa8cefa43cccf7546f8b78309a1959ab485250682bb517037716fb3ba1728c",
+          "resistance_lifecycle": "436728b0b81ecac933c8068ed9bda2bd3cf07764f363a0f8c02a124dd5c7dca6",
+          "support_close": "0aa09d7a57083635f19ef6d49efd7e4021fa8ea23b9361671082f1601c8eeed5"
+        },
+        "task_id": "b0a2166f-b77b-5414-bf13-885a4b39c38b"
+      },
+      "context_digest": "ad93eb3c7ce6df9ed7867759c9289becaaee6fc27a75db0f1243710aabc5d136",
+      "cost_attestation": {
+        "checked_at": 1790159414.194,
+        "credit_balance": 0,
+        "ordinary_usage_allowed": true,
+        "paid_fallback_allowed": false,
+        "remaining_primary": 15,
+        "remaining_weekly": 87
+      },
+      "result": {
+        "artifact": "{\"reviewed_operation\":0,\"assessment\":\"NOT_REFUTED_ON_SUPPLIED_EVIDENCE\",\"checks\":{\"exact_operation_0_keys\":true,\"lifecycle_sorted_and_supported\":true,\"evaluated_baseline_preserved\":true,\"unresolved_placement_preserved\":true,\"domain_uncertainty_preserved\":true},\"limitations\":[\"Verification flags and source digests are supplied assertions; no independent verification was performed.\",\"The artifact does not establish whether execution had external side effects.\"],\"next_operation\":1,\"proposed_destination\":\"CODE_EXECUTOR\",\"required_followup\":\"CONTROL_PLANE_VERIFY_THEN_ADVISOR_REVIEW\",\"po_decision_required\":false,\"authorization_granted\":false}",
+        "context_digest": "ad93eb3c7ce6df9ed7867759c9289becaaee6fc27a75db0f1243710aabc5d136",
+        "context_id": "f886c7572662a0bca3b267b0049888ff94d62b5f47469801955fd2b6a0989d8d",
+        "effects": [],
+        "evidence_refs": [
+          "support_close",
+          "resistance_lifecycle",
+          "execution_blocker"
+        ],
+        "execution_id": "d5697e69-6c8b-5068-aea9-180e5c219cc9",
+        "findings": [
+          "Operation 0 has exactly the required keys and a sorted lifecycle list supported by the supplied lifecycle evidence.",
+          "The evaluated baseline matches the supplied evidence. EN_AUDITORIA does not establish domain correctness; the artifact correctly preserves NOT_DETERMINABLE_CONTROLS_NOT_EXECUTED.",
+          "The review target is operation 0, while current_operation is 1. This supports reviewing the prior result and routing the remaining computation; it does not establish completion of operation 1.",
+          "Placement remains unresolved and its review trigger is false. No necessary PO decision or silent placement decision was identified.",
+          "No protected write is represented in the artifact, but supplied data cannot independently establish absence of execution side effects.",
+          "Non-authoritative claims and supplied verification flags do not grant execution or product authority."
+        ],
+        "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+        "next_destination": "CODE_EXECUTOR",
+        "outcome": "SUCCEEDED",
+        "proposals": [
+          "Route to CODE_EXECUTOR for only operation 1 under existing authority: count the prior lifecycle entries, preserve unresolved placement, and return the required trader_modified false field.",
+          "Submit the material operation 1 result to control-plane verification and Advisor review before declaring completion."
+        ],
+        "protected_scope_touched": [],
+        "rationale": "The supplied operation 0 result withstands review against the supplied evidence. Operation 1 remains outstanding, so CODE_EXECUTOR is the supported next destination. This proposal grants no authority.",
+        "role": "ADVISOR",
+        "task_id": "b0a2166f-b77b-5414-bf13-885a4b39c38b"
+      },
+      "result_digest": "940e9e12cc080160ba578f5f3151b00d623381dc65ec00822bba59584b58ff10",
+      "runtime_thread_id": "01a0cdd3-b9b7-7370-b558-7325f09182d2",
+      "tool_calls": 0
+    },
+    {
+      "authoritative": false,
+      "context": {
+        "after_completion": "CONTROL_PLANE_VERIFY_THEN_ADVISOR_REVIEW",
+        "authoritative": false,
+        "authority": {
+          "can_do": [
+            "bounded_computation"
+          ],
+          "cannot_do": [
+            "product_decision",
+            "self_approval",
+            "mutate_authority",
+            "modify_protected",
+            "spend"
+          ],
+          "tools": []
+        },
+        "context_id": "1c20647bcdf8a5782d77e91adb62c5ea91f6f813664af2d3e876923417a96d60",
+        "done_when": [
+          "Return evidenced structured result within role authority"
+        ],
+        "execution_id": "8ad94c1c-3f04-5528-9abf-261c35de6877",
+        "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+        "inputs": {
+          "claims": {
+            "domain_not_determined": {
+              "authoritative": false,
+              "fact_class": "domain_defects",
+              "historical": [],
+              "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+              "scope": "Resistance",
+              "sources": [
+                "execution_blocker"
+              ],
+              "status": "RESOLVED",
+              "subject": "Resistance",
+              "value": "NOT_DETERMINABLE_CONTROLS_NOT_EXECUTED"
+            },
+            "evaluated": {
+              "authoritative": false,
+              "fact_class": "evaluated_baseline",
+              "historical": [],
+              "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+              "scope": "Resistance",
+              "sources": [
+                "resistance_lifecycle"
+              ],
+              "status": "RESOLVED",
+              "subject": "Resistance",
+              "value": "46828c1658b5328f65fd23ad2e350a19e54039ae"
+            },
+            "resistance_audit": {
+              "authoritative": false,
+              "fact_class": "lifecycle",
+              "historical": [
+                "resistance_open"
+              ],
+              "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+              "scope": "Resistance",
+              "sources": [
+                "resistance_lifecycle"
+              ],
+              "status": "RESOLVED",
+              "subject": "Resistance",
+              "value": "EN_AUDITORIA"
+            },
+            "support_closed": {
+              "authoritative": false,
+              "fact_class": "lifecycle",
+              "historical": [],
+              "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+              "scope": "Support",
+              "sources": [
+                "support_close"
+              ],
+              "status": "RESOLVED",
+              "subject": "Support",
+              "value": "CERRADO"
+            }
+          },
+          "implementation_specification": {
+            "authorized": true,
+            "contract": "Operation 0: produce a sorted lifecycle list of [subject,state] for Resistance and Support, preserve evaluated_baseline, placement and domain_defects. Operation 1: count CERRADO and EN_AUDITORIA entries from the prior list as closed_units and auditing_units, preserve placement and set trader_modified false. Execute only current_operation. Exact artifact keys for operation 0: lifecycle,evaluated_baseline,placement,domain_defects. Exact artifact keys for operation 1: closed_units,auditing_units,placement,trader_modified.",
+            "scope": "read-only fixture computation"
+          },
+          "open_decisions": [
+            {
+              "authority_required": "PO",
+              "placement": "UNRESOLVED_PLACEMENT",
+              "requirement": "EXISTS",
+              "review_trigger_reached": false,
+              "scope": "product-placement",
+              "subject": "valid_range_opportunity_capability"
+            }
+          ],
+          "prior_result_digest": "940e9e12cc080160ba578f5f3151b00d623381dc65ec00822bba59584b58ff10",
+          "requirements": [
+            "No protected writes",
+            "Preserve unresolved placement",
+            "No audit/domain conflation",
+            "Advisor review after every material result"
+          ],
+          "source_evidence": {
+            "domain_not_determined": {
+              "authority_descriptor": {
+                "fact_classes": [
+                  "execution_blocker",
+                  "domain_defects"
+                ],
+                "scopes": [
+                  "Resistance"
+                ],
+                "sources": [
+                  "execution_blocker"
+                ]
+              },
+              "byte_digest_verified": true,
+              "checks_passed": true,
+              "contract_checks": {},
+              "pointer": "material_defects",
+              "source": "execution_blocker",
+              "value": "NOT_DETERMINABLE_CONTROLS_NOT_EXECUTED"
+            },
+            "evaluated": {
+              "authority_descriptor": {
+                "fact_classes": [
+                  "evaluated_baseline"
+                ],
+                "scopes": [
+                  "Resistance"
+                ],
+                "sources": [
+                  "resistance_lifecycle"
+                ]
+              },
+              "byte_digest_verified": true,
+              "checks_passed": true,
+              "contract_checks": {},
+              "pointer": "evaluated_code_baseline",
+              "source": "resistance_lifecycle",
+              "value": "46828c1658b5328f65fd23ad2e350a19e54039ae"
+            },
+            "resistance_audit": {
+              "authority_descriptor": {
+                "fact_classes": [
+                  "lifecycle"
+                ],
+                "scopes": [
+                  "Support",
+                  "Resistance"
+                ],
+                "sources": [
+                  "support_close",
+                  "resistance_open",
+                  "resistance_lifecycle"
+                ]
+              },
+              "byte_digest_verified": true,
+              "checks_passed": true,
+              "contract_checks": {
+                "executed": true,
+                "previous_state": "EN_ELABORACION",
+                "prior_transition/current_state": "EN_ELABORACION",
+                "prior_transition/executed": true,
+                "prior_transition/previous_state": "ABIERTO",
+                "resolution": "PERMITIDA"
+              },
+              "pointer": "current_state",
+              "source": "resistance_lifecycle",
+              "value": "EN_AUDITORIA"
+            },
+            "support_closed": {
+              "authority_descriptor": {
+                "fact_classes": [
+                  "lifecycle"
+                ],
+                "scopes": [
+                  "Support",
+                  "Resistance"
+                ],
+                "sources": [
+                  "support_close",
+                  "resistance_open",
+                  "resistance_lifecycle"
+                ]
+              },
+              "byte_digest_verified": true,
+              "checks_passed": true,
+              "contract_checks": {
+                "executed": true,
+                "resolution": "PERMITIDA"
+              },
+              "pointer": "destination_state",
+              "source": "support_close",
+              "value": "CERRADO"
+            }
+          },
+          "work": {
+            "current_operation": 1,
+            "instructions": "Operation 0: produce a sorted lifecycle list of [subject,state] for Resistance and Support, preserve evaluated_baseline, placement and domain_defects. Operation 1: count CERRADO and EN_AUDITORIA entries from the prior list as closed_units and auditing_units, preserve placement and set trader_modified false. Execute only current_operation. Exact artifact keys for operation 0: lifecycle,evaluated_baseline,placement,domain_defects. Exact artifact keys for operation 1: closed_units,auditing_units,placement,trader_modified.",
+            "previous_result": {
+              "artifact": {
+                "domain_defects": "NOT_DETERMINABLE_CONTROLS_NOT_EXECUTED",
+                "evaluated_baseline": "46828c1658b5328f65fd23ad2e350a19e54039ae",
+                "lifecycle": [
+                  [
+                    "Resistance",
+                    "EN_AUDITORIA"
+                  ],
+                  [
+                    "Support",
+                    "CERRADO"
+                  ]
+                ],
+                "placement": "UNRESOLVED_PLACEMENT"
+              },
+              "kind": "code_result",
+              "operation": 0,
+              "verified": true
+            }
+          }
+        },
+        "objective": "Complete two authorized fixture computations under Advisor-first routing",
+        "protected": [
+          "Trader AI",
+          "Sprint2",
+          "Support",
+          "D6",
+          "Resistance",
+          "TEF",
+          "Governance",
+          "evaluated baselines"
+        ],
+        "role": "CODE_EXECUTOR",
+        "schema_version": 1,
+        "scope": "control-plane-fixture",
+        "source_digests": {
+          "execution_blocker": "c6002682a66bd2d50eabcec4c238d02d7b73ee66147c3037e8a692bb29b959eb",
+          "mapping_contract": "83aa8cefa43cccf7546f8b78309a1959ab485250682bb517037716fb3ba1728c",
+          "resistance_lifecycle": "436728b0b81ecac933c8068ed9bda2bd3cf07764f363a0f8c02a124dd5c7dca6",
+          "support_close": "0aa09d7a57083635f19ef6d49efd7e4021fa8ea23b9361671082f1601c8eeed5"
+        },
+        "task_id": "b0a2166f-b77b-5414-bf13-885a4b39c38b"
+      },
+      "context_digest": "eec1ee958861ebd8fa38cb26998f20deb0f3245de7220cd25167eb4b1877bda6",
+      "cost_attestation": {
+        "checked_at": 1790160010.19,
+        "credit_balance": 0,
+        "ordinary_usage_allowed": true,
+        "paid_fallback_allowed": false,
+        "remaining_primary": 95,
+        "remaining_weekly": 99
+      },
+      "result": {
+        "artifact": "{\"closed_units\":1,\"auditing_units\":1,\"placement\":\"UNRESOLVED_PLACEMENT\",\"trader_modified\":false}",
+        "context_digest": "eec1ee958861ebd8fa38cb26998f20deb0f3245de7220cd25167eb4b1877bda6",
+        "context_id": "1c20647bcdf8a5782d77e91adb62c5ea91f6f813664af2d3e876923417a96d60",
+        "effects": [],
+        "evidence_refs": [
+          "mapping_contract",
+          "support_close",
+          "resistance_lifecycle"
+        ],
+        "execution_id": "8ad94c1c-3f04-5528-9abf-261c35de6877",
+        "findings": [
+          "The prior lifecycle list contains one closed unit and one auditing unit."
+        ],
+        "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+        "next_destination": "NONE",
+        "outcome": "SUCCEEDED",
+        "proposals": [],
+        "protected_scope_touched": [],
+        "rationale": "Executed only operation 1: counted one CERRADO and one EN_AUDITORIA entry in the supplied prior lifecycle list, preserved placement, and set trader_modified to false.",
+        "role": "CODE_EXECUTOR",
+        "task_id": "b0a2166f-b77b-5414-bf13-885a4b39c38b"
+      },
+      "result_digest": "d202cb51ed98897775a938dbf06e9c7146f7cf6ad5bd3d9c2b771734562b112a",
+      "runtime_thread_id": "01a0cdda-32d3-7252-b0e8-7bea7641dce8",
+      "tool_calls": 0
+    },
+    {
+      "authoritative": false,
+      "context": {
+        "after_completion": "CONTROL_PLANE_VERIFY_THEN_ADVISOR_REVIEW",
+        "authoritative": false,
+        "authority": {
+          "can_do": [
+            "review",
+            "refute",
+            "classify",
+            "propose_destination"
+          ],
+          "cannot_do": [
+            "product_decision",
+            "self_approval",
+            "mutate_authority",
+            "modify_protected",
+            "spend"
+          ],
+          "tools": []
+        },
+        "context_id": "9677360f598ce222a084561de6c1d4e41dcad2b942e4c37e5f701b8248730cd3",
+        "done_when": [
+          "Return evidenced structured result within role authority"
+        ],
+        "execution_id": "d42c3af6-e8f1-5c9a-bbe1-10647cc47611",
+        "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+        "inputs": {
+          "claims": {
+            "domain_not_determined": {
+              "authoritative": false,
+              "fact_class": "domain_defects",
+              "historical": [],
+              "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+              "scope": "Resistance",
+              "sources": [
+                "execution_blocker"
+              ],
+              "status": "RESOLVED",
+              "subject": "Resistance",
+              "value": "NOT_DETERMINABLE_CONTROLS_NOT_EXECUTED"
+            },
+            "evaluated": {
+              "authoritative": false,
+              "fact_class": "evaluated_baseline",
+              "historical": [],
+              "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+              "scope": "Resistance",
+              "sources": [
+                "resistance_lifecycle"
+              ],
+              "status": "RESOLVED",
+              "subject": "Resistance",
+              "value": "46828c1658b5328f65fd23ad2e350a19e54039ae"
+            },
+            "resistance_audit": {
+              "authoritative": false,
+              "fact_class": "lifecycle",
+              "historical": [
+                "resistance_open"
+              ],
+              "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+              "scope": "Resistance",
+              "sources": [
+                "resistance_lifecycle"
+              ],
+              "status": "RESOLVED",
+              "subject": "Resistance",
+              "value": "EN_AUDITORIA"
+            },
+            "support_closed": {
+              "authoritative": false,
+              "fact_class": "lifecycle",
+              "historical": [],
+              "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION",
+              "scope": "Support",
+              "sources": [
+                "support_close"
+              ],
+              "status": "RESOLVED",
+              "subject": "Support",
+              "value": "CERRADO"
+            }
+          },
+          "open_decisions": [
+            {
+              "authority_required": "PO",
+              "placement": "UNRESOLVED_PLACEMENT",
+              "requirement": "EXISTS",
+              "review_trigger_reached": false,
+              "scope": "product-placement",
+              "subject": "valid_range_opportunity_capability"
+            }
+          ],
+          "permitted_destinations": [
+            "ADVISOR",
+            "DEVELOPMENT",
+            "COMPLETE"
+          ],
+          "prior_result_digest": "d202cb51ed98897775a938dbf06e9c7146f7cf6ad5bd3d9c2b771734562b112a",
+          "requirements": [
+            "No protected writes",
+            "Preserve unresolved placement",
+            "No audit/domain conflation",
+            "Advisor review after every material result"
+          ],
+          "review_target": {
+            "artifact": {
+              "auditing_units": 1,
+              "closed_units": 1,
+              "placement": "UNRESOLVED_PLACEMENT",
+              "trader_modified": false
+            },
+            "kind": "code_result",
+            "operation": 1,
+            "verified": true
+          },
+          "source_evidence": {
+            "domain_not_determined": {
+              "authority_descriptor": {
+                "fact_classes": [
+                  "execution_blocker",
+                  "domain_defects"
+                ],
+                "scopes": [
+                  "Resistance"
+                ],
+                "sources": [
+                  "execution_blocker"
+                ]
+              },
+              "byte_digest_verified": true,
+              "checks_passed": true,
+              "contract_checks": {},
+              "pointer": "material_defects",
+              "source": "execution_blocker",
+              "value": "NOT_DETERMINABLE_CONTROLS_NOT_EXECUTED"
+            },
+            "evaluated": {
+              "authority_descriptor": {
+                "fact_classes": [
+                  "evaluated_baseline"
+                ],
+                "scopes": [
+                  "Resistance"
+                ],
+                "sources": [
+                  "resistance_lifecycle"
+                ]
+              },
+              "byte_digest_verified": true,
+              "checks_passed": true,
+              "contract_checks": {},
+              "pointer": "evaluated_code_baseline",
+              "source": "resistance_lifecycle",
+              "value": "46828c1658b5328f65fd23ad2e350a19e54039ae"
+            },
+            "resistance_audit": {
+              "authority_descriptor": {
+                "fact_classes": [
+                  "lifecycle"
+                ],
+                "scopes": [
+                  "Support",
+                  "Resistance"
+                ],
+                "sources": [
+                  "support_close",
+                  "resistance_open",
+                  "resistance_lifecycle"
+                ]
+              },
+              "byte_digest_verified": true,
+              "checks_passed": true,
+              "contract_checks": {
+                "executed": true,
+                "previous_state": "EN_ELABORACION",
+                "prior_transition/current_state": "EN_ELABORACION",
+                "prior_transition/executed": true,
+                "prior_transition/previous_state": "ABIERTO",
+                "resolution": "PERMITIDA"
+              },
+              "pointer": "current_state",
+              "source": "resistance_lifecycle",
+              "value": "EN_AUDITORIA"
+            },
+            "support_closed": {
+              "authority_descriptor": {
+                "fact_classes": [
+                  "lifecycle"
+                ],
+                "scopes": [
+                  "Support",
+                  "Resistance"
+                ],
+                "sources": [
+                  "support_close",
+                  "resistance_open",
+                  "resistance_lifecycle"
+                ]
+              },
+              "byte_digest_verified": true,
+              "checks_passed": true,
+              "contract_checks": {
+                "executed": true,
+                "resolution": "PERMITIDA"
+              },
+              "pointer": "destination_state",
+              "source": "support_close",
+              "value": "CERRADO"
+            }
+          },
+          "work": {
+            "current_operation": 2,
+            "instructions": "All two fixture computations are independently verified; review the latest result for bounded completion.",
+            "previous_result": {
+              "artifact": {
+                "auditing_units": 1,
+                "closed_units": 1,
+                "placement": "UNRESOLVED_PLACEMENT",
+                "trader_modified": false
+              },
+              "kind": "code_result",
+              "operation": 1,
+              "verified": true
+            }
+          }
+        },
+        "objective": "Complete two authorized fixture computations under Advisor-first routing",
+        "protected": [
+          "Trader AI",
+          "Sprint2",
+          "Support",
+          "D6",
+          "Resistance",
+          "TEF",
+          "Governance",
+          "evaluated baselines"
+        ],
+        "role": "ADVISOR",
+        "schema_version": 1,
+        "scope": "control-plane-fixture",
+        "source_digests": {
+          "execution_blocker": "c6002682a66bd2d50eabcec4c238d02d7b73ee66147c3037e8a692bb29b959eb",
+          "mapping_contract": "83aa8cefa43cccf7546f8b78309a1959ab485250682bb517037716fb3ba1728c",
+          "resistance_lifecycle": "436728b0b81ecac933c8068ed9bda2bd3cf07764f363a0f8c02a124dd5c7dca6",
+          "support_close": "0aa09d7a57083635f19ef6d49efd7e4021fa8ea23b9361671082f1601c8eeed5"
+        },
+        "task_id": "2c83b869-41e3-5da2-9757-7e78e7d6d265"
+      },
+      "context_digest": "e61eac56f6fe85c0c044f830aa8c46508a489e2fc8602236236ef925ab3ac815",
+      "cost_attestation": {
+        "checked_at": 1790160010.19,
+        "credit_balance": 0,
+        "ordinary_usage_allowed": true,
+        "paid_fallback_allowed": false,
+        "remaining_primary": 95,
+        "remaining_weekly": 99
+      },
+      "result": {
+        "artifact": "{\"review_verdict\":\"COMPLETION_CLAIM_REFUTED\",\"operation_reviewed\":1,\"expected_current_operation\":2,\"counts\":\"Consistent with supplied lifecycle evidence; full computation correctness is not established without the mapping contract contents.\",\"placement\":\"UNRESOLVED_PLACEMENT\",\"domain_defects\":\"NOT_DETERMINABLE_CONTROLS_NOT_EXECUTED\",\"protected_write_assurance\":\"trader_modified=false is reported; absence of all protected writes is not independently demonstrated.\",\"missing_evidence\":[\"Distinct operation-2 result and verification evidence\",\"Evidence of required Advisor review for each material result\"],\"po_decision_required\":false,\"proposed_destination\":\"DEVELOPMENT\",\"proposal_is_authorization\":false,\"completion_approved\":false}",
+        "context_digest": "e61eac56f6fe85c0c044f830aa8c46508a489e2fc8602236236ef925ab3ac815",
+        "context_id": "9677360f598ce222a084561de6c1d4e41dcad2b942e4c37e5f701b8248730cd3",
+        "effects": [],
+        "evidence_refs": [
+          "support_close",
+          "resistance_lifecycle",
+          "execution_blocker",
+          "mapping_contract"
+        ],
+        "execution_id": "d42c3af6-e8f1-5c9a-bbe1-10647cc47611",
+        "findings": [
+          "The operation mismatch defeats the claim that the latest result establishes completion of two computations; it does not establish that operation 1 is incorrect.",
+          "Support CERRADO and Resistance EN_AUDITORIA support the reported lifecycle counts. Audit status does not establish domain correctness, and the evaluated baseline identifier does not prove controls ran.",
+          "The mapping_contract source has a supplied digest but no contents, limiting review of the computation rules.",
+          "Verification flags and supplied authority descriptors are evidence assertions, not independent verification or authorization to modify protected scope.",
+          "The artifact preserves unresolved placement and contains no explicit product placement decision. Its review trigger is false, so a PO escalation is unnecessary.",
+          "trader_modified=false covers only one protected subject and cannot alone establish compliance with the broader no-protected-writes requirement."
+        ],
+        "input_revision": "d2f87697292257c400ea2ce0f56bad7417463c0c54a8e418f7ca92c8d2367576",
+        "next_destination": "DEVELOPMENT",
+        "outcome": "REFUTED",
+        "proposals": [
+          "Route to DEVELOPMENT to reconcile the stale review target and supply the distinct operation-2 result, verification evidence, and required review trail.",
+          "Return the corrected evidence through control-plane verification and Advisor review before proposing COMPLETE; preserve unresolved placement and protected scope."
+        ],
+        "protected_scope_touched": [],
+        "rationale": "Bounded completion is not supported: current_operation is 2, but review_target repeats the operation-1 previous_result. The assertion that both computations were independently verified supplies neither an operation-2 artifact nor its verification evidence.",
+        "role": "ADVISOR",
+        "task_id": "2c83b869-41e3-5da2-9757-7e78e7d6d265"
+      },
+      "result_digest": "401583f5a4a2bf8d193cfd1d6918c6c9f356985d24f262020983d94d7963576a",
+      "runtime_thread_id": "01a0cdda-7276-7972-82f5-96b9d3639a7d",
+      "tool_calls": 0
+    }
+  ],
+  "status": "ISOLATED_COMPLETION_CONTEXT_DEFECT",
+  "workflow_id": "slice-001-20260923-02",
+  "reason": "Both code operations verified; final Advisor correctly requested clearer completion index and verification trail. Retained as recovery evidence, not final acceptance."
+}

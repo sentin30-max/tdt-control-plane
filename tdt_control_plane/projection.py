@@ -9,6 +9,7 @@ def project(resolution, task, role, execution_id):
         raise ValueError("UNRESOLVED_DEPENDENCY")
     refs = {s for c in selected.values() for s in c["sources"]} | {"mapping_contract"}
     inputs = {"claims": selected, "requirements": task["requirements"], "work": task["work"],
+              "source_evidence": {name:resolution['source_excerpts'][name] for name in names},
               "open_decisions": [d for d in resolution["open_decisions"] if d["scope"] in task["relevant_scopes"]]}
     if role == "ADVISOR":
         inputs["review_target"] = task["review_target"]

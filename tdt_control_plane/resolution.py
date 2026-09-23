@@ -61,7 +61,7 @@ def resolve(claims, catalog, subject, fact_class, scope):
     current = [c for c in applicable if c["id"] not in superseded]
     values = {digest(c["value"]) for c in current}
     status = "RESOLVED" if len(values) == 1 else "UNRESOLVED"
-    return {"status": status, "value": current[0]["value"] if status == "RESOLVED" else None,
+    return {"status": status, "subject": subject, "fact_class": fact_class, "scope": scope, "value": current[0]["value"] if status == "RESOLVED" else None,
             "reason": "APPLICABLE_AUTHORITY_AND_SUPERSESSION" if status == "RESOLVED" else "MISSING_OR_CONTRADICTORY_SOURCE",
             "sources": sorted(c["source"] for c in current), "historical": sorted(superseded), "authoritative": False}
 
@@ -84,8 +84,13 @@ def load_fixture(root):
         raise ValueError("CONSUMPTION_HASH_MISMATCH")
     claims = derive_claims(manifest, docs, config["mapping"])
     resolution = {q["name"]: resolve(claims, config["authority_catalog"], q["subject"], q["fact_class"], q["scope"]) for q in config["queries"]}
+    excerpts = {item['id']: {'source':item['source'], 'pointer':item['pointer'],
+                            'value':pointer(docs[item['source']],item['pointer']),
+                            'contract_checks':item.get('requires',{}), 'checks_passed':True,
+                            'byte_digest_verified':True, 'authority_descriptor':config['authority_catalog'][item['authority']]}
+                for item in config['mapping']}
     return {"authoritative": False, "revision": digest({"manifest": manifest, "config": config}),
             "source_revision": manifest["revision"], "source_digests": {**{k: v["sha256"] for k, v in manifest["sources"].items()}, "mapping_contract": digest(config)},
-            "resolved": resolution, "open_decisions": config["open_decisions"],
+            "resolved": resolution, "source_excerpts":excerpts, "open_decisions": config["open_decisions"],
             "protected": config["protected"], "scope": "control-plane-fixture",
             "limitations": ["Pinned fixture, not a live global Trader resolution", "No authority to execute Trader audits or mutate lifecycle"]}
