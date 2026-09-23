@@ -14,7 +14,7 @@
     "tdt_control_plane/contracts.py": "a219c7d65302045aa41abe32138fc074231b128be16720ae68c4cbbec9b97a10",
     "tdt_control_plane/executor.py": "545bca3eaadae199825d35431789b96bbd450bbc4970bb50a12e757cbc3f34e8"
   },
-  "evidence_sha256": "fc651f8cbbc0cfe4de02560c53fea7f322b070c1cf92fdc59ac7615bfff498e1",
+  "evidence_sha256": "2afa8044f89ac92bdc1837ea676316995cc4e16f22244b6134bc9da04c7d6ba8",
   "limitations": [
     "Cost snapshot is checked externally; no unattended quota refresh implemented",
     "Synchronous process-local adapter; no restart recovery",
@@ -22,5 +22,6 @@
     "Requires existing desktop-user authentication and available included quota",
     "Hito B-F not started; pending Advisor review"
   ],
-  "authoritative": false
+  "authoritative": false,
+  "hash_basis": "Repository bytes with LF line endings (clone with core.autocrlf=false)"
 }
