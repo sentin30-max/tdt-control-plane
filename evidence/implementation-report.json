@@ -1,0 +1,168 @@
+{
+  "report": "TDT-CONTROL-PLANE-IMPLEMENTATION-001",
+  "status": "FINAL_SLICE_GATE_READY_FOR_PO_REVIEW",
+  "authoritative": false,
+  "repository": "sentin30-max/tdt-control-plane",
+  "branch": "implementation/slice-001-b-f",
+  "implementation_and_evidence_commit": "fd103f861d37a82bf454e0508674023dc96b9715",
+  "preserved_hito_a_commit": "0962aa340bd6712f9b8d4720adecaaddb9a2dc35",
+  "all_hito_a_tracked_bytes_unchanged": true,
+  "milestones": {
+    "A": "PRESERVED_ACCEPTED_NOT_REOPENED",
+    "B": "PASS_BOUNDED_ROLE_IDENTITY_INGEST_IDEMPOTENCY",
+    "C": "PASS_PINNED_READ_ONLY_FIXTURE",
+    "D": "PASS_ROLE_SPECIFIC_MINIMUM_CONTEXT",
+    "E": "PASS_REAL_UNINTERRUPTED_ADVISOR_FIRST_TWO_EXECUTIONS",
+    "F": "PASS_BOUNDED_RECOVERY_AND_ADVERSARIAL_ACCEPTANCE"
+  },
+  "tests": {
+    "passed": 44,
+    "failures": 0,
+    "errors": 0
+  },
+  "workflow_id": "slice-001-20260923-03",
+  "workflow_digest": "019037ff8c4eef8b9666d2677d4ae58af1e588ef612938e7e7af0f7125a89e9b",
+  "sequence": [
+    {
+      "role": "ADVISOR",
+      "execution_id": "6e9da1c3-3163-51ae-b538-d72f8a1265a7",
+      "task_id": "b225b778-313d-5d0f-8fc7-ab0a2119b6b3",
+      "context_id": "fa9f33e59a25e82ff507b0a2ccc0998352f977706b40e44527a8ec796f1ce9d9",
+      "context_digest": "d76fe3af6dc72fdf78c97302ac70b8c4a87aabe081c103dc79033864978c7c52",
+      "result_digest": "862d9be4fae49938b71971afcaa2c45ee9ceb63501ab9bd1df95a091858aabf1",
+      "runtime_thread_id": "01a0cddd-c7aa-7141-85f9-3e29a556961f",
+      "next_destination": "CODE_EXECUTOR"
+    },
+    {
+      "role": "CODE_EXECUTOR",
+      "execution_id": "ca5ad7fc-5cad-5e66-9356-5064326fef33",
+      "task_id": "b225b778-313d-5d0f-8fc7-ab0a2119b6b3",
+      "context_id": "8cf116177aca5cfb0df5f4af50947410cb1722dc6a44028bf7217a7a237fcb24",
+      "context_digest": "ec03b5a20a51a5c12024d068d579e0a0ea238a4dfbc6827696da2cac403d93b5",
+      "result_digest": "ca6906f2bdc0831b911ede9985e718187b02d5998118c82577037f556085f329",
+      "runtime_thread_id": "01a0cdde-67c3-7741-bf51-aa83128f02ba",
+      "next_destination": "NONE"
+    },
+    {
+      "role": "ADVISOR",
+      "execution_id": "afb51ae5-93c6-5720-bdcb-eead0754d8d7",
+      "task_id": "b978f112-ac9b-5afb-a5d3-78da6a29525a",
+      "context_id": "ac6be2fac74667d1c4938b65f6a2c6640790e77afd7af2d0a30b2bfcd9f290d7",
+      "context_digest": "cccb0f98390475a81810844a27bf618bbe7ac3dff3e5ab4616fd45bca6547f3c",
+      "result_digest": "7a9d58f8261fcb9a25744c0c2d0576b2dbf200f4c7e44f68d8a581a0a3e8d659",
+      "runtime_thread_id": "01a0cdde-baed-7f43-a902-5c18f870bca6",
+      "next_destination": "CODE_EXECUTOR"
+    },
+    {
+      "role": "CODE_EXECUTOR",
+      "execution_id": "56f64c3e-edb8-59c6-95bb-01a49c87fc51",
+      "task_id": "b978f112-ac9b-5afb-a5d3-78da6a29525a",
+      "context_id": "7831be74d0dfd357e7ffb162c65b5e602afc2ac3324a713e9135114bfbef57b5",
+      "context_digest": "626b3b9df0d41e40950edfcca5f23b0f609c2b72bbc23d08d24bb1e04e8a0275",
+      "result_digest": "ff81ba618c40431dcb816e10bc03a77121c4e730ebfb5b560009398bd02e5487",
+      "runtime_thread_id": "01a0cddf-3a0a-7e10-823a-0ead8741f918",
+      "next_destination": "NONE"
+    },
+    {
+      "role": "ADVISOR",
+      "execution_id": "56adaba0-4abb-58b4-a11d-4f28f375f1bf",
+      "task_id": "fa8afc34-e127-569f-b26b-24793a4e2cdd",
+      "context_id": "098e7ef484e5f5c283676e26a9584e32e847507af48856d13dd0c0d78e9d35af",
+      "context_digest": "8cbe16818f5be85ec851526281d1ed9341236b4703093acf883e5172bfb502ef",
+      "result_digest": "68bc4de09e27bbe1eae0b3ea8581cac4b601ee69b015b7daf92855260736d09b",
+      "runtime_thread_id": "01a0cddf-84d7-71d1-b845-7bbd2461af71",
+      "next_destination": "COMPLETE"
+    }
+  ],
+  "actual_transport": "Local synchronous Python subprocess -> authenticated codex exec -> strict JSON -> SQLite ingest -> Advisor-proposed validated routing",
+  "actual_executors": [
+    "Advisor role",
+    "CodeExecutor bounded computation role",
+    "Development role exercised in quality evaluation and exploratory refutation run"
+  ],
+  "cost_policy": {
+    "policy": "ZERO_COST_ONLY",
+    "authentication": "ChatGPT",
+    "paid_api_used": false,
+    "paid_credit_balance": 0,
+    "paid_fallback_allowed": false,
+    "billing_or_hosting_activated": false,
+    "automatic_reset_credit_redemption": false,
+    "snapshot_refresh": "Externally verified desktop usage snapshot; expires after 600 seconds"
+  },
+  "role_quality": {
+    "advisor_cases": 10,
+    "development_requirements": 6,
+    "real_executions": true,
+    "semantic_review": "Implementation-side rubric review of returned artifacts",
+    "general_human_role_equivalence": "NOT_PROVEN"
+  },
+  "recovery": {
+    "restart": true,
+    "duplicate_noop": true,
+    "projection_deleted_and_rebuilt": true,
+    "identical_replay": true,
+    "new_external_calls": 0,
+    "final_run_attempts": {
+      "56adaba0-4abb-58b4-a11d-4f28f375f1bf": 1,
+      "56f64c3e-edb8-59c6-95bb-01a49c87fc51": 1,
+      "6e9da1c3-3163-51ae-b538-d72f8a1265a7": 1,
+      "afb51ae5-93c6-5720-bdcb-eead0754d8d7": 1,
+      "ca5ad7fc-5cad-5e66-9356-5064326fef33": 1
+    }
+  },
+  "protected_scope": "Trader AI, TEF, Governance and existing baselines unmodified; pinned source export read only",
+  "exploratory_failures": [
+    "Initial overbroad seed context was refuted; preserved separately and repaired",
+    "Executor failures recovered with same identities and bounded retry",
+    "Completion index/context ambiguity was refuted; preserved separately and repaired"
+  ],
+  "limits": [
+    "No claim of live autonomous Trader operations",
+    "No general Advisor/Development equivalence",
+    "All proof roles are tool-free; code role computes fixture artifacts, does not edit Trader",
+    "RUNNING/TIMEOUT without durable result remains isolated; no exactly-once external effect guarantee",
+    "No unattended quota-refresh service; quota exhaustion never authorizes spending",
+    "Final Slice acceptance belongs to PO; no merge or production activation"
+  ],
+  "sha256_basis": "Git blob bytes at implementation_and_evidence_commit",
+  "sha256": {
+    "evidence/continuity-e2e.json": "ad4cf614bbd99c858bb17e8264289ab8ab8993debddbbd310b3559fd8a8623d6",
+    "evidence/continuity-first-attempt.json": "ea6d206f6104ee979f6c9de3fcd04943c1061739f2a05243299a3722a392d376",
+    "evidence/continuity-recovered-attempt.json": "ae8ee6cd351840be88532c9bd10cd0992c1840ad16a4ad31d1e7aeb1597d3c5e",
+    "evidence/execution-ledger.json": "0ce60c6d5edcff892a81380a9b937f8027acdc7f66e0d6c40bd7a63362bd58c3",
+    "evidence/hito-a-e2e.json": "2afa8044f89ac92bdc1837ea676316995cc4e16f22244b6134bc9da04c7d6ba8",
+    "evidence/hito-a-manifest.json": "b2fff70febddf925a705fec91288571e4341c085443e661752081979aba75bfd",
+    "evidence/recovery.json": "e99c20ca88531847bec02f3ef927b47fa641fcb5ca436264ddb0c39e22ac3c6f",
+    "evidence/role-quality.json": "823ae5c2b1826e5f5ec3f6e0fad7dfc9193aa36deff8ecd600e7f855dc84c3dd",
+    "evidence/test-results.json": "e3b26aeb634c8e47798f4dcb2720e56a636b3f139ee8a33bba5f4d2476e60ce7",
+    "fixtures/mapping.json": "f0e49eabce9c26872a69cc121d26e97389d54708b487a4c705ca7b9b92efd3e3",
+    "fixtures/trader/consumption.json": "e0fe90f1b885c4c41ae364ca868b23b866ddacfa0f6d5d5b4729f38362e7027c",
+    "fixtures/trader/execution_blocker.json": "c6002682a66bd2d50eabcec4c238d02d7b73ee66147c3037e8a692bb29b959eb",
+    "fixtures/trader/manifest.json": "ec5ed8de626c5b30dce22c9efbc0c3eff170e36cef7ff4b7e0cabb37c7c43660",
+    "fixtures/trader/resistance_lifecycle.json": "436728b0b81ecac933c8068ed9bda2bd3cf07764f363a0f8c02a124dd5c7dca6",
+    "fixtures/trader/resistance_open.json": "56f75a1f662e37f7102bf65c833a353020776947410c47fcd32a0f7fcb152f43",
+    "fixtures/trader/sources.json": "a8abbd819bd3fe623dcc4dfdc53c61e0f01edc6ad097c0f9bae93ab9c59404bf",
+    "fixtures/trader/support_close.json": "0aa09d7a57083635f19ef6d49efd7e4021fa8ea23b9361671082f1601c8eeed5",
+    "tdt_control_plane/__init__.py": "efcc4e05c86163146b887b6f478cae6c1da32f1e803059bb2a6fbee336819dcb",
+    "tdt_control_plane/__main__.py": "0a539968f6ab3592a43e92381c37bdae2b7696f410d3d661867b5e036f01d3a1",
+    "tdt_control_plane/continuity.py": "7ad85bcd0269c8e0ebd701ef810609084562cc00e19f4819e2df422150ef9925",
+    "tdt_control_plane/contracts.py": "a219c7d65302045aa41abe32138fc074231b128be16720ae68c4cbbec9b97a10",
+    "tdt_control_plane/executor.py": "545bca3eaadae199825d35431789b96bbd450bbc4970bb50a12e757cbc3f34e8",
+    "tdt_control_plane/ledger.py": "12b3ad514e8395a5c9eeec53ee3afa29e31080cdb8e1dd7c5eb18a73549303f8",
+    "tdt_control_plane/projection.py": "fb052428495fa79752b04554ec9d3665444590033a95ba2c644e8469a08d7cbf",
+    "tdt_control_plane/quality.py": "5a0a7b5846037564ce0c37aed934a3fdc328edd08c47731336c124cb1772b162",
+    "tdt_control_plane/recovery.py": "6a06077e5854dde186a51d893df3a14125fd7d6ecdb11da22c6dee21553ea251",
+    "tdt_control_plane/resolution.py": "a59b693db8697fb45b683a1a7378ab4cdcf9f65fda3b5417f363826979630be0",
+    "tdt_control_plane/roles.py": "0c095e17512833ccdf2cf2020d65ae124ebcfecd552b937ef1a29ab0d56d99fc",
+    "tdt_control_plane/runtime.py": "40ddf852cc11464186e90f4121d3d7cc6b156698986ed60f9f35b5478efd9cec",
+    "tdt_control_plane/validate_roles.py": "b2195b5074e2707bb13bf4f9e234d229efd282706c4ada823e7348b5e2ef913e",
+    "tdt_control_plane/verify_run.py": "17bd844bcacc6a051bb57ea85e09c8aff4aa160c9c394db1b1f17e0458ea5136",
+    "tests/test_continuity.py": "22d196e1e80fdb897b8951ab749d07b68c5f604574033777157053a395962fd0",
+    "tests/test_ledger.py": "ac2a9f2dc5a8efbdd0efc61eeb66ea2a69b62de9a7133a00e960463aa1d28560",
+    "tests/test_recovery.py": "618ad427caed4b769ff0b3a0e6fd9b7a359b0c72d9838510b95515f1ca008f6e",
+    "tests/test_resolution.py": "384967ddbd7b189138fdd78119cc2570c8ad8a11d3cfd15c85c907fd97996c7f",
+    "tests/test_runtime.py": "64f4d60c04be40127275d27a4769efded2cd529ecbf383cee7c2e296f00f548c",
+    "tests/test_transport.py": "31fb470f04fbb3eb914a695a79cb9224d57034276cc74f30b45fb938d0b1a80b"
+  }
+}
