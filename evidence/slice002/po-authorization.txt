@@ -1,0 +1,870 @@
+# PO CORRECTION + AUTHORIZATION — SLICE 002 REAL RESISTANCE CONTINUITY PILOT
+
+DESTINATARIO: IMPLEMENTADOR
+
+La propuesta anterior de SLICE 002 debe corregirse antes de ejecutarse.
+
+Se ha recuperado continuidad operativa más reciente de TDT Trader AI / Resistance que cambia materialmente el punto de partida del piloto.
+
+NO TOMAR COMO ESTADO OPERATIVO ACTUAL
+la situación anterior del A4 hybrid como problema todavía pendiente de resolución.
+
+El problema arquitectónico A4 que motivó esa situación YA FUE RESUELTO Y PUBLICADO.
+
+==================================================
+1. ESTADO REAL RECUPERADO
+==================================================
+
+RESISTANCE
+=
+EN_AUDITORIA
+
+IMPORTANTE:
+
+EN_AUDITORIA es el estado formal del lifecycle.
+
+Operativamente Resistance está en el tramo final previo a completar la auditoría/cierre.
+
+CONTINUIDAD RECUPERADA:
+
+A4_TWO_STAGE_PUBLICATION
+=
+COMPLETED
+
+HEAD
+=
+af9f8a392f95363e86c5636aefa5c55494715f6c
+
+origin/master
+=
+af9f8a392f95363e86c5636aefa5c55494715f6c
+
+working tree
+=
+CLEAN
+
+REFUTATION_VALIDITY_VERSION
+=
+1
+
+A4_RESOLVER_VERSION
+=
+1
+
+LLM_EMITS_REFUTATION_VALID
+=
+NO
+
+LLM_EMITS_GLOBAL_STATE
+=
+NO
+
+REFUTATION_VALIDITY_DERIVED_BY_CODE
+=
+SI
+
+GLOBAL_STATE_DERIVED_BY_CODE
+=
+SI
+
+TOOLING_TESTS
+=
+135 PASS
+
+RESOLVER_TESTS
+=
+35 PASS
+
+MATERIAL_BLOCKERS
+=
+NONE
+
+EVALUATED_BASELINE
+=
+46828c1658b5328f65fd23ad2e350a19e54039ae
+
+El problema estructural A4 ya está corregido.
+
+NO debe volver a resolverse como parte de Slice 002.
+
+==================================================
+2. SIGUIENTE ACCION REAL QUE EXISTIA
+==================================================
+
+La siguiente acción ya determinada en TDT Trader AI era:
+
+PREPARAR UNA NUEVA REQUEST A4 DE RESISTANCE
+
+compatible con la derivación A4 en dos fases.
+
+Primero:
+
+- crear request nueva y versionada;
+- crear input correspondiente;
+- verificar contrato;
+- verificar que el LLM NO emite:
+  - refutation_valid
+  - refutation_validity
+  - global_state
+- verificar versiones 1/1;
+- verificar A4-only;
+- preservar claims, attack surfaces, evidence e independence;
+- ejecutar validaciones locales;
+- ejecutar preflight;
+- NO ejecutar Groq todavía.
+
+Solamente después de obtener una request limpia y:
+
+A4_TWO_STAGE_PREFLIGHT
+=
+PASS
+
+el siguiente paso previsto era una única ejecución real del auditor externo mediante Groq Free.
+
+==================================================
+3. CAUSA REAL DEL BLOQUEO
+==================================================
+
+El desarrollo de Resistance no quedó bloqueado por un defecto material pendiente de su arquitectura.
+
+El bloqueo práctico volvió a ser CONTINUIDAD.
+
+El Product Owner tenía que seguir transportando manualmente:
+
+- estado;
+- resultados;
+- prompts;
+- contexto;
+- siguiente destino;
+
+entre los distintos roles/chats.
+
+Ese es precisamente el problema para el que se está construyendo TDT Control Plane.
+
+Por tanto:
+
+SLICE 002 DEBE USAR ESTE PUNTO REAL
+COMO PRIMER PILOTO DE CONTINUIDAD
+SOBRE TDT TRADER AI.
+
+==================================================
+4. OBJETIVO DE SLICE 002
+==================================================
+
+Demostrar que TDT Control Plane puede retomar el estado real de Resistance desde:
+
+A4_TWO_STAGE_PUBLICATION
+=
+COMPLETED
+
+y llevar autónomamente el flujo hasta:
+
+A4_TWO_STAGE_REQUEST_PREPARATION
+=
+READY
+
++
+
+A4_TWO_STAGE_PREFLIGHT
+=
+PASS
+
+o hasta un STOP legítimo y explícitamente justificado,
+
+SIN que el Product Owner tenga que:
+
+- copiar resultados entre roles;
+- reconstruir contexto;
+- decidir manualmente el siguiente destinatario;
+- escribir "continúa";
+- transportar prompts;
+- transportar evidencia;
+- actuar como scheduler/router.
+
+==================================================
+5. MODELO DE EJECUCION OBLIGATORIO
+==================================================
+
+Preservar el execution model autorizado:
+
+CONTROL PLANE
+→ ROLE ROUTER
+→ ROLE EXECUTOR
+→ STRUCTURED RESULT
+→ VERIFY / INGEST
+→ ADVISOR REVIEW
+→ NEXT_DESTINATION
+→ ROLE ROUTER
+
+GUARDAS:
+
+ROLE ≠ CHAT
+
+EXECUTOR ≠ AUTHORITY
+
+SHARED RUNTIME ≠ SHARED RESPONSIBILITY
+
+NO existe alternancia fija entre roles.
+
+TODO RESULTADO MATERIAL
+DEBE VOLVER AL ADVISOR
+ANTES DE DETERMINAR
+EL SIGUIENTE DESTINO.
+
+NEXT_DESTINATION dinámico:
+
+- DEVELOPMENT
+- CODE_EXECUTOR
+- ADVISOR
+- PO_REQUIRED
+- COMPLETE
+
+El Advisor puede:
+
+- revisar;
+- refutar;
+- clasificar;
+- detectar contradicciones;
+- determinar insuficiencia;
+- proponer siguiente destino.
+
+Control Plane debe validar que el destino es aplicable y autorizado.
+
+==================================================
+6. NO FORZAR DEVELOPMENT
+==================================================
+
+No ejecutar DEVELOPMENT solamente para demostrar cobertura.
+
+Si el estado y contratos existentes permiten pasar legítimamente:
+
+ADVISOR
+→ CODE_EXECUTOR
+
+debe hacerse así.
+
+Si falta especificación material:
+
+ADVISOR
+→ DEVELOPMENT
+→ ADVISOR
+
+y después se resolverá nuevamente NEXT_DESTINATION.
+
+La ruta debe derivarse del estado real.
+
+==================================================
+7. TRADER AI — PROTECCION
+==================================================
+
+Durante este piloto:
+
+TDT Trader AI
+=
+READ ONLY
+
+TEF
+=
+READ ONLY
+
+GOVERNANCE
+=
+READ ONLY
+
+HISTORICAL A4 OUTPUTS
+=
+IMMUTABLE
+
+PROTECTED BASELINES
+=
+IMMUTABLE
+
+No modificar:
+
+- Sprint 2;
+- Support;
+- D6;
+- Resistance production implementation;
+- Resistance lifecycle;
+- TEF;
+- Governance;
+- historical A4 requests;
+- historical A4 outputs;
+- evaluated baseline.
+
+Control Plane puede escribir únicamente en su propio espacio:
+
+- ledger;
+- execution contexts;
+- structured results;
+- projections;
+- candidate request;
+- candidate input;
+- verification evidence;
+- reports.
+
+==================================================
+8. REQUEST OBJETIVO
+==================================================
+
+El trabajo funcional a producir debe ser equivalente al siguiente objetivo ya determinado por TDT Trader AI:
+
+nueva request versionada:
+
+audits/resistance/
+RESISTANCE-AUDIT-REQUEST-46828C1658B5/
+A4_TWO_STAGE_REQUEST_V1.json
+
+y:
+
+A4_TWO_STAGE_INPUT_V1.md
+
+o nombres equivalentes inequívocos.
+
+NO sobrescribir requests históricas.
+
+UNIT
+=
+RESISTANCE
+
+STAGE
+=
+A4
+
+PERMITTED_STAGES
+=
+["A4"]
+
+A3
+=
+SKIPPED
+
+A5
+=
+NOT_AUTHORIZED
+
+EVALUATED_BASELINE
+=
+46828c1658b5328f65fd23ad2e350a19e54039ae
+
+==================================================
+9. CONTRATO A4 DOS FASES
+==================================================
+
+Preservar:
+
+CLAIMS
+=
+C1-C14
+
+ATTACK_SURFACES
+=
+14/14
+
+EVIDENCE BASELINE
+
+ORACLES
+
+INDEPENDENCE REQUIREMENTS
+
+PROVIDER
+=
+GROQ FREE
+
+MODEL
+=
+openai/gpt-oss-120b
+
+ZERO_COST_ONLY
+=
+TRUE
+
+El LLM solamente produce:
+
+AUDITOR_EVIDENCE
+
+El LLM NO puede producir ni decidir:
+
+refutation_valid
+
+refutation_validity
+
+global_state
+
+Si cualquiera aparece controlado por el LLM:
+
+OUTPUT CONTRACT
+=
+REJECT
+
+FASE 1:
+
+AUDITOR_EVIDENCE
+→ deterministic code
+→ REFUTATION_VALIDITY
+
+REFUTATION_VALIDITY_VERSION
+=
+1
+
+FASE 2:
+
+AUDITOR_EVIDENCE
++
+DERIVED_REFUTATION_VALIDITY
+→ deterministic code
+→ GLOBAL_STATE A4
+
+A4_RESOLVER_VERSION
+=
+1
+
+No transferir autoridad de estas derivaciones al LLM.
+
+==================================================
+10. UNRESOLVED
+==================================================
+
+Si aparece:
+
+UNRESOLVED_CONTRADICTION
+
+o:
+
+UNRESOLVED_NORMATIVE_AMBIGUITY
+
+entonces:
+
+A4_CONSUMABLE
+=
+NO
+
+global_state
+=
+NOT_PUBLISHED
+
+NO retry automático.
+
+NO corrección silenciosa.
+
+NO modificación del raw.
+
+NO etiqueta inventada.
+
+Preservar finding adverso.
+
+Resolver NEXT_DESTINATION según autoridad.
+
+==================================================
+11. HISTORICOS
+==================================================
+
+NO reprocesar:
+
+- A4 original;
+- A4 corrective;
+- A4 V2;
+- A4 hybrid run 35434275898.
+
+Preservar hashes y outputs.
+
+No usar resultados históricos para forzar la clasificación del nuevo run.
+
+==================================================
+12. PREFLIGHT
+==================================================
+
+El piloto debe llegar, si no existe bloqueo legítimo, a preflight completo.
+
+PROVIDER_TPM_LIMIT
+=
+8000
+
+Reportar:
+
+PROMPT_ESTIMATE
+
+OUTPUT_BUDGET
+
+SAFETY_MARGIN
+
+TOTAL
+
+Exigir:
+
+A4_TWO_STAGE_PREFLIGHT
+=
+PASS
+
+No reducir evidencia material para hacerlo caber.
+
+No compactar automáticamente si falla.
+
+Si no cabe:
+
+STOP
+
+preservar estado/evidencia
+
+ADVISOR REVIEW
+
+resolver NEXT_DESTINATION.
+
+==================================================
+13. GROQ — FUERA DE ESTE TRAMO
+==================================================
+
+MUY IMPORTANTE:
+
+NO ejecutar Groq durante este primer tramo de Slice 002.
+
+NO ejecutar A4 real.
+
+NO ejecutar A5.
+
+NO llamar al auditor externo.
+
+El objetivo del primer tramo termina en:
+
+REQUEST PREPARED
++
+LOCAL VALIDATION PASS
++
+PREFLIGHT PASS
+
+o STOP legítimo.
+
+La ejecución real de Groq será un gate posterior separado.
+
+El hecho de que Groq/API estuviera previamente preparado NO autoriza su ejecución en este piloto.
+
+==================================================
+14. ZERO COST ONLY
+==================================================
+
+COST_POLICY
+=
+ZERO_COST_ONLY
+
+ABSOLUTO.
+
+No:
+
+- paid API;
+- credits;
+- overage;
+- paid hosting;
+- paid Actions;
+- paid fallback;
+- tarjeta;
+- upgrade;
+- consumo facturable.
+
+Si una capacidad gratuita no está disponible:
+
+NO PAGAR.
+
+Preservar estado.
+
+Aislar el bloqueo.
+
+Reportar.
+
+Resolver siguiente acción.
+
+==================================================
+15. CONTINUIDAD / RECOVERY
+==================================================
+
+El piloto debe demostrar continuidad real.
+
+Persistir como mínimo:
+
+- task identity;
+- execution identity;
+- role;
+- source revision;
+- context digest;
+- result digest;
+- current operational resolution;
+- Advisor finding;
+- next destination;
+- candidate artifact identity;
+- verification state.
+
+Tras restart:
+
+Control Plane debe recuperar estado persistido antes de repetir trabajo.
+
+Duplicate identical result
+=
+NO-OP
+
+Same execution + different digest
+=
+CONTRADICTION
+
+Changed source
+=
+STALE / REVALIDATE según contrato
+
+No repetir una ejecución externa simplemente por recovery.
+
+==================================================
+16. CRITERIO DE EXITO REAL
+==================================================
+
+SLICE 002 NO se considera demostrado simplemente porque:
+
+- Control Plane invoque Codex;
+- se genere un JSON;
+- un fixture pase;
+- un rol responda correctamente.
+
+Debe demostrar sobre fuentes REALES de TDT Trader AI:
+
+1. recuperar el punto real de Resistance;
+
+2. construir contexto suficiente sin depender del historial conversacional como runtime;
+
+3. Advisor-first review;
+
+4. routing dinámico;
+
+5. ejecución por el rol correcto;
+
+6. retorno automático al Advisor después de cada resultado material;
+
+7. verificación/ingest;
+
+8. continuación automática;
+
+9. request A4 real preparada;
+
+10. validación local real;
+
+11. preflight real;
+
+12. recovery/idempotency;
+
+13. cero modificación de superficies protegidas;
+
+14. cero ejecución de Groq;
+
+15. cero transporte manual del Product Owner durante el segmento.
+
+Si una ruta legítima no necesita DEVELOPMENT:
+
+DEVELOPMENT COVERAGE
+=
+NOT DEMONSTRATED
+
+y NO debe forzarse.
+
+==================================================
+17. DISTINCION CRITICA
+==================================================
+
+Un STOP correcto demuestra una guarda.
+
+NO demuestra por sí solo que el segmento completo de continuidad haya sido completado.
+
+Si existe un bloqueo legítimo:
+
+reportarlo exactamente.
+
+No maquillar el STOP como éxito completo.
+
+==================================================
+18. FINAL GATE
+==================================================
+
+Al terminar, devolver al Product Owner un único informe consolidado con:
+
+SLICE_002_REAL_RESISTANCE_PILOT
+=
+PASS / PARTIAL / BLOCKED / FAIL
+
+RESISTANCE_SOURCE_REVISION
+=
+[...]
+
+RESISTANCE_FORMAL_LIFECYCLE
+=
+[...]
+
+RECOVERED_OPERATIONAL_POINT
+=
+[...]
+
+A4_TWO_STAGE_PUBLICATION
+=
+VERIFIED / NOT_VERIFIED
+
+REQUEST_PREPARATION
+=
+READY / BLOCKED
+
+REQUEST_PATH
+=
+[...]
+
+INPUT_PATH
+=
+[...]
+
+PERMITTED_STAGES
+=
+[...]
+
+LLM_EMITS_REFUTATION_VALID
+=
+NO / VIOLATION
+
+LLM_EMITS_REFUTATION_VALIDITY
+=
+NO / VIOLATION
+
+LLM_EMITS_GLOBAL_STATE
+=
+NO / VIOLATION
+
+REFUTATION_VALIDITY_VERSION
+=
+[...]
+
+A4_RESOLVER_VERSION
+=
+[...]
+
+CLAIMS_PRESERVED
+=
+SI / NO
+
+ATTACK_SURFACES_PRESERVED
+=
+SI / NO
+
+EVIDENCE_SET_PRESERVED
+=
+SI / NO
+
+INDEPENDENCE_REQUIREMENT_PRESERVED
+=
+SI / NO
+
+LOCAL_VALIDATION
+=
+PASS / FAIL
+
+A4_TWO_STAGE_PREFLIGHT
+=
+PASS / FAIL / NOT_REACHED
+
+PREFLIGHT_BUDGET
+=
+[...]
+
+ADVISOR_FIRST
+=
+PASS / FAIL
+
+MATERIAL_RESULTS_RETURNED_TO_ADVISOR
+=
+PASS / FAIL
+
+DYNAMIC_ROUTING
+=
+PASS / FAIL
+
+PO_MANUAL_TRANSPORT_DURING_SEGMENT
+=
+NONE / REQUIRED
+
+RECOVERY
+=
+PASS / FAIL
+
+IDEMPOTENCY
+=
+PASS / FAIL
+
+PROTECTED_SURFACES_MODIFIED
+=
+NO / YES
+
+GROQ_EXECUTED
+=
+NO
+
+A4_EXECUTED
+=
+NO
+
+A5_EXECUTED
+=
+NO
+
+PAID_CAPACITY_USED
+=
+NO
+
+MATERIAL_BLOCKERS
+=
+[...]
+
+UNRESOLVED_AUTHORITY_DEPENDENCIES
+=
+[...]
+
+DEVELOPMENT_ROLE_COVERAGE
+=
+DEMONSTRATED / NOT_DEMONSTRATED / NOT_REQUIRED
+
+CODE_EXECUTOR_ROLE_COVERAGE
+=
+DEMONSTRATED / NOT_DEMONSTRATED / NOT_REQUIRED
+
+ADVISOR_ROLE_QUALITY
+=
+[...]
+
+NEXT_ACTION
+=
+[...]
+
+NEXT_DESTINATION
+=
+ADVISOR / DEVELOPMENT / CODE_EXECUTOR / PO_REQUIRED / COMPLETE
+
+PRODUCT_OWNER_DECISION_REQUIRED
+=
+YES / NO
+
+==================================================
+19. AUTORIZACION
+==================================================
+
+AUTORIZO ejecutar este Slice 002 corregido hasta el final del tramo definido.
+
+NO solicitar gates intermedios al Product Owner salvo:
+
+- decisión genuina de producto;
+- autoridad normativa no disponible;
+- necesidad de ampliar write scope;
+- necesidad de ejecutar Groq/A4;
+- necesidad de modificar TEF/Governance/lifecycle/baseline;
+- coste distinto de cero;
+- contradicción material que no pueda resolverse dentro del contrato.
+
+NO ampliar alcance.
+
+NO convertir el piloto en rediseño general del Control Plane.
+
+NO volver a resolver problemas A4 ya publicados.
+
+OBJETIVO:
+
+PROBAR POR PRIMERA VEZ QUE TDT CONTROL PLANE PUEDE RETOMAR UN PROBLEMA REAL DE TDT TRADER AI EXACTAMENTE DONDE QUEDO Y LLEVARLO HASTA EL SIGUIENTE GATE LEGITIMO SIN QUE EL PRODUCT OWNER SEA EL TRANSPORTISTA.
+
+EJECUTA Y DETENTE EN EL FINAL GATE.

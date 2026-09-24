@@ -1,0 +1,561 @@
+{
+  "authoritative": false,
+  "checks": {
+    "a4_only_request_supported": true,
+    "a4_resolver_version": "1",
+    "llm_forbidden_fields_absent_from_schema": true,
+    "refutation_validity_version": "1"
+  },
+  "network_attempts": [],
+  "output": "114 passed, 21 setup errors: sandbox could not access default pytest temp directory. Fixed by assigning a fresh Control Plane-owned temporary directory. No source changes or network attempts.",
+  "protected_sources_unchanged": true,
+  "publication_verified": false,
+  "python": "3.12.14",
+  "resolver_passed": 35,
+  "scope": "Published tooling only; no production-domain test rerun; no historical output reprocessing",
+  "source_revision": "af9f8a392f95363e86c5636aefa5c55494715f6c",
+  "status": "FAIL",
+  "tests": [
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_insufficiency_positive[coverage_status]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_insufficiency_positive[intensity_status]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_invalid_positive[hypothesis_control_status]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_invalid_positive[oracle_control_status]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_invalid_positive[evidence_integrity_status]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_invalid_positive[oracle_independence_status]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_nonevaluable_without_fake_remediation[NOT_APPLICABLE]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_nonevaluable_without_fake_remediation[NOT_DETERMINABLE]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_independence_positive_and_all_satisfied_negative"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_absence_positive_and_present_negative"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_satisfactory_positive"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_satisfactory_contradictions[validity]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_satisfactory_contradictions[independence]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_satisfactory_contradictions[cause]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_satisfactory_contradictions[integrity]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_satisfactory_contradictions[defect]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_insufficiency_without_deficit_and_oracle_only"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_determined_remediation[None-False]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_determined_remediation[-False]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_determined_remediation[Bounded remedy for cause-True]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_no_mutation_or_automatic_upgrade"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_narrative_does_not_decide_coherence"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_required_independence_cannot_be_downgraded"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_bad_global_state_fails_closed[value0]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_bad_global_state_fails_closed[value1]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_bad_global_state_fails_closed[None]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_bad_global_state_fails_closed[UNKNOWN]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_cross_field.py::test_bad_global_state_fails_closed[1]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_hybrid_request.py::test_hybrid_request_loads_as_a4_only_and_declares_resolver_v1"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_hybrid_request.py::test_hybrid_request_preserves_material_audit_authority"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_hybrid_request.py::test_hybrid_input_preserves_fourteen_surfaces_and_forbids_final_state"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_hybrid_request.py::test_package_exposes_only_auditor_evidence_authority_and_fits_preflight"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_hybrid_request.py::test_resolved_and_unresolved_publication_contract"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_hybrid_request.py::test_workflow_plan_keeps_a3_skipped_and_has_no_a5_execution"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_unexplained_adverse_state_rejected[REFUTACION_INSUFICIENTE]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_unexplained_adverse_state_rejected[INDEPENDENCIA_INSUFICIENTE]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_unexplained_adverse_state_rejected[INVALIDA]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_unexplained_adverse_state_rejected[AUSENTE]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_unexplained_adverse_state_rejected[NO_EVALUABLE]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[-non_satisfactory_basis]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[-failed_requirements]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[-evidence_references]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[-normative_source]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[-remediation_scope]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[  -non_satisfactory_basis]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[  -failed_requirements]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[  -evidence_references]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[  -normative_source]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[  -remediation_scope]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[NONE-non_satisfactory_basis]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[NONE-failed_requirements]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[NONE-evidence_references]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[NONE-normative_source]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[NONE-remediation_scope]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[NOT_APPLICABLE-non_satisfactory_basis]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[NOT_APPLICABLE-failed_requirements]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[NOT_APPLICABLE-evidence_references]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[NOT_APPLICABLE-normative_source]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[NOT_APPLICABLE-remediation_scope]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[value4-non_satisfactory_basis]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[value4-failed_requirements]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[value4-evidence_references]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[value4-normative_source]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[value4-remediation_scope]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[None-non_satisfactory_basis]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[None-failed_requirements]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[None-evidence_references]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[None-normative_source]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_required_basis_cannot_be_empty_or_placeholder[None-remediation_scope]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_justification_passes_without_upgrading_state"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_insufficiency_requires_coverage_or_intensity_basis"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_unknown_state_rejected"
+    },
+    {
+      "outcome": "failed",
+      "test": "tests/tooling/test_a4_justification.py::test_a3_cannot_be_packaged_for_a4_only_request"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_generic_gate_rejects_unexplained_output[Resistance]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_generic_gate_rejects_unexplained_output[Liquidity]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_generic_gate_rejects_unexplained_output[Volume]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_generic_gate_rejects_unexplained_output[EMAs]"
+    },
+    {
+      "outcome": "failed",
+      "test": "tests/tooling/test_a4_justification.py::test_a4_only_plan_and_validation_do_not_load_a3"
+    },
+    {
+      "outcome": "failed",
+      "test": "tests/tooling/test_a4_justification.py::test_a4_only_executes_a4_without_a3_or_wait_and_writes_scoped_summary"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_a4_justification.py::test_workflow_obeys_runner_plan_for_a4_only"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_absent_is_resolved_unequivocally"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_invalid_control_is_resolved[hypothesis_control_status-MISSING]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_invalid_control_is_resolved[oracle_control_status-INVALID]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_invalid_control_is_resolved[oracle_independence_status-NOT_SATISFIED]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_invalid_control_is_resolved[evidence_integrity_status-NOT_SATISFIED]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_refutation_insufficiency_is_resolved[coverage_status]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_refutation_insufficiency_is_resolved[intensity_status]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_independence_insufficiency_is_resolved"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_not_evaluable_is_resolved_only_with_traceable_limitation"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_satisfactory_is_resolved_unequivocally"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_insufficient_coverage_or_intensity_does_not_invalidate_act[coverage_status]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_insufficient_coverage_or_intensity_does_not_invalidate_act[intensity_status]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_absence_does_not_invent_refutation_validity"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_field_contradiction_is_not_resolved"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_normative_overlap_without_precedence_is_ambiguous"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_invalid_and_not_evaluable_overlap_is_ambiguous"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_llm_global_state_is_rejected_and_not_published"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_llm_refutation_valid_is_rejected_and_not_preserved_as_authority"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_unauthorized_auditor_field_is_rejected"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_no_automatic_satisfactory_for_incomplete_evidence"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_material_defects_are_preserved_even_with_satisfied_controls"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_raw_output_is_immutable_and_normalization_is_detached"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_normalized_evidence_resolution_and_hashes_are_deterministic"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_derived_validity_is_deterministic_and_versioned"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_altered_validity_is_rejected"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_altered_resolution_is_rejected_even_if_other_fields_are_unchanged"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_unknown_resolver_version_is_rejected"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_unknown_refutation_validity_version_is_rejected"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_required_independence_dimensions_cannot_be_downgraded"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_historical_llm_state_is_not_reclassified"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_two_units_reuse_identical_resolver_contract[Resistance]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_two_units_reuse_identical_resolver_contract[Support]"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_runner_publishes_state_only_from_resolver_and_preserves_hash_chain"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_runner_preserves_unresolved_raw_but_never_publishes_state"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_a4_resolution.py::test_contract_declares_hybrid_authority_and_historical_non_reprocessing"
+    },
+    {
+      "outcome": "failed",
+      "test": "tests/tooling/test_tef_audit_runner.py::test_two_units_use_same_request_parser_manifest_and_stage_builder[UNIT_ALPHA]"
+    },
+    {
+      "outcome": "failed",
+      "test": "tests/tooling/test_tef_audit_runner.py::test_two_units_use_same_request_parser_manifest_and_stage_builder[UNIT_BETA]"
+    },
+    {
+      "outcome": "failed",
+      "test": "tests/tooling/test_tef_audit_runner.py::test_invalid_request_is_rejected"
+    },
+    {
+      "outcome": "failed",
+      "test": "tests/tooling/test_tef_audit_runner.py::test_missing_manifest_is_rejected"
+    },
+    {
+      "outcome": "failed",
+      "test": "tests/tooling/test_tef_audit_runner.py::test_missing_evidence_is_rejected"
+    },
+    {
+      "outcome": "failed",
+      "test": "tests/tooling/test_tef_audit_runner.py::test_hash_mismatch_is_rejected"
+    },
+    {
+      "outcome": "failed",
+      "test": "tests/tooling/test_tef_audit_runner.py::test_baseline_pinning_is_passed_to_evidence_reader"
+    },
+    {
+      "outcome": "failed",
+      "test": "tests/tooling/test_tef_audit_runner.py::test_manifest_can_select_baseline_pinned_lines_and_stage"
+    },
+    {
+      "outcome": "failed",
+      "test": "tests/tooling/test_tef_audit_runner.py::test_execution_separates_a3_a4_preserves_adverse_output_and_never_runs_a5"
+    },
+    {
+      "outcome": "failed",
+      "test": "tests/tooling/test_tef_audit_runner.py::test_tpm_preflight_passes_with_declared_limit_output_and_margin"
+    },
+    {
+      "outcome": "failed",
+      "test": "tests/tooling/test_tef_audit_runner.py::test_tpm_preflight_rejects_before_provider_call"
+    },
+    {
+      "outcome": "failed",
+      "test": "tests/tooling/test_tef_audit_runner.py::test_a3_checkpoint_survives_a4_failure_and_summary_keeps_a5_false"
+    },
+    {
+      "outcome": "failed",
+      "test": "tests/tooling/test_tef_audit_runner.py::test_consumable_a3_resume_skips_provider_and_a4_retry_does_not_change_a3"
+    },
+    {
+      "outcome": "failed",
+      "test": "tests/tooling/test_tef_audit_runner.py::test_invalid_a3_output_is_not_reused"
+    },
+    {
+      "outcome": "failed",
+      "test": "tests/tooling/test_tef_audit_runner.py::test_request_driven_wait_is_applied_when_a3_executed_this_run"
+    },
+    {
+      "outcome": "failed",
+      "test": "tests/tooling/test_tef_audit_runner.py::test_prior_a3_resume_skips_unnecessary_wait"
+    },
+    {
+      "outcome": "failed",
+      "test": "tests/tooling/test_tef_audit_runner.py::test_wait_rejects_execution_result_from_another_request"
+    },
+    {
+      "outcome": "failed",
+      "test": "tests/tooling/test_tef_audit_runner.py::test_consumability_gate_rejects_identity_or_hash_mismatch"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_audit_runner.py::test_generic_workflow_is_request_driven_and_uses_remote_secret"
+    },
+    {
+      "outcome": "passed",
+      "test": "tests/tooling/test_tef_audit_runner.py::test_resistance_is_a_valid_real_consumer_of_generic_contract"
+    }
+  ],
+  "tooling_passed": 114
+}

@@ -1,0 +1,22 @@
+{
+  "accepted": "ACCEPTED",
+  "changed_source": "REQUIRES_REVALIDATION",
+  "checks": {
+    "all_recovered_ingests_noop": true,
+    "changed_source_revalidation": true,
+    "different_digest_contradiction": true,
+    "duplicate_noop": true,
+    "no_new_attempt": true,
+    "no_new_dispatch": true,
+    "original_adverse_evidence_preserved": true,
+    "same_operational_resolution": true,
+    "same_results": true,
+    "same_terminal_status": true
+  },
+  "contradiction": "EXECUTION_CONTRADICTION",
+  "dispatches_after": 5,
+  "dispatches_before": 5,
+  "duplicate": "DUPLICATE_NOOP",
+  "scope": "Real persisted results replayed; contradiction/stale probes in separate disposable ledgers; no historical A4 outputs reprocessed.",
+  "status": "PASS"
+}

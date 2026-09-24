@@ -1,0 +1,16 @@
+{
+  "activated": false,
+  "authoritative": false,
+  "candidate_digest": "e0111607b7167e7c0cad0d20388e2b1f08d587096cf9c6557b4d19378174adf6",
+  "files": {
+    "A1_CHARACTERIZATION.md": "72f02d78fd02511a186e5012db4bd68949a20966697ab767e2cd8dca243e11a3",
+    "A2_CONTROL_REQUIREMENTS.md": "3e4faab779d2cd7ccb2b5f02a7a970a306d6c6ec220a805b409e8a5ef3753172",
+    "A3_INPUT.md": "3b0c8c980d4d2c711e117f111a22481313d5235b643312b4063eb20636425d14",
+    "A4_TWO_STAGE_INPUT_V1.md": "e8a991a5d2070c1f5cbad48a5858dbd14adcef2f1e7556bf68305dd027f41d4d",
+    "A4_TWO_STAGE_REQUEST_V1.json": "2bfd1a2292cc7af5b50b263277efff7445c3a8c1f7e5839456ca1e7c5c78b47f",
+    "A5_INPUT_SCHEMA.json": "f18b6c285019f03e7e953be9e2b7347f72ab30fcadd9c378c09816dbf3ed10b4",
+    "EVIDENCE_MANIFEST.json": "1852fc1eb26aae8f734ec92b5d298197eab5bf0441ebf8c0af92c44cea9d5ee6"
+  },
+  "input_path": "candidates/slice002/audits/resistance/RESISTANCE-AUDIT-REQUEST-46828C1658B5/A4_TWO_STAGE_INPUT_V1.md",
+  "request_path": "candidates/slice002/audits/resistance/RESISTANCE-AUDIT-REQUEST-46828C1658B5/A4_TWO_STAGE_REQUEST_V1.json"
+}

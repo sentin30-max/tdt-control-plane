@@ -1,0 +1,17 @@
+{
+  "a4_audit_calls": 0,
+  "a5_calls": 0,
+  "all_exported_hashes_unchanged": true,
+  "groq_calls": 0,
+  "local_reference_head": "af9f8a392f95363e86c5636aefa5c55494715f6c",
+  "observation_date": "2026-09-24",
+  "ordinary_usage_allowed": true,
+  "paid_credit_balance": 0,
+  "paid_fallback": false,
+  "remaining_primary_percent": 26,
+  "remaining_weekly_percent": 78,
+  "remote_master_observed": "af9f8a392f95363e86c5636aefa5c55494715f6c",
+  "reset_credit_used": false,
+  "source_file_count": 238,
+  "source_revision": "af9f8a392f95363e86c5636aefa5c55494715f6c"
+}

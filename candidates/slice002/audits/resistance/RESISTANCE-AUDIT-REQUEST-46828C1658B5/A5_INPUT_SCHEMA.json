@@ -1,0 +1,12 @@
+{
+  "schema_version": "1",
+  "stage": "A5",
+  "execution_state": "NOT_EXECUTED",
+  "required_inputs": {
+    "a3_result": {"required": true, "allowed_global_states": ["SATISFACTORIA", "DEFECTUOSA", "INSUFICIENTE"]},
+    "a4_result": {"required": true, "allowed_global_states": ["SATISFACTORIA", "REFUTACION_INSUFICIENTE", "INDEPENDENCIA_INSUFICIENTE", "INVALIDA", "AUSENTE", "NO_EVALUABLE"]}
+  },
+  "non_compensability_rule": "A3 and A4 are mandatory and non-compensable. Passing counts or a satisfactory component cannot offset a defective, insufficient, absent, invalid or adverse required component.",
+  "positive_composition": "CONFORME only when A1=DETERMINADA, A2=DETERMINADOS, A3=SATISFACTORIA and A4=SATISFACTORIA.",
+  "authority_or_adoption_granted": false
+}

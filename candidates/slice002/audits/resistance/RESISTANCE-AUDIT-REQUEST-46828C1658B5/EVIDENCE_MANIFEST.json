@@ -1,0 +1,18 @@
+{
+  "schema_version": "1",
+  "audit_target": "Resistance",
+  "evaluated_code_baseline": "46828c1658b5328f65fd23ad2e350a19e54039ae",
+  "artifacts": [
+    {"path": "sprint3/resistance/AF-RESISTANCE-006-PUBLIC-CONTRACT.md", "sha256": "76c7dc9c55aa4d44851f8231bfb5f4f9f88cc49ca028f30e19e0809b3d09daa4", "line_ranges": [[27, 94], [370, 444]], "stages": ["A3"]},
+    {"path": "sprint3/resistance/AF-RESISTANCE-006-PUBLIC-CONTRACT.md", "sha256": "76c7dc9c55aa4d44851f8231bfb5f4f9f88cc49ca028f30e19e0809b3d09daa4", "line_ranges": [[490, 547]], "stages": ["A4"]},
+    {"path": "sprint3/resistance/AT-RESISTANCE-001-TECHNICAL-DESIGN.md", "sha256": "cad2ce7f58726df23da21588a2275b598b14bb8dfeada7c854b9bb9997f28a6b", "line_ranges": [[182, 240], [395, 431]], "stages": ["A3"]},
+    {"path": "sprint3/resistance/AT-RESISTANCE-001-TECHNICAL-DESIGN.md", "sha256": "cad2ce7f58726df23da21588a2275b598b14bb8dfeada7c854b9bb9997f28a6b", "line_ranges": [[473, 507]], "stages": ["A4"]},
+    {"path": "sprint3/resistance/AT-RESISTANCE-002-TECHNICAL-SPEC-ACCEPTANCE-ORACLES.md", "sha256": "9c3809f9302a11aa3e6364e6e6f6645db89f65f0747da9771d470ca4cfffc7a3", "line_ranges": [[145, 179]], "stages": ["A3"]},
+    {"path": "sprint3/resistance/AT-RESISTANCE-002-TECHNICAL-SPEC-ACCEPTANCE-ORACLES.md", "sha256": "9c3809f9302a11aa3e6364e6e6f6645db89f65f0747da9771d470ca4cfffc7a3", "line_ranges": [[145, 179], [184, 239]], "stages": ["A4"]},
+    {"path": "sprint3/resistance/IMP-RESISTANCE-012-TRACEABILITY.md", "sha256": "787a8a7b6194ebdabbad7228f6b26037952b49e27353582039485a0168ec06ae", "line_ranges": [[1, 27], [49, 75]], "stages": ["A3", "A4"]},
+    {"path": "sprint3/resistance/RESISTANCE_LIFECYCLE_RESULT.json", "sha256": "030b944a6af81ca69eace19cc531dcb9f57d03b1819fed0d8b75e5aec7ac23fe", "stages": ["A3"]}
+  ],
+  "consumed_validation": {"resistance_tests": 149, "global_tests": 638, "at002_oracles": "95/95"},
+  "property_limits": "A1_CHARACTERIZATION.md#sensitive-property-families-and-limits",
+  "results_not_present": ["A3", "A4", "A5"]
+}

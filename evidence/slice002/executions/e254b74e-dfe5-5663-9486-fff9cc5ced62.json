@@ -1,0 +1,247 @@
+{
+  "authoritative": false,
+  "backend": "PublishedLocalValidationExecutor",
+  "context": {
+    "after_completion": "CONTROL_PLANE_VERIFY_THEN_ADVISOR_REVIEW",
+    "authoritative": false,
+    "authority": {
+      "can_do": [
+        "bounded_computation"
+      ],
+      "cannot_do": [
+        "product_decision",
+        "self_approval",
+        "mutate_authority",
+        "modify_protected",
+        "spend"
+      ],
+      "tools": []
+    },
+    "context_id": "cf2d146c1621e0a54b7d4dd887feef238bcb57d82ba8aad48196ad79b0859d6d",
+    "done_when": [
+      "Return evidenced structured result within role authority"
+    ],
+    "execution_id": "e254b74e-dfe5-5663-9486-fff9cc5ced62",
+    "input_revision": "9bc3fb6dcd06e600778fb6b2b6e4fa4e5b288cf00aacb8e568938c48b8f8cece",
+    "inputs": {
+      "operation": "LOCAL_VALIDATION_PREFLIGHT",
+      "po_authority": "Authorized preparation/local validation/preflight in Control Plane ONLY. No Groq, A4, A5, source writes, historical reprocessing, spend or evidence compaction. On unresolved/preflight failure preserve, review and STOP. Final COMPLETE means candidate ready for PO gate, never activated.",
+      "previous_material_result": {
+        "artifact": {
+          "authority_gap": null,
+          "review": {
+            "assessment": "No concrete transformation defect established; preparation remains incomplete pending native verification.",
+            "next_step": {
+              "boundary": "This proposal grants no authority. Existing authorization excludes provider calls, audit execution, source modification, historical reprocessing, spend, activation and evidence compaction.",
+              "completion_gate": "COMPLETE requires native validation and preflight PASS and means ready for the PO gate only.",
+              "failure_handling": "If native verification reveals an unresolved blocker or terminal preflight failure, preserve it and stop for review and PO_REQUIRED routing; do not compact or automatically retry.",
+              "proposed_destination": "CODE_EXECUTOR",
+              "work": "Independently compare the candidate against the exact prescribed transformation, run published local validators, materialize the full evidence without reduction, and perform native token preflight in Control Plane. Preserve results and return for advisor review."
+            },
+            "refutation_checks": [
+              "All eight specified request updates appear in the result; other supplied request values are preserved.",
+              "All four literal input replacements appear correctly applied, including removal of the auditor refutation_valid declaration. The supplied resulting string retains its trailing newline; no additional textual change was identified.",
+              "The resulting input separates auditor evidence from deterministic validity and A4 resolution, preserves unresolved outcomes as non-consumable, and does not grant execution or activation authority.",
+              "A3 and A5 file references remain inherited request fields. With permitted_stages restricted to A4, these references do not authorize A3 or A5 execution.",
+              "Publication PASS and its 135 tooling and 35 resolver checks concern published architecture; they do not establish candidate-specific native validation or token preflight PASS.",
+              "The previous executor explicitly disclaims materialization and validation. Candidate paths and hashes in state do not independently demonstrate that the displayed artifact matches filesystem bytes or that complete evidence was materialized.",
+              "No supplied evidence establishes protected-scope modification, a new product decision, or a missing specification requirement. Formal lifecycle remains EN_AUDITORIA and the candidate remains non-authoritative and inactive."
+            ],
+            "verification_limits": "Review used supplied data only. Digests were not recomputed, filesystem contents were not inspected, and evidence-reference truth and native runtime acceptance remain unverified."
+          },
+          "specification_gap": null
+        },
+        "result": {
+          "artifact": "{\"review\":{\"assessment\":\"No concrete transformation defect established; preparation remains incomplete pending native verification.\",\"refutation_checks\":[\"All eight specified request updates appear in the result; other supplied request values are preserved.\",\"All four literal input replacements appear correctly applied, including removal of the auditor refutation_valid declaration. The supplied resulting string retains its trailing newline; no additional textual change was identified.\",\"The resulting input separates auditor evidence from deterministic validity and A4 resolution, preserves unresolved outcomes as non-consumable, and does not grant execution or activation authority.\",\"A3 and A5 file references remain inherited request fields. With permitted_stages restricted to A4, these references do not authorize A3 or A5 execution.\",\"Publication PASS and its 135 tooling and 35 resolver checks concern published architecture; they do not establish candidate-specific native validation or token preflight PASS.\",\"The previous executor explicitly disclaims materialization and validation. Candidate paths and hashes in state do not independently demonstrate that the displayed artifact matches filesystem bytes or that complete evidence was materialized.\",\"No supplied evidence establishes protected-scope modification, a new product decision, or a missing specification requirement. Formal lifecycle remains EN_AUDITORIA and the candidate remains non-authoritative and inactive.\"],\"verification_limits\":\"Review used supplied data only. Digests were not recomputed, filesystem contents were not inspected, and evidence-reference truth and native runtime acceptance remain unverified.\",\"next_step\":{\"proposed_destination\":\"CODE_EXECUTOR\",\"work\":\"Independently compare the candidate against the exact prescribed transformation, run published local validators, materialize the full evidence without reduction, and perform native token preflight in Control Plane. Preserve results and return for advisor review.\",\"boundary\":\"This proposal grants no authority. Existing authorization excludes provider calls, audit execution, source modification, historical reprocessing, spend, activation and evidence compaction.\",\"failure_handling\":\"If native verification reveals an unresolved blocker or terminal preflight failure, preserve it and stop for review and PO_REQUIRED routing; do not compact or automatically retry.\",\"completion_gate\":\"COMPLETE requires native validation and preflight PASS and means ready for the PO gate only.\"}},\"specification_gap\":null,\"authority_gap\":null}",
+          "context_digest": "908c2b29ecf26633ca2f496175f9902ea29c8c402f466a3bb4951b6359e61b23",
+          "context_id": "1c70e35c4054d77c1e590523c878651f57744960caf4395ff4859fbb955d2eee",
+          "effects": [],
+          "evidence_refs": [
+            "historical_request",
+            "historical_input",
+            "specification",
+            "previous_material_result",
+            "published_contract",
+            "publication",
+            "state",
+            "po_authorization"
+          ],
+          "execution_id": "8b8c775c-8b7d-56bc-b31b-b91173b3edc1",
+          "findings": [
+            "No concrete deviation from the eight request updates and four input replacements was identified.",
+            "Previous transformation success is not evidence of candidate validation, full evidence materialization or native token preflight PASS.",
+            "State supplies neither verification nor a blocker; inventing a terminal failure or escalating a product decision now would be unsupported.",
+            "No additional Development requirement or preparation authority gap is established."
+          ],
+          "input_revision": "9bc3fb6dcd06e600778fb6b2b6e4fa4e5b288cf00aacb8e568938c48b8f8cece",
+          "next_destination": "CODE_EXECUTOR",
+          "outcome": "SUCCEEDED",
+          "proposals": [
+            "Route to CODE_EXECUTOR for the already authorized candidate-specific local verification and native preflight, then return for independent advisor review."
+          ],
+          "protected_scope_touched": [],
+          "rationale": "The supplied transformation withstands textual review, but candidate readiness remains unverified. No terminal preflight failure or unresolved blocker is supplied. Existing authority covers the remaining local verification, warranting CODE_EXECUTOR rather than COMPLETE, DEVELOPMENT or PO_REQUIRED.",
+          "role": "ADVISOR",
+          "task_id": "42176b41-3abb-59a7-b28c-44a6ec3e8fc9"
+        },
+        "result_digest": "1739579bb72f758237dd25be45663fa2272c2a9705166501e4858c7b36088ac8"
+      },
+      "publication": {
+        "checks": {
+          "a4_only_request_supported": true,
+          "a4_resolver_version": "1",
+          "llm_forbidden_fields_absent_from_schema": true,
+          "refutation_validity_version": "1"
+        },
+        "publication_verified": true,
+        "resolver_passed": 35,
+        "source_revision": "af9f8a392f95363e86c5636aefa5c55494715f6c",
+        "status": "PASS",
+        "tooling_passed": 135
+      },
+      "source_contract": "# A4 output contract v2 \u2014 hybrid deterministic resolution\n\nBasis: TEF-03 \u00a7\u00a738.1\u201338.3. This contract validates declarations, not their truth.\nNo rerun is authorized. Historical outputs, v1 requests and evidence are unchanged.\n\n## Internal authority boundary\n\n`A4_INTERNAL_ARCHITECTURE = HYBRID_DETERMINISTIC_RESOLUTION` and\n`A4_RESOLVER_VERSION = 1`. The internal first phase is\n`DETERMINISTIC_REFUTATION_VALIDITY`, version 1.\n\nThe LLM emits `AUDITOR_EVIDENCE` only. It has no authority to emit or select\n`refutation_valid` or `global_state`; presence of either field in auditor raw output\nis rejected. The runner\npreserves the raw bytes as supplied, normalizes a detached structured evidence value,\nderives refutation validity in pure versioned code, and then invokes the pure versioned\nA4 resolver. Code publishes `global_state` only when both phases admit one unambiguous\nTEF-03 \u00a738.3 mapping.\n\n`UNRESOLVED_CONTRADICTION` and `UNRESOLVED_NORMATIVE_AMBIGUITY` are technical,\nnon-consumable resolution outcomes, not A4 states. No total precedence is invented\nbetween adverse A4 classifications. Unknown resolver versions are non-consumable.\n\n## Required structured fields\n\n- attempt_present: boolean.\n- coverage_status, intensity_status: SATISFIED / INSUFFICIENT / NOT_EVALUABLE.\n- independence_required_dimensions: ordered list fixed by the request: cognitive,\n  procedural, traceable, plus additional when required. The auditor cannot reduce it.\n- independence_dimension_status: exact map of required dimensions to SATISFIED /\n  NOT_SATISFIED / NOT_EVALUABLE.\n- hypothesis_control_status, oracle_control_status: SATISFIED / MISSING / INVALID /\n  NOT_EVALUABLE.\n- evidence_integrity_status, oracle_independence_status: SATISFIED / NOT_SATISFIED /\n  NOT_EVALUABLE. Oracle independence is separate from actor separation (\u00a738.1.6).\n- remediation_status: DETERMINED / NOT_DETERMINABLE / NOT_APPLICABLE.\n- remediation_scope: nonempty string when DETERMINED, otherwise null.\n- failure_causes: list of {field, evidence_reference, normative_source, explanation}.\n  Every adverse state requires at least one traceable cause pointing to a compatible\n  structured field. Narratives are checked only for presence, never for word meaning.\n- attacks, material_defects, negative_findings, evidence_references and\n  normative_sources remain preserved structured evidence.\n- adverse_result_preserved and scope_respected: booleans.\n\nThe auditor raw output must not contain `refutation_valid` or `global_state`. The\nresolved wrapper keeps `AUDITOR_RAW_OUTPUT`, `AUDITOR_EVIDENCE_NORMALIZED`,\n`DERIVED_REFUTATION_VALIDITY` and `DETERMINISTIC_RESOLUTION` separate and binds them\nthrough request/instance/baseline, input/evidence/raw/normalized/validity/resolution\nhashes and both phase versions. No phase mutates the raw output.\n\n## Deterministic refutation validity\n\nCoverage, intensity and A4 independence do not determine validity of the act. With an\nattempt present, validity is `VALID` only when hypothesis control, oracle control,\noracle independence and evidence integrity are satisfied and attacks/evidence are\nstructurally traceable. A demonstrated, traceable failure of one of those controls is\n`INVALID`. An identified and traceable inability to evaluate those controls is\n`NOT_EVALUABLE`. Conflicting failure/unknown controls without published precedence\nproduce `UNRESOLVED_NORMATIVE_AMBIGUITY`; malformed, untraceable or contradictory\nevidence produces `UNRESOLVED_CONTRADICTION`. With no attempt, validity is not\ninvented and the A4 resolver may derive `AUSENTE` directly.\n\nThe v1 universal failed_requirements and concrete-remediation requirements do not\napply to v2. Legacy narrative fields may be retained but do not determine coherence.\nPreserve attacks, oracles, material_defects, negative findings and original provider\nmetadata, hashes and instance binding. Wrappers are never rewritten by validation.\n\n## Deterministic state mappings\n\n| Derived state | Required declarations and cause field |\n|---|---|\n| SATISFACTORIA | Attempt present, derived validity VALID, coverage/intensity and all required independence statuses SATISFIED; no failure causes. Material findings remain preserved for semantic review. |\n| REFUTACION_INSUFICIENTE | Attempt present, derived validity VALID, coverage or intensity INSUFFICIENT; cause identifies that field. Missing oracle alone cannot justify this state. |\n| INDEPENDENCIA_INSUFICIENTE | Attempt present and at least one required dimension NOT_SATISFIED; cause uses independence:<dimension>. |\n| INVALIDA | Attempt present and derived validity INVALID; cause identifies the failed validity control. |\n| NO_EVALUABLE | Attempt present but derived validity, coverage/intensity or required independence cannot be evaluated without invention; cause identifies the limitation. |\n| AUSENTE | attempt_present=false; cause identifies attempt_present; no attack results. Coverage/intensity/hypothesis/oracle use NOT_EVALUABLE as absence markers, not invented results. |\n\nAn unevaluable required independence dimension is handled as NO_EVALUABLE, preserving the\n\u00a738.3 distinction from a demonstrated failure to satisfy required separation.\nIf an attempt does not exist, use AUSENTE rather than NO_EVALUABLE. The gate rejects\ninconsistencies; it never selects or upgrades a state.\nMultiple observed limitations may be preserved. If they activate more than one A4\nclassification and TEF-03 does not publish a precedence, the resolver returns\n`UNRESOLVED_NORMATIVE_AMBIGUITY`. Contradictory declarations, missing compatible\ncauses, or an otherwise non-derivable state return `UNRESOLVED_CONTRADICTION`.\n\n## Remediation\n\nDETERMINED requires an adverse cause and nonempty scope addressing that cause.\nNOT_DETERMINABLE and NOT_APPLICABLE allow null scope: no fictional remedy is\nrequired. NOT_APPLICABLE describes applicability of corrective action, not absence\nof the reported limitation. SATISFACTORIA cannot carry determined defect remediation.\nSubstantive compatibility of a narrative remedy and its evidence remains an\nexplicit semantic-review responsibility; presence checks cannot certify it.\n\n## Limits and preservation\n\n`RESOLVED` and structural PASS are not semantic approval or permission to compose A5. A reviewer\nmust still verify trace references, explanations, substantive consistency and truth.\nThe runner performs no language interpretation and creates no product findings.\nNo new methodology, surfaces, oracles, thresholds, model or provider are introduced.\nHistorical A4 original, corrective, V2 and hybrid run 35434275898 outputs remain preserved and\nnon-consumable; they are not reprocessed or reclassified by this change. No new V2\nexecution request is activated by this draft. Before any future execution,\nfreeze a separately versioned request/input and perform token preflight.\n",
+      "specification": {
+        "action": "Prepare a NEW candidate request and input in Control Plane, not in Trader.",
+        "authority": "Explicit PO Slice 002 correction and authorization, recorded by digest; A4 architecture publication already completed.",
+        "input_literal_replacements": [
+          [
+            "46828c1658b5328f65fd23ad2e350a19e54039ae-resistance-a4-hybrid-v1",
+            "46828c1658b5328f65fd23ad2e350a19e54039ae-resistance-a4-two-stage-v1"
+          ],
+          [
+            "refutation_valid boolean or \"not_evaluable\"; ",
+            ""
+          ],
+          [
+            "Do not emit global_state or any final A4 classification;",
+            "Do not emit refutation_valid, refutation_validity, global_state or any final A4 classification;"
+          ],
+          [
+            "code resolver tef_a4_resolution version 1 has sole authority to derive a state when unambiguous.",
+            "Code derives refutation validity (version 1) first, then tef_a4_resolution (version 1) derives A4 state only when unambiguous. UNRESOLVED_CONTRADICTION or UNRESOLVED_NORMATIVE_AMBIGUITY means non-consumable, no published global_state, no automatic retry and no raw rewrite."
+          ]
+        ],
+        "preserve": "Every other request field and every other input character. Do not compact or truncate.",
+        "prohibited": [
+          "Groq call",
+          "A4 execution",
+          "A5 execution",
+          "historical reprocessing",
+          "source modification",
+          "silent evidence reduction"
+        ],
+        "request_updates": {
+          "a3_instance_id": "RESISTANCE-A3-NOT-INCLUDED-TWO-STAGE-V1",
+          "a4_assignee": "GROQ_FREE/openai/gpt-oss-120b:A4:RESISTANCE-INDEPENDENT-INSTANCE-A4-TWO-STAGE-V1-46828C1658B5",
+          "a4_independent_instance_id": "RESISTANCE-INDEPENDENT-INSTANCE-A4-TWO-STAGE-V1-46828C1658B5",
+          "a4_input": "A4_TWO_STAGE_INPUT_V1.md",
+          "a4_instance_id": "RESISTANCE-INDEPENDENT-INSTANCE-A4-TWO-STAGE-V1-46828C1658B5",
+          "refutation_validity_version": "1",
+          "request_id": "RESISTANCE-AUDIT-REQUEST-46828C1658B5-A4-TWO-STAGE-V1-01",
+          "result_directory": "two-stage-v1-01-results"
+        },
+        "requested_artifact": {
+          "input_text": "complete resulting input string",
+          "request": "complete resulting JSON object"
+        },
+        "stage": "A4 only; A3 skipped; A5 not authorized",
+        "verification": "Independent exact comparison, published local validators, actual full evidence materialization and native token preflight.",
+        "versions": {
+          "a4_resolver": "1",
+          "refutation_validity": "1"
+        }
+      },
+      "state": {
+        "blocker": null,
+        "candidate": {
+          "activated": false,
+          "authoritative": false,
+          "candidate_digest": "e0111607b7167e7c0cad0d20388e2b1f08d587096cf9c6557b4d19378174adf6",
+          "files": {
+            "A1_CHARACTERIZATION.md": "72f02d78fd02511a186e5012db4bd68949a20966697ab767e2cd8dca243e11a3",
+            "A2_CONTROL_REQUIREMENTS.md": "3e4faab779d2cd7ccb2b5f02a7a970a306d6c6ec220a805b409e8a5ef3753172",
+            "A3_INPUT.md": "3b0c8c980d4d2c711e117f111a22481313d5235b643312b4063eb20636425d14",
+            "A4_TWO_STAGE_INPUT_V1.md": "e8a991a5d2070c1f5cbad48a5858dbd14adcef2f1e7556bf68305dd027f41d4d",
+            "A4_TWO_STAGE_REQUEST_V1.json": "2bfd1a2292cc7af5b50b263277efff7445c3a8c1f7e5839456ca1e7c5c78b47f",
+            "A5_INPUT_SCHEMA.json": "f18b6c285019f03e7e953be9e2b7347f72ab30fcadd9c378c09816dbf3ed10b4",
+            "EVIDENCE_MANIFEST.json": "1852fc1eb26aae8f734ec92b5d298197eab5bf0441ebf8c0af92c44cea9d5ee6"
+          },
+          "input_path": "candidates/slice002/audits/resistance/RESISTANCE-AUDIT-REQUEST-46828C1658B5/A4_TWO_STAGE_INPUT_V1.md",
+          "request_path": "candidates/slice002/audits/resistance/RESISTANCE-AUDIT-REQUEST-46828C1658B5/A4_TWO_STAGE_REQUEST_V1.json"
+        },
+        "formal_lifecycle": "EN_AUDITORIA",
+        "operational_point": "A4_TWO_STAGE_PUBLICATION_COMPLETED; prepare new request/input; local validation and preflight only",
+        "source_revision": "af9f8a392f95363e86c5636aefa5c55494715f6c",
+        "specification_gap": null,
+        "verification": null
+      }
+    },
+    "objective": "Run the allowlisted published local validator and full native evidence preflight for the verified candidate. No network, no auditor, no compaction.",
+    "protected": [
+      "Trader AI",
+      "TEF",
+      "Governance",
+      "Sprint 2",
+      "Support",
+      "D6",
+      "Resistance production and lifecycle",
+      "historical A4 requests/outputs",
+      "evaluated baseline 46828c1658b5328f65fd23ad2e350a19e54039ae"
+    ],
+    "role": "CODE_EXECUTOR",
+    "schema_version": 1,
+    "scope": "Slice002: Resistance A4 preparation only",
+    "source_digests": {
+      "evidence_manifest": "1852fc1eb26aae8f734ec92b5d298197eab5bf0441ebf8c0af92c44cea9d5ee6",
+      "historical_input": "5c9d04ff14f89b32343f02e20ca4416f6a90a85c808b86fccfd9694f011d337f",
+      "historical_request": "819f559ec5c6bef2ed4f107265d25d5557667d226a7d3e74085154161be3fea7",
+      "lifecycle": "abaa5a83d99bb5d75618ba88de35885c3de853d44af5ac0b95686946b8ca96c4",
+      "po_authorization": "673c35452b5f672cb928b72deb058af114235c9925e10f058ddbd98295b769fc",
+      "previous_material_result": "eb59e363098994a6c300b02ea7eaf4c2e3a4b56c70a4b3b5ffd6f7165b90f339",
+      "publication": "61b12de6c6480dd147ace316ca305d36ec6647dcf0042fb47b5577a3889e4642",
+      "published_contract": "476f7fd8189c22649eb73309a6648d4e472cec14072f03cd9717d01d6717d25c",
+      "resolver": "61e659f8bf361b46bed9caf3b3759824059ece3f49def31dfc2390994066bbf4",
+      "runner": "428b0d997761ab4ae8700aedb4e719c293afe444b90d61365f9ec28aa45e1734",
+      "specification": "d552da3d30d2efa0136ad7391bc39995c5b702bf965fe1a97df6f98f89a1bbe4",
+      "state": "4438de50cc4e75c5d21628f0ae761b4063906dac89b73b656fe280a0424e4c17",
+      "tooling_tests": "138369bd61665c4014c74ee63faf69ddb7cea2f70794425bf528c82e249fef0a"
+    },
+    "task_id": "42176b41-3abb-59a7-b28c-44a6ec3e8fc9"
+  },
+  "context_digest": "d39514f4178156d4210dd11c25d24c3aea1f7f6a4c11ea5bc544c16e3c1900ce",
+  "result": {
+    "artifact": "{\"a4_executed\": false, \"a5_executed\": false, \"authoritative\": false, \"budget\": {\"estimated_prompt_tokens\": 5604, \"fits\": false, \"max_output_tokens\": 1600, \"prompt_bytes\": 22414, \"provider_tpm_limit\": 8000, \"requested_budget\": 8004, \"safety_margin_tokens\": 800}, \"checks\": {\"a4_only\": true, \"attack_surfaces_preserved\": true, \"baseline_pinned\": true, \"claims_preserved\": true, \"evidence_set_preserved\": true, \"forbidden_fields_rejected\": true, \"independence_preserved\": true, \"no_llm_derived_fields\": true, \"oracles_preserved\": true, \"provider_preserved\": true, \"versions_1_1\": true}, \"forbidden_field_rejections\": {\"global_state\": true, \"refutation_valid\": true, \"refutation_validity\": true}, \"groq_executed\": false, \"input_sha256\": \"e8a991a5d2070c1f5cbad48a5858dbd14adcef2f1e7556bf68305dd027f41d4d\", \"local_validation\": \"PASS\", \"materialized_evidence\": [{\"line_ranges\": [[27, 94], [370, 444]], \"path\": \"sprint3/resistance/AF-RESISTANCE-006-PUBLIC-CONTRACT.md\", \"sha256\": \"76c7dc9c55aa4d44851f8231bfb5f4f9f88cc49ca028f30e19e0809b3d09daa4\", \"stages\": [\"A3\"]}, {\"line_ranges\": [[490, 547]], \"path\": \"sprint3/resistance/AF-RESISTANCE-006-PUBLIC-CONTRACT.md\", \"sha256\": \"76c7dc9c55aa4d44851f8231bfb5f4f9f88cc49ca028f30e19e0809b3d09daa4\", \"stages\": [\"A4\"]}, {\"line_ranges\": [[182, 240], [395, 431]], \"path\": \"sprint3/resistance/AT-RESISTANCE-001-TECHNICAL-DESIGN.md\", \"sha256\": \"cad2ce7f58726df23da21588a2275b598b14bb8dfeada7c854b9bb9997f28a6b\", \"stages\": [\"A3\"]}, {\"line_ranges\": [[473, 507]], \"path\": \"sprint3/resistance/AT-RESISTANCE-001-TECHNICAL-DESIGN.md\", \"sha256\": \"cad2ce7f58726df23da21588a2275b598b14bb8dfeada7c854b9bb9997f28a6b\", \"stages\": [\"A4\"]}, {\"line_ranges\": [[145, 179]], \"path\": \"sprint3/resistance/AT-RESISTANCE-002-TECHNICAL-SPEC-ACCEPTANCE-ORACLES.md\", \"sha256\": \"9c3809f9302a11aa3e6364e6e6f6645db89f65f0747da9771d470ca4cfffc7a3\", \"stages\": [\"A3\"]}, {\"line_ranges\": [[145, 179], [184, 239]], \"path\": \"sprint3/resistance/AT-RESISTANCE-002-TECHNICAL-SPEC-ACCEPTANCE-ORACLES.md\", \"sha256\": \"9c3809f9302a11aa3e6364e6e6f6645db89f65f0747da9771d470ca4cfffc7a3\", \"stages\": [\"A4\"]}, {\"line_ranges\": [[1, 27], [49, 75]], \"path\": \"sprint3/resistance/IMP-RESISTANCE-012-TRACEABILITY.md\", \"sha256\": \"787a8a7b6194ebdabbad7228f6b26037952b49e27353582039485a0168ec06ae\", \"stages\": [\"A3\", \"A4\"]}, {\"line_ranges\": null, \"path\": \"sprint3/resistance/RESISTANCE_LIFECYCLE_RESULT.json\", \"sha256\": \"030b944a6af81ca69eace19cc531dcb9f57d03b1819fed0d8b75e5aec7ac23fe\", \"stages\": [\"A3\"]}], \"native_evidence_hash\": \"102ecc93db8c923d084a71b7bdddbbd2a724e448b1e2d9c532ea525d0002bfac\", \"native_input_hash\": \"6a610364f97b2d76bf975f03051452eed895a3cda397c8ff7fcc61efe4b10149\", \"network_attempts\": [], \"package_digest\": \"ecdc9e866c87e25a0ae507ac959afab1a9af124573e754d3fa3a58a6cf8fcb50\", \"preflight\": \"FAIL\", \"protected_sources_unchanged\": true, \"request_sha256\": \"2bfd1a2292cc7af5b50b263277efff7445c3a8c1f7e5839456ca1e7c5c78b47f\", \"status\": \"PASS\"}",
+    "context_digest": "d39514f4178156d4210dd11c25d24c3aea1f7f6a4c11ea5bc544c16e3c1900ce",
+    "context_id": "cf2d146c1621e0a54b7d4dd887feef238bcb57d82ba8aad48196ad79b0859d6d",
+    "effects": [],
+    "evidence_refs": [
+      "historical_request",
+      "historical_input",
+      "evidence_manifest",
+      "lifecycle",
+      "published_contract",
+      "runner",
+      "resolver",
+      "tooling_tests",
+      "po_authorization",
+      "publication",
+      "specification",
+      "state",
+      "previous_material_result"
+    ],
+    "execution_id": "e254b74e-dfe5-5663-9486-fff9cc5ced62",
+    "findings": [
+      "Preflight FAIL"
+    ],
+    "input_revision": "9bc3fb6dcd06e600778fb6b2b6e4fa4e5b288cf00aacb8e568938c48b8f8cece",
+    "next_destination": "NONE",
+    "outcome": "SUCCEEDED",
+    "proposals": [],
+    "protected_scope_touched": [],
+    "rationale": "Native published local validation and full evidence preflight; no audit invocation.",
+    "role": "CODE_EXECUTOR",
+    "task_id": "42176b41-3abb-59a7-b28c-44a6ec3e8fc9"
+  },
+  "result_digest": "460459e9c4cfac8c2a248b3eacdd1d10eb982d70f0ca83f9bab246afdd306998",
+  "tool_calls": 0
+}

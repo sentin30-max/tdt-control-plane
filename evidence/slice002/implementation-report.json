@@ -1,0 +1,178 @@
+{
+  "A3": "SKIPPED",
+  "A4_EXECUTED": "NO",
+  "A4_RESOLVER_VERSION": "1",
+  "A4_TWO_STAGE_PREFLIGHT": "FAIL",
+  "A4_TWO_STAGE_PUBLICATION": "VERIFIED",
+  "A5": "NOT_AUTHORIZED",
+  "A5_EXECUTED": "NO",
+  "ACTUAL_ROUTE": [
+    "ADVISOR",
+    "CODE_EXECUTOR",
+    "ADVISOR",
+    "CODE_EXECUTOR",
+    "ADVISOR",
+    "PO_REQUIRED"
+  ],
+  "ADVISOR_CONTEXT_LIMITATION": "Middle Advisor review received complete generated candidate. Final review received verification and candidate hashes, not full candidate contents; its explicit limitation is preserved in the result.",
+  "ADVISOR_FIRST": "PASS",
+  "ADVISOR_ROLE_QUALITY": "BOUNDED_OBSERVED: reviewed real inputs/candidate, distinguished successful diagnostics from failed readiness, rejected completion and escalated the preserved preflight blocker. Not general human equivalence.",
+  "ATTACK_SURFACES_PRESERVED": "SI",
+  "CANDIDATE_DIGEST": "e0111607b7167e7c0cad0d20388e2b1f08d587096cf9c6557b4d19378174adf6",
+  "CANDIDATE_FILE_DIGESTS": {
+    "A1_CHARACTERIZATION.md": "72f02d78fd02511a186e5012db4bd68949a20966697ab767e2cd8dca243e11a3",
+    "A2_CONTROL_REQUIREMENTS.md": "3e4faab779d2cd7ccb2b5f02a7a970a306d6c6ec220a805b409e8a5ef3753172",
+    "A3_INPUT.md": "3b0c8c980d4d2c711e117f111a22481313d5235b643312b4063eb20636425d14",
+    "A4_TWO_STAGE_INPUT_V1.md": "e8a991a5d2070c1f5cbad48a5858dbd14adcef2f1e7556bf68305dd027f41d4d",
+    "A4_TWO_STAGE_REQUEST_V1.json": "2bfd1a2292cc7af5b50b263277efff7445c3a8c1f7e5839456ca1e7c5c78b47f",
+    "A5_INPUT_SCHEMA.json": "f18b6c285019f03e7e953be9e2b7347f72ab30fcadd9c378c09816dbf3ed10b4",
+    "EVIDENCE_MANIFEST.json": "1852fc1eb26aae8f734ec92b5d298197eab5bf0441ebf8c0af92c44cea9d5ee6"
+  },
+  "CANDIDATE_PREPARATION": "PREPARED; LOCAL_VALIDATION_PASS; INACTIVE; PRESERVED",
+  "CLAIMS_PRESERVED": "SI",
+  "CODE_EXECUTOR_ROLE_COVERAGE": "DEMONSTRATED",
+  "COST_EVIDENCE": "Four isolated Codex sessions used included ChatGPT capacity, tools disabled, no API-key overrides or paid fallback. One deterministic local CodeExecutor. Zero-credit guard enforced before each model dispatch. No Actions or hosting launched.",
+  "COST_POLICY": "ZERO_COST_ONLY",
+  "DEVELOPMENT_ROLE_COVERAGE": "NOT_REQUIRED",
+  "DEVELOPMENT_ROUTE_DEMONSTRATED": false,
+  "DYNAMIC_ROUTING": "PASS",
+  "EVALUATED_BASELINE": "46828c1658b5328f65fd23ad2e350a19e54039ae",
+  "EVIDENCE_SET_PRESERVED": "SI",
+  "EXECUTIONS": [
+    {
+      "advisor_finding": [
+        "Publication PASS is consistent with the recovered operational point but does not prove candidate preparation or readiness.",
+        "The specified transformation repairs the historical input's auditor-validity authority conflict without requiring a new product decision.",
+        "No concrete missing requirement, missing preparation authority, or preserved terminal blocker is evidenced.",
+        "Full evidence materialization and native token preflight remain necessary; token feasibility cannot be inferred from publication tests."
+      ],
+      "backend": "CodexRoleExecutor",
+      "context_digest": "ac30d2ac6b7639ea90d30e5b110cd1a03b13de67ebf5add98b7831073d6a9e54",
+      "execution_id": "2142e6da-c067-55c8-8912-cff46e335f64",
+      "ingest": "ACCEPTED",
+      "next_destination": "CODE_EXECUTOR",
+      "result_digest": "b3330f9c42ba285b4511d3281c0e3ec35c073420cd88f4086c31d67959670e21",
+      "role": "ADVISOR",
+      "runtime_thread_id": "01a0d27a-d28d-7be2-8662-3e1b140caf52"
+    },
+    {
+      "advisor_finding": null,
+      "backend": "CodexRoleExecutor",
+      "context_digest": "a510f6779945c89a5b6f3fd233f9df6a40047885195ae2a9fbfc7ab129baf56a",
+      "execution_id": "96355d38-bc31-5eab-9a70-beda3f1e4e69",
+      "ingest": "ACCEPTED",
+      "next_destination": "NONE",
+      "result_digest": "110e7ba80f9667fd7cfc0c2457866b03caba0542bd227ae79cdf3601854a9bed",
+      "role": "CODE_EXECUTOR",
+      "runtime_thread_id": "01a0d27b-7070-7560-a416-7ee80d64b0d8"
+    },
+    {
+      "advisor_finding": [
+        "No concrete deviation from the eight request updates and four input replacements was identified.",
+        "Previous transformation success is not evidence of candidate validation, full evidence materialization or native token preflight PASS.",
+        "State supplies neither verification nor a blocker; inventing a terminal failure or escalating a product decision now would be unsupported.",
+        "No additional Development requirement or preparation authority gap is established."
+      ],
+      "backend": "CodexRoleExecutor",
+      "context_digest": "908c2b29ecf26633ca2f496175f9902ea29c8c402f466a3bb4951b6359e61b23",
+      "execution_id": "8b8c775c-8b7d-56bc-b31b-b91173b3edc1",
+      "ingest": "ACCEPTED",
+      "next_destination": "CODE_EXECUTOR",
+      "result_digest": "1739579bb72f758237dd25be45663fa2272c2a9705166501e4858c7b36088ac8",
+      "role": "ADVISOR",
+      "runtime_thread_id": "01a0d27c-625c-7e33-b1ee-1aa798e30bd5"
+    },
+    {
+      "advisor_finding": null,
+      "backend": "PublishedLocalValidationExecutor",
+      "context_digest": "d39514f4178156d4210dd11c25d24c3aea1f7f6a4c11ea5bc544c16e3c1900ce",
+      "execution_id": "e254b74e-dfe5-5663-9486-fff9cc5ced62",
+      "ingest": "ACCEPTED",
+      "next_destination": "NONE",
+      "result_digest": "460459e9c4cfac8c2a248b3eacdd1d10eb982d70f0ca83f9bab246afdd306998",
+      "role": "CODE_EXECUTOR",
+      "runtime_thread_id": null
+    },
+    {
+      "advisor_finding": [
+        "The budget arithmetic independently supports preflight FAIL; the excess is four tokens, with no authorized tolerance.",
+        "Local validation PASS and published tooling results do not establish the required conjunction of native validation and preflight PASS.",
+        "Previous SUCCEEDED can describe successful diagnostic execution, but cannot certify candidate readiness; NONE leaves the required blocker disposition outstanding.",
+        "The exact transformation is sufficiently specified. No concrete missing requirement warrants Development.",
+        "Candidate hashes match the reported verification hashes. Full candidate contents and exact-comparison evidence are absent, limiting independent verification without proving a transformation defect.",
+        "No supplied evidence establishes unauthorized execution or protected-source mutation. The candidate remains non-authoritative and inactive, and lifecycle remains EN_AUDITORIA."
+      ],
+      "backend": "CodexRoleExecutor",
+      "context_digest": "a2ca7d4fe70f194c1be33356ba28bb9a566678c53a6fb3509f22d81155039f2b",
+      "execution_id": "be889d75-1dd5-50bb-8835-ebd70bea693f",
+      "ingest": "ACCEPTED",
+      "next_destination": "PO_REQUIRED",
+      "result_digest": "ec8f610c528e127a7b91cb650a03a6b11b18910bcf6bcd3ff9fb1a8fbdefcf47",
+      "role": "ADVISOR",
+      "runtime_thread_id": "01a0d27c-fb24-7ff1-b34d-1da66ab2e26a"
+    }
+  ],
+  "GROQ_EXECUTED": "NO",
+  "HITO_A_COMMIT": "0962aa340bd6712f9b8d4720adecaaddb9a2dc35",
+  "IDEMPOTENCY": "PASS",
+  "INDEPENDENCE_REQUIREMENT_PRESERVED": "SI",
+  "INPUT_PATH": "candidates/slice002/audits/resistance/RESISTANCE-AUDIT-REQUEST-46828C1658B5/A4_TWO_STAGE_INPUT_V1.md",
+  "LLM_EMITS_GLOBAL_STATE": "NO",
+  "LLM_EMITS_REFUTATION_VALID": "NO",
+  "LLM_EMITS_REFUTATION_VALIDITY": "NO",
+  "LLM_FIELDS_CLAIM_BOUNDARY": "Enforced by candidate input and published evidence-only schema; negative probes rejected all three fields. No actual auditor run occurred.",
+  "LOCAL_VALIDATION": "PASS",
+  "MATERIAL_BLOCKERS": [
+    "Native preflight total 8004 is not strictly below 8000. No compaction, evidence reduction, budget reduction, re-dispatch or auditor call performed."
+  ],
+  "MATERIAL_RESULTS_RETURNED_TO_ADVISOR": "PASS",
+  "NEXT_ACTION": "Advisor/PO review of preserved preflight STOP; any subsequent adjustment or Groq execution requires separate explicit authorization.",
+  "NEXT_DESTINATION": "PO_REQUIRED",
+  "PAID_CAPACITY_USED": "NO",
+  "PERMITTED_STAGES": [
+    "A4"
+  ],
+  "PO_MANUAL_TRANSPORT_DURING_SEGMENT": "NONE",
+  "PREFLIGHT_BUDGET": {
+    "estimated_prompt_tokens": 5604,
+    "fits": false,
+    "max_output_tokens": 1600,
+    "prompt_bytes": 22414,
+    "provider_tpm_limit": 8000,
+    "requested_budget": 8004,
+    "safety_margin_tokens": 800
+  },
+  "PRODUCT_OWNER_DECISION_REQUIRED": "YES",
+  "PROTECTED_SURFACES_MODIFIED": "NO",
+  "PROTECTION_EVIDENCE": "All 238 pinned exported source files retain manifest hashes; actual source reads use git show. Candidate/support files are separate Control Plane copies. Original/corrective/V2/hybrid outputs were never reprocessed.",
+  "RECOVERED_OPERATIONAL_POINT": "A4_TWO_STAGE_PUBLICATION_COMPLETED; prepare new request/input; local validation and preflight only",
+  "RECOVERY": "PASS",
+  "REFUTATION_VALIDITY_VERSION": "1",
+  "REQUEST_PATH": "candidates/slice002/audits/resistance/RESISTANCE-AUDIT-REQUEST-46828C1658B5/A4_TWO_STAGE_REQUEST_V1.json",
+  "REQUEST_PREPARATION": "BLOCKED",
+  "RESISTANCE_FORMAL_LIFECYCLE": "EN_AUDITORIA",
+  "RESISTANCE_SOURCE_REVISION": "af9f8a392f95363e86c5636aefa5c55494715f6c",
+  "ROUTING_CLAIM_BOUNDARY": "Observed state-based route to preparation, local preflight and STOP; Development route was not exercised.",
+  "SCOPE_LIMITATIONS": [
+    "No real external audit",
+    "No production readiness claim",
+    "No Trader code modification",
+    "No autonomous closure of Resistance",
+    "No exactly-once external effects claim"
+  ],
+  "SEGMENT_COMPLETED": false,
+  "SLICE_001": "Preserved and consumed as accepted bounded dependency; no reopening, merge or authority expansion.",
+  "SLICE_001_COMMIT": "97950ef55a6a2cc5a54752d1ec54243de327a646",
+  "SLICE_002_REAL_RESISTANCE_PILOT": "PARTIAL",
+  "TASK_ID": "42176b41-3abb-59a7-b28c-44a6ec3e8fc9",
+  "TESTS": {
+    "control_plane": 51,
+    "publication_tooling": 135,
+    "recovery": "PASS",
+    "resolver_subset": 35
+  },
+  "UNRESOLVED_AUTHORITY_DEPENDENCIES": [
+    "PO disposition needed for a subsequent bounded response to the preserved preflight failure. No constraint change has been selected or authorized."
+  ],
+  "authoritative": false
+}
