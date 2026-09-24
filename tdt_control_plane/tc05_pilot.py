@@ -79,7 +79,7 @@ def generate(root,output_dir):
               not_applicable['execution_classification']==NOT_APPLICABLE_CLASS and all(x['execution_classification']==MATERIAL_BLOCKER for x in blockers))
     report={"report":"TC_05_DETERMINISTIC_DISPATCH_INTEGRATION_REPORT","status":"IMPLEMENTED_CANDIDATE" if accepted else "FAILED",
       "baseline":["e957b70058fe89aafc0295ef1434aa21b34ffed2","f5189cb5626b9cb3fbebf1f6a401998d02e2ed0d","cc3976ae6ab17d0b50320cc8f0babf0dce6e3f0a"],
-      "branch":"implementation/tc-05-deterministic-dispatch","implementation_commit":"6321ce8ffd8b69f392c2d29e7f7845b12b18c442","final_evidence_commit":"PENDING_AT_GENERATION",
+      "branch":"implementation/tc-05-deterministic-dispatch","implementation_commit":"6321ce8ffd8b69f392c2d29e7f7845b12b18c442","final_evidence_commit":"494acd920725fb3f76d7c8039b3243cc0c33bf7e",
       "files_changed":["TC-05.md","tdt_control_plane/deterministic_dispatch.py","tdt_control_plane/tc05_pilot.py","tests/test_deterministic_dispatch.py","evidence/tc05/*"],
       "execution_model":"Role Router -> deterministic eligibility -> registered executor -> strict result -> verify/ingest -> Advisor handoff",
       "executor_registry":[CAPABILITY.__dict__],"deterministic_executor_id":CAPABILITY.executor_id,"supported_operation":CAPABILITY.supported_operation,

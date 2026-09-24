@@ -94,7 +94,7 @@
     "tests/test_deterministic_dispatch.py",
     "evidence/tc05/*"
   ],
-  "final_evidence_commit": "PENDING_AT_GENERATION",
+  "final_evidence_commit": "494acd920725fb3f76d7c8039b3243cc0c33bf7e",
   "groq_executed": "NO",
   "historical_proxy_comparator": "8249 estimated tokens",
   "idempotency": "PASS",
