@@ -1,0 +1,51 @@
+{
+  "byte_exact_equivalence": "YES",
+  "deterministic_output": {
+    "artifact": "{\"request\":{\"schema_version\":\"2\",\"request_id\":\"RESISTANCE-AUDIT-REQUEST-46828C1658B5-A4-TWO-STAGE-V1-01\",\"unit\":\"Resistance\",\"evaluated_baseline\":\"46828c1658b5328f65fd23ad2e350a19e54039ae\",\"result_directory\":\"two-stage-v1-01-results\",\"a3_instance_id\":\"RESISTANCE-A3-NOT-INCLUDED-TWO-STAGE-V1\",\"a4_instance_id\":\"RESISTANCE-INDEPENDENT-INSTANCE-A4-TWO-STAGE-V1-46828C1658B5\",\"a4_independent_instance_id\":\"RESISTANCE-INDEPENDENT-INSTANCE-A4-TWO-STAGE-V1-46828C1658B5\",\"a1_state\":\"DETERMINADA\",\"a2_state\":\"DETERMINADOS\",\"audit_intensity\":\"REFORZADA\",\"a3_assignee\":\"NOT_INCLUDED\",\"a4_assignee\":\"GROQ_FREE/openai/gpt-oss-120b:A4:RESISTANCE-INDEPENDENT-INSTANCE-A4-TWO-STAGE-V1-46828C1658B5\",\"a3_independence_required\":false,\"a4_independence_required\":true,\"zero_cost_only\":true,\"provider\":\"groq\",\"model\":\"openai/gpt-oss-120b\",\"runner\":\"tools/tef_audit_runner.py\",\"resolver\":\"tef_a4_resolution\",\"resolver_version\":\"1\",\"evidence_manifest\":\"EVIDENCE_MANIFEST.json\",\"a1_input\":\"A1_CHARACTERIZATION.md\",\"a2_input\":\"A2_CONTROL_REQUIREMENTS.md\",\"a3_input\":\"A3_INPUT.md\",\"a4_input\":\"A4_TWO_STAGE_INPUT_V1.md\",\"a5_input_schema\":\"A5_INPUT_SCHEMA.json\",\"claims\":[\"C1\",\"C2\",\"C3\",\"C4\",\"C5\",\"C6\",\"C7\",\"C8\",\"C9\",\"C10\",\"C11\",\"C12\",\"C13\",\"C14\"],\"limits\":[\"P01-P12 evidence is bounded by the scenarios and subdomains stated in A1\",\"No global proof is claimed for unrelated downstream consumers\",\"No Support audit evidence or conclusion is reused\"],\"max_output_tokens_per_stage\":1600,\"provider_tpm_limit\":8000,\"token_safety_margin\":800,\"min_seconds_between_stages\":70,\"negative_findings_preservation\":true,\"baseline_guards\":{\"modify_evaluated_code\":false,\"reopen_support_or_d6\":false,\"rerun_consumed_tests\":false,\"redesign_resistance\":false,\"execute_a5_before_a3_a4\":false},\"a4_justification_contract\":\"2\",\"permitted_stages\":[\"A4\"],\"refutation_validity_version\":\"1\"},\"input_text\":\"REQUEST_INSTANCE_BINDING=46828c1658b5328f65fd23ad2e350a19e54039ae-resistance-a4-two-stage-v1 OBJECTIVE: Attempt to prove C1-C14 false. Do not confirm them by authority. For every attack, identify the attacked claim, a concrete failure hypothesis, a discriminating oracle and the evidence supporting or refuting the hypothesis. MANDATORY ATTACK SURFACES: 1 causal availability and late-reference backfill; 2 future divergence rewriting a shared prefix; 3 out-of-order arrival versus canonical semantic order; 4 identical duplicates and contradictory duplicates; 5 replay mismatch, including history order and payload changes; 6 rebinding a born Resistance to another valid reference; 7 event-ID collision with different payload; 8 same price with different provenance and multi-reference cross-mutation; 9 gap versus observed reentry and AT_R neutral outcomes; 10 derived context leaking into fact store/event enum; 11 snapshot/input-list mutation altering canonical sources; 12 break supersession, reuse or double consumption; 13 exact-price scale mismatch or implicit conversion; 14 incomplete/incorrect 95-oracle traceability. ORACLES: No future input may change emitted prefix facts; canonical IDs/history must repeat; invalid rebind/collision/contradiction must raise the published error before mutation; independent references must not merge/transfer history; derived context must never become a ResistanceEvent; snapshot/read projections must not become authority; break chains may consume only their active eligible break; all traceability rows must resolve to versioned evidence at the frozen baseline. INDEPENDENCE AND PRESERVATION: Use only this frozen request and its distinct GROQ_FREE/openai/gpt-oss-120b instance; producer/orchestrator is not executor. Retain request/input hashes and provider metadata. Preserve negative findings verbatim: no filtering, PASS substitution, A3 overwrite or test-count compensation. Request changes change its hash and never erase the original result. BOUNDARY: Do not invent new market semantics, execute orders, redesign Resistance, reopen Support/D6, or judge A3 evidence sufficiency. Failure to discover a defect is not itself authority for a final A4 classification. OUTPUT AUTHORITY: Return JSON AUDITOR_EVIDENCE only. Do not emit refutation_valid, refutation_validity, global_state or any final A4 classification; Code derives refutation validity (version 1) first, then tef_a4_resolution (version 1) derives A4 state only when unambiguous. UNRESOLVED_CONTRADICTION or UNRESOLVED_NORMATIVE_AMBIGUITY means non-consumable, no published global_state, no automatic retry and no raw rewrite. Required fields: stage=\\\"A4\\\"; attempt_present boolean; coverage_status and intensity_status SATISFIED|INSUFFICIENT|NOT_EVALUABLE; independence_required_dimensions exactly [\\\"cognitive\\\",\\\"procedural\\\",\\\"traceable\\\",\\\"additional\\\"]; independence_dimension_status exact map with SATISFIED|NOT_SATISFIED|NOT_EVALUABLE values; hypothesis_control_status and oracle_control_status SATISFIED|MISSING|INVALID|NOT_EVALUABLE; oracle_independence_status and evidence_integrity_status SATISFIED|NOT_SATISFIED|NOT_EVALUABLE; attacks list of structured attack observations; material_defects list; negative_findings list; failure_causes list of objects with field, evidence_reference, normative_source, explanation; evidence_references list; normative_sources list; remediation_status DETERMINED|NOT_DETERMINABLE|NOT_APPLICABLE; remediation_scope nonempty string only when DETERMINED, otherwise null; adverse_result_preserved boolean; scope_respected boolean. Do not add fields outside this schema. Report structured evidence faithfully; do not infer a final label, invent a defect/remedy, filter an adverse result, or rewrite raw evidence to satisfy the resolver.\\n\"}",
+    "context_digest": "a510f6779945c89a5b6f3fd233f9df6a40047885195ae2a9fbfc7ab129baf56a",
+    "context_id": "ed7aeb195ffc63744a07bf004257ef59360a46be2d935ccf40ba77b7fcddadd0",
+    "effects": [],
+    "evidence_refs": [
+      "historical_request",
+      "historical_input",
+      "specification"
+    ],
+    "execution_id": "96355d38-bc31-5eab-9a70-beda3f1e4e69",
+    "findings": [
+      "Completed the bounded literal transformation; no runtime validation, materialization or token preflight was performed."
+    ],
+    "input_revision": "9bc3fb6dcd06e600778fb6b2b6e4fa4e5b288cf00aacb8e568938c48b8f8cece",
+    "next_destination": "NONE",
+    "outcome": "SUCCEEDED",
+    "proposals": [],
+    "protected_scope_touched": [],
+    "rationale": "Applied the eight supplied request updates and four literal input replacements using only supplied data, preserving all other fields and input characters, including the trailing newline.",
+    "role": "CODE_EXECUTOR",
+    "task_id": "42176b41-3abb-59a7-b28c-44a6ec3e8fc9"
+  },
+  "deterministic_result_digest": "110e7ba80f9667fd7cfc0c2457866b03caba0542bd227ae79cdf3601854a9bed",
+  "downstream_precondition_equivalence": "PASS",
+  "historical_input_digest": "a510f6779945c89a5b6f3fd233f9df6a40047885195ae2a9fbfc7ab129baf56a",
+  "historical_replay": "PASS",
+  "historical_result_digest": "110e7ba80f9667fd7cfc0c2457866b03caba0542bd227ae79cdf3601854a9bed",
+  "material_contract_equivalence": "PASS",
+  "runtime": {
+    "classification": "LOCAL_MEASURED",
+    "elapsed_ns": 43396600,
+    "iterations": 100,
+    "mean_ns": 433966
+  },
+  "shadow_recovery": {
+    "first": {
+      "result_digest": "110e7ba80f9667fd7cfc0c2457866b03caba0542bd227ae79cdf3601854a9bed",
+      "status": "PERSISTED_SHADOW"
+    },
+    "replay": {
+      "result_digest": "110e7ba80f9667fd7cfc0c2457866b03caba0542bd227ae79cdf3601854a9bed",
+      "status": "NO_NEW_EFFECT"
+    }
+  },
+  "structural_equivalence": "PASS",
+  "target_execution": "CODE_EXECUTOR_PREPARATION",
+  "target_execution_id": "96355d38-bc31-5eab-9a70-beda3f1e4e69"
+}

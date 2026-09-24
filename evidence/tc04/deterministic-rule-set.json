@@ -1,0 +1,138 @@
+{
+  "contract_version": "slice002-preparation-contract-v1",
+  "coverage": {
+    "artifact": [
+      "R-01",
+      "R-02"
+    ],
+    "context_digest": [
+      "R-03"
+    ],
+    "context_id": [
+      "R-03"
+    ],
+    "effects": [
+      "R-04"
+    ],
+    "evidence_refs": [
+      "R-04"
+    ],
+    "execution_id": [
+      "R-03"
+    ],
+    "findings": [
+      "R-04"
+    ],
+    "input_revision": [
+      "R-03"
+    ],
+    "next_destination": [
+      "R-04"
+    ],
+    "outcome": [
+      "R-04"
+    ],
+    "proposals": [
+      "R-04"
+    ],
+    "protected_scope_touched": [
+      "R-04"
+    ],
+    "rationale": [
+      "R-04"
+    ],
+    "role": [
+      "R-03"
+    ],
+    "task_id": [
+      "R-03"
+    ]
+  },
+  "material_output_fields": [
+    "artifact",
+    "context_digest",
+    "context_id",
+    "effects",
+    "evidence_refs",
+    "execution_id",
+    "findings",
+    "input_revision",
+    "next_destination",
+    "outcome",
+    "proposals",
+    "protected_scope_touched",
+    "rationale",
+    "role",
+    "task_id"
+  ],
+  "rule_set_version": "tc04-preparation-rules-v1",
+  "rules": [
+    {
+      "authority_source": "/inputs/po_authority",
+      "contract_source": "/inputs/specification",
+      "failure_mode": "DETERMINISTIC_PREPARATION_NOT_APPLICABLE",
+      "input_selectors": [
+        "/inputs/historical_request",
+        "/inputs/specification/request_updates"
+      ],
+      "oracle": "unchanged-field and exact-update comparison",
+      "output_selector": "/artifact/request",
+      "preconditions": "schema and exact update set valid",
+      "rule_id": "R-01",
+      "rule_type": "FIELD_PROJECTION",
+      "rule_version": "1",
+      "transformation": "copy then update declared fields"
+    },
+    {
+      "authority_source": "/inputs/po_authority",
+      "contract_source": "/inputs/specification",
+      "failure_mode": "DETERMINISTIC_PREPARATION_NOT_APPLICABLE",
+      "input_selectors": [
+        "/inputs/historical_input",
+        "/inputs/specification/input_literal_replacements"
+      ],
+      "oracle": "independent split/join replay and preservation checks",
+      "output_selector": "/artifact/input_text",
+      "preconditions": "each old literal occurs exactly once",
+      "rule_id": "R-02",
+      "rule_type": "LITERAL_SUBSTITUTION",
+      "rule_version": "1",
+      "transformation": "ordered exact replacement"
+    },
+    {
+      "authority_source": "ExecutionContext schema",
+      "contract_source": "ExecutionResult schema",
+      "failure_mode": "DETERMINISTIC_PREPARATION_NOT_APPLICABLE",
+      "input_selectors": [
+        "/task_id",
+        "/execution_id",
+        "/context_id",
+        "/input_revision"
+      ],
+      "oracle": "strict identity comparison",
+      "output_selector": "/identity_fields",
+      "preconditions": "valid bound context identity",
+      "rule_id": "R-03",
+      "rule_type": "EXACT_COPY",
+      "rule_version": "1",
+      "transformation": "copy identity and digest context"
+    },
+    {
+      "authority_source": "bounded computation authority",
+      "contract_source": "ExecutionResult schema",
+      "failure_mode": "DETERMINISTIC_PREPARATION_NOT_APPLICABLE",
+      "input_selectors": [
+        "/role",
+        "/inputs/operation",
+        "/inputs/specification"
+      ],
+      "oracle": "strict allowlist and no effects/destination",
+      "output_selector": "/status_fields",
+      "preconditions": "bounded deterministic preparation only",
+      "rule_id": "R-04",
+      "rule_type": "VERSIONED_TEMPLATE",
+      "rule_version": "1",
+      "transformation": "emit fixed non-routing result facts"
+    }
+  ]
+}
