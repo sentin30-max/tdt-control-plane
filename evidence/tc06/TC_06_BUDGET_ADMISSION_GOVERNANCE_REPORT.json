@@ -1,0 +1,597 @@
+{
+  "a4_executed": "NO",
+  "a5_executed": "NO",
+  "account_quota": "NOT_AVAILABLE",
+  "account_quota_inferred": "NO",
+  "account_quota_source": "NOT_AVAILABLE",
+  "admission_model": "validate -> recover/reuse -> TC05 deterministic -> LLM necessity -> estimate -> cumulative usage -> review reserve -> atomic reservation -> ADMIT",
+  "admission_taxonomy": [
+    "ADMIT",
+    "DEFER",
+    "BLOCK",
+    "REVIEW_REQUIRED"
+  ],
+  "admissions_granted": 4,
+  "adversarial_refutation": {
+    "attacks": [
+      "repeat spending selects reuse",
+      "deterministic task cannot request LLM",
+      "executor cannot bypass permit",
+      "usage estimate computed internally",
+      "NOT_AVAILABLE not zero",
+      "NOT_AVAILABLE not infinite",
+      "estimated remains estimated",
+      "role is not necessity",
+      "budget never prunes context",
+      "review reserve protected",
+      "independent review not reused",
+      "duplicate reservation rejected",
+      "timeout becomes uncertain",
+      "uncertain not zero",
+      "released not consumed",
+      "consumed not active",
+      "budget layers not double counted",
+      "output budget not reduced",
+      "paid fallback false",
+      "material blocker remains blocker",
+      "budget issue does not change authority",
+      "stale fingerprint misses reuse",
+      "authority participates in fingerprint",
+      "blocker participates in fingerprint",
+      "complete inputs preserve adverse findings",
+      "executor cannot enlarge policy",
+      "telemetry has no authority",
+      "account quota not inferred",
+      "provider TPM separate from account quota",
+      "TC05 blocker cannot fall through"
+    ],
+    "status": "PASS_PROTECTED"
+  },
+  "advisor_reserve_protected": "PASS",
+  "baseline": [
+    "4cb07fbcba175ab04bcc8a3e28974d36ba5f998f",
+    "6321ce8ffd8b69f392c2d29e7f7845b12b18c442",
+    "494acd920725fb3f76d7c8039b3243cc0c33bf7e"
+  ],
+  "branch": "implementation/tc-06-budget-admission-governance",
+  "budget_hierarchy": "TASK_BUDGET contains ROLE_ALLOCATION contains EXECUTION_RESERVATION; layers are not summed",
+  "budget_policy_version": "tc06-budget-admission-v1",
+  "cumulative_accounting": "PASS",
+  "deterministic_integration": "TC05 exact capability checked before LLM necessity or reservation",
+  "execution_reservation_model": [
+    "reservation_id",
+    "task_id",
+    "role",
+    "execution_id",
+    "policy_version",
+    "context/output estimates",
+    "state digest",
+    "status"
+  ],
+  "files_changed": [
+    "TC-06.md",
+    "tdt_control_plane/budget_admission.py",
+    "tdt_control_plane/tc06_pilot.py",
+    "tests/test_budget_admission.py",
+    "evidence/tc06/*"
+  ],
+  "final_evidence_commit": "PENDING_AT_GENERATION",
+  "groq_executed": "NO",
+  "implementation_commit": "PENDING_AT_GENERATION",
+  "independent_review_policy": "explicit contract flag requires fresh admitted review",
+  "known_limitations": [
+    "internal task budgets do not represent account quota",
+    "no real LLM dispatch occurred",
+    "policies are explicitly configured per task",
+    "no context optimization is performed"
+  ],
+  "llm_necessity_model": [
+    "SEMANTIC_REVIEW_REQUIRED",
+    "OPEN_ENDED_ANALYSIS",
+    "INDEPENDENT_REVIEW_REQUIRED",
+    "UNRESOLVED_INTERPRETATION_WITHIN_AUTHORITY",
+    "GENERATIVE_SYNTHESIS_REQUIRED"
+  ],
+  "material_findings": [
+    "account quota source remains unavailable",
+    "Advisor reserve prevents executor exhaustion",
+    "TC05 deterministic work bypasses LLM reservation"
+  ],
+  "material_reasoning_fingerprint": {
+    "excludes": "execution identity",
+    "includes": "revision, role, scope, authority, protections, objective, full inputs/blockers/adverse evidence, sources and review contract",
+    "version": "material-reasoning-fingerprint-v1"
+  },
+  "measurement_statuses": [
+    "MEASURED",
+    "ESTIMATED",
+    "NOT_AVAILABLE"
+  ],
+  "model_calls_avoided_by_determinism": 1,
+  "model_calls_avoided_by_reuse": 1,
+  "model_calls_blocked": 1,
+  "model_calls_deferred": 2,
+  "model_calls_executed": 0,
+  "next_recommended_slice": "Advisor/PO review of TC-06 evidence; this recommendation does not authorize execution",
+  "no_double_counting": "PASS",
+  "pilot_admit": {
+    "decision": {
+      "account_quota": {
+        "source": "NOT_CONNECTED",
+        "status": "NOT_AVAILABLE",
+        "value": null
+      },
+      "decision": "ADMIT",
+      "execution_id": "285744ad-24f8-5a6a-9e38-3f07c3fe498a",
+      "execution_purpose": "produce a new bounded specification",
+      "expected_material_output": "strict structured specification",
+      "independent_review": false,
+      "llm_dispatch_authorized": true,
+      "llm_dispatched": false,
+      "material_reasoning_fingerprint": "e197a1ab42532559496ed4bba1808a7395526a32751b94da88084e4c8fb718f9",
+      "paid_fallback": false,
+      "reason": "AUTHORIZED_TO_DISPATCH",
+      "reservation_id": "db78378c-1abb-5806-ab37-0fa831a4da13",
+      "reservation_status": "RESERVED",
+      "resource_estimate": {
+        "context_bytes": {
+          "method": "utf8_bytes_json_dumps_default",
+          "status": "MEASURED",
+          "value": 973
+        },
+        "context_tokens": {
+          "method": "ceil_utf8_bytes_div_4_proxy",
+          "status": "ESTIMATED",
+          "value": 244,
+          "version": "1"
+        },
+        "output_tokens": {
+          "method": "explicit_contract_or_task_policy",
+          "status": "ESTIMATED",
+          "value": 1000
+        },
+        "total_tokens": {
+          "method": "non_overlapping_context_plus_output",
+          "status": "ESTIMATED",
+          "value": 1244
+        }
+      },
+      "review_reserve": {
+        "calls": 1,
+        "tokens": 2000
+      },
+      "silent_context_degradation": false,
+      "silent_output_degradation": false,
+      "task_id": "6fcdb909-03c2-5bc0-8258-e941c0d016ba",
+      "why_llm_required": "GENERATIVE_SYNTHESIS_REQUIRED"
+    },
+    "dispatch_not_executed": true,
+    "status": "PASS"
+  },
+  "pilot_budget_exhausted": {
+    "decision": {
+      "account_quota": {
+        "source": "NOT_CONNECTED",
+        "status": "NOT_AVAILABLE",
+        "value": null
+      },
+      "decision": "DEFER",
+      "execution_id": "17eba79e-a758-559f-b442-802c9ad7278a",
+      "llm_dispatch_authorized": false,
+      "llm_dispatched": false,
+      "paid_fallback": false,
+      "reason": "TASK_BUDGET_EXHAUSTED",
+      "reservation": null,
+      "resource_estimate": {
+        "context_bytes": {
+          "method": "utf8_bytes_json_dumps_default",
+          "status": "MEASURED",
+          "value": 977
+        },
+        "context_tokens": {
+          "method": "ceil_utf8_bytes_div_4_proxy",
+          "status": "ESTIMATED",
+          "value": 245,
+          "version": "1"
+        },
+        "output_tokens": {
+          "method": "explicit_contract_or_task_policy",
+          "status": "ESTIMATED",
+          "value": 1000
+        },
+        "total_tokens": {
+          "method": "non_overlapping_context_plus_output",
+          "status": "ESTIMATED",
+          "value": 1245
+        }
+      },
+      "silent_context_degradation": false,
+      "silent_output_degradation": false,
+      "task_id": "3090f246-2d25-5579-8eab-f44deeaf6e61"
+    },
+    "status": "PASS"
+  },
+  "pilot_deterministic": {
+    "decision": {
+      "account_quota": {
+        "source": "NOT_CONNECTED",
+        "status": "NOT_AVAILABLE",
+        "value": null
+      },
+      "decision": "BLOCK",
+      "deterministic_result": {
+        "account_quota_savings": "NOT_AVAILABLE",
+        "actual_token_savings": "NOT_AVAILABLE",
+        "advisor_handoff": "READY",
+        "advisor_review_completed": false,
+        "authoritative": false,
+        "automatic_llm_fallback": false,
+        "avoided_llm_dispatch": 1,
+        "context_id": "ed7aeb195ffc63744a07bf004257ef59360a46be2d935ccf40ba77b7fcddadd0",
+        "contract_version": "slice002-preparation-contract-v1",
+        "execution_classification": "ELIGIBLE",
+        "execution_id": "96355d38-bc31-5eab-9a70-beda3f1e4e69",
+        "executor_type": "DETERMINISTIC",
+        "historical_proxy_comparator": "8249 estimated tokens",
+        "input_revision": "9bc3fb6dcd06e600778fb6b2b6e4fa4e5b288cf00aacb8e568938c48b8f8cece",
+        "llm_dispatched": false,
+        "local_runtime": {
+          "elapsed_ns": 523000,
+          "status": "MEASURED"
+        },
+        "model_call_count": 0,
+        "next_operational_dispatch_before_advisor": false,
+        "oracles": [
+          "validate_result",
+          "validate_output"
+        ],
+        "recovered": false,
+        "recovery_status": "COMPLETED",
+        "result": {
+          "artifact": "{\"request\":{\"schema_version\":\"2\",\"request_id\":\"RESISTANCE-AUDIT-REQUEST-46828C1658B5-A4-TWO-STAGE-V1-01\",\"unit\":\"Resistance\",\"evaluated_baseline\":\"46828c1658b5328f65fd23ad2e350a19e54039ae\",\"result_directory\":\"two-stage-v1-01-results\",\"a3_instance_id\":\"RESISTANCE-A3-NOT-INCLUDED-TWO-STAGE-V1\",\"a4_instance_id\":\"RESISTANCE-INDEPENDENT-INSTANCE-A4-TWO-STAGE-V1-46828C1658B5\",\"a4_independent_instance_id\":\"RESISTANCE-INDEPENDENT-INSTANCE-A4-TWO-STAGE-V1-46828C1658B5\",\"a1_state\":\"DETERMINADA\",\"a2_state\":\"DETERMINADOS\",\"audit_intensity\":\"REFORZADA\",\"a3_assignee\":\"NOT_INCLUDED\",\"a4_assignee\":\"GROQ_FREE/openai/gpt-oss-120b:A4:RESISTANCE-INDEPENDENT-INSTANCE-A4-TWO-STAGE-V1-46828C1658B5\",\"a3_independence_required\":false,\"a4_independence_required\":true,\"zero_cost_only\":true,\"provider\":\"groq\",\"model\":\"openai/gpt-oss-120b\",\"runner\":\"tools/tef_audit_runner.py\",\"resolver\":\"tef_a4_resolution\",\"resolver_version\":\"1\",\"evidence_manifest\":\"EVIDENCE_MANIFEST.json\",\"a1_input\":\"A1_CHARACTERIZATION.md\",\"a2_input\":\"A2_CONTROL_REQUIREMENTS.md\",\"a3_input\":\"A3_INPUT.md\",\"a4_input\":\"A4_TWO_STAGE_INPUT_V1.md\",\"a5_input_schema\":\"A5_INPUT_SCHEMA.json\",\"claims\":[\"C1\",\"C2\",\"C3\",\"C4\",\"C5\",\"C6\",\"C7\",\"C8\",\"C9\",\"C10\",\"C11\",\"C12\",\"C13\",\"C14\"],\"limits\":[\"P01-P12 evidence is bounded by the scenarios and subdomains stated in A1\",\"No global proof is claimed for unrelated downstream consumers\",\"No Support audit evidence or conclusion is reused\"],\"max_output_tokens_per_stage\":1600,\"provider_tpm_limit\":8000,\"token_safety_margin\":800,\"min_seconds_between_stages\":70,\"negative_findings_preservation\":true,\"baseline_guards\":{\"modify_evaluated_code\":false,\"reopen_support_or_d6\":false,\"rerun_consumed_tests\":false,\"redesign_resistance\":false,\"execute_a5_before_a3_a4\":false},\"a4_justification_contract\":\"2\",\"permitted_stages\":[\"A4\"],\"refutation_validity_version\":\"1\"},\"input_text\":\"REQUEST_INSTANCE_BINDING=46828c1658b5328f65fd23ad2e350a19e54039ae-resistance-a4-two-stage-v1 OBJECTIVE: Attempt to prove C1-C14 false. Do not confirm them by authority. For every attack, identify the attacked claim, a concrete failure hypothesis, a discriminating oracle and the evidence supporting or refuting the hypothesis. MANDATORY ATTACK SURFACES: 1 causal availability and late-reference backfill; 2 future divergence rewriting a shared prefix; 3 out-of-order arrival versus canonical semantic order; 4 identical duplicates and contradictory duplicates; 5 replay mismatch, including history order and payload changes; 6 rebinding a born Resistance to another valid reference; 7 event-ID collision with different payload; 8 same price with different provenance and multi-reference cross-mutation; 9 gap versus observed reentry and AT_R neutral outcomes; 10 derived context leaking into fact store/event enum; 11 snapshot/input-list mutation altering canonical sources; 12 break supersession, reuse or double consumption; 13 exact-price scale mismatch or implicit conversion; 14 incomplete/incorrect 95-oracle traceability. ORACLES: No future input may change emitted prefix facts; canonical IDs/history must repeat; invalid rebind/collision/contradiction must raise the published error before mutation; independent references must not merge/transfer history; derived context must never become a ResistanceEvent; snapshot/read projections must not become authority; break chains may consume only their active eligible break; all traceability rows must resolve to versioned evidence at the frozen baseline. INDEPENDENCE AND PRESERVATION: Use only this frozen request and its distinct GROQ_FREE/openai/gpt-oss-120b instance; producer/orchestrator is not executor. Retain request/input hashes and provider metadata. Preserve negative findings verbatim: no filtering, PASS substitution, A3 overwrite or test-count compensation. Request changes change its hash and never erase the original result. BOUNDARY: Do not invent new market semantics, execute orders, redesign Resistance, reopen Support/D6, or judge A3 evidence sufficiency. Failure to discover a defect is not itself authority for a final A4 classification. OUTPUT AUTHORITY: Return JSON AUDITOR_EVIDENCE only. Do not emit refutation_valid, refutation_validity, global_state or any final A4 classification; Code derives refutation validity (version 1) first, then tef_a4_resolution (version 1) derives A4 state only when unambiguous. UNRESOLVED_CONTRADICTION or UNRESOLVED_NORMATIVE_AMBIGUITY means non-consumable, no published global_state, no automatic retry and no raw rewrite. Required fields: stage=\\\"A4\\\"; attempt_present boolean; coverage_status and intensity_status SATISFIED|INSUFFICIENT|NOT_EVALUABLE; independence_required_dimensions exactly [\\\"cognitive\\\",\\\"procedural\\\",\\\"traceable\\\",\\\"additional\\\"]; independence_dimension_status exact map with SATISFIED|NOT_SATISFIED|NOT_EVALUABLE values; hypothesis_control_status and oracle_control_status SATISFIED|MISSING|INVALID|NOT_EVALUABLE; oracle_independence_status and evidence_integrity_status SATISFIED|NOT_SATISFIED|NOT_EVALUABLE; attacks list of structured attack observations; material_defects list; negative_findings list; failure_causes list of objects with field, evidence_reference, normative_source, explanation; evidence_references list; normative_sources list; remediation_status DETERMINED|NOT_DETERMINABLE|NOT_APPLICABLE; remediation_scope nonempty string only when DETERMINED, otherwise null; adverse_result_preserved boolean; scope_respected boolean. Do not add fields outside this schema. Report structured evidence faithfully; do not infer a final label, invent a defect/remedy, filter an adverse result, or rewrite raw evidence to satisfy the resolver.\\n\"}",
+          "context_digest": "a510f6779945c89a5b6f3fd233f9df6a40047885195ae2a9fbfc7ab129baf56a",
+          "context_id": "ed7aeb195ffc63744a07bf004257ef59360a46be2d935ccf40ba77b7fcddadd0",
+          "effects": [],
+          "evidence_refs": [
+            "historical_request",
+            "historical_input",
+            "specification"
+          ],
+          "execution_id": "96355d38-bc31-5eab-9a70-beda3f1e4e69",
+          "findings": [
+            "Completed the bounded literal transformation; no runtime validation, materialization or token preflight was performed."
+          ],
+          "input_revision": "9bc3fb6dcd06e600778fb6b2b6e4fa4e5b288cf00aacb8e568938c48b8f8cece",
+          "next_destination": "NONE",
+          "outcome": "SUCCEEDED",
+          "proposals": [],
+          "protected_scope_touched": [],
+          "rationale": "Applied the eight supplied request updates and four literal input replacements using only supplied data, preserving all other fields and input characters, including the trailing newline.",
+          "role": "CODE_EXECUTOR",
+          "task_id": "42176b41-3abb-59a7-b28c-44a6ec3e8fc9"
+        },
+        "result_digest": "110e7ba80f9667fd7cfc0c2457866b03caba0542bd227ae79cdf3601854a9bed",
+        "rule_set_version": "tc04-preparation-rules-v1",
+        "selected_executor": "deterministic-preparation-v1",
+        "task_id": "42176b41-3abb-59a7-b28c-44a6ec3e8fc9",
+        "verify_ingest": "PASS"
+      },
+      "execution_id": "96355d38-bc31-5eab-9a70-beda3f1e4e69",
+      "llm_dispatch_authorized": false,
+      "llm_dispatched": false,
+      "material_reasoning_fingerprint": "671ec85db926a648deee97467d911258558dde8d491cf6d3b4f82549597c550e",
+      "paid_fallback": false,
+      "reason": "DETERMINISTIC_SELECTED",
+      "reservation": null,
+      "route": "DETERMINISTIC",
+      "silent_context_degradation": false,
+      "silent_output_degradation": false,
+      "task_id": "42176b41-3abb-59a7-b28c-44a6ec3e8fc9"
+    },
+    "status": "PASS"
+  },
+  "pilot_duplicate_reservation": {
+    "initial": {
+      "account_quota": {
+        "source": "NOT_CONNECTED",
+        "status": "NOT_AVAILABLE",
+        "value": null
+      },
+      "decision": "ADMIT",
+      "execution_id": "cfb6926a-4708-563f-9426-5b93f8141523",
+      "execution_purpose": "produce a new bounded specification",
+      "expected_material_output": "strict structured specification",
+      "independent_review": false,
+      "llm_dispatch_authorized": true,
+      "llm_dispatched": false,
+      "material_reasoning_fingerprint": "5caa2c0378b3344e9be795e76ce59d8bf244951237ec6a959e637eea30f207a6",
+      "paid_fallback": false,
+      "reason": "AUTHORIZED_TO_DISPATCH",
+      "reservation_id": "cdf37880-81a2-5811-a366-bf191241a815",
+      "reservation_status": "RESERVED",
+      "resource_estimate": {
+        "context_bytes": {
+          "method": "utf8_bytes_json_dumps_default",
+          "status": "MEASURED",
+          "value": 977
+        },
+        "context_tokens": {
+          "method": "ceil_utf8_bytes_div_4_proxy",
+          "status": "ESTIMATED",
+          "value": 245,
+          "version": "1"
+        },
+        "output_tokens": {
+          "method": "explicit_contract_or_task_policy",
+          "status": "ESTIMATED",
+          "value": 1000
+        },
+        "total_tokens": {
+          "method": "non_overlapping_context_plus_output",
+          "status": "ESTIMATED",
+          "value": 1245
+        }
+      },
+      "review_reserve": {
+        "calls": 1,
+        "tokens": 2000
+      },
+      "silent_context_degradation": false,
+      "silent_output_degradation": false,
+      "task_id": "275e3d83-617e-5e4e-b012-049603ec2d79",
+      "why_llm_required": "GENERATIVE_SYNTHESIS_REQUIRED"
+    },
+    "second": {
+      "account_quota": {
+        "source": "NOT_CONNECTED",
+        "status": "NOT_AVAILABLE",
+        "value": null
+      },
+      "decision": "BLOCK",
+      "execution_id": "cfb6926a-4708-563f-9426-5b93f8141523",
+      "llm_dispatch_authorized": false,
+      "llm_dispatched": false,
+      "paid_fallback": false,
+      "reason": "DUPLICATE_RESERVATION",
+      "reservation": null,
+      "reservation_id": "cdf37880-81a2-5811-a366-bf191241a815",
+      "silent_context_degradation": false,
+      "silent_output_degradation": false,
+      "task_id": "275e3d83-617e-5e4e-b012-049603ec2d79"
+    },
+    "status": "PASS"
+  },
+  "pilot_independent_review": {
+    "decision": {
+      "account_quota": {
+        "source": "NOT_CONNECTED",
+        "status": "NOT_AVAILABLE",
+        "value": null
+      },
+      "decision": "ADMIT",
+      "execution_id": "d44129a3-a4b5-5305-94e1-17ac9a0a901a",
+      "execution_purpose": "perform independent review",
+      "expected_material_output": "independent findings",
+      "independent_review": true,
+      "llm_dispatch_authorized": true,
+      "llm_dispatched": false,
+      "material_reasoning_fingerprint": "2976a3cb27480e9ac1edbae8de77a88b06fb128e56437bc0d3dab98105ad2bd0",
+      "paid_fallback": false,
+      "reason": "AUTHORIZED_TO_DISPATCH",
+      "reservation_id": "ba545e0c-ce41-54d1-afe4-49ebd80d18e2",
+      "reservation_status": "RESERVED",
+      "resource_estimate": {
+        "context_bytes": {
+          "method": "utf8_bytes_json_dumps_default",
+          "status": "MEASURED",
+          "value": 1009
+        },
+        "context_tokens": {
+          "method": "ceil_utf8_bytes_div_4_proxy",
+          "status": "ESTIMATED",
+          "value": 253,
+          "version": "1"
+        },
+        "output_tokens": {
+          "method": "explicit_contract_or_task_policy",
+          "status": "ESTIMATED",
+          "value": 1000
+        },
+        "total_tokens": {
+          "method": "non_overlapping_context_plus_output",
+          "status": "ESTIMATED",
+          "value": 1253
+        }
+      },
+      "review_reserve": {
+        "calls": 1,
+        "tokens": 2000
+      },
+      "silent_context_degradation": false,
+      "silent_output_degradation": false,
+      "task_id": "21de589c-21d0-5033-b7f9-c157f723db29",
+      "why_llm_required": "INDEPENDENT_REVIEW_REQUIRED"
+    },
+    "status": "PASS"
+  },
+  "pilot_reuse": {
+    "decision": {
+      "account_quota": {
+        "source": "NOT_CONNECTED",
+        "status": "NOT_AVAILABLE",
+        "value": null
+      },
+      "decision": "BLOCK",
+      "execution_id": "ff783fec-94bd-5c92-9b3f-581e06cfad8b",
+      "llm_dispatch_authorized": false,
+      "llm_dispatched": false,
+      "material_reasoning_fingerprint": "bd159d7dc1882ad9cf80b698a34c4b391b42daf50476a8a8f626b6ae56bda826",
+      "paid_fallback": false,
+      "reason": "REUSE_SELECTED",
+      "reservation": null,
+      "result_digest": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "route": "REUSE",
+      "silent_context_degradation": false,
+      "silent_output_degradation": false,
+      "task_id": "0fcae6fa-b6f2-5311-b938-86c8ee5686a6"
+    },
+    "status": "PASS"
+  },
+  "pilot_review_reserve": {
+    "decision": {
+      "account_quota": {
+        "source": "NOT_CONNECTED",
+        "status": "NOT_AVAILABLE",
+        "value": null
+      },
+      "decision": "REVIEW_REQUIRED",
+      "execution_id": "04c9ad85-f927-58b0-a6b2-c0cf433afd8c",
+      "llm_dispatch_authorized": false,
+      "llm_dispatched": false,
+      "paid_fallback": false,
+      "reason": "ADVISOR_REVIEW_RESERVE_PROTECTED",
+      "reservation": null,
+      "resource_estimate": {
+        "context_bytes": {
+          "method": "utf8_bytes_json_dumps_default",
+          "status": "MEASURED",
+          "value": 975
+        },
+        "context_tokens": {
+          "method": "ceil_utf8_bytes_div_4_proxy",
+          "status": "ESTIMATED",
+          "value": 244,
+          "version": "1"
+        },
+        "output_tokens": {
+          "method": "explicit_contract_or_task_policy",
+          "status": "ESTIMATED",
+          "value": 1000
+        },
+        "total_tokens": {
+          "method": "non_overlapping_context_plus_output",
+          "status": "ESTIMATED",
+          "value": 1244
+        }
+      },
+      "silent_context_degradation": false,
+      "silent_output_degradation": false,
+      "task_id": "c6b7056e-50cf-50a3-9354-ef73e0d5d893"
+    },
+    "status": "PASS"
+  },
+  "pilot_uncertain": {
+    "initial": {
+      "account_quota": {
+        "source": "NOT_CONNECTED",
+        "status": "NOT_AVAILABLE",
+        "value": null
+      },
+      "decision": "ADMIT",
+      "execution_id": "39487940-5982-502f-a494-7f093db51b52",
+      "execution_purpose": "produce a new bounded specification",
+      "expected_material_output": "strict structured specification",
+      "independent_review": false,
+      "llm_dispatch_authorized": true,
+      "llm_dispatched": false,
+      "material_reasoning_fingerprint": "d05a7674a89fbe2dbecdac35760640980b31b87ec6849a8809405e96373478c5",
+      "paid_fallback": false,
+      "reason": "AUTHORIZED_TO_DISPATCH",
+      "reservation_id": "b130fb67-1d8c-5c68-a9aa-7a9472e381ee",
+      "reservation_status": "RESERVED",
+      "resource_estimate": {
+        "context_bytes": {
+          "method": "utf8_bytes_json_dumps_default",
+          "status": "MEASURED",
+          "value": 977
+        },
+        "context_tokens": {
+          "method": "ceil_utf8_bytes_div_4_proxy",
+          "status": "ESTIMATED",
+          "value": 245,
+          "version": "1"
+        },
+        "output_tokens": {
+          "method": "explicit_contract_or_task_policy",
+          "status": "ESTIMATED",
+          "value": 1000
+        },
+        "total_tokens": {
+          "method": "non_overlapping_context_plus_output",
+          "status": "ESTIMATED",
+          "value": 1245
+        }
+      },
+      "review_reserve": {
+        "calls": 1,
+        "tokens": 2000
+      },
+      "silent_context_degradation": false,
+      "silent_output_degradation": false,
+      "task_id": "6d2e49d1-86ca-5996-9968-07e19bd2e310",
+      "why_llm_required": "GENERATIVE_SYNTHESIS_REQUIRED"
+    },
+    "retry": {
+      "account_quota": {
+        "source": "NOT_CONNECTED",
+        "status": "NOT_AVAILABLE",
+        "value": null
+      },
+      "decision": "DEFER",
+      "execution_id": "39487940-5982-502f-a494-7f093db51b52",
+      "llm_dispatch_authorized": false,
+      "llm_dispatched": false,
+      "paid_fallback": false,
+      "reason": "UNCERTAIN_NO_AUTOMATIC_RETRY",
+      "reservation": null,
+      "reservation_id": "b130fb67-1d8c-5c68-a9aa-7a9472e381ee",
+      "silent_context_degradation": false,
+      "silent_output_degradation": false,
+      "task_id": "6d2e49d1-86ca-5996-9968-07e19bd2e310"
+    },
+    "status": "PASS"
+  },
+  "protected_scope_changed": "NO",
+  "refutation_result": "PASS_PROTECTED across 30 attacks",
+  "report": "TC_06_BUDGET_ADMISSION_GOVERNANCE_REPORT",
+  "reservation_states": [
+    "RESERVED",
+    "CONSUMED",
+    "RELEASED",
+    "UNCERTAIN"
+  ],
+  "reservations_consumed": 0,
+  "reservations_created": 4,
+  "reservations_released": 0,
+  "reservations_uncertain": 1,
+  "resource_units": [
+    "MODEL_CALL_COUNT",
+    "CONTEXT_BYTES",
+    "CONTEXT_TOKEN_ESTIMATE",
+    "OUTPUT_TOKEN_BUDGET",
+    "LOCAL_RUNTIME",
+    "PROVIDER_REQUEST_LIMIT",
+    "ACCOUNT_QUOTA"
+  ],
+  "reuse_policy": "applicable fingerprint match before reservation; independent review explicitly bypasses reuse",
+  "review_reserve_model": "configured calls and estimated tokens retained for Advisor",
+  "role_allocation_model": "partition within task budget",
+  "security_check": "PENDING",
+  "silent_degradation": "NO",
+  "status": "IMPLEMENTED_CANDIDATE",
+  "task_budget_model": [
+    "max_model_calls",
+    "estimated_token_ceiling",
+    "review_reserve",
+    "consumed/reserved cumulative state"
+  ],
+  "tc01_regression": "PENDING",
+  "tc02_regression": "PENDING",
+  "tc03_regression": "PENDING",
+  "tc04_regression": "PENDING",
+  "tc05_regression": "PENDING",
+  "tc06_acceptance": "PASS",
+  "tests": "PENDING",
+  "uncertain_execution_policy": "reservation remains UNCERTAIN and automatic retry is forbidden",
+  "zero_cost_only": "PASS"
+}
