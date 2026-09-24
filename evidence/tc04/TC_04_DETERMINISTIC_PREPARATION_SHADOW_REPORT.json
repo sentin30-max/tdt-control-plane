@@ -110,9 +110,9 @@
   },
   "deterministic_runtime": {
     "classification": "LOCAL_MEASURED",
-    "elapsed_ns": 43396600,
+    "elapsed_ns": 188273700,
     "iterations": 100,
-    "mean_ns": 433966
+    "mean_ns": 1882737
   },
   "downstream_precondition_equivalence": "PASS",
   "fail_closed": "PASS",
@@ -123,7 +123,7 @@
     "tests/test_deterministic_preparation.py",
     "evidence/tc04/*"
   ],
-  "final_evidence_commit": "PENDING_AT_GENERATION",
+  "final_evidence_commit": "f5189cb5626b9cb3fbebf1f6a401998d02e2ed0d",
   "groq_executed": "NO",
   "historical_input_digest": "a510f6779945c89a5b6f3fd233f9df6a40047885195ae2a9fbfc7ab129baf56a",
   "historical_llm_calls_targeted": 1,
@@ -133,7 +133,7 @@
   "historical_replay": "PASS",
   "historical_result_digest": "110e7ba80f9667fd7cfc0c2457866b03caba0542bd227ae79cdf3601854a9bed",
   "idempotency": "PASS",
-  "implementation_commit": "PENDING_AT_GENERATION",
+  "implementation_commit": "f5189cb5626b9cb3fbebf1f6a401998d02e2ed0d",
   "known_limitations": [
     "proof is bounded to preparation contract v1",
     "operational replacement remains unauthorized",
@@ -207,6 +207,7 @@
   "routing_changed": "NO",
   "rule_coverage_percent": 100.0,
   "rule_covered_material_fields": 15,
+  "security_check": "PASS",
   "shadow_only": "PASS",
   "shadow_recovery": "PASS",
   "slice002_redispatched": "NO",
@@ -214,12 +215,12 @@
   "structural_equivalence": "PASS",
   "target_execution": "CODE_EXECUTOR_PREPARATION",
   "target_execution_id": "96355d38-bc31-5eab-9a70-beda3f1e4e69",
-  "tc01_regression": "PENDING",
-  "tc02_regression": "PENDING",
-  "tc03_regression": "PENDING",
+  "tc01_regression": "PASS",
+  "tc02_regression": "PASS",
+  "tc03_regression": "PASS",
   "tc04_acceptance": "PASS",
   "tc04_llm_calls": 0,
-  "tests": "PENDING",
+  "tests": "97 PASS (83 regression + 14 TC-04)",
   "unexplained_output_fields": [],
   "zero_cost_only": "PASS"
 }

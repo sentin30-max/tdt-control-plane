@@ -31,9 +31,9 @@
   "material_contract_equivalence": "PASS",
   "runtime": {
     "classification": "LOCAL_MEASURED",
-    "elapsed_ns": 43396600,
+    "elapsed_ns": 188273700,
     "iterations": 100,
-    "mean_ns": 433966
+    "mean_ns": 1882737
   },
   "shadow_recovery": {
     "first": {

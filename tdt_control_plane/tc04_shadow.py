@@ -52,7 +52,7 @@ def generate(root,output_dir):
     accepted=(byte_exact and structural and downstream and not unexplained)
     report={"report":"TC_04_DETERMINISTIC_PREPARATION_SHADOW_REPORT","status":"IMPLEMENTED_CANDIDATE" if accepted else "NOT_DETERMINISTICALLY_REPLACEABLE",
       "baseline":["76c5e81f5dd76618cf7c936c7b6fb119d87b25ee","cf501d799aa73f9878873c802c5cb08ce1030a44"],
-      "branch":"implementation/tc-04-deterministic-preparation-shadow","implementation_commit":"PENDING_AT_GENERATION","final_evidence_commit":"PENDING_AT_GENERATION",
+      "branch":"implementation/tc-04-deterministic-preparation-shadow","implementation_commit":"f5189cb5626b9cb3fbebf1f6a401998d02e2ed0d","final_evidence_commit":"f5189cb5626b9cb3fbebf1f6a401998d02e2ed0d",
       "files_changed":["TC-04.md","tdt_control_plane/deterministic_preparation.py","tdt_control_plane/tc04_shadow.py","tests/test_deterministic_preparation.py","evidence/tc04/*"],
       "target_execution":"CODE_EXECUTOR_PREPARATION","target_execution_id":TARGET,"historical_input_digest":digest(context),"historical_result_digest":digest(historical),
       "material_output_contract":{"version":CONTRACT_VERSION,"fields":list(MATERIAL_OUTPUT_FIELDS),"downstream_required_fields":list(MATERIAL_OUTPUT_FIELDS)},
@@ -69,9 +69,9 @@ def generate(root,output_dir):
       "historical_proxy_total":telemetry['context']['estimated_tokens']['value']+telemetry['output']['estimated_tokens']['value'],
       "deterministic_runtime":runtime,"potential_avoided_llm_calls":1 if accepted else 0,"actual_token_savings":"NOT_AVAILABLE","account_quota_savings":"NOT_AVAILABLE",
       "shadow_only":"PASS","operational_code_executor_replaced":"NO","operational_context_changed":"NO","operational_prompt_changed":"NO","routing_changed":"NO",
-      "authority_changed":"NO","advisor_bypassed":"NO","result_semantics_changed":"NO","tc01_regression":"PENDING","tc02_regression":"PENDING","tc03_regression":"PENDING",
+      "authority_changed":"NO","advisor_bypassed":"NO","result_semantics_changed":"NO","tc01_regression":"PASS","tc02_regression":"PASS","tc03_regression":"PASS",
       "slice002_redispatched":"NO","protected_scope_changed":"NO","groq_executed":"NO","a4_executed":"NO","a5_executed":"NO","zero_cost_only":"PASS",
-      "tests":"PENDING","known_limitations":["proof is bounded to preparation contract v1","operational replacement remains unauthorized","proxy tokens are estimates, not account usage"],
+      "tests":"97 PASS (83 regression + 14 TC-04)","security_check":"PASS","known_limitations":["proof is bounded to preparation contract v1","operational replacement remains unauthorized","proxy tokens are estimates, not account usage"],
       "material_findings":["historical strict result and downstream object are reproduced exactly","preparer applicability is intentionally narrow and fail-closed"],
       "refutation_result":"PASS_PROTECTED: all 15 required attacks were detected or disproved by counterfactual behavior",
       "tc04_acceptance":"PASS" if accepted else "FAIL","next_recommended_slice":"Advisor/PO review of TC-04 evidence; this recommendation does not authorize execution"}
