@@ -123,7 +123,7 @@
           "input_revision": "9bc3fb6dcd06e600778fb6b2b6e4fa4e5b288cf00aacb8e568938c48b8f8cece",
           "llm_dispatched": false,
           "local_runtime": {
-            "elapsed_ns": 523000,
+            "elapsed_ns": 534900,
             "status": "MEASURED"
           },
           "model_call_count": 0,

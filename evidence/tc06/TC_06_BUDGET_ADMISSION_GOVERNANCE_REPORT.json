@@ -77,7 +77,7 @@
   ],
   "final_evidence_commit": "PENDING_AT_GENERATION",
   "groq_executed": "NO",
-  "implementation_commit": "PENDING_AT_GENERATION",
+  "implementation_commit": "c0f6f982ce07e0915e79b2d40fe7296753318665",
   "independent_review_policy": "explicit contract flag requires fresh admitted review",
   "known_limitations": [
     "internal task budgets do not represent account quota",
@@ -236,7 +236,7 @@
         "input_revision": "9bc3fb6dcd06e600778fb6b2b6e4fa4e5b288cf00aacb8e568938c48b8f8cece",
         "llm_dispatched": false,
         "local_runtime": {
-          "elapsed_ns": 523000,
+          "elapsed_ns": 534900,
           "status": "MEASURED"
         },
         "model_call_count": 0,
@@ -576,7 +576,7 @@
   "reuse_policy": "applicable fingerprint match before reservation; independent review explicitly bypasses reuse",
   "review_reserve_model": "configured calls and estimated tokens retained for Advisor",
   "role_allocation_model": "partition within task budget",
-  "security_check": "PENDING",
+  "security_check": "PASS",
   "silent_degradation": "NO",
   "status": "IMPLEMENTED_CANDIDATE",
   "task_budget_model": [
@@ -585,13 +585,13 @@
     "review_reserve",
     "consumed/reserved cumulative state"
   ],
-  "tc01_regression": "PENDING",
-  "tc02_regression": "PENDING",
-  "tc03_regression": "PENDING",
-  "tc04_regression": "PENDING",
-  "tc05_regression": "PENDING",
+  "tc01_regression": "PASS",
+  "tc02_regression": "PASS",
+  "tc03_regression": "PASS",
+  "tc04_regression": "PASS",
+  "tc05_regression": "PASS",
   "tc06_acceptance": "PASS",
-  "tests": "PENDING",
+  "tests": "126 PASS (111 regression + 15 TC-06)",
   "uncertain_execution_policy": "reservation remains UNCERTAIN and automatic retry is forbidden",
   "zero_cost_only": "PASS"
 }
