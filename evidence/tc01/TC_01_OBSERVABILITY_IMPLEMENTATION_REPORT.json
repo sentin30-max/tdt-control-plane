@@ -1,0 +1,141 @@
+{
+  "REPORT": "TC_01_OBSERVABILITY_IMPLEMENTATION_REPORT",
+  "STATUS": "IMPLEMENTED_CANDIDATE",
+  "BRANCH": "implementation/tc-01-observability",
+  "COMMIT": "30f6224c72c6835572bef517f0c37c8bb69a0f80",
+  "BASELINE": "c9d895cca0aee1f12aa1c85af564047d2a9a4457",
+  "AUTHORITATIVE": false,
+  "AUTHORIZATION_SHA256": "16d222f351daf6c9242ce3f908b556aaf92814523a6f32ef0c37f26675dbcaaf",
+  "FILES_CHANGED": [
+    "TC-01.md",
+    "evidence/tc01/slice002-shadow.json",
+    "tdt_control_plane/ledger.py",
+    "tdt_control_plane/resistance_pilot.py",
+    "tdt_control_plane/runtime.py",
+    "tdt_control_plane/tc01_shadow.py",
+    "tdt_control_plane/telemetry.py",
+    "tests/test_telemetry.py",
+    "evidence/tc01/TC_01_OBSERVABILITY_IMPLEMENTATION_REPORT.json"
+  ],
+  "ARCHITECTURE": {
+    "summary": "Post-execution, non-authoritative observation derived from existing context/result/runtime events. Telemetry is never read by prompt construction, routing, authority, result validation or ingest.",
+    "prompt_measurement": "build_role_prompt exposes the pre-existing prompt expression byte-for-byte; telemetry stores bytes and methods, not a duplicate prompt.",
+    "failure_firewall": "Optional observation failure emits TELEMETRY_FAILED and cannot alter a valid execution result. Direct telemetry identity/correlation conflicts fail explicitly.",
+    "shadow": "Slice 002 records are read-only inputs to a disposable local ledger; no executor is dispatched."
+  },
+  "LEDGER_CHANGES": {
+    "storage": "Existing SQLite ledger gains telemetry rows keyed by execution_id and attempt.",
+    "correlation": ["task_id", "execution_id", "attempt", "context_digest", "result_digest", "input_revision"],
+    "events": ["TELEMETRY_RECORDED", "TELEMETRY_DUPLICATE_NOOP", "TELEMETRY_FAILED", "TELEMETRY_RECOVERY_REUSED"],
+    "duplicate_semantics": "Same execution/attempt and same record digest is a no-op; a different digest is TELEMETRY_CONTRADICTION.",
+    "operational_authority": "NONE"
+  },
+  "TELEMETRY_SCHEMA": {
+    "schema_version": 1,
+    "context_policy": "tc01-observe-existing-context-v1",
+    "groups": ["identity", "execution_kind", "backend", "context", "prompt", "output", "runtime", "reuse", "delta", "accounting", "quota"],
+    "usage_statuses": ["MEASURED", "ESTIMATED", "NOT_AVAILABLE"],
+    "task_complexity": "NOT_IMPLEMENTED: no pre-existing deterministic classification",
+    "authority": "authoritative=false"
+  },
+  "MEASUREMENT_METHODS": {
+    "bytes": "MEASURED as UTF-8 length of the existing/default JSON representation or exact prompt material",
+    "token_proxy": "ESTIMATED as ceil(UTF-8 bytes / 4); not a tokenizer and not runtime usage",
+    "actual_usage": "MEASURED only when explicit non-negative runtime usage counters exist",
+    "missing": "null + NOT_AVAILABLE + reason; never zero",
+    "task_accumulation": "Unique dispatched LLM execution/attempt proxies only; deterministic and recovery executions contribute zero model calls",
+    "quota": "Separate from token usage; no conversion or causal attribution"
+  },
+  "AVAILABLE_RUNTIME_USAGE_FIELDS": [
+    "runtime_input_tokens when an event explicitly supplies input_tokens",
+    "runtime_output_tokens when an event explicitly supplies output_tokens",
+    "cached_tokens when an event explicitly supplies cached_input_tokens or cached_tokens",
+    "reasoning_tokens when an event explicitly supplies reasoning_output_tokens or reasoning_tokens",
+    "model identity when explicitly supplied to the observer"
+  ],
+  "UNAVAILABLE_RUNTIME_USAGE_FIELDS": [
+    "All actual token fields for the preserved Slice 002 records",
+    "Context-only actual tokens when runtime reports only total input",
+    "Provider hidden instructions and reasoning not exposed by runtime",
+    "Causal account-quota usage per execution",
+    "Task complexity, full reconstruction, semantic reuse and material delta without deterministic existing markers"
+  ],
+  "SLICE_002_HISTORICAL_RECONSTRUCTION": {
+    "status": "PASS",
+    "fixture": "evidence/tc01/slice002-shadow.json",
+    "llm_sessions": 4,
+    "deterministic_local_executions": 1,
+    "recovered_results": 5,
+    "recovery_new_dispatches": 0,
+    "recovery_new_model_calls": 0,
+    "usage_double_counted": false,
+    "historical_evidence_modified": false,
+    "method_difference": "NONE",
+    "serialization_difference": "NONE",
+    "data_availability_difference": "NONE"
+  },
+  "MEASURED_VALUES": {
+    "classification": "MEASURED bytes/counts, not tokens",
+    "execution_count": 5,
+    "model_call_count": 4,
+    "deterministic_execution_count": 1,
+    "failed_call_count": 0,
+    "pending_unreconciled_usage": false,
+    "context_bytes_by_execution": [18990, 26205, 32211, 20469, 32549],
+    "llm_prompt_bytes_by_execution": [19918, 27045, 33139, 33477],
+    "result_bytes_by_execution": [4928, 6786, 4277, 4033, 3714],
+    "context_source_count_each": 13
+  },
+  "ESTIMATED_VALUES": {
+    "classification": "ESTIMATED proxy; not bill, actual use or attributable quota",
+    "historical_llm_input_tokens": 28397,
+    "historical_llm_output_tokens": 4928,
+    "historical_combined_tokens": 33325,
+    "method": "ceil_utf8_bytes_div_4_proxy"
+  },
+  "NOT_AVAILABLE_VALUES": {
+    "classification": "NOT_AVAILABLE; values are null, never zero",
+    "fields": ["actual_runtime_input_tokens", "actual_runtime_output_tokens", "actual_cached_tokens", "actual_reasoning_tokens", "historical_model_identity", "account_quota_attribution"]
+  },
+  "NEW_LLM_CALLS_FOR_TC01_TESTING": 0,
+  "MATERIAL_PROMPT_CHANGE": "NO",
+  "MATERIAL_CONTEXT_CHANGE": "NO",
+  "ROUTING_CHANGE": "NO",
+  "AUTHORITY_CHANGE": "NO",
+  "RESULT_SEMANTICS_CHANGE": "NO",
+  "PROTECTED_SCOPE_CHANGED": "NO",
+  "SLICE_002_REDISPATCHED": "NO",
+  "GROQ_EXECUTED": "NO",
+  "A4_EXECUTED": "NO",
+  "A5_EXECUTED": "NO",
+  "ZERO_COST_ONLY": "PASS",
+  "TESTS": {
+    "status": "PASS",
+    "count": 61,
+    "clean_clone": "PASS",
+    "shadow_reconstruction": "PASS",
+    "checks": [
+      "telemetry leaves context/prompt/result unchanged",
+      "routing and ingest semantics unchanged",
+      "deterministic execution is not an LLM call",
+      "recovery and duplicate no-op do not double count",
+      "failed/uncertain usage is not zero",
+      "ESTIMATED never becomes MEASURED",
+      "NOT_AVAILABLE never becomes zero",
+      "tokens are not converted to quota",
+      "Slice 002 forensic fixture remains consistent"
+    ]
+  },
+  "SECURITY_CHECK": "PASS: scoped credential-pattern scan found no secrets; telemetry stores refs, digests, sizes and methods rather than prompt copies or hidden reasoning",
+  "KNOWN_LIMITATIONS": [
+    "Codex historical events did not preserve explicit runtime usage counters",
+    "The byte/4 proxy is not a tokenizer",
+    "Quota snapshots cannot be causally attributed to an execution",
+    "Telemetry failure is deliberately non-blocking except direct identity/correlation integrity checks",
+    "No general context manifest, builder, budget enforcement, reservation, delta, reuse or expansion exists in TC-01"
+  ],
+  "MATERIAL_DEFECTS": [],
+  "TC01_ACCEPTANCE": "PASS",
+  "NEXT_RECOMMENDED_SLICE": "TC-02 manifest/coverage design in shadow mode, subject to separate Advisor review and PO authorization; this recommendation authorizes nothing.",
+  "STOP": "No merge, TC-02, optimization, preflight change, Groq, A4 or A5. Return to Advisor for review/refutation."
+}
