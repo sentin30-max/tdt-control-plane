@@ -123,7 +123,7 @@
     "tests/test_deterministic_preparation.py",
     "evidence/tc04/*"
   ],
-  "final_evidence_commit": "f5189cb5626b9cb3fbebf1f6a401998d02e2ed0d",
+  "final_evidence_commit": "cc3976ae6ab17d0b50320cc8f0babf0dce6e3f0a",
   "groq_executed": "NO",
   "historical_input_digest": "a510f6779945c89a5b6f3fd233f9df6a40047885195ae2a9fbfc7ab129baf56a",
   "historical_llm_calls_targeted": 1,

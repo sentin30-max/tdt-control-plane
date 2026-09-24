@@ -52,7 +52,7 @@ def generate(root,output_dir):
     accepted=(byte_exact and structural and downstream and not unexplained)
     report={"report":"TC_04_DETERMINISTIC_PREPARATION_SHADOW_REPORT","status":"IMPLEMENTED_CANDIDATE" if accepted else "NOT_DETERMINISTICALLY_REPLACEABLE",
       "baseline":["76c5e81f5dd76618cf7c936c7b6fb119d87b25ee","cf501d799aa73f9878873c802c5cb08ce1030a44"],
-      "branch":"implementation/tc-04-deterministic-preparation-shadow","implementation_commit":"f5189cb5626b9cb3fbebf1f6a401998d02e2ed0d","final_evidence_commit":"f5189cb5626b9cb3fbebf1f6a401998d02e2ed0d",
+      "branch":"implementation/tc-04-deterministic-preparation-shadow","implementation_commit":"f5189cb5626b9cb3fbebf1f6a401998d02e2ed0d","final_evidence_commit":"cc3976ae6ab17d0b50320cc8f0babf0dce6e3f0a",
       "files_changed":["TC-04.md","tdt_control_plane/deterministic_preparation.py","tdt_control_plane/tc04_shadow.py","tests/test_deterministic_preparation.py","evidence/tc04/*"],
       "target_execution":"CODE_EXECUTOR_PREPARATION","target_execution_id":TARGET,"historical_input_digest":digest(context),"historical_result_digest":digest(historical),
       "material_output_contract":{"version":CONTRACT_VERSION,"fields":list(MATERIAL_OUTPUT_FIELDS),"downstream_required_fields":list(MATERIAL_OUTPUT_FIELDS)},
