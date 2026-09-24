@@ -78,7 +78,7 @@ def generate(root,output_dir):
     accepted=all(p['status']=='PASS' for p in pilots.values())
     report={"report":"TC_06_BUDGET_ADMISSION_GOVERNANCE_REPORT","status":"IMPLEMENTED_CANDIDATE" if accepted else "FAILED",
       "baseline":["4cb07fbcba175ab04bcc8a3e28974d36ba5f998f","6321ce8ffd8b69f392c2d29e7f7845b12b18c442","494acd920725fb3f76d7c8039b3243cc0c33bf7e"],
-      "branch":"implementation/tc-06-budget-admission-governance","implementation_commit":"c0f6f982ce07e0915e79b2d40fe7296753318665","final_evidence_commit":"PENDING_AT_GENERATION",
+      "branch":"implementation/tc-06-budget-admission-governance","implementation_commit":"c0f6f982ce07e0915e79b2d40fe7296753318665","final_evidence_commit":"a9dd416f13a531ded0110f6be53d719fe517e61d",
       "files_changed":["TC-06.md","tdt_control_plane/budget_admission.py","tdt_control_plane/tc06_pilot.py","tests/test_budget_admission.py","evidence/tc06/*"],
       "admission_model":"validate -> recover/reuse -> TC05 deterministic -> LLM necessity -> estimate -> cumulative usage -> review reserve -> atomic reservation -> ADMIT",
       "budget_policy_version":POLICY_VERSION,"budget_hierarchy":"TASK_BUDGET contains ROLE_ALLOCATION contains EXECUTION_RESERVATION; layers are not summed",

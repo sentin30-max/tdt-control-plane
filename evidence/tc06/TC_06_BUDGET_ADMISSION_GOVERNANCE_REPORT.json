@@ -75,7 +75,7 @@
     "tests/test_budget_admission.py",
     "evidence/tc06/*"
   ],
-  "final_evidence_commit": "PENDING_AT_GENERATION",
+  "final_evidence_commit": "a9dd416f13a531ded0110f6be53d719fe517e61d",
   "groq_executed": "NO",
   "implementation_commit": "c0f6f982ce07e0915e79b2d40fe7296753318665",
   "independent_review_policy": "explicit contract flag requires fresh admitted review",
