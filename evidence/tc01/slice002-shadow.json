@@ -1,0 +1,1091 @@
+{
+  "a4_executed": false,
+  "a5_executed": false,
+  "authoritative": false,
+  "expected_forensic_baseline": {
+    "estimated_combined_tokens": 33325,
+    "estimated_input_tokens": 28397,
+    "estimated_output_tokens": 4928,
+    "llm_sessions": 4
+  },
+  "forensic_baseline": {
+    "account_quota_attribution": null,
+    "account_quota_reason": "token usage is not account quota usage",
+    "account_quota_status": "NOT_AVAILABLE",
+    "actual_runtime_tokens": null,
+    "actual_runtime_tokens_reason": "preserved records contain no runtime usage counters",
+    "actual_runtime_tokens_status": "NOT_AVAILABLE",
+    "classification": "ESTIMATED",
+    "deterministic_executions": 1,
+    "estimated_combined_tokens": 33325,
+    "estimated_input_tokens": 28397,
+    "estimated_output_tokens": 4928,
+    "llm_sessions": 4,
+    "method": "ceil_utf8_bytes_div_4_proxy over reconstructed existing prompt; default JSON result serialization"
+  },
+  "groq_executed": false,
+  "historical_evidence_modified": false,
+  "ledger_events": [
+    {
+      "detail": "ac30d2ac6b7639ea90d30e5b110cd1a03b13de67ebf5add98b7831073d6a9e54",
+      "execution_id": "2142e6da-c067-55c8-8912-cff46e335f64",
+      "kind": "REGISTERED",
+      "seq": 1
+    },
+    {
+      "detail": "b3330f9c42ba285b4511d3281c0e3ec35c073420cd88f4086c31d67959670e21",
+      "execution_id": "2142e6da-c067-55c8-8912-cff46e335f64",
+      "kind": "ACCEPTED",
+      "seq": 2
+    },
+    {
+      "detail": "eada02d43019895f142503b25425ced196d2ff38a5585ac0475d7409f1616261",
+      "execution_id": "2142e6da-c067-55c8-8912-cff46e335f64",
+      "kind": "TELEMETRY_RECORDED",
+      "seq": 3
+    },
+    {
+      "detail": "a510f6779945c89a5b6f3fd233f9df6a40047885195ae2a9fbfc7ab129baf56a",
+      "execution_id": "96355d38-bc31-5eab-9a70-beda3f1e4e69",
+      "kind": "REGISTERED",
+      "seq": 4
+    },
+    {
+      "detail": "110e7ba80f9667fd7cfc0c2457866b03caba0542bd227ae79cdf3601854a9bed",
+      "execution_id": "96355d38-bc31-5eab-9a70-beda3f1e4e69",
+      "kind": "ACCEPTED",
+      "seq": 5
+    },
+    {
+      "detail": "b722e1dd6fecb68d4b4eaf818ed7b59e820b008b7373b96a7754be6413d80b36",
+      "execution_id": "96355d38-bc31-5eab-9a70-beda3f1e4e69",
+      "kind": "TELEMETRY_RECORDED",
+      "seq": 6
+    },
+    {
+      "detail": "908c2b29ecf26633ca2f496175f9902ea29c8c402f466a3bb4951b6359e61b23",
+      "execution_id": "8b8c775c-8b7d-56bc-b31b-b91173b3edc1",
+      "kind": "REGISTERED",
+      "seq": 7
+    },
+    {
+      "detail": "1739579bb72f758237dd25be45663fa2272c2a9705166501e4858c7b36088ac8",
+      "execution_id": "8b8c775c-8b7d-56bc-b31b-b91173b3edc1",
+      "kind": "ACCEPTED",
+      "seq": 8
+    },
+    {
+      "detail": "85f3a329d712ce4ddb976355d317c24d807da0ab38a739554f37212426a20252",
+      "execution_id": "8b8c775c-8b7d-56bc-b31b-b91173b3edc1",
+      "kind": "TELEMETRY_RECORDED",
+      "seq": 9
+    },
+    {
+      "detail": "d39514f4178156d4210dd11c25d24c3aea1f7f6a4c11ea5bc544c16e3c1900ce",
+      "execution_id": "e254b74e-dfe5-5663-9486-fff9cc5ced62",
+      "kind": "REGISTERED",
+      "seq": 10
+    },
+    {
+      "detail": "460459e9c4cfac8c2a248b3eacdd1d10eb982d70f0ca83f9bab246afdd306998",
+      "execution_id": "e254b74e-dfe5-5663-9486-fff9cc5ced62",
+      "kind": "ACCEPTED",
+      "seq": 11
+    },
+    {
+      "detail": "0d39bf87e8d872f0a4097edf549a942fd2bb2f0b1723afe7b8844567374b3944",
+      "execution_id": "e254b74e-dfe5-5663-9486-fff9cc5ced62",
+      "kind": "TELEMETRY_RECORDED",
+      "seq": 12
+    },
+    {
+      "detail": "a2ca7d4fe70f194c1be33356ba28bb9a566678c53a6fb3509f22d81155039f2b",
+      "execution_id": "be889d75-1dd5-50bb-8835-ebd70bea693f",
+      "kind": "REGISTERED",
+      "seq": 13
+    },
+    {
+      "detail": "ec8f610c528e127a7b91cb650a03a6b11b18910bcf6bcd3ff9fb1a8fbdefcf47",
+      "execution_id": "be889d75-1dd5-50bb-8835-ebd70bea693f",
+      "kind": "ACCEPTED",
+      "seq": 14
+    },
+    {
+      "detail": "e474e09c9edb34c742464563f71d9fd2de5029232dee029cbd80e5a02fc3e267",
+      "execution_id": "be889d75-1dd5-50bb-8835-ebd70bea693f",
+      "kind": "TELEMETRY_RECORDED",
+      "seq": 15
+    },
+    {
+      "detail": "no_new_dispatch_or_usage",
+      "execution_id": "2142e6da-c067-55c8-8912-cff46e335f64",
+      "kind": "TELEMETRY_RECOVERY_REUSED",
+      "seq": 16
+    },
+    {
+      "detail": "no_new_dispatch_or_usage",
+      "execution_id": "96355d38-bc31-5eab-9a70-beda3f1e4e69",
+      "kind": "TELEMETRY_RECOVERY_REUSED",
+      "seq": 17
+    },
+    {
+      "detail": "no_new_dispatch_or_usage",
+      "execution_id": "8b8c775c-8b7d-56bc-b31b-b91173b3edc1",
+      "kind": "TELEMETRY_RECOVERY_REUSED",
+      "seq": 18
+    },
+    {
+      "detail": "no_new_dispatch_or_usage",
+      "execution_id": "e254b74e-dfe5-5663-9486-fff9cc5ced62",
+      "kind": "TELEMETRY_RECOVERY_REUSED",
+      "seq": 19
+    },
+    {
+      "detail": "no_new_dispatch_or_usage",
+      "execution_id": "be889d75-1dd5-50bb-8835-ebd70bea693f",
+      "kind": "TELEMETRY_RECOVERY_REUSED",
+      "seq": 20
+    }
+  ],
+  "material_behavior_change": "NONE",
+  "new_llm_calls_for_tc01_testing": 0,
+  "observations": [
+    {
+      "accounting": {
+        "failed_call_count": {
+          "method": "dispatch_lifecycle",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 0
+        },
+        "model_call_count": {
+          "method": "dispatch_lifecycle",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 1
+        },
+        "pending_unreconciled_usage": {
+          "method": "dispatch_lifecycle",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 0
+        }
+      },
+      "authoritative": false,
+      "backend": "CodexRoleExecutor",
+      "context": {
+        "actual_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_context_only_tokens",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "artifact_refs": [
+          "evidence_manifest",
+          "historical_input",
+          "historical_request",
+          "lifecycle",
+          "po_authorization",
+          "previous_material_result",
+          "publication",
+          "published_contract",
+          "resolver",
+          "runner",
+          "specification",
+          "state",
+          "tooling_tests"
+        ],
+        "bytes": {
+          "method": "utf8_bytes_json_dumps_default",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 18990
+        },
+        "estimated_tokens": {
+          "method": "ceil_utf8_bytes_div_4_proxy",
+          "reason": null,
+          "status": "ESTIMATED",
+          "value": 4748
+        },
+        "full_reconstruction": {
+          "method": null,
+          "reason": "existing_context_has_no_full_reconstruction_marker",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "full_reconstruction_reason": null,
+        "source_count": {
+          "method": "source_digest_key_count",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 13
+        }
+      },
+      "context_policy": "tc01-observe-existing-context-v1",
+      "delta": {
+        "new_material_delta_present": {
+          "method": null,
+          "reason": "no_existing_deterministic_delta_marker",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        }
+      },
+      "execution_kind": "LLM",
+      "identity": {
+        "attempt": 1,
+        "context_digest": "ac30d2ac6b7639ea90d30e5b110cd1a03b13de67ebf5add98b7831073d6a9e54",
+        "execution_id": "2142e6da-c067-55c8-8912-cff46e335f64",
+        "input_revision": "9bc3fb6dcd06e600778fb6b2b6e4fa4e5b288cf00aacb8e568938c48b8f8cece",
+        "result_digest": "b3330f9c42ba285b4511d3281c0e3ec35c073420cd88f4086c31d67959670e21",
+        "role": "ADVISOR",
+        "scope": "Slice002: Resistance A4 preparation only",
+        "task_id": "42176b41-3abb-59a7-b28c-44a6ec3e8fc9"
+      },
+      "output": {
+        "actual_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_field",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "bytes": {
+          "method": "utf8_bytes_json_dumps_default",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 4928
+        },
+        "estimated_tokens": {
+          "method": "ceil_utf8_bytes_div_4_proxy",
+          "reason": null,
+          "status": "ESTIMATED",
+          "value": 1232
+        }
+      },
+      "prompt": {
+        "bytes": {
+          "method": "utf8_bytes_exact_material",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 19918
+        }
+      },
+      "quota": {
+        "method": null,
+        "reason": "token_usage_is_not_account_quota_usage",
+        "status": "NOT_AVAILABLE",
+        "value": null
+      },
+      "reuse": {
+        "cache_hit": {
+          "method": "durable_spool_recovery_flag",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 0
+        },
+        "derived_state_reused": {
+          "method": null,
+          "reason": "no_existing_deterministic_reuse_marker",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "previous_finding_reused": {
+          "method": null,
+          "reason": "no_existing_deterministic_reuse_marker",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "previous_state_reused": {
+          "method": null,
+          "reason": "no_existing_deterministic_reuse_marker",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        }
+      },
+      "runtime": {
+        "cached_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_field",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "model": null,
+        "model_reason": "runtime_did_not_report_model",
+        "model_status": "NOT_AVAILABLE",
+        "reasoning_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_field",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "runtime_input_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_field",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "runtime_output_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_field",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        }
+      },
+      "schema_version": 1
+    },
+    {
+      "accounting": {
+        "failed_call_count": {
+          "method": "dispatch_lifecycle",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 0
+        },
+        "model_call_count": {
+          "method": "dispatch_lifecycle",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 1
+        },
+        "pending_unreconciled_usage": {
+          "method": "dispatch_lifecycle",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 0
+        }
+      },
+      "authoritative": false,
+      "backend": "CodexRoleExecutor",
+      "context": {
+        "actual_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_context_only_tokens",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "artifact_refs": [
+          "evidence_manifest",
+          "historical_input",
+          "historical_request",
+          "lifecycle",
+          "po_authorization",
+          "previous_material_result",
+          "publication",
+          "published_contract",
+          "resolver",
+          "runner",
+          "specification",
+          "state",
+          "tooling_tests"
+        ],
+        "bytes": {
+          "method": "utf8_bytes_json_dumps_default",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 26205
+        },
+        "estimated_tokens": {
+          "method": "ceil_utf8_bytes_div_4_proxy",
+          "reason": null,
+          "status": "ESTIMATED",
+          "value": 6552
+        },
+        "full_reconstruction": {
+          "method": null,
+          "reason": "existing_context_has_no_full_reconstruction_marker",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "full_reconstruction_reason": null,
+        "source_count": {
+          "method": "source_digest_key_count",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 13
+        }
+      },
+      "context_policy": "tc01-observe-existing-context-v1",
+      "delta": {
+        "new_material_delta_present": {
+          "method": null,
+          "reason": "no_existing_deterministic_delta_marker",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        }
+      },
+      "execution_kind": "LLM",
+      "identity": {
+        "attempt": 1,
+        "context_digest": "a510f6779945c89a5b6f3fd233f9df6a40047885195ae2a9fbfc7ab129baf56a",
+        "execution_id": "96355d38-bc31-5eab-9a70-beda3f1e4e69",
+        "input_revision": "9bc3fb6dcd06e600778fb6b2b6e4fa4e5b288cf00aacb8e568938c48b8f8cece",
+        "result_digest": "110e7ba80f9667fd7cfc0c2457866b03caba0542bd227ae79cdf3601854a9bed",
+        "role": "CODE_EXECUTOR",
+        "scope": "Slice002: Resistance A4 preparation only",
+        "task_id": "42176b41-3abb-59a7-b28c-44a6ec3e8fc9"
+      },
+      "output": {
+        "actual_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_field",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "bytes": {
+          "method": "utf8_bytes_json_dumps_default",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 6786
+        },
+        "estimated_tokens": {
+          "method": "ceil_utf8_bytes_div_4_proxy",
+          "reason": null,
+          "status": "ESTIMATED",
+          "value": 1697
+        }
+      },
+      "prompt": {
+        "bytes": {
+          "method": "utf8_bytes_exact_material",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 27045
+        }
+      },
+      "quota": {
+        "method": null,
+        "reason": "token_usage_is_not_account_quota_usage",
+        "status": "NOT_AVAILABLE",
+        "value": null
+      },
+      "reuse": {
+        "cache_hit": {
+          "method": "durable_spool_recovery_flag",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 0
+        },
+        "derived_state_reused": {
+          "method": null,
+          "reason": "no_existing_deterministic_reuse_marker",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "previous_finding_reused": {
+          "method": null,
+          "reason": "no_existing_deterministic_reuse_marker",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "previous_state_reused": {
+          "method": null,
+          "reason": "no_existing_deterministic_reuse_marker",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        }
+      },
+      "runtime": {
+        "cached_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_field",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "model": null,
+        "model_reason": "runtime_did_not_report_model",
+        "model_status": "NOT_AVAILABLE",
+        "reasoning_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_field",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "runtime_input_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_field",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "runtime_output_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_field",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        }
+      },
+      "schema_version": 1
+    },
+    {
+      "accounting": {
+        "failed_call_count": {
+          "method": "dispatch_lifecycle",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 0
+        },
+        "model_call_count": {
+          "method": "dispatch_lifecycle",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 1
+        },
+        "pending_unreconciled_usage": {
+          "method": "dispatch_lifecycle",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 0
+        }
+      },
+      "authoritative": false,
+      "backend": "CodexRoleExecutor",
+      "context": {
+        "actual_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_context_only_tokens",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "artifact_refs": [
+          "evidence_manifest",
+          "historical_input",
+          "historical_request",
+          "lifecycle",
+          "po_authorization",
+          "previous_material_result",
+          "publication",
+          "published_contract",
+          "resolver",
+          "runner",
+          "specification",
+          "state",
+          "tooling_tests"
+        ],
+        "bytes": {
+          "method": "utf8_bytes_json_dumps_default",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 32211
+        },
+        "estimated_tokens": {
+          "method": "ceil_utf8_bytes_div_4_proxy",
+          "reason": null,
+          "status": "ESTIMATED",
+          "value": 8053
+        },
+        "full_reconstruction": {
+          "method": null,
+          "reason": "existing_context_has_no_full_reconstruction_marker",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "full_reconstruction_reason": null,
+        "source_count": {
+          "method": "source_digest_key_count",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 13
+        }
+      },
+      "context_policy": "tc01-observe-existing-context-v1",
+      "delta": {
+        "new_material_delta_present": {
+          "method": null,
+          "reason": "no_existing_deterministic_delta_marker",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        }
+      },
+      "execution_kind": "LLM",
+      "identity": {
+        "attempt": 1,
+        "context_digest": "908c2b29ecf26633ca2f496175f9902ea29c8c402f466a3bb4951b6359e61b23",
+        "execution_id": "8b8c775c-8b7d-56bc-b31b-b91173b3edc1",
+        "input_revision": "9bc3fb6dcd06e600778fb6b2b6e4fa4e5b288cf00aacb8e568938c48b8f8cece",
+        "result_digest": "1739579bb72f758237dd25be45663fa2272c2a9705166501e4858c7b36088ac8",
+        "role": "ADVISOR",
+        "scope": "Slice002: Resistance A4 preparation only",
+        "task_id": "42176b41-3abb-59a7-b28c-44a6ec3e8fc9"
+      },
+      "output": {
+        "actual_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_field",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "bytes": {
+          "method": "utf8_bytes_json_dumps_default",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 4277
+        },
+        "estimated_tokens": {
+          "method": "ceil_utf8_bytes_div_4_proxy",
+          "reason": null,
+          "status": "ESTIMATED",
+          "value": 1070
+        }
+      },
+      "prompt": {
+        "bytes": {
+          "method": "utf8_bytes_exact_material",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 33139
+        }
+      },
+      "quota": {
+        "method": null,
+        "reason": "token_usage_is_not_account_quota_usage",
+        "status": "NOT_AVAILABLE",
+        "value": null
+      },
+      "reuse": {
+        "cache_hit": {
+          "method": "durable_spool_recovery_flag",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 0
+        },
+        "derived_state_reused": {
+          "method": null,
+          "reason": "no_existing_deterministic_reuse_marker",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "previous_finding_reused": {
+          "method": null,
+          "reason": "no_existing_deterministic_reuse_marker",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "previous_state_reused": {
+          "method": null,
+          "reason": "no_existing_deterministic_reuse_marker",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        }
+      },
+      "runtime": {
+        "cached_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_field",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "model": null,
+        "model_reason": "runtime_did_not_report_model",
+        "model_status": "NOT_AVAILABLE",
+        "reasoning_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_field",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "runtime_input_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_field",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "runtime_output_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_field",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        }
+      },
+      "schema_version": 1
+    },
+    {
+      "accounting": {
+        "failed_call_count": {
+          "method": "dispatch_lifecycle",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 0
+        },
+        "model_call_count": {
+          "method": "dispatch_lifecycle",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 0
+        },
+        "pending_unreconciled_usage": {
+          "method": "dispatch_lifecycle",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 0
+        }
+      },
+      "authoritative": false,
+      "backend": "PublishedLocalValidationExecutor",
+      "context": {
+        "actual_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_context_only_tokens",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "artifact_refs": [
+          "evidence_manifest",
+          "historical_input",
+          "historical_request",
+          "lifecycle",
+          "po_authorization",
+          "previous_material_result",
+          "publication",
+          "published_contract",
+          "resolver",
+          "runner",
+          "specification",
+          "state",
+          "tooling_tests"
+        ],
+        "bytes": {
+          "method": "utf8_bytes_json_dumps_default",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 20469
+        },
+        "estimated_tokens": {
+          "method": "ceil_utf8_bytes_div_4_proxy",
+          "reason": null,
+          "status": "ESTIMATED",
+          "value": 5118
+        },
+        "full_reconstruction": {
+          "method": null,
+          "reason": "existing_context_has_no_full_reconstruction_marker",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "full_reconstruction_reason": null,
+        "source_count": {
+          "method": "source_digest_key_count",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 13
+        }
+      },
+      "context_policy": "tc01-observe-existing-context-v1",
+      "delta": {
+        "new_material_delta_present": {
+          "method": null,
+          "reason": "no_existing_deterministic_delta_marker",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        }
+      },
+      "execution_kind": "DETERMINISTIC",
+      "identity": {
+        "attempt": 1,
+        "context_digest": "d39514f4178156d4210dd11c25d24c3aea1f7f6a4c11ea5bc544c16e3c1900ce",
+        "execution_id": "e254b74e-dfe5-5663-9486-fff9cc5ced62",
+        "input_revision": "9bc3fb6dcd06e600778fb6b2b6e4fa4e5b288cf00aacb8e568938c48b8f8cece",
+        "result_digest": "460459e9c4cfac8c2a248b3eacdd1d10eb982d70f0ca83f9bab246afdd306998",
+        "role": "CODE_EXECUTOR",
+        "scope": "Slice002: Resistance A4 preparation only",
+        "task_id": "42176b41-3abb-59a7-b28c-44a6ec3e8fc9"
+      },
+      "output": {
+        "actual_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_field",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "bytes": {
+          "method": "utf8_bytes_json_dumps_default",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 4033
+        },
+        "estimated_tokens": {
+          "method": "ceil_utf8_bytes_div_4_proxy",
+          "reason": null,
+          "status": "ESTIMATED",
+          "value": 1009
+        }
+      },
+      "prompt": {
+        "bytes": {
+          "method": null,
+          "reason": "no_prompt_for_deterministic_execution",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        }
+      },
+      "quota": {
+        "method": null,
+        "reason": "token_usage_is_not_account_quota_usage",
+        "status": "NOT_AVAILABLE",
+        "value": null
+      },
+      "reuse": {
+        "cache_hit": {
+          "method": "durable_spool_recovery_flag",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 0
+        },
+        "derived_state_reused": {
+          "method": null,
+          "reason": "no_existing_deterministic_reuse_marker",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "previous_finding_reused": {
+          "method": null,
+          "reason": "no_existing_deterministic_reuse_marker",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "previous_state_reused": {
+          "method": null,
+          "reason": "no_existing_deterministic_reuse_marker",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        }
+      },
+      "runtime": {
+        "cached_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_field",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "model": null,
+        "model_reason": "runtime_did_not_report_model",
+        "model_status": "NOT_AVAILABLE",
+        "reasoning_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_field",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "runtime_input_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_field",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "runtime_output_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_field",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        }
+      },
+      "schema_version": 1
+    },
+    {
+      "accounting": {
+        "failed_call_count": {
+          "method": "dispatch_lifecycle",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 0
+        },
+        "model_call_count": {
+          "method": "dispatch_lifecycle",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 1
+        },
+        "pending_unreconciled_usage": {
+          "method": "dispatch_lifecycle",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 0
+        }
+      },
+      "authoritative": false,
+      "backend": "CodexRoleExecutor",
+      "context": {
+        "actual_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_context_only_tokens",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "artifact_refs": [
+          "evidence_manifest",
+          "historical_input",
+          "historical_request",
+          "lifecycle",
+          "po_authorization",
+          "previous_material_result",
+          "publication",
+          "published_contract",
+          "resolver",
+          "runner",
+          "specification",
+          "state",
+          "tooling_tests"
+        ],
+        "bytes": {
+          "method": "utf8_bytes_json_dumps_default",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 32549
+        },
+        "estimated_tokens": {
+          "method": "ceil_utf8_bytes_div_4_proxy",
+          "reason": null,
+          "status": "ESTIMATED",
+          "value": 8138
+        },
+        "full_reconstruction": {
+          "method": null,
+          "reason": "existing_context_has_no_full_reconstruction_marker",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "full_reconstruction_reason": null,
+        "source_count": {
+          "method": "source_digest_key_count",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 13
+        }
+      },
+      "context_policy": "tc01-observe-existing-context-v1",
+      "delta": {
+        "new_material_delta_present": {
+          "method": null,
+          "reason": "no_existing_deterministic_delta_marker",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        }
+      },
+      "execution_kind": "LLM",
+      "identity": {
+        "attempt": 1,
+        "context_digest": "a2ca7d4fe70f194c1be33356ba28bb9a566678c53a6fb3509f22d81155039f2b",
+        "execution_id": "be889d75-1dd5-50bb-8835-ebd70bea693f",
+        "input_revision": "9bc3fb6dcd06e600778fb6b2b6e4fa4e5b288cf00aacb8e568938c48b8f8cece",
+        "result_digest": "ec8f610c528e127a7b91cb650a03a6b11b18910bcf6bcd3ff9fb1a8fbdefcf47",
+        "role": "ADVISOR",
+        "scope": "Slice002: Resistance A4 preparation only",
+        "task_id": "42176b41-3abb-59a7-b28c-44a6ec3e8fc9"
+      },
+      "output": {
+        "actual_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_field",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "bytes": {
+          "method": "utf8_bytes_json_dumps_default",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 3714
+        },
+        "estimated_tokens": {
+          "method": "ceil_utf8_bytes_div_4_proxy",
+          "reason": null,
+          "status": "ESTIMATED",
+          "value": 929
+        }
+      },
+      "prompt": {
+        "bytes": {
+          "method": "utf8_bytes_exact_material",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 33477
+        }
+      },
+      "quota": {
+        "method": null,
+        "reason": "token_usage_is_not_account_quota_usage",
+        "status": "NOT_AVAILABLE",
+        "value": null
+      },
+      "reuse": {
+        "cache_hit": {
+          "method": "durable_spool_recovery_flag",
+          "reason": null,
+          "status": "MEASURED",
+          "value": 0
+        },
+        "derived_state_reused": {
+          "method": null,
+          "reason": "no_existing_deterministic_reuse_marker",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "previous_finding_reused": {
+          "method": null,
+          "reason": "no_existing_deterministic_reuse_marker",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "previous_state_reused": {
+          "method": null,
+          "reason": "no_existing_deterministic_reuse_marker",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        }
+      },
+      "runtime": {
+        "cached_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_field",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "model": null,
+        "model_reason": "runtime_did_not_report_model",
+        "model_status": "NOT_AVAILABLE",
+        "reasoning_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_field",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "runtime_input_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_field",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        },
+        "runtime_output_tokens": {
+          "method": null,
+          "reason": "runtime_did_not_report_field",
+          "status": "NOT_AVAILABLE",
+          "value": null
+        }
+      },
+      "schema_version": 1
+    }
+  ],
+  "recovery": {
+    "new_dispatches": 0,
+    "new_model_calls": 0,
+    "recovered_results": 5,
+    "usage_double_counted": false
+  },
+  "schema_version": 1,
+  "source_fixture": "Slice 002 persisted evidence at c9d895cca0aee1f12aa1c85af564047d2a9a4457",
+  "status": "PASS",
+  "task_summary": {
+    "cumulative_actual_runtime_tokens": {
+      "method": null,
+      "reason": "one_or_more_llm_executions_lack_runtime_usage",
+      "status": "NOT_AVAILABLE",
+      "value": null
+    },
+    "cumulative_estimated_llm_prompt_output_tokens": {
+      "method": "sum_unique_dispatched_llm_byte_proxies",
+      "reason": null,
+      "status": "ESTIMATED",
+      "value": 33325
+    },
+    "execution_count": 5,
+    "failed_call_count": 0,
+    "model_call_count": 4,
+    "pending_unreconciled_usage": false
+  }
+}

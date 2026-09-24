@@ -12,6 +12,7 @@ from .resistance_candidate import materialize_candidate, specification
 from .resistance_sources import read_sources, sha
 from .roles import make_context, strict_json, validate_result
 from .runtime import CodexRoleExecutor, atomic_json
+from .telemetry import observe
 
 PROTECTED = ['Trader AI', 'TEF', 'Governance', 'Sprint 2', 'Support', 'D6',
              'Resistance production and lifecycle', 'historical A4 requests/outputs',
@@ -80,6 +81,11 @@ class LocalValidationExecutor:
         record = {'context':context,'context_digest':digest(context),'result':result,'result_digest':digest(result),
                   'backend':'PublishedLocalValidationExecutor','tool_calls':0,'authoritative':False}
         atomic_json(path,record)
+        try:
+            self.ledger.observe(observe(context,result,backend='PublishedLocalValidationExecutor',events=[],
+                                        attempt=self.ledger.recover(context['execution_id'])['attempts']))
+        except Exception as error:
+            self.ledger._event(context['execution_id'],'TELEMETRY_FAILED',type(error).__name__)
         return record
 
 

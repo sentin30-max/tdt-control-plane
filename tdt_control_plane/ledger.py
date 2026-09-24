@@ -17,6 +17,11 @@ class Ledger:
           attempts INTEGER NOT NULL DEFAULT 0, result TEXT, digest TEXT, classification TEXT);
         CREATE TABLE IF NOT EXISTS events (
           seq INTEGER PRIMARY KEY, execution_id TEXT, kind TEXT, detail TEXT);
+        CREATE TABLE IF NOT EXISTS telemetry (
+          execution_id TEXT NOT NULL REFERENCES executions(id), attempt INTEGER NOT NULL,
+          task_id TEXT NOT NULL, context_digest TEXT NOT NULL,
+          result_digest TEXT, record TEXT NOT NULL, record_digest TEXT NOT NULL,
+          PRIMARY KEY(execution_id,attempt));
         ''')
 
     def close(self):
@@ -46,6 +51,41 @@ class Ledger:
         if not row:
             raise ValueError("UNKNOWN_EXECUTION")
         return dict(context=json.loads(row[0]), status=row[1], attempts=row[2], result=json.loads(row[3]) if row[3] else None, result_digest=row[4], classification=row[5])
+
+    def observe(self, record):
+        """Persist immutable telemetry; it is never read by routing or ingest."""
+        from .telemetry import validate
+        validate(record)
+        identity = record['identity']; eid = identity['execution_id']
+        raw = json.dumps(record, sort_keys=True); record_digest = digest(record)
+        self.db.execute('BEGIN IMMEDIATE')
+        try:
+            execution = self.recover(eid)
+            if execution['context']['task_id'] != identity['task_id'] or digest(execution['context']) != identity['context_digest']:
+                raise ValueError('TELEMETRY_CORRELATION')
+            if identity['result_digest'] is not None and execution['result_digest'] not in {None, identity['result_digest']}:
+                raise ValueError('TELEMETRY_RESULT_CORRELATION')
+            attempt=identity.get('attempt')
+            if type(attempt) is not int or attempt < 0:
+                raise ValueError('TELEMETRY_ATTEMPT')
+            row = self.db.execute('SELECT record_digest FROM telemetry WHERE execution_id=? AND attempt=?',(eid,attempt)).fetchone()
+            if row and row[0] != record_digest:
+                raise ValueError('TELEMETRY_CONTRADICTION')
+            if not row:
+                self.db.execute('INSERT INTO telemetry VALUES(?,?,?,?,?,?,?)',
+                                (eid,attempt,identity['task_id'],identity['context_digest'],identity['result_digest'],raw,record_digest))
+                self._event(eid,'TELEMETRY_RECORDED',record_digest)
+            else:
+                self._event(eid,'TELEMETRY_DUPLICATE_NOOP',record_digest)
+            self.db.execute('COMMIT')
+            return 'RECORDED' if not row else 'DUPLICATE_NOOP'
+        except Exception:
+            self.db.execute('ROLLBACK')
+            raise
+
+    def telemetry(self, eid):
+        rows=self.db.execute('SELECT record,record_digest FROM telemetry WHERE execution_id=? ORDER BY attempt',(eid,)).fetchall()
+        return [{'record':json.loads(row[0]),'record_digest':row[1]} for row in rows]
 
     def claim(self, eid):
         self.db.execute("BEGIN IMMEDIATE")
