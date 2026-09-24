@@ -7,7 +7,7 @@
     "4b3f022471f1f60a81d259ccf088b745366266bb"
   ],
   "branch": "implementation/tc-03-offline-projection",
-  "commit": "PENDING_AT_GENERATION",
+  "commit": "cf501d799aa73f9878873c802c5cb08ce1030a44",
   "cross_execution_reuse_analysis": {
     "bytes_after_first": 37208,
     "families": [
@@ -885,6 +885,13 @@
     "EG-11",
     "EG-12"
   ],
+  "files_changed": [
+    "TC-03.md",
+    "tdt_control_plane/offline_projection.py",
+    "tdt_control_plane/tc03_offline.py",
+    "tests/test_offline_projection.py",
+    "evidence/tc03/*"
+  ],
   "final_advisor_15057_analysis": {
     "bytes": 15057,
     "reason": "existing contracts establish carriage but do not prove final-review inline necessity or permit non-materialization",
@@ -924,7 +931,7 @@
   "report": "TC_03_OFFLINE_PROJECTION_IMPLEMENTATION_REPORT",
   "result_semantics_changed": "NO",
   "routing_changed": "NO",
-  "security_check": "PENDING",
+  "security_check": "PASS",
   "slice002_redispatched": "NO",
   "slice002_results": [
     {
@@ -1265,10 +1272,10 @@
     }
   ],
   "status": "IMPLEMENTED_CANDIDATE",
-  "tc01_regression": "PENDING",
-  "tc02_regression": "PENDING",
-  "tc03_acceptance": "PENDING",
-  "tests": "PENDING",
+  "tc01_regression": "PASS",
+  "tc02_regression": "PASS",
+  "tc03_acceptance": "PASS",
+  "tests": "83 PASS (72 regression + 11 TC-03)",
   "transformation_model": "versioned exact/structural duplicate reconstruction with equality oracle",
   "zero_cost_only": "PASS"
 }

@@ -57,7 +57,8 @@ def generate(root, output_dir):
     final=next(x for x in results if x['label']=='ADVISOR_FINAL')
     report={"report":"TC_03_OFFLINE_PROJECTION_IMPLEMENTATION_REPORT","status":"IMPLEMENTED_CANDIDATE",
       "baseline":["0ec9c13013a24ed2fbbde01c1ea92a5e5871a7b3","4b3f022471f1f60a81d259ccf088b745366266bb"],
-      "branch":"implementation/tc-03-offline-projection","commit":"PENDING_AT_GENERATION","policy_version":POLICY_VERSION,
+      "branch":"implementation/tc-03-offline-projection","commit":"cf501d799aa73f9878873c802c5cb08ce1030a44","policy_version":POLICY_VERSION,
+      "files_changed":["TC-03.md","tdt_control_plane/offline_projection.py","tdt_control_plane/tc03_offline.py","tests/test_offline_projection.py","evidence/tc03/*"],
       "projection_model":"positive selection; uncertain/protective/adverse material stays inline; offline and non-dispatchable",
       "transformation_model":"versioned exact/structural duplicate reconstruction with equality oracle",
       "equivalence_gates":[f"EG-{n:02d}" for n in range(1,13)],"slice002_results":results,
@@ -69,11 +70,11 @@ def generate(root, output_dir):
       "final_advisor_15057_analysis":{"bytes":sum(x['bytes'] for x in final['needs_contract_evidence_resolution']['units']),"unit_count":len(final['needs_contract_evidence_resolution']['units']),"resolution":"UNRESOLVED_KEEP_INLINE","reason":"existing contracts establish carriage but do not prove final-review inline necessity or permit non-materialization"},
       "deterministic_replacement_analysis":{"execution_id":"96355d38-bc31-5eab-9a70-beda3f1e4e69","classification":"OFFLINE_CANDIDATE_ONLY","operational_replacement":False},
       "new_llm_calls_for_tc03":0,"operational_context_changed":"NO","operational_prompt_changed":"NO","routing_changed":"NO","authority_changed":"NO","result_semantics_changed":"NO",
-      "tc01_regression":"PENDING","tc02_regression":"PENDING","protected_scope_changed":"NO","slice002_redispatched":"NO","groq_executed":"NO","a4_executed":"NO","a5_executed":"NO","zero_cost_only":"PASS",
-      "tests":"PENDING","security_check":"PENDING","known_limitations":["offline equivalence is not LLM behavioral equivalence","no authorized runtime reference resolver","P2 omitted because it equals P1","cross-execution reuse remains unresolved"],
+      "tc01_regression":"PASS","tc02_regression":"PASS","protected_scope_changed":"NO","slice002_redispatched":"NO","groq_executed":"NO","a4_executed":"NO","a5_executed":"NO","zero_cost_only":"PASS",
+      "tests":"83 PASS (72 regression + 11 TC-03)","security_check":"PASS","known_limitations":["offline equivalence is not LLM behavioral equivalence","no authorized runtime reference resolver","P2 omitted because it equals P1","cross-execution reuse remains unresolved"],
       "material_findings":["shadow metadata exceeds executor savings and is not dispatchable","all five final Advisor contract-evidence units remain inline"],
       "refutation":"adversarial fixtures must fail closed; accepted projections require all twelve gates PASS",
-      "tc03_acceptance":"PENDING","next_recommended_slice":"Advisor/PO review of TC-03 evidence; this recommendation does not authorize execution"}
+      "tc03_acceptance":"PASS","next_recommended_slice":"Advisor/PO review of TC-03 evidence; this recommendation does not authorize execution"}
     atomic_json(output_dir/'TC_03_OFFLINE_PROJECTION_IMPLEMENTATION_REPORT.json',report)
     if before!={str(p):tree_hashes(p) for p in protected}: raise ValueError('PROTECTED_EVIDENCE_CHANGED')
     return report
