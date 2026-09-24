@@ -1,0 +1,208 @@
+{
+  "a4_executed": "NO",
+  "a5_executed": "NO",
+  "account_quota_savings": "NOT_AVAILABLE",
+  "actual_token_savings": "NOT_AVAILABLE",
+  "adversarial_refutation": {
+    "attacks": [
+      "false supported-contract claim blocked",
+      "wrong operation not applicable",
+      "wrong scope not applicable",
+      "stale rules blocked",
+      "stale contract blocked",
+      "authority mismatch blocked",
+      "protected baseline mutation blocked",
+      "source digest mismatch blocked",
+      "semantic ambiguity blocked",
+      "oracle failure blocked",
+      "same execution/different digest isolated",
+      "blocker cannot LLM fallback",
+      "not-applicable is scope-local",
+      "success stops at Advisor handoff",
+      "executor destination attempt rejected",
+      "telemetry model count derived by Control Plane",
+      "completed execution reused without redispatch",
+      "unsupported CODE_EXECUTOR operation not selected",
+      "registry ignores executor self-claim",
+      "material downstream contract byte-equivalent"
+    ],
+    "status": "PASS_PROTECTED"
+  },
+  "advisor_handoff": "PASS",
+  "advisor_review_completed": "NO",
+  "authority_boundary": "PASS",
+  "automatic_llm_fallback_on_blocker": "NO",
+  "avoided_llm_dispatch": 1,
+  "baseline": [
+    "e957b70058fe89aafc0295ef1434aa21b34ffed2",
+    "f5189cb5626b9cb3fbebf1f6a401998d02e2ed0d",
+    "cc3976ae6ab17d0b50320cc8f0babf0dce6e3f0a"
+  ],
+  "branch": "implementation/tc-05-deterministic-dispatch",
+  "code_executor_llm_dispatch": "NO",
+  "defect_isolation": "PASS",
+  "deterministic_executor_id": "deterministic-preparation-v1",
+  "eligibility_model": {
+    "classifications": [
+      "ELIGIBLE",
+      "NOT_APPLICABLE",
+      "MATERIAL_BLOCKER"
+    ],
+    "heuristics": false,
+    "registry_size": 1
+  },
+  "eligible_pilot": {
+    "advisor_handoff": "PASS",
+    "advisor_review_completed": "NO",
+    "code_executor_llm_dispatch": "NO",
+    "deterministic_eligibility": "ELIGIBLE",
+    "model_call_count": 0,
+    "next_operational_dispatch_before_advisor": "NO",
+    "output_equivalence": "PASS",
+    "recovery_redispatched": false,
+    "recovery_status": "REUSABLE",
+    "result_digest": "110e7ba80f9667fd7cfc0c2457866b03caba0542bd227ae79cdf3601854a9bed",
+    "selected_executor": "deterministic-preparation-v1",
+    "telemetry": {
+      "backend": "DeterministicPreparationExecutor",
+      "execution_kind": "DETERMINISTIC",
+      "model_call_count": 0
+    },
+    "verify_ingest": "PASS"
+  },
+  "execution_model": "Role Router -> deterministic eligibility -> registered executor -> strict result -> verify/ingest -> Advisor handoff",
+  "executor_registry": [
+    {
+      "authority_profile": "BOUNDED_COMPUTATION",
+      "contract_version": "slice002-preparation-contract-v1",
+      "executor_id": "deterministic-preparation-v1",
+      "executor_type": "DETERMINISTIC",
+      "rule_set_version": "tc04-preparation-rules-v1",
+      "scope": "Slice002: Resistance A4 preparation only",
+      "supported_operation": "PREPARE_CANDIDATE",
+      "supported_role": "CODE_EXECUTOR"
+    }
+  ],
+  "failure_taxonomy": {
+    "material_blocker": "scope stopped; no LLM fallback; Advisor handoff ready",
+    "not_applicable": "normal authorized path may remain selectable"
+  },
+  "files_changed": [
+    "TC-05.md",
+    "tdt_control_plane/deterministic_dispatch.py",
+    "tdt_control_plane/tc05_pilot.py",
+    "tests/test_deterministic_dispatch.py",
+    "evidence/tc05/*"
+  ],
+  "final_evidence_commit": "PENDING_AT_GENERATION",
+  "groq_executed": "NO",
+  "historical_proxy_comparator": "8249 estimated tokens",
+  "idempotency": "PASS",
+  "implementation_commit": "PENDING_AT_GENERATION",
+  "known_limitations": [
+    "one exact capability only",
+    "Advisor review is handed off but not completed",
+    "normal LLM path was classified but not executed",
+    "actual account savings unavailable"
+  ],
+  "material_blocker_pilot": [
+    {
+      "advisor_handoff": "READY",
+      "automatic_llm_fallback": false,
+      "case": "authority_mismatch",
+      "execution_classification": "MATERIAL_BLOCKER",
+      "model_call_count": 0,
+      "operational_continuation": "STOPPED_FOR_SCOPE",
+      "reason": "ROLE_AUTHORITY"
+    },
+    {
+      "advisor_handoff": "READY",
+      "automatic_llm_fallback": false,
+      "case": "protected_baseline_mismatch",
+      "execution_classification": "MATERIAL_BLOCKER",
+      "model_call_count": 0,
+      "operational_continuation": "STOPPED_FOR_SCOPE",
+      "reason": "PROTECTED_BASELINE_MISMATCH"
+    },
+    {
+      "advisor_handoff": "READY",
+      "automatic_llm_fallback": false,
+      "case": "specification_digest_mismatch",
+      "execution_classification": "MATERIAL_BLOCKER",
+      "model_call_count": 0,
+      "operational_continuation": "STOPPED_FOR_SCOPE",
+      "reason": "SPECIFICATION_DIGEST_MISMATCH"
+    },
+    {
+      "advisor_handoff": "READY",
+      "automatic_llm_fallback": false,
+      "case": "material_contradiction",
+      "execution_classification": "MATERIAL_BLOCKER",
+      "model_call_count": 0,
+      "operational_continuation": "STOPPED_FOR_SCOPE",
+      "reason": "MATERIAL_CONTRADICTION"
+    },
+    {
+      "advisor_handoff": "READY",
+      "automatic_llm_fallback": false,
+      "case": "unresolved_semantic_choice",
+      "execution_classification": "MATERIAL_BLOCKER",
+      "model_call_count": 0,
+      "operational_continuation": "STOPPED_FOR_SCOPE",
+      "reason": "UNRESOLVED_SEMANTIC_CHOICE"
+    },
+    {
+      "advisor_handoff": "READY",
+      "automatic_llm_fallback": false,
+      "case": "output_oracle_failure",
+      "execution_classification": "MATERIAL_BLOCKER",
+      "model_call_count": 0,
+      "operational_continuation": "STOPPED_FOR_SCOPE",
+      "reason": "REQUEST_FIELD_LOSS"
+    },
+    {
+      "advisor_handoff": "READY",
+      "automatic_llm_fallback": false,
+      "case": "recovery_digest_contradiction",
+      "execution_classification": "MATERIAL_BLOCKER",
+      "model_call_count": 0,
+      "operational_continuation": "STOPPED_FOR_SCOPE",
+      "reason": "EXECUTION_CONTRADICTION"
+    }
+  ],
+  "material_findings": [
+    "one historical LLM dispatch is operationally avoidable for the proven contract",
+    "material blockers never degrade to LLM fallback"
+  ],
+  "model_call_count": 0,
+  "new_llm_calls_for_tc05_testing": 0,
+  "next_operational_dispatch_before_advisor": "NO",
+  "next_recommended_slice": "Advisor/PO review of TC-05 evidence; this recommendation does not authorize execution",
+  "not_applicable_pilot": {
+    "deterministic_eligibility": "NOT_APPLICABLE",
+    "deterministic_executed": false,
+    "false_blocker": false,
+    "llm_executed_for_test": false,
+    "normal_path_selectable": true
+  },
+  "output_equivalence": "PASS",
+  "protected_scope_changed": "NO",
+  "recovery": "PASS",
+  "refutation_result": "PASS_PROTECTED across 20 integration attacks",
+  "report": "TC_05_DETERMINISTIC_DISPATCH_INTEGRATION_REPORT",
+  "security_check": "PENDING",
+  "selected_executor": "deterministic-preparation-v1",
+  "slice002_historical_evidence_changed": "NO",
+  "status": "IMPLEMENTED_CANDIDATE",
+  "supported_contract": "slice002-preparation-contract-v1",
+  "supported_operation": "PREPARE_CANDIDATE",
+  "supported_rule_set": "tc04-preparation-rules-v1",
+  "tc01_regression": "PENDING",
+  "tc02_regression": "PENDING",
+  "tc03_regression": "PENDING",
+  "tc04_regression": "PENDING",
+  "tc05_acceptance": "PASS",
+  "tests": "PENDING",
+  "verify_ingest": "PASS",
+  "zero_cost_only": "PASS"
+}

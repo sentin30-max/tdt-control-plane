@@ -1,0 +1,96 @@
+{
+  "eligible": {
+    "advisor_handoff": "PASS",
+    "advisor_review_completed": "NO",
+    "code_executor_llm_dispatch": "NO",
+    "deterministic_eligibility": "ELIGIBLE",
+    "model_call_count": 0,
+    "next_operational_dispatch_before_advisor": "NO",
+    "output_equivalence": "PASS",
+    "recovery_redispatched": false,
+    "recovery_status": "REUSABLE",
+    "result_digest": "110e7ba80f9667fd7cfc0c2457866b03caba0542bd227ae79cdf3601854a9bed",
+    "selected_executor": "deterministic-preparation-v1",
+    "telemetry": {
+      "backend": "DeterministicPreparationExecutor",
+      "execution_kind": "DETERMINISTIC",
+      "model_call_count": 0
+    },
+    "verify_ingest": "PASS"
+  },
+  "historical_evidence_mutated": false,
+  "material_blockers": [
+    {
+      "advisor_handoff": "READY",
+      "automatic_llm_fallback": false,
+      "case": "authority_mismatch",
+      "execution_classification": "MATERIAL_BLOCKER",
+      "model_call_count": 0,
+      "operational_continuation": "STOPPED_FOR_SCOPE",
+      "reason": "ROLE_AUTHORITY"
+    },
+    {
+      "advisor_handoff": "READY",
+      "automatic_llm_fallback": false,
+      "case": "protected_baseline_mismatch",
+      "execution_classification": "MATERIAL_BLOCKER",
+      "model_call_count": 0,
+      "operational_continuation": "STOPPED_FOR_SCOPE",
+      "reason": "PROTECTED_BASELINE_MISMATCH"
+    },
+    {
+      "advisor_handoff": "READY",
+      "automatic_llm_fallback": false,
+      "case": "specification_digest_mismatch",
+      "execution_classification": "MATERIAL_BLOCKER",
+      "model_call_count": 0,
+      "operational_continuation": "STOPPED_FOR_SCOPE",
+      "reason": "SPECIFICATION_DIGEST_MISMATCH"
+    },
+    {
+      "advisor_handoff": "READY",
+      "automatic_llm_fallback": false,
+      "case": "material_contradiction",
+      "execution_classification": "MATERIAL_BLOCKER",
+      "model_call_count": 0,
+      "operational_continuation": "STOPPED_FOR_SCOPE",
+      "reason": "MATERIAL_CONTRADICTION"
+    },
+    {
+      "advisor_handoff": "READY",
+      "automatic_llm_fallback": false,
+      "case": "unresolved_semantic_choice",
+      "execution_classification": "MATERIAL_BLOCKER",
+      "model_call_count": 0,
+      "operational_continuation": "STOPPED_FOR_SCOPE",
+      "reason": "UNRESOLVED_SEMANTIC_CHOICE"
+    },
+    {
+      "advisor_handoff": "READY",
+      "automatic_llm_fallback": false,
+      "case": "output_oracle_failure",
+      "execution_classification": "MATERIAL_BLOCKER",
+      "model_call_count": 0,
+      "operational_continuation": "STOPPED_FOR_SCOPE",
+      "reason": "REQUEST_FIELD_LOSS"
+    },
+    {
+      "advisor_handoff": "READY",
+      "automatic_llm_fallback": false,
+      "case": "recovery_digest_contradiction",
+      "execution_classification": "MATERIAL_BLOCKER",
+      "model_call_count": 0,
+      "operational_continuation": "STOPPED_FOR_SCOPE",
+      "reason": "EXECUTION_CONTRADICTION"
+    }
+  ],
+  "new_llm_calls": 0,
+  "not_applicable": {
+    "deterministic_eligibility": "NOT_APPLICABLE",
+    "deterministic_executed": false,
+    "false_blocker": false,
+    "llm_executed_for_test": false,
+    "normal_path_selectable": true
+  },
+  "pilot": "TC05_CONTROLLED_OPERATIONAL_DETERMINISTIC_DISPATCH"
+}
