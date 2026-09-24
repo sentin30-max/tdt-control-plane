@@ -1,0 +1,206 @@
+{
+  "REPORT": "TC_02_CONTEXT_MANIFEST_IMPLEMENTATION_REPORT",
+  "STATUS": "IMPLEMENTED_CANDIDATE",
+  "BASELINE": "4e5ba6928e21850643ee43a21639d8589f166fe3",
+  "BRANCH": "implementation/tc-02-context-manifest-shadow",
+  "COMMIT": "4b3f022471f1f60a81d259ccf088b745366266bb",
+  "AUTHORITATIVE": false,
+  "AUTHORIZATION_SHA256": "226715791475fe34215e8c744af2c6d277690b34b849fe239531d60809ef43f5",
+  "FILES_CHANGED": [
+    "TC-02.md",
+    "tdt_control_plane/context_manifest.py",
+    "tdt_control_plane/tc02_shadow.py",
+    "tests/test_context_manifest.py",
+    "evidence/tc02/2142e6da-c067-55c8-8912-cff46e335f64.manifest.json",
+    "evidence/tc02/96355d38-bc31-5eab-9a70-beda3f1e4e69.manifest.json",
+    "evidence/tc02/8b8c775c-8b7d-56bc-b31b-b91173b3edc1.manifest.json",
+    "evidence/tc02/be889d75-1dd5-50bb-8835-ebd70bea693f.manifest.json",
+    "evidence/tc02/shadow-index.json",
+    "evidence/tc02/TC_02_CONTEXT_MANIFEST_IMPLEMENTATION_REPORT.json"
+  ],
+  "CONTEXT_UNIT_MODEL": {
+    "granularity": "Existing structured fields; inputs, state, blocker, previous material result and strict result are expanded. No prose NLP.",
+    "byte_partition": "Units include field serialization and structural overhead and sum exactly to existing default JSON context bytes.",
+    "fields": ["unit_id", "source_ref", "source_digest", "selector", "materialization_mode", "byte_size", "estimated_tokens", "authority_class", "dependency_type", "justification", "semantic_necessity", "transport_form", "confidence_basis", "required_by", "derived_from", "duplicates", "resolvable_ref", "adverse_or_protective", "reason_code"]
+  },
+  "MANIFEST_SCHEMA": {
+    "schema_version": 1,
+    "policy_ref": "tc02-context-justification-shadow-v1",
+    "builder_version": "1",
+    "identity": ["task_id", "execution_id", "role", "scope", "context_digest", "source_revision"],
+    "links": ["telemetry_ref", "manifest_digest"],
+    "content": ["context_units", "protective_coverage", "coverage"],
+    "guards": ["shadow=true", "operational=false", "authoritative=false"]
+  },
+  "DEPENDENCY_MODEL": {
+    "status": "BOUNDED_AND_VERSIONED",
+    "types": ["REQUIRES", "CONSTRAINS", "EVIDENCE_FOR", "DERIVED_FROM", "SUPERSEDES", "INFORMS", "PROTECTS", "INVALIDATES", "AUTHORIZES"],
+    "storage": "Local list/dict records and digests; no graph or external service",
+    "cycle_semantics": "Circular unit derivation is rejected"
+  },
+  "JUSTIFICATION_MODEL": "Every justified unit links to a schema rule, authority, contract, evidence obligation, protection, explicit operation/input or review requirement. Generic relevance text is not accepted.",
+  "CLASSIFICATION_MODEL": {
+    "semantic_necessity": ["REQUIRED", "CONDITIONAL", "UNKNOWN", "UNJUSTIFIED", "NEEDS_CONTRACT_EVIDENCE"],
+    "transport_form": ["INLINE_REQUIRED", "REFERENCE_CANDIDATE", "DUPLICATED", "DERIVABLE", "UNKNOWN"],
+    "boundary": "Necessity and representation efficiency are independent; no classification authorizes removal in TC-02."
+  },
+  "PROTECTIVE_COVERAGE_MODEL": {
+    "elements": ["authority", "prohibitions", "protected_baselines", "acceptance_criteria", "advisor_first", "scope_limit", "permitted_destinations", "zero_cost_only", "blocker", "adverse_findings"],
+    "missing_semantics": "MATERIAL_FINDING in shadow; does not block or authorize operational dispatch",
+    "slice002": "All applicable protective elements represented in 4/4 manifests"
+  },
+  "DUPLICATION_MODEL": "Exact or parsed-structural equality, same authority class and non-empty material values only. Similarity is not used. Cross-execution repetition is reported separately.",
+  "DERIVABILITY_MODEL": "Requires deterministic inputs, versioned rule, executable reconstruction and equality oracle. Context ID passes the existing v1 digest oracle; LLM re-inference is forbidden as proof.",
+  "REFERENCE_CANDIDATE_MODEL": "Requires stable identity, version, valid digest, READ_AUTHORIZED permission, matching scope and authorized fetch mechanism. Slice 002 has zero candidates because no executor expansion mechanism exists.",
+  "SLICE002_MANIFESTS": {
+    "status": "4/4 PASS",
+    "executions": [
+      {
+        "name": "ADVISOR_INITIAL",
+        "execution_id": "2142e6da-c067-55c8-8912-cff46e335f64",
+        "total_context_bytes": 18990,
+        "unit_count": 35,
+        "justified_bytes": 18990,
+        "unknown_bytes": 0,
+        "unjustified_bytes": 0,
+        "needs_contract_evidence_bytes": 0,
+        "duplicated_bytes": 457,
+        "derivable_bytes": 82,
+        "reference_candidate_bytes": 0,
+        "protective_expected": 8,
+        "protective_represented": 8,
+        "protective_missing": 0,
+        "unit_coverage": 1.0,
+        "byte_weighted_coverage": 1.0
+      },
+      {
+        "name": "CODE_EXECUTOR_PREPARATION",
+        "execution_id": "96355d38-bc31-5eab-9a70-beda3f1e4e69",
+        "total_context_bytes": 26205,
+        "unit_count": 50,
+        "justified_bytes": 26205,
+        "unknown_bytes": 0,
+        "unjustified_bytes": 0,
+        "needs_contract_evidence_bytes": 0,
+        "duplicated_bytes": 3091,
+        "derivable_bytes": 82,
+        "reference_candidate_bytes": 0,
+        "protective_expected": 8,
+        "protective_represented": 8,
+        "protective_missing": 0,
+        "unit_coverage": 1.0,
+        "byte_weighted_coverage": 1.0
+      },
+      {
+        "name": "ADVISOR_INTERMEDIATE",
+        "execution_id": "8b8c775c-8b7d-56bc-b31b-b91173b3edc1",
+        "total_context_bytes": 32211,
+        "unit_count": 51,
+        "justified_bytes": 32211,
+        "unknown_bytes": 0,
+        "unjustified_bytes": 0,
+        "needs_contract_evidence_bytes": 0,
+        "duplicated_bytes": 5866,
+        "derivable_bytes": 82,
+        "reference_candidate_bytes": 0,
+        "protective_expected": 9,
+        "protective_represented": 9,
+        "protective_missing": 0,
+        "unit_coverage": 1.0,
+        "byte_weighted_coverage": 1.0
+      },
+      {
+        "name": "ADVISOR_FINAL",
+        "execution_id": "be889d75-1dd5-50bb-8835-ebd70bea693f",
+        "total_context_bytes": 32549,
+        "unit_count": 53,
+        "justified_bytes": 17492,
+        "unknown_bytes": 0,
+        "unjustified_bytes": 0,
+        "needs_contract_evidence_bytes": 15057,
+        "duplicated_bytes": 9046,
+        "derivable_bytes": 82,
+        "reference_candidate_bytes": 0,
+        "protective_expected": 10,
+        "protective_represented": 10,
+        "protective_missing": 0,
+        "unit_coverage": 0.9056603773584906,
+        "byte_weighted_coverage": 0.5374051430151464
+      }
+    ]
+  },
+  "CONTEXT_JUSTIFICATION_COVERAGE": {
+    "context_bytes": 109955,
+    "unit_count": 189,
+    "justified_bytes": 94898,
+    "justified_unit_count": 184,
+    "byte_weighted_coverage": 0.863062161793461,
+    "unit_coverage": 0.9735449735449735,
+    "source_count_is_quality_metric": false
+  },
+  "MEASURED_BYTES_REDUCTION_POTENTIAL": {
+    "value": 18788,
+    "status": "MEASURED representation candidates only",
+    "boundary": "Non-overlapping duplicated/derivable/reference-candidate units; not a safe-removal set and not applied."
+  },
+  "ESTIMATED_TOKEN_REDUCTION_POTENTIAL": {
+    "value": 4697,
+    "status": "ESTIMATED",
+    "method": "ceil(18788 UTF-8 bytes / 4); not a tokenizer and not applied"
+  },
+  "ACTUAL_TOKEN_SAVINGS": "NOT_AVAILABLE",
+  "ACCOUNT_QUOTA_SAVINGS": "NOT_AVAILABLE",
+  "NEW_LLM_CALLS_FOR_TC02": 0,
+  "MATERIAL_CONTEXT_CHANGE": "NO",
+  "MATERIAL_PROMPT_CHANGE": "NO",
+  "ROUTING_CHANGE": "NO",
+  "AUTHORITY_CHANGE": "NO",
+  "RESULT_SEMANTICS_CHANGE": "NO",
+  "TC01_REGRESSION": "PASS",
+  "PROTECTED_SCOPE_CHANGED": "NO",
+  "SLICE002_REDISPATCHED": "NO",
+  "GROQ_EXECUTED": "NO",
+  "A4_EXECUTED": "NO",
+  "A5_EXECUTED": "NO",
+  "ZERO_COST_ONLY": "PASS",
+  "TESTS": {
+    "status": "PASS",
+    "count": 72,
+    "clean_clone": "PASS",
+    "shadow_forensics": "PASS",
+    "adversarial_cases": ["small prohibition in large material", "old adverse finding", "same content with different authority", "valid digest wrong scope", "integral but inaccessible reference", "unknown input", "missing protective edge", "circular derivation", "failed deterministic oracle", "summary separated from findings"]
+  },
+  "SECURITY_CHECK": "PASS: scoped credential-pattern scan found no secrets; manifests contain existing non-secret context projections and digests, no hidden reasoning or credentials",
+  "KNOWN_LIMITATIONS": [
+    "No general semantic completeness proof inside prose units",
+    "Field authority classification is only as complete as versioned structured rules",
+    "No context expansion exists, therefore no reference candidate is operationally ready",
+    "Coverage is shadow evidence and cannot block, permit or optimize execution",
+    "Manifest metadata overhead is excluded from executor context because manifests are not dispatched",
+    "Potential bytes cannot be added to cross-execution repetition or translated to actual tokens/quota"
+  ],
+  "MATERIAL_FINDINGS": [
+    "40 context unit identities repeat across executions, totaling 37208 bytes after first occurrence; reuse safety is not established.",
+    "Full contract, historical request/input and specification repetition is visible across executions.",
+    "Previous result artifact has a duplicate parsed representation where present.",
+    "Final verification is repeated in previous result/state representations.",
+    "Five final-Advisor units totaling 15057 bytes need explicit dependency contract evidence for inline materialization.",
+    "Preparation is a deterministic-replacement candidate with an exact oracle; replacement is not authorized."
+  ],
+  "REFUTATION": {
+    "status": "PASS_WITH_EXPLICIT_LIMITS",
+    "conclusions": [
+      "Small protections use a separate inventory and cannot be hidden by weighted coverage.",
+      "Different authority prevents duplicate collapse.",
+      "Old findings are inventoried from the full persisted context; no delta model is claimed.",
+      "Hash without access, fetch mechanism and scope match fails reference candidacy.",
+      "Coarse units do not authorize partial prose removal.",
+      "Manifest overhead must be counted by any future operational proposal.",
+      "Enumerated auditable reasons and separate protection coverage limit metric gaming.",
+      "Rules are schema-based; Slice 002 is the fixture, not a hardcoded removal list."
+    ]
+  },
+  "TC02_ACCEPTANCE": "PASS",
+  "NEXT_RECOMMENDED_SLICE": "Advisor review/refutation, then optionally design TC-03 offline projection/equivalence gates under separate PO authorization. This recommendation authorizes nothing.",
+  "STOP": "No merge, TC-03, context removal, deterministic role replacement, budget enforcement, preflight change, Groq, A4 or A5."
+}
