@@ -14,7 +14,7 @@ FINGERPRINT_VERSION='material-reasoning-fingerprint-v1'
 DECISIONS={'ADMIT','DEFER','BLOCK','REVIEW_REQUIRED'}
 NECESSITIES={'SEMANTIC_REVIEW_REQUIRED','OPEN_ENDED_ANALYSIS','INDEPENDENT_REVIEW_REQUIRED',
              'UNRESOLVED_INTERPRETATION_WITHIN_AUTHORITY','GENERATIVE_SYNTHESIS_REQUIRED'}
-RESERVATION_STATES={'RESERVED','CONSUMED','RELEASED','UNCERTAIN'}
+RESERVATION_STATES={'RESERVED','DISPATCHING','CONSUMED','RELEASED','UNCERTAIN'}
 
 @dataclass(frozen=True)
 class BudgetPolicy:
@@ -81,12 +81,12 @@ class AdmissionGate:
         clause='task_id=?';args=[task_id]
         if role is not None:clause+=' AND role=?';args.append(role)
         rows=self.ledger.db.execute(f'SELECT status,model_calls,total_tokens,measured_tokens FROM reservations WHERE {clause}',args).fetchall()
-        active=[r for r in rows if r[0] in {'RESERVED','CONSUMED','UNCERTAIN'}]
+        active=[r for r in rows if r[0] in {'RESERVED','DISPATCHING','CONSUMED','UNCERTAIN'}]
         return {'model_calls':sum(r[1] for r in active),'estimated_tokens':sum(r[2] for r in active),
                 'measured_tokens':sum(r[3] for r in rows if r[0]=='CONSUMED' and r[3] is not None),
                 'measured_complete':all(r[3] is not None for r in rows if r[0]=='CONSUMED'),
                 'reserved':sum(r[0]=='RESERVED' for r in rows),'consumed':sum(r[0]=='CONSUMED' for r in rows),
-                'released':sum(r[0]=='RELEASED' for r in rows),'uncertain':sum(r[0]=='UNCERTAIN' for r in rows)}
+                'dispatching':sum(r[0]=='DISPATCHING' for r in rows),'released':sum(r[0]=='RELEASED' for r in rows),'uncertain':sum(r[0]=='UNCERTAIN' for r in rows)}
 
     def _record(self,context,decision,reason,**extra):
         record={'decision':decision,'reason':reason,'task_id':context.get('task_id'),'execution_id':context.get('execution_id'),
@@ -139,7 +139,7 @@ class AdmissionGate:
         self.ledger.db.execute('BEGIN IMMEDIATE')
         try:
             duplicate=self.ledger.db.execute("SELECT reservation_id,status FROM reservations WHERE execution_id=?",(context['execution_id'],)).fetchone()
-            if duplicate and duplicate[1] in {'RESERVED','CONSUMED','UNCERTAIN'}:
+            if duplicate and duplicate[1] in {'RESERVED','DISPATCHING','CONSUMED','UNCERTAIN'}:
                 decision='DEFER' if duplicate[1]=='UNCERTAIN' else 'BLOCK';reason='UNCERTAIN_NO_AUTOMATIC_RETRY' if duplicate[1]=='UNCERTAIN' else 'DUPLICATE_RESERVATION'
                 self.ledger.db.execute('ROLLBACK');return self._record(context,decision,reason,reservation_id=duplicate[0],reservation=None)
             task=self._usage(context['task_id']);role_use=self._usage(context['task_id'],role)
@@ -172,7 +172,8 @@ class AdmissionGate:
         self.ledger.db.execute('BEGIN IMMEDIATE')
         try:
             row=self.ledger.db.execute('SELECT execution_id,status FROM reservations WHERE reservation_id=?',(reservation_id,)).fetchone()
-            if not row or row[1]!='RESERVED':raise ValueError('RESERVATION_NOT_ACTIVE')
+            allowed={'RESERVED':{'CONSUMED','RELEASED','UNCERTAIN'},'DISPATCHING':{'CONSUMED','UNCERTAIN'}}
+            if not row or status not in allowed.get(row[1],set()):raise ValueError('RESERVATION_NOT_ACTIVE')
             if status!='CONSUMED' and measured_tokens is not None:raise ValueError('MEASURED_USAGE_STATE')
             if measured_tokens is not None and (type(measured_tokens) is not int or measured_tokens<0):raise ValueError('MEASURED_USAGE')
             self.ledger.db.execute('UPDATE reservations SET status=?,measured_tokens=? WHERE reservation_id=?',(status,measured_tokens,reservation_id))
@@ -184,6 +185,36 @@ class AdmissionGate:
         if not row or row!=(execution_id,'RESERVED'):raise ValueError('PRE_LLM_ADMISSION_REQUIRED')
         return {'reservation_id':reservation_id,'execution_id':execution_id,'policy_version':POLICY_VERSION,'permit_digest':digest(row)}
 
+    def claim_dispatch(self,permit,execution_id):
+        """Atomically consumes the local dispatch right before external control transfer."""
+        if not isinstance(permit,dict):raise ValueError('PRE_LLM_ADMISSION_REQUIRED')
+        reservation_id=permit.get('reservation_id')
+        self.ledger.db.execute('BEGIN IMMEDIATE')
+        try:
+            row=self.ledger.db.execute('SELECT execution_id,status FROM reservations WHERE reservation_id=?',(reservation_id,)).fetchone()
+            expected={'reservation_id':reservation_id,'execution_id':execution_id,'policy_version':POLICY_VERSION,
+                      'permit_digest':digest((execution_id,'RESERVED'))}
+            if row!=(execution_id,'RESERVED') or permit!=expected:raise ValueError('DISPATCH_RIGHT_NOT_AVAILABLE')
+            changed=self.ledger.db.execute("UPDATE reservations SET status='DISPATCHING' WHERE reservation_id=? AND execution_id=? AND status='RESERVED'",
+                                           (reservation_id,execution_id)).rowcount
+            if changed!=1:raise ValueError('DISPATCH_RIGHT_NOT_AVAILABLE')
+            self.ledger._event(execution_id,'DISPATCH_ATTEMPT_CLAIMED',reservation_id)
+            self.ledger.db.execute('COMMIT')
+            return {'reservation_id':reservation_id,'execution_id':execution_id,'status':'DISPATCHING'}
+        except Exception:
+            self.ledger.db.execute('ROLLBACK');raise
+
+    def recover_in_flight(self):
+        """Crash recovery is fail-closed: in-flight work becomes uncertain, never reserved."""
+        self.ledger.db.execute('BEGIN IMMEDIATE')
+        try:
+            rows=self.ledger.db.execute("SELECT reservation_id,execution_id FROM reservations WHERE status='DISPATCHING'").fetchall()
+            for reservation_id,execution_id in rows:
+                self.ledger.db.execute("UPDATE reservations SET status='UNCERTAIN' WHERE reservation_id=? AND status='DISPATCHING'",(reservation_id,))
+                self.ledger._event(execution_id,'RESERVATION_UNCERTAIN','CRASH_RECOVERY:'+reservation_id)
+            self.ledger.db.execute('COMMIT');return len(rows)
+        except Exception:self.ledger.db.execute('ROLLBACK');raise
+
     def telemetry(self,task_id):
         usage=self._usage(task_id);rows=self.ledger.db.execute('SELECT decision,count(*) FROM admissions WHERE task_id=? GROUP BY decision',(task_id,)).fetchall()
         return {'task_id':task_id,'decisions':dict(rows),'usage':usage,'account_quota':{'status':'NOT_AVAILABLE','value':None,'source':'NOT_CONNECTED'},
@@ -192,7 +223,11 @@ class AdmissionGate:
 class GovernedLLMExecutor:
     def __init__(self,gate,delegate):self.gate=gate;self.delegate=delegate
     def submit(self,context,permit=None):
-        if not isinstance(permit,dict):raise ValueError('PRE_LLM_ADMISSION_REQUIRED')
-        expected=self.gate.permit(permit.get('reservation_id'),context['execution_id'])
-        if permit!=expected:raise ValueError('INVALID_ADMISSION_PERMIT')
-        return self.delegate.submit(context)
+        claim=self.gate.claim_dispatch(permit,context['execution_id'])
+        try:
+            result=self.delegate.submit(context)
+        except BaseException:
+            self.gate.transition(claim['reservation_id'],'UNCERTAIN')
+            raise
+        self.gate.transition(claim['reservation_id'],'CONSUMED')
+        return result

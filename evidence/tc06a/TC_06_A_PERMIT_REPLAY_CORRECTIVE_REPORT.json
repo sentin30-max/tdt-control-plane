@@ -1,0 +1,59 @@
+{
+  "atomic_claim_mechanism": "BEGIN IMMEDIATE + SELECT identity/status + permit digest validation + UPDATE ... WHERE status=RESERVED + rowcount=1 + COMMIT",
+  "concurrent_replay_test": {
+    "delegate_calls": 1,
+    "final_state": "CONSUMED",
+    "results": [
+      [
+        "REJECTED",
+        "DISPATCH_RIGHT_NOT_AVAILABLE"
+      ],
+      [
+        "CLAIMED",
+        "ok"
+      ]
+    ],
+    "status": "PASS_PROTECTED"
+  },
+  "correction": "SQLite BEGIN IMMEDIATE claim changes RESERVED to DISPATCHING with a conditional update before delegate.submit; success consumes and exceptions become uncertain",
+  "crash_recovery_path": {
+    "pre_crash_state": "DISPATCHING",
+    "recovered_count": 1,
+    "recovered_state": "UNCERTAIN",
+    "reset_to_reserved": false,
+    "status": "PASS"
+  },
+  "defect_id": "TC06-DEF-001",
+  "defect_status": "CLOSED",
+  "delegate_max_calls_per_reservation": 1,
+  "exception_path": {
+    "automatic_retry": false,
+    "delegate_calls": 1,
+    "reservation_state": "UNCERTAIN",
+    "status": "PASS"
+  },
+  "external_exactly_once_claimed": false,
+  "final_evidence_commit": "PENDING_AT_GENERATION",
+  "implementation_commit": "PENDING_AT_GENERATION",
+  "new_llm_calls_for_corrective_testing": 0,
+  "property": "AT_MOST_ONE_LOCAL_DISPATCH_ATTEMPT_PER_RESERVATION",
+  "protected_scope_changed": "NO",
+  "regressions": "TC01-TC06 PASS",
+  "report": "TC_06_A_PERMIT_REPLAY_CORRECTIVE_REPORT",
+  "root_cause": "permit validation observed RESERVED but did not atomically consume the local dispatch right before delegate control transfer",
+  "sequential_replay_test": {
+    "delegate_calls": 1,
+    "final_state": "CONSUMED",
+    "status": "PASS_PROTECTED"
+  },
+  "state_machine_after": "RESERVED -> DISPATCHING -> CONSUMED | UNCERTAIN; RELEASED remains available only before dispatch claim",
+  "state_machine_before": "RESERVED -> delegate -> optional later reconciliation",
+  "success_path": {
+    "delegate_result": "ok",
+    "reservation_state": "CONSUMED",
+    "status": "PASS"
+  },
+  "tc06_final_acceptance": "PASS",
+  "tests": "131 PASS (126 regression + 5 corrective)",
+  "zero_cost_only": "PASS"
+}
