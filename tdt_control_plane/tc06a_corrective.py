@@ -82,7 +82,7 @@ def generate(root,output_dir):
       "delegate_max_calls_per_reservation":1,"property":"AT_MOST_ONE_LOCAL_DISPATCH_ATTEMPT_PER_RESERVATION",
       "external_exactly_once_claimed":False,"new_llm_calls_for_corrective_testing":0,
       "tests":"131 PASS (126 regression + 5 corrective)","regressions":"TC01-TC06 PASS","protected_scope_changed":"NO","zero_cost_only":"PASS",
-      "defect_status":"CLOSED","tc06_final_acceptance":"PASS","implementation_commit":"PENDING_AT_GENERATION","final_evidence_commit":"PENDING_AT_GENERATION"}
+      "defect_status":"CLOSED","tc06_final_acceptance":"PASS","implementation_commit":"0a49549640444c7fe5f5dcf544fab60c31b21825","final_evidence_commit":"PENDING_AT_GENERATION"}
     atomic_json(output_dir/'TC_06_A_PERMIT_REPLAY_CORRECTIVE_REPORT.json',report)
     if before!={str(p):tree_hashes(p) for p in protected}:raise ValueError('PROTECTED_EVIDENCE_CHANGED')
     return report

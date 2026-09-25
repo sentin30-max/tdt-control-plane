@@ -34,7 +34,7 @@
   },
   "external_exactly_once_claimed": false,
   "final_evidence_commit": "PENDING_AT_GENERATION",
-  "implementation_commit": "PENDING_AT_GENERATION",
+  "implementation_commit": "0a49549640444c7fe5f5dcf544fab60c31b21825",
   "new_llm_calls_for_corrective_testing": 0,
   "property": "AT_MOST_ONE_LOCAL_DISPATCH_ATTEMPT_PER_RESERVATION",
   "protected_scope_changed": "NO",
