@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "evidence_id": "0a26ac3e-db0b-428d-9e14-018ccbd46734",
+  "status": "IMPLEMENTED_CANDIDATE",
+  "branch": "implementation/read-only-canonical-artifact-verification",
+  "base_commit": "b9e3729bfeff2bce453718a1b562484abef75094",
+  "implementation_commit": "75b32026bb4161eaf61944578116e416199a35e7",
+  "evidence_commit": null,
+  "operation": "VERIFY_EXISTING_CANONICAL_ARTIFACTS",
+  "corrective_proof_executed": false,
+  "environment_binding_before_read": "PASS",
+  "authorized_path_enforcement": "PASS",
+  "sha256_verification": "PASS",
+  "structured_result": "PASS",
+  "ledger_ingest": "PASS",
+  "telemetry_provenance": "PASS",
+  "recovery_no_reexecution": "PASS",
+  "executor_invoked_on_environment_mismatch": false,
+  "files_modified_by_executor": false,
+  "preflight_executed": false,
+  "groq_executed": false,
+  "a4_executed": false,
+  "a5_executed": false,
+  "tests": {
+    "new": "18 PASS, 1 conditional symlink test skipped because Windows privilege is unavailable",
+    "regression": "177 PASS, 1 conditional symlink test skipped",
+    "compile": "PASS",
+    "command": "python -m unittest discover -s tests -v"
+  },
+  "changed_files": {
+    "tdt_control_plane/resistance_pilot.py": "e77c733c194ee937d9c8f87628dc63ca527a605f",
+    "tests/test_canonical_artifact_verification.py": "7d0338b738c212db65aaafbd0e31277845779d2b"
+  },
+  "zero_cost_only": "PASS",
+  "trader_ai_changed": false,
+  "material_contradictions": [],
+  "limitations": [
+    "The real Trader AI corrective proof was deliberately not executed in this step.",
+    "Symlink escape behavior is implemented through resolved-root confinement; creation of a symlink fixture was unavailable on this Windows host.",
+    "The guard detects material Git state changes before and after reads but does not claim general filesystem concurrency control."
+  ],
+  "ready_for_corrective_proof": true,
+  "next_action": "Advisor/PO review, then separately dispatch the bounded corrective proof against the exact authorized Trader AI binding and two canonical paths."
+}
