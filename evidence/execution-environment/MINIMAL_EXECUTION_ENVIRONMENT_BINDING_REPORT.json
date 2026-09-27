@@ -4,8 +4,8 @@
   "branch": "implementation/minimal-execution-environment-binding",
   "baseline_commit": "9db0e47831c48ffddd28889b33f333a33c92893f",
   "implementation_commit": "827bae670553d3a75ef505501ad5a0eace52d37d",
-  "evidence_commit": "PENDING",
-  "final_head": "PENDING",
+  "evidence_commit": "3eee44113ec0da99cada871974b839152186cae0",
+  "final_head": "3eee44113ec0da99cada871974b839152186cae0",
   "gap_closed": "EXECUTION_ENVIRONMENT_NOT_BOUND_TO_NEXT_DISPATCH",
   "binding": [
     "repository_identity",
