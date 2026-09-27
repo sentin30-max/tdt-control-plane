@@ -5,8 +5,8 @@
   "baseline_commit": "27fc43788297fc4a9195c692d3f269640b4fbfc0",
   "hito_a_commit": "0962aa340bd6712f9b8d4720adecaaddb9a2dc35",
   "implementation_commit": "7e168f4e383c53db90ea804f812e419261fc176c",
-  "evidence_commit": "PENDING",
-  "final_evidence_commit": "PENDING",
+  "evidence_commit": "d2d9a30d2c3fac5e24da03ee20e005c5ac29f3ac",
+  "final_evidence_commit": "d2d9a30d2c3fac5e24da03ee20e005c5ac29f3ac",
   "gap_closed": "BUDGET_AMENDMENT_LIFECYCLE_NOT_DEFINED",
   "scope": "MINIMUM_GOVERNANCE_NECESSARY_FOR_SAFE_CONTINUITY",
   "flow": [
