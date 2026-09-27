@@ -1,0 +1,93 @@
+{
+  "report": "MINIMAL_EXECUTION_ENVIRONMENT_BINDING_REPORT",
+  "status": "IMPLEMENTED_CANDIDATE",
+  "branch": "implementation/minimal-execution-environment-binding",
+  "baseline_commit": "9db0e47831c48ffddd28889b33f333a33c92893f",
+  "implementation_commit": "827bae670553d3a75ef505501ad5a0eace52d37d",
+  "evidence_commit": "PENDING",
+  "final_head": "PENDING",
+  "gap_closed": "EXECUTION_ENVIRONMENT_NOT_BOUND_TO_NEXT_DISPATCH",
+  "binding": [
+    "repository_identity",
+    "required_commit",
+    "branch_hint",
+    "workspace_policy"
+  ],
+  "workspace_policy": {
+    "require_clean": true,
+    "require_repository_root": true
+  },
+  "operational_authority": "required_commit",
+  "branch_hint_authority": false,
+  "flow": [
+    "VERIFIED_RESULT",
+    "NEXT_ACTION",
+    "NEXT_DESTINATION",
+    "INHERITED_EXECUTION_ENVIRONMENT_BINDING",
+    "VERIFY_REPOSITORY_AND_EXACT_COMMIT",
+    "DISPATCH_IN_VERIFIED_WORKSPACE",
+    "RESULT"
+  ],
+  "acceptance": {
+    "environment_binding_pass": true,
+    "binding_in_execution_context": "PASS",
+    "binding_covered_by_context_digest": "PASS",
+    "binding_persisted_and_recovered": "PASS",
+    "correct_repo_commit_policy_allows_dispatch": "PASS",
+    "wrong_repo_blocked": "PASS",
+    "wrong_commit_blocked": "PASS",
+    "incompatible_workspace_blocked": "PASS",
+    "executor_not_invoked_on_mismatch": "PASS",
+    "branch_hint_does_not_replace_required_commit": "PASS",
+    "binding_change_changes_context_and_reasoning_digests": "PASS",
+    "recovery_preserves_binding": "PASS",
+    "routing_inherits_binding_without_mutation": "PASS",
+    "legacy_context_recovery_preserved": "PASS",
+    "zero_cost_guard_preserved": "PASS"
+  },
+  "mismatch_behavior": {
+    "decision": "BLOCKED",
+    "reason": "EXECUTION_ENVIRONMENT_MISMATCH",
+    "executor_invoked": false,
+    "silent_workspace_fallback": false
+  },
+  "verification": {
+    "repository": "normalized remote.origin.url equals repository_identity",
+    "commit": "git HEAD equals required_commit",
+    "policy": "workspace is repository root and git status is clean",
+    "executor_workspace": "Codex role process cwd equals verified workspace",
+    "timing": "fail-fast verification plus repeated verification immediately before dispatch claim"
+  },
+  "tests": {
+    "total": 159,
+    "passed": 159,
+    "failed": 0,
+    "new": 14,
+    "regressions": 145,
+    "real_llm_calls": 0
+  },
+  "zero_cost_only": "PASS",
+  "protected_systems": {
+    "trader_ai": "UNCHANGED",
+    "tef": "UNCHANGED",
+    "governance": "UNCHANGED",
+    "preflight_8004": "UNCHANGED"
+  },
+  "prohibited_activity": {
+    "tc07_started": false,
+    "token_governance_expanded": false,
+    "groq_executed": false,
+    "a4_executed": false,
+    "a5_executed": false,
+    "merge_performed": false
+  },
+  "limitations": [
+    "The Control Plane does not search for, clone or create workspaces.",
+    "A checkout must be supplied explicitly before dispatch.",
+    "The implemented pilot policy accepts only a clean repository-root checkout.",
+    "branch_hint is informational and cannot override required_commit.",
+    "No real Trader AI continuity execution occurred in this slice."
+  ],
+  "remote_publication_status": "NOT_REQUESTED_LOCAL_ONLY",
+  "next_action": "ADVISOR_REVIEW; AFTER_ACCEPTANCE_PROCEED_DIRECTLY_TO_REAL_TRADER_AI_CONTINUITY_PILOT"
+}
