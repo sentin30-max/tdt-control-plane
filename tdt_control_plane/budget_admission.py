@@ -1,6 +1,6 @@
 """TC-06 deterministic pre-LLM admission and reservation governance."""
 import json
-from dataclasses import dataclass
+from dataclasses import dataclass,replace
 from uuid import uuid5, NAMESPACE_URL
 
 from .contracts import digest
@@ -12,6 +12,7 @@ from .telemetry import serialized_json_bytes
 POLICY_VERSION='tc06-budget-admission-v1'
 FINGERPRINT_VERSION='material-reasoning-fingerprint-v1'
 DECISIONS={'ADMIT','DEFER','BLOCK','REVIEW_REQUIRED'}
+EXPANSION_DECISIONS={'NO_OP','EXPANSION_NOT_JUSTIFIED','PO_REQUIRED'}
 NECESSITIES={'SEMANTIC_REVIEW_REQUIRED','OPEN_ENDED_ANALYSIS','INDEPENDENT_REVIEW_REQUIRED',
              'UNRESOLVED_INTERPRETATION_WITHIN_AUTHORITY','GENERATIVE_SYNTHESIS_REQUIRED'}
 RESERVATION_STATES={'RESERVED','DISPATCHING','CONSUMED','RELEASED','UNCERTAIN'}
@@ -26,12 +27,17 @@ class BudgetPolicy:
     role_allocations:dict
     version:str=POLICY_VERSION
     zero_cost_only:bool=True
+    revision:int=1
+    amendment_digest:str|None=None
 
     def validate(self):
         values=(self.max_model_calls,self.estimated_token_ceiling,self.review_reserve_calls,self.review_reserve_tokens)
         if any(type(v) is not int or v<0 for v in values) or self.review_reserve_calls>self.max_model_calls or self.review_reserve_tokens>self.estimated_token_ceiling:
             raise ValueError('BUDGET_POLICY_VALUES')
         if self.version!=POLICY_VERSION or self.zero_cost_only is not True:raise ValueError('BUDGET_POLICY_VERSION_OR_COST')
+        if type(self.revision) is not int or self.revision<1:raise ValueError('BUDGET_POLICY_REVISION')
+        if self.revision>1 and (not isinstance(self.amendment_digest,str) or len(self.amendment_digest)!=64):raise ValueError('BUDGET_POLICY_AMENDMENT_REFERENCE')
+        if self.revision==1 and self.amendment_digest is not None:raise ValueError('INITIAL_POLICY_HAS_AMENDMENT')
         if not isinstance(self.role_allocations,dict) or not self.role_allocations:raise ValueError('ROLE_ALLOCATIONS')
         calls=tokens=0
         for role,allocation in self.role_allocations.items():
@@ -39,6 +45,29 @@ class BudgetPolicy:
                 raise ValueError('ROLE_ALLOCATION_VALUES')
             calls+=allocation['max_model_calls'];tokens+=allocation['estimated_token_ceiling']
         if calls>self.max_model_calls or tokens>self.estimated_token_ceiling:raise ValueError('BUDGET_DOUBLE_COUNT_OR_OVERALLOCATION')
+        return self
+
+@dataclass(frozen=True)
+class ExpansionRequest:
+    task_id:str
+    execution_id:str
+    policy_revision:int
+    requesting_role:str
+    material_fingerprint:str
+    material_need:str
+    material_delta:str
+    revised_estimate:dict
+    review_reserve_impact:dict
+    scope_digest:str
+    authority_digest:str
+
+    def validate(self):
+        if not all(isinstance(v,str) and v for v in (self.task_id,self.execution_id,self.requesting_role,
+            self.material_fingerprint,self.material_need,self.material_delta,self.scope_digest,self.authority_digest)):
+            raise ValueError('EXPANSION_REQUEST_FIELDS')
+        if type(self.policy_revision) is not int or self.policy_revision<1:raise ValueError('EXPANSION_POLICY_REVISION')
+        if not isinstance(self.revised_estimate,dict) or not self.revised_estimate:raise ValueError('EXPANSION_REVISED_ESTIMATE')
+        if not isinstance(self.review_reserve_impact,dict):raise ValueError('EXPANSION_REVIEW_RESERVE_IMPACT')
         return self
 
 def material_fingerprint(context):
@@ -52,6 +81,9 @@ class AdmissionGate:
         self.ledger=ledger;self.deterministic_dispatcher=deterministic_dispatcher
         self.ledger.db.executescript('''
         CREATE TABLE IF NOT EXISTS budget_policies(task_id TEXT PRIMARY KEY, policy TEXT NOT NULL);
+        CREATE TABLE IF NOT EXISTS budget_policy_history(
+          task_id TEXT NOT NULL, revision INTEGER NOT NULL, policy TEXT NOT NULL, amendment_digest TEXT,
+          PRIMARY KEY(task_id,revision));
         CREATE TABLE IF NOT EXISTS reservations(
           reservation_id TEXT PRIMARY KEY, task_id TEXT NOT NULL, role TEXT NOT NULL, execution_id TEXT UNIQUE NOT NULL,
           policy_version TEXT NOT NULL, model_calls INTEGER NOT NULL, context_tokens INTEGER NOT NULL,
@@ -62,11 +94,27 @@ class AdmissionGate:
           PRIMARY KEY(fingerprint,result_digest));
         CREATE TABLE IF NOT EXISTS admissions(
           seq INTEGER PRIMARY KEY, task_id TEXT, execution_id TEXT, decision TEXT NOT NULL, reason TEXT NOT NULL, record TEXT NOT NULL);
+        CREATE TABLE IF NOT EXISTS expansion_requests(
+          request_digest TEXT PRIMARY KEY, task_id TEXT NOT NULL, execution_id TEXT NOT NULL, policy_revision INTEGER NOT NULL,
+          material_fingerprint TEXT NOT NULL, material_delta_digest TEXT NOT NULL, request TEXT NOT NULL,
+          status TEXT NOT NULL, advisor_recommendation TEXT);
+        CREATE TABLE IF NOT EXISTS policy_amendments(
+          amendment_digest TEXT PRIMARY KEY, request_digest TEXT UNIQUE NOT NULL, task_id TEXT NOT NULL,
+          previous_revision INTEGER NOT NULL, new_revision INTEGER NOT NULL, approving_authority TEXT NOT NULL,
+          policy TEXT NOT NULL);
         ''')
+        columns={row[1] for row in self.ledger.db.execute('PRAGMA table_info(reservations)').fetchall()}
+        if 'policy_revision' not in columns:self.ledger.db.execute('ALTER TABLE reservations ADD COLUMN policy_revision INTEGER NOT NULL DEFAULT 1')
+        if 'amendment_digest' not in columns:self.ledger.db.execute('ALTER TABLE reservations ADD COLUMN amendment_digest TEXT')
 
     def configure(self,policy):
         policy.validate();raw=json.dumps(policy.__dict__,sort_keys=True)
-        with self.ledger.db:self.ledger.db.execute('INSERT OR REPLACE INTO budget_policies VALUES(?,?)',(policy.task_id,raw))
+        if policy.revision!=1:raise ValueError('POLICY_AMENDMENT_REQUIRED')
+        with self.ledger.db:
+            current=self.ledger.db.execute('SELECT policy FROM budget_policies WHERE task_id=?',(policy.task_id,)).fetchone()
+            if current and current[0]!=raw:raise ValueError('POLICY_AMENDMENT_REQUIRED')
+            self.ledger.db.execute('INSERT OR REPLACE INTO budget_policies VALUES(?,?)',(policy.task_id,raw))
+            self.ledger.db.execute('INSERT OR IGNORE INTO budget_policy_history VALUES(?,?,?,NULL)',(policy.task_id,1,raw))
 
     def remember_reusable(self,context,result_digest,independent=False):
         fp=material_fingerprint(context)
@@ -87,6 +135,78 @@ class AdmissionGate:
                 'measured_complete':all(r[3] is not None for r in rows if r[0]=='CONSUMED'),
                 'reserved':sum(r[0]=='RESERVED' for r in rows),'consumed':sum(r[0]=='CONSUMED' for r in rows),
                 'dispatching':sum(r[0]=='DISPATCHING' for r in rows),'released':sum(r[0]=='RELEASED' for r in rows),'uncertain':sum(r[0]=='UNCERTAIN' for r in rows)}
+
+    def _latest_admission(self,execution_id):
+        row=self.ledger.db.execute('SELECT record FROM admissions WHERE execution_id=? ORDER BY seq DESC LIMIT 1',(execution_id,)).fetchone()
+        return json.loads(row[0]) if row else None
+
+    def request_expansion(self,context,*,material_need,material_delta,revised_estimate,
+                          review_reserve_impact,hard_constraints=()):
+        """Validate a budget amendment request. This never grants budget or dispatch authority."""
+        validate_context(context);policy=self._policy(context['task_id'])
+        if policy is None:raise ValueError('TASK_BUDGET_NOT_CONFIGURED')
+        latest=self._latest_admission(context['execution_id'])
+        amendable={'TASK_BUDGET_EXHAUSTED','ROLE_ALLOCATION_EXHAUSTED','ADVISOR_REVIEW_RESERVE_PROTECTED'}
+        if not latest or latest['reason'] not in amendable:raise ValueError('BUDGET_INSUFFICIENCY_NOT_ESTABLISHED')
+        if hard_constraints:
+            return {'decision':'BLOCK','reason':'HARD_CONSTRAINT_NOT_AMENDABLE','hard_constraints':list(hard_constraints),
+                    'new_review':False,'new_reservation':False,'new_llm_dispatch':False}
+        request=ExpansionRequest(context['task_id'],context['execution_id'],policy.revision,context['role'],
+            material_fingerprint(context),material_need,material_delta,revised_estimate,review_reserve_impact,
+            digest(context['scope']),digest(context['authority'])).validate()
+        raw=request.__dict__;request_digest=digest(raw);delta_digest=digest({'material_delta':material_delta,'revised_estimate':revised_estimate})
+        duplicate=self.ledger.db.execute('''SELECT request_digest FROM expansion_requests
+            WHERE task_id=? AND policy_revision=? AND material_fingerprint=? AND material_delta_digest=?''',
+            (request.task_id,request.policy_revision,request.material_fingerprint,delta_digest)).fetchone()
+        if duplicate:
+            return {'decision':'NO_OP','reason':'NO_MATERIAL_DELTA','request_digest':duplicate[0],
+                    'new_review':False,'new_reservation':False,'new_llm_dispatch':False}
+        with self.ledger.db:self.ledger.db.execute('INSERT INTO expansion_requests VALUES(?,?,?,?,?,?,?,?,NULL)',
+            (request_digest,request.task_id,request.execution_id,request.policy_revision,request.material_fingerprint,
+             delta_digest,json.dumps(raw,sort_keys=True),'VALIDATED'))
+        return {'decision':'REVIEW_REQUIRED','reason':'ADVISOR_RECOMMENDATION_REQUIRED','request_digest':request_digest,
+                'policy_revision':policy.revision,'new_reservation':False,'new_llm_dispatch':False}
+
+    def review_expansion(self,request_digest,*,reviewer_role,recommend):
+        if reviewer_role!='ADVISOR':raise ValueError('ADVISOR_REVIEW_REQUIRED')
+        row=self.ledger.db.execute('SELECT status FROM expansion_requests WHERE request_digest=?',(request_digest,)).fetchone()
+        if not row or row[0]!='VALIDATED':raise ValueError('EXPANSION_REQUEST_NOT_REVIEWABLE')
+        decision='PO_REQUIRED' if recommend else 'EXPANSION_NOT_JUSTIFIED'
+        with self.ledger.db:self.ledger.db.execute('UPDATE expansion_requests SET status=?,advisor_recommendation=? WHERE request_digest=?',
+            (decision,'RECOMMENDED' if recommend else 'NOT_RECOMMENDED',request_digest))
+        return {'decision':decision,'request_digest':request_digest,'approval_authority':'PO' if recommend else None,
+                'new_reservation':False,'new_llm_dispatch':False}
+
+    def apply_amendment(self,request_digest,policy,*,approving_authority):
+        """Apply explicit PO authority; approval remains separate from admission."""
+        if approving_authority!='PO':raise ValueError('PO_AMENDMENT_AUTHORITY_REQUIRED')
+        row=self.ledger.db.execute('SELECT task_id,policy_revision,request,status FROM expansion_requests WHERE request_digest=?',(request_digest,)).fetchone()
+        if not row or row[3]!='PO_REQUIRED':raise ValueError('PO_RECOMMENDATION_REQUIRED')
+        task_id,previous_revision,request_raw,_=row;request=json.loads(request_raw);previous=self._policy(task_id)
+        if previous is None or previous.revision!=previous_revision:raise ValueError('STALE_POLICY_REVISION')
+        if policy.task_id!=task_id or policy.revision!=previous_revision+1:raise ValueError('POLICY_REVISION_SEQUENCE')
+        estimate=request['revised_estimate']
+        if ('max_model_calls' in estimate and policy.max_model_calls!=estimate['max_model_calls']) or (
+            'estimated_token_ceiling' in estimate and policy.estimated_token_ceiling!=estimate['estimated_token_ceiling']):
+            raise ValueError('POLICY_DOES_NOT_MATCH_APPROVED_REQUEST')
+        if policy.zero_cost_only is not True:raise ValueError('ZERO_COST_ONLY_NOT_AMENDABLE')
+        if policy.max_model_calls<previous.max_model_calls or policy.estimated_token_ceiling<previous.estimated_token_ceiling:
+            raise ValueError('CUMULATIVE_CONSUMPTION_MUST_BE_PRESERVED')
+        if policy.review_reserve_calls<previous.review_reserve_calls or policy.review_reserve_tokens<previous.review_reserve_tokens:
+            raise ValueError('REVIEW_RESERVE_MUST_BE_PRESERVED')
+        amendment_digest=digest({'request_digest':request_digest,'previous_revision':previous_revision,
+            'new_revision':policy.revision,'approving_authority':approving_authority,'policy':replace(policy,amendment_digest=None).__dict__})
+        applied=replace(policy,amendment_digest=amendment_digest).validate();raw=json.dumps(applied.__dict__,sort_keys=True)
+        with self.ledger.db:
+            self.ledger.db.execute('INSERT INTO policy_amendments VALUES(?,?,?,?,?,?,?)',
+                (amendment_digest,request_digest,task_id,previous_revision,applied.revision,approving_authority,raw))
+            self.ledger.db.execute('INSERT INTO budget_policy_history VALUES(?,?,?,?)',(task_id,applied.revision,raw,amendment_digest))
+            self.ledger.db.execute('UPDATE budget_policies SET policy=? WHERE task_id=?',(raw,task_id))
+            self.ledger.db.execute("UPDATE expansion_requests SET status='APPROVED' WHERE request_digest=?",(request_digest,))
+        return {'decision':'POLICY_AMENDED','approval_is_admission':False,'request_digest':request_digest,
+                'amendment_digest':amendment_digest,'previous_policy_revision':previous_revision,
+                'policy_revision':applied.revision,'new_reservation':False,'new_llm_dispatch':False,
+                'cumulative_usage':self._usage(task_id)}
 
     def _record(self,context,decision,reason,**extra):
         record={'decision':decision,'reason':reason,'task_id':context.get('task_id'),'execution_id':context.get('execution_id'),
@@ -150,15 +270,17 @@ class AdmissionGate:
             remaining_calls=policy.max_model_calls-(task['model_calls']+1);remaining_tokens=policy.estimated_token_ceiling-(task['estimated_tokens']+total)
             if role!='ADVISOR' and (remaining_calls<policy.review_reserve_calls or remaining_tokens<policy.review_reserve_tokens):
                 self.ledger.db.execute('ROLLBACK');return self._record(context,'REVIEW_REQUIRED','ADVISOR_REVIEW_RESERVE_PROTECTED',resource_estimate=estimate,reservation=None)
-            reservation_id=str(uuid5(NAMESPACE_URL,context['execution_id']+':'+POLICY_VERSION))
+            reservation_id=str(uuid5(NAMESPACE_URL,context['execution_id']+':'+POLICY_VERSION+':'+str(policy.revision)))
             state_digest=digest({'fingerprint':fp,'usage':task,'policy':policy.__dict__})
             values=(context['task_id'],role,context['execution_id'],policy.version,1,context_tokens,output_token_budget,total,
-                    why_llm_required,state_digest,'RESERVED',None)
+                    why_llm_required,state_digest,'RESERVED',None,policy.revision,policy.amendment_digest)
             if duplicate and duplicate[1]=='RELEASED':
                 reservation_id=duplicate[0]
-                self.ledger.db.execute('UPDATE reservations SET task_id=?,role=?,execution_id=?,policy_version=?,model_calls=?,context_tokens=?,output_tokens=?,total_tokens=?,reason=?,state_digest=?,status=?,measured_tokens=? WHERE reservation_id=?',values+(reservation_id,))
+                self.ledger.db.execute('UPDATE reservations SET task_id=?,role=?,execution_id=?,policy_version=?,model_calls=?,context_tokens=?,output_tokens=?,total_tokens=?,reason=?,state_digest=?,status=?,measured_tokens=?,policy_revision=?,amendment_digest=? WHERE reservation_id=?',values+(reservation_id,))
             else:
-                self.ledger.db.execute('INSERT INTO reservations VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)',(reservation_id,)+values)
+                self.ledger.db.execute('''INSERT INTO reservations(reservation_id,task_id,role,execution_id,policy_version,model_calls,
+                    context_tokens,output_tokens,total_tokens,reason,state_digest,status,measured_tokens,policy_revision,amendment_digest)
+                    VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)''',(reservation_id,)+values)
             self.ledger._event(context['execution_id'],'RESERVATION_CREATED',reservation_id);self.ledger.db.execute('COMMIT')
         except Exception:
             self.ledger.db.execute('ROLLBACK');raise
@@ -181,9 +303,13 @@ class AdmissionGate:
         except Exception:self.ledger.db.execute('ROLLBACK');raise
 
     def permit(self,reservation_id,execution_id):
-        row=self.ledger.db.execute('SELECT execution_id,status FROM reservations WHERE reservation_id=?',(reservation_id,)).fetchone()
-        if not row or row!=(execution_id,'RESERVED'):raise ValueError('PRE_LLM_ADMISSION_REQUIRED')
-        return {'reservation_id':reservation_id,'execution_id':execution_id,'policy_version':POLICY_VERSION,'permit_digest':digest(row)}
+        row=self.ledger.db.execute('SELECT execution_id,status,task_id,policy_revision,amendment_digest FROM reservations WHERE reservation_id=?',(reservation_id,)).fetchone()
+        if not row or row[:2]!=(execution_id,'RESERVED'):raise ValueError('PRE_LLM_ADMISSION_REQUIRED')
+        policy=self._policy(row[2])
+        if policy is None or (row[3],row[4])!=(policy.revision,policy.amendment_digest):raise ValueError('STALE_POLICY_PERMIT')
+        identity=(execution_id,'RESERVED',row[3],row[4])
+        return {'reservation_id':reservation_id,'execution_id':execution_id,'policy_version':POLICY_VERSION,
+                'policy_revision':row[3],'amendment_digest':row[4],'permit_digest':digest(identity)}
 
     def claim_dispatch(self,permit,execution_id):
         """Atomically consumes the local dispatch right before external control transfer."""
@@ -191,10 +317,13 @@ class AdmissionGate:
         reservation_id=permit.get('reservation_id')
         self.ledger.db.execute('BEGIN IMMEDIATE')
         try:
-            row=self.ledger.db.execute('SELECT execution_id,status FROM reservations WHERE reservation_id=?',(reservation_id,)).fetchone()
+            row=self.ledger.db.execute('SELECT execution_id,status,task_id,policy_revision,amendment_digest FROM reservations WHERE reservation_id=?',(reservation_id,)).fetchone()
+            policy=self._policy(row[2]) if row else None
             expected={'reservation_id':reservation_id,'execution_id':execution_id,'policy_version':POLICY_VERSION,
-                      'permit_digest':digest((execution_id,'RESERVED'))}
-            if row!=(execution_id,'RESERVED') or permit!=expected:raise ValueError('DISPATCH_RIGHT_NOT_AVAILABLE')
+                      'policy_revision':row[3] if row else None,'amendment_digest':row[4] if row else None,
+                      'permit_digest':digest((execution_id,'RESERVED',row[3],row[4])) if row else None}
+            if not row or row[:2]!=(execution_id,'RESERVED') or policy is None or (row[3],row[4])!=(policy.revision,policy.amendment_digest) or permit!=expected:
+                raise ValueError('DISPATCH_RIGHT_NOT_AVAILABLE')
             changed=self.ledger.db.execute("UPDATE reservations SET status='DISPATCHING' WHERE reservation_id=? AND execution_id=? AND status='RESERVED'",
                                            (reservation_id,execution_id)).rowcount
             if changed!=1:raise ValueError('DISPATCH_RIGHT_NOT_AVAILABLE')
