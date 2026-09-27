@@ -5,7 +5,7 @@
   "branch": "implementation/read-only-canonical-artifact-verification",
   "base_commit": "b9e3729bfeff2bce453718a1b562484abef75094",
   "implementation_commit": "75b32026bb4161eaf61944578116e416199a35e7",
-  "evidence_commit": null,
+  "evidence_commit": "14e8b4d003231ca65b692c8388866efee3596a6a",
   "operation": "VERIFY_EXISTING_CANONICAL_ARTIFACTS",
   "corrective_proof_executed": false,
   "environment_binding_before_read": "PASS",
