@@ -1,12 +1,15 @@
 """Bounded real Resistance preparation. No API for activating candidates or audits."""
 import argparse
+import hashlib
 import json
+import re
 import subprocess
 import sys
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from uuid import NAMESPACE_URL, uuid5
 
 from .contracts import digest
+from .execution_environment import verify_workspace
 from .ledger import Ledger
 from .resistance_candidate import materialize_candidate, specification
 from .resistance_sources import read_sources, sha
@@ -46,12 +49,21 @@ def route(result, state):
 
 class LocalValidationExecutor:
     """CODE_EXECUTOR backend restricted to the published local validator entrypoint."""
-    def __init__(self, root, ledger, spool):
-        self.root, self.ledger, self.spool = root, ledger, spool
+    CANONICAL_OPERATION = 'VERIFY_EXISTING_CANONICAL_ARTIFACTS'
+
+    def __init__(self, root, ledger, spool, workspace=None):
+        self.root, self.ledger, self.spool = Path(root).resolve(), ledger, Path(spool)
+        self.workspace = Path(workspace or root).resolve()
 
     def submit(self, context):
-        if context['role'] != 'CODE_EXECUTOR' or context['inputs']['operation'] != 'LOCAL_VALIDATION_PREFLIGHT':
+        operation = context.get('inputs', {}).get('operation')
+        if context['role'] != 'CODE_EXECUTOR' or operation not in {'LOCAL_VALIDATION_PREFLIGHT', self.CANONICAL_OPERATION}:
             raise ValueError('LOCAL_EXECUTOR_SCOPE')
+        if operation == self.CANONICAL_OPERATION:
+            return self._verify_canonical(context)
+        return self._submit_preflight(context)
+
+    def _submit_preflight(self, context):
         self.ledger.register(context)
         path = self.spool / (context['execution_id'] + '.json')
         if path.exists():
@@ -86,6 +98,148 @@ class LocalValidationExecutor:
                                         attempt=self.ledger.recover(context['execution_id'])['attempts']))
         except Exception as error:
             self.ledger._event(context['execution_id'],'TELEMETRY_FAILED',type(error).__name__)
+        return record
+
+    @staticmethod
+    def _canonical_specs(context):
+        artifacts = context.get('inputs', {}).get('canonical_artifacts')
+        if type(artifacts) is not list or not artifacts:
+            raise ValueError('CANONICAL_ARTIFACT_SCHEMA')
+        seen = set()
+        normalized = []
+        for item in artifacts:
+            if type(item) is not dict or set(item) != {'relative_path', 'expected_sha256'}:
+                raise ValueError('CANONICAL_ARTIFACT_SCHEMA')
+            relative, expected = item['relative_path'], item['expected_sha256']
+            if (type(relative) is not str or not relative or '\\' in relative
+                    or PurePosixPath(relative).is_absolute()
+                    or any(part in {'', '.', '..'} for part in relative.split('/'))):
+                raise ValueError('CANONICAL_ARTIFACT_SCOPE')
+            if relative in seen:
+                raise ValueError('CANONICAL_ARTIFACT_DUPLICATE')
+            if type(expected) is not str or not re.fullmatch(r'[0-9a-fA-F]{64}', expected):
+                raise ValueError('CANONICAL_ARTIFACT_DIGEST')
+            seen.add(relative)
+            normalized.append({'relative_path': relative, 'expected_sha256': expected.lower()})
+        return normalized
+
+    @staticmethod
+    def _authorized_path(workspace, relative_path, allowlist):
+        if relative_path not in allowlist:
+            raise ValueError('CANONICAL_ARTIFACT_NOT_AUTHORIZED')
+        workspace = Path(workspace).resolve()
+        candidate = (workspace / Path(*relative_path.split('/'))).resolve()
+        try:
+            candidate.relative_to(workspace)
+        except ValueError:
+            raise ValueError('CANONICAL_ARTIFACT_SCOPE') from None
+        return candidate
+
+    def _verify_environment(self, context):
+        try:
+            return verify_workspace(context.get('execution_environment'), self.workspace)
+        except (ValueError, TypeError):
+            self.ledger._event(context['execution_id'], 'DISPATCH_BLOCKED', 'EXECUTION_ENVIRONMENT_MISMATCH')
+            self.ledger.fail(context['execution_id'], 'DEPENDENCY_FAILURE', True)
+            raise ValueError('EXECUTION_ENVIRONMENT_MISMATCH') from None
+
+    def _verify_canonical(self, context):
+        """Verify only explicitly named existing files; no commands beyond Git binding checks."""
+        self.ledger.register(context)
+        spool_path = self.spool / (context['execution_id'] + '.json')
+        if spool_path.exists():
+            record = strict_json(spool_path.read_text())
+            validate_result(record['result'], context)
+            if record['context_digest'] != digest(context) or record['result_digest'] != digest(record['result']):
+                raise ValueError('RECOVERY_HASH_MISMATCH')
+            return record
+
+        environment = self._verify_environment(context)
+        self.ledger._event(context['execution_id'], 'EXECUTION_ENVIRONMENT_VERIFIED', environment['binding_digest'])
+        try:
+            specs = self._canonical_specs(context)
+            allowlist = {item['relative_path'] for item in specs}
+            paths = {item['relative_path']: self._authorized_path(
+                environment['workspace'], item['relative_path'], allowlist) for item in specs}
+        except ValueError as error:
+            self.ledger._event(context['execution_id'], 'CANONICAL_ARTIFACT_REJECTED', str(error))
+            raise
+
+        # Re-check immediately before the only canonical file reads.
+        before_read = self._verify_environment(context)
+        if before_read != environment:
+            raise ValueError('EXECUTION_ENVIRONMENT_MISMATCH')
+        self.ledger.claim(context['execution_id'])
+        files = []
+        for spec in specs:
+            path = paths[spec['relative_path']]
+            if not path.is_file():
+                calculated, status = None, 'MISSING'
+            else:
+                calculated = hashlib.sha256(path.read_bytes()).hexdigest()
+                status = 'PASS' if calculated == spec['expected_sha256'] else 'MISMATCH'
+            files.append({**spec, 'calculated_sha256': calculated, 'status': status})
+
+        blocker = next((f['status'] for f in files if f['status'] != 'PASS'), None)
+        try:
+            after_read = verify_workspace(context['execution_environment'], self.workspace)
+            if after_read != environment:
+                blocker = 'ENVIRONMENT_CHANGED_DURING_VERIFICATION'
+        except (ValueError, TypeError):
+            blocker = 'ENVIRONMENT_CHANGED_DURING_VERIFICATION'
+        status = 'BLOCKED' if blocker else 'PASS'
+        artifact = {
+            'operation': self.CANONICAL_OPERATION,
+            'executor_identity': 'PublishedLocalValidationExecutor',
+            'environment_binding_digest': environment['binding_digest'],
+            'verified_workspace': environment['workspace'],
+            'repository_identity': environment['repository_identity'],
+            'required_commit': environment['required_commit'],
+            'files': files,
+            'verification_status': status,
+            'blocker_reason': blocker,
+            'guards': {'preflight_executed': False, 'groq_executed': False,
+                       'a4_executed': False, 'a5_executed': False},
+        }
+        result = {k: context[k] for k in ['execution_id', 'task_id', 'context_id', 'input_revision', 'role']}
+        result.update(
+            context_digest=digest(context), outcome='BLOCKED' if blocker else 'SUCCEEDED',
+            next_destination='NONE',
+            rationale=('Canonical artifacts verified read-only.' if not blocker
+                       else 'Canonical artifact verification blocked without mutation.'),
+            artifact=json.dumps(artifact, sort_keys=True),
+            findings=[status if not blocker else 'BLOCKED: ' + blocker],
+            evidence_refs=list(context['source_digests']), proposals=[], effects=[],
+            protected_scope_touched=[])
+        validate_result(result, context)
+        result_digest = digest(result)
+        ingest = self.ledger.ingest(context['execution_id'], json.dumps(result),
+                                    context['input_revision'], context['source_digests'])
+        if ingest not in {'ACCEPTED', 'DUPLICATE_NOOP'}:
+            raise ValueError(ingest)
+        record = {
+            'context': context, 'context_digest': digest(context), 'result': result,
+            'result_digest': result_digest, 'backend': 'PublishedLocalValidationExecutor',
+            'operation': self.CANONICAL_OPERATION, 'tool_calls': 0,
+            'model_dispatched': False, 'model_call_count': 0,
+            'environment_verification': environment, 'ingest': ingest,
+            'authoritative': False,
+        }
+        atomic_json(spool_path, record)
+        telemetry = observe(context, result, backend='PublishedLocalValidationExecutor', events=[],
+                            model_dispatched=False,
+                            attempt=self.ledger.recover(context['execution_id'])['attempts'])
+        telemetry['provenance'] = {
+            'operation': self.CANONICAL_OPERATION,
+            'executor_identity': 'PublishedLocalValidationExecutor',
+            'environment_binding_digest': environment['binding_digest'],
+            'required_commit': environment['required_commit'],
+            'verification_status': status, 'result_digest': result_digest,
+            'model_dispatched': False, 'model_call_count': 0,
+            'groq_executed': False, 'a4_executed': False, 'a5_executed': False,
+        }
+        self.ledger.observe(telemetry)
+        self.ledger._event(context['execution_id'], 'CANONICAL_ARTIFACT_VERIFICATION_COMPLETED', status)
         return record
 
 
