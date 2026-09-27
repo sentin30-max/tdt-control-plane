@@ -1,0 +1,116 @@
+{
+  "report": "TC_06_B_BUDGET_AMENDMENT_REPORT",
+  "status": "IMPLEMENTED_CANDIDATE",
+  "branch": "implementation/tc-06-b-budget-amendment",
+  "baseline_commit": "27fc43788297fc4a9195c692d3f269640b4fbfc0",
+  "hito_a_commit": "0962aa340bd6712f9b8d4720adecaaddb9a2dc35",
+  "implementation_commit": "7e168f4e383c53db90ea804f812e419261fc176c",
+  "evidence_commit": "PENDING",
+  "final_evidence_commit": "PENDING",
+  "gap_closed": "BUDGET_AMENDMENT_LIFECYCLE_NOT_DEFINED",
+  "scope": "MINIMUM_GOVERNANCE_NECESSARY_FOR_SAFE_CONTINUITY",
+  "flow": [
+    "BUDGET_INSUFFICIENT",
+    "REUSE_CHECK",
+    "DETERMINISTIC_CHECK",
+    "MATERIAL_NEED_VALIDATION",
+    "HARD_CONSTRAINT_CHECK",
+    "EXPANSION_REQUEST",
+    "ADVISOR_RECOMMENDATION",
+    "AUTHORITY_CHECK",
+    "POLICY_AMENDMENT",
+    "ADMISSION_REEVALUATION"
+  ],
+  "authority": {
+    "executor": "REQUEST_ONLY",
+    "control_plane": "VALIDATE_AND_APPLY_ONLY",
+    "advisor": "REVIEW_AND_RECOMMEND_ONLY",
+    "policy_amendment": "PO_ONLY"
+  },
+  "decisions_added": [
+    "NO_OP",
+    "EXPANSION_NOT_JUSTIFIED",
+    "PO_REQUIRED",
+    "POLICY_AMENDED"
+  ],
+  "acceptance_criteria": {
+    "result": "14/14 PASS",
+    "internal_budget_not_terminal": "PASS",
+    "hard_constraint_not_amendable": "PASS",
+    "executor_cannot_approve": "PASS",
+    "po_required_without_delegation": "PASS",
+    "prior_policy_preserved": "PASS",
+    "cumulative_consumption_monotonic": "PASS",
+    "review_reserve_preserved": "PASS",
+    "uncertain_blocks_equivalent_retry": "PASS",
+    "duplicate_without_material_delta_no_op": "PASS",
+    "amendment_reenters_tc06": "PASS",
+    "approval_is_not_dispatch": "PASS",
+    "new_execution_requires_new_reservation": "PASS",
+    "zero_cost_authority_scope_and_baselines_preserved": "PASS",
+    "no_real_llm_or_protected_system_modification": "PASS"
+  },
+  "invariants": [
+    "INTERNAL_BUDGET_IS_NOT_HARD_CONSTRAINT",
+    "HARD_CONSTRAINT_IS_NOT_AMENDABLE",
+    "EXECUTOR_CANNOT_APPROVE_EXPANSION",
+    "CONTROL_PLANE_CANNOT_CREATE_AUTHORITY",
+    "ADVISOR_RECOMMENDATION_IS_NOT_APPROVAL",
+    "APPROVAL_IS_NOT_ADMISSION",
+    "CUMULATIVE_CONSUMPTION_NEVER_RESETS",
+    "UNCERTAIN_STATE_IS_PRESERVED",
+    "REVIEW_RESERVE_IS_PROTECTED",
+    "REUSE_PRECEDES_NEW_REASONING",
+    "DETERMINISM_PRECEDES_LLM",
+    "NO_MATERIAL_DELTA_MEANS_NO_OP",
+    "OLD_PERMIT_CANNOT_DISPATCH_UNDER_NEW_POLICY",
+    "ZERO_COST_ONLY_CANNOT_BE_AMENDED"
+  ],
+  "adversarial_and_failure_checks": {
+    "non_advisor_review": "REJECTED",
+    "non_po_amendment": "REJECTED",
+    "hard_constraint_amendment": "BLOCKED",
+    "zero_cost_change": "REJECTED",
+    "review_reserve_reduction": "REJECTED",
+    "cumulative_budget_reduction": "REJECTED",
+    "stale_policy_revision": "REJECTED",
+    "policy_not_matching_approved_request": "REJECTED",
+    "duplicate_request_without_delta": "NO_OP",
+    "old_permit_after_amendment": "REJECTED",
+    "uncertain_equivalent_retry": "DEFERRED"
+  },
+  "tests": {
+    "total": 145,
+    "passed": 145,
+    "failed": 0,
+    "new_tc06b": 14,
+    "regressions": 131,
+    "runner": "python -m unittest discover -s tests",
+    "real_llm_calls": 0
+  },
+  "files_changed": [
+    "tdt_control_plane/budget_admission.py",
+    "tests/test_budget_amendment.py",
+    "evidence/tc06b/TC_06_B_BUDGET_AMENDMENT_REPORT.json"
+  ],
+  "zero_cost_only": "PASS",
+  "groq_executed": "NO",
+  "a4_executed": "NO",
+  "a5_executed": "NO",
+  "preflight_8004_changed": "NO",
+  "tc07_started": "NO",
+  "merge_performed": "NO",
+  "protected_systems": {
+    "trader_ai": "UNCHANGED",
+    "tef": "UNCHANGED",
+    "governance": "UNCHANGED",
+    "historical_evidence": "UNCHANGED"
+  },
+  "limitations": [
+    "No automatic delegation of amendment authority is implemented.",
+    "Account quota remains NOT_AVAILABLE and is not inferred.",
+    "No provider integration or real LLM dispatch was exercised.",
+    "The contract governs internal policy amendments only; hard constraints remain external blockers or deferrals."
+  ],
+  "next_action": "ADVISOR_REVIEW_ONLY; DO_NOT_START_TC07_AUTOMATICALLY"
+}
