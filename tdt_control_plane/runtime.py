@@ -7,6 +7,7 @@ from pathlib import Path
 
 from .contracts import digest
 from .executor import CodexCodeExecutor
+from .execution_environment import verify_workspace
 from .roles import RESULT_SCHEMA, strict_json, validate_result
 from .telemetry import observe
 
@@ -38,12 +39,13 @@ def atomic_json(path, value):
 
 
 class CodexRoleExecutor:
-    def __init__(self, executable, ledger, spool, cost):
+    def __init__(self, executable, ledger, spool, cost, workspace=None):
         self.executable = str(Path(executable).resolve())
         self.ledger = ledger
         self.spool = Path(spool)
         self.spool.mkdir(parents=True, exist_ok=True)
         self.cost = cost
+        self.workspace = Path(workspace).resolve() if workspace is not None else None
 
     def _observe(self, context, result, **kwargs):
         try:
@@ -68,6 +70,15 @@ class CodexRoleExecutor:
         recovered = self.recover(context)
         if recovered:
             return recovered
+        environment=context.get('execution_environment')
+        if environment is not None:
+            try:verification=verify_workspace(environment,self.workspace) if self.workspace is not None else None
+            except ValueError:verification=None
+            if verification is None:
+                self.ledger._event(context['execution_id'],'DISPATCH_BLOCKED','EXECUTION_ENVIRONMENT_MISMATCH')
+                self.ledger.fail(context['execution_id'],'DEPENDENCY_FAILURE',True)
+                raise ValueError('EXECUTION_ENVIRONMENT_MISMATCH')
+            self.ledger._event(context['execution_id'],'EXECUTION_ENVIRONMENT_VERIFIED',verification['binding_digest'])
         previous = self.ledger.recover(context['execution_id'])
         if previous['status'] == 'ISOLATED' and previous['classification'] == 'INVALID_RESULT':
             self.ledger.regenerate_read_only_result(context['execution_id'])
@@ -87,6 +98,13 @@ class CodexRoleExecutor:
             self.ledger.fail(context['execution_id'], 'AUTH_UNAVAILABLE', True)
             self._observe(context,None,failed=True,model_dispatched=False)
             raise ValueError('AUTH_UNAVAILABLE')
+        if environment is not None:
+            try:final_verification=verify_workspace(environment,self.workspace)
+            except ValueError:final_verification=None
+            if final_verification is None or final_verification['binding_digest']!=verification['binding_digest']:
+                self.ledger._event(context['execution_id'],'DISPATCH_BLOCKED','EXECUTION_ENVIRONMENT_MISMATCH')
+                self.ledger.fail(context['execution_id'],'DEPENDENCY_FAILURE',True)
+                raise ValueError('EXECUTION_ENVIRONMENT_MISMATCH')
         self.ledger.claim(context['execution_id'])
         try:
             with tempfile.TemporaryDirectory(prefix='tdt-role-') as tmp:
@@ -99,7 +117,7 @@ class CodexRoleExecutor:
                         '--skip-git-repo-check', '-c', 'features.shell_tool=false', '-c', 'features.apps=false',
                         '-c', 'features.js_repl=false', '-c', 'web_search="disabled"',
                         '--json', '--output-schema', str(schema), '--output-last-message', str(output), '-']
-                run = subprocess.run(args, cwd=root, input=prompt, capture_output=True, text=True,
+                run = subprocess.run(args, cwd=self.workspace if environment is not None else root, input=prompt, capture_output=True, text=True,
                                      encoding='utf-8', errors='replace', timeout=180)
                 if run.returncode:
                     text = (run.stdout + '\n' + run.stderr).lower()

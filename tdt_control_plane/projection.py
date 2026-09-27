@@ -20,4 +20,5 @@ def project(resolution, task, role, execution_id):
         inputs["implementation_specification"] = task["implementation_specification"]
     return make_context(execution_id, task["task_id"], resolution["revision"], role,
                         resolution["scope"], task["objective"], inputs,
-                        {k: resolution["source_digests"][k] for k in sorted(refs)}, resolution["protected"])
+                        {k: resolution["source_digests"][k] for k in sorted(refs)}, resolution["protected"],
+                        task.get("execution_environment"))

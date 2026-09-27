@@ -10,6 +10,7 @@ from .projection import project
 from .resolution import load_fixture
 from .roles import strict_json
 from .runtime import CodexRoleExecutor, atomic_json
+from .execution_environment import POLICY
 
 EXECUTION_CONTRACT = {
     'scope':'control-plane-fixture', 'authority':'PO IMPLEMENTATION-001 bounded read-only E2E authorization',
@@ -53,7 +54,7 @@ def expected_artifact(resolution, operation):
     raise ValueError('NO_PENDING_OPERATION')
 
 
-def run(runtime, resolution, quality, output, workflow_id, max_dispatches=10, refresh=None):
+def run(runtime, resolution, quality, output, workflow_id, max_dispatches=10, refresh=None, execution_environment=None):
     if {e['role'] for e in quality['evaluations'] if e['passed']} != {'ADVISOR','DEVELOPMENT'} or quality.get('semantic_review',{}).get('passed') is not True:
         raise ValueError('ROLE_QUALITY_NOT_VALIDATED')
     # This is an authorized fixture contract, not a product-state transition.
@@ -85,7 +86,8 @@ def run(runtime, resolution, quality, output, workflow_id, max_dispatches=10, re
                     work={'contract':work,'current_operation':None if done else operation,'completed_operation_count':operation,
                           'completion_review':done,'previous_result':target,'verification_history':history},
                     review_target=target, permitted_destinations=['ADVISOR','DEVELOPMENT','COMPLETE'] if done else ['ADVISOR','DEVELOPMENT','CODE_EXECUTOR'],
-                    implementation_specification=specifications.get(operation, {'contract':work,'authorized':True,'scope':'read-only fixture computation'}))
+                    implementation_specification=specifications.get(operation, {'contract':work,'authorized':True,'scope':'read-only fixture computation'}),
+                    execution_environment=execution_environment)
         context = project(resolution, task, role, eid)
         context['source_digests']['execution_contract'] = digest(EXECUTION_CONTRACT)
         # Include prior result digests as material dependencies, but not source authority.
@@ -146,15 +148,23 @@ def main():
     p.add_argument('--quality',required=True)
     p.add_argument('--output',required=True)
     p.add_argument('--workflow-id',required=True)
+    p.add_argument('--workspace')
+    p.add_argument('--repository-identity')
+    p.add_argument('--required-commit')
+    p.add_argument('--branch-hint')
     args=p.parse_args()
+    supplied=[args.workspace,args.repository_identity,args.required_commit,args.branch_hint]
+    if any(supplied) and not all(supplied):p.error('execution environment arguments must be supplied together')
+    environment=({'repository_identity':args.repository_identity,'required_commit':args.required_commit,
+                  'branch_hint':args.branch_hint,'workspace_policy':POLICY} if all(supplied) else None)
     root=Path(__file__).resolve().parents[1]
     state=root/'.runtime/continuity'
     state.mkdir(parents=True,exist_ok=True)
     ledger=Ledger(state/'ledger.db')
-    runtime=CodexRoleExecutor(args.codex,ledger,state,json.loads(Path(args.cost_attestation).read_text()))
+    runtime=CodexRoleExecutor(args.codex,ledger,state,json.loads(Path(args.cost_attestation).read_text()),args.workspace)
     try:
         proof=run(runtime,load_fixture(root/'fixtures/trader'),strict_json(Path(args.quality).read_text()),args.output,args.workflow_id,
-                  refresh=lambda:load_fixture(root/'fixtures/trader'))
+                  refresh=lambda:load_fixture(root/'fixtures/trader'),execution_environment=environment)
         print('CONTINUITY',proof['status'],'EXECUTIONS',proof['executions_verified'],flush=True)
     except ValueError as e:
         path=Path(args.output)

@@ -74,6 +74,7 @@ def material_fingerprint(context):
     """Execution identity is excluded; authority, blockers and all evidence remain included."""
     validate_context(context)
     material={k:context[k] for k in ('task_id','input_revision','role','scope','authority','protected','objective','inputs','source_digests','done_when','after_completion')}
+    if 'execution_environment' in context:material['execution_environment']=context['execution_environment']
     return digest({'version':FINGERPRINT_VERSION,'material':material})
 
 class AdmissionGate:

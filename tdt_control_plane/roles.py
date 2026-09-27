@@ -3,6 +3,7 @@ import json
 from uuid import UUID
 
 from .contracts import digest
+from .execution_environment import validate_binding
 
 ROLES = {"ADVISOR", "DEVELOPMENT", "CODE_EXECUTOR"}
 DESTINATIONS = ROLES | {"PO_REQUIRED", "COMPLETE"}
@@ -39,8 +40,9 @@ def hash_value(value):
 
 def validate_context(c):
     fields = {"schema_version", "execution_id", "task_id", "context_id", "input_revision", "role", "scope", "authority", "protected", "objective", "inputs", "source_digests", "done_when", "after_completion", "authoritative"}
-    if type(c) is not dict or set(c) != fields or c["schema_version"] != 1 or type(c["schema_version"]) is not int or c["authoritative"] is not False:
+    if type(c) is not dict or set(c) not in (fields,fields|{"execution_environment"}) or c["schema_version"] != 1 or type(c["schema_version"]) is not int or c["authoritative"] is not False:
         raise ValueError("CONTEXT_SCHEMA")
+    if "execution_environment" in c:validate_binding(c["execution_environment"])
     for k in ("execution_id", "task_id"):
         identity(c[k])
     for k in ("context_id", "input_revision"):
@@ -62,13 +64,14 @@ def validate_context(c):
     return c
 
 
-def make_context(execution_id, task_id, revision, role, scope, objective, inputs, sources, protected):
+def make_context(execution_id, task_id, revision, role, scope, objective, inputs, sources, protected, execution_environment=None):
     c = dict(schema_version=1, execution_id=execution_id, task_id=task_id,
              input_revision=revision, role=role, scope=scope,
              authority={**POLICIES[role], "cannot_do": PROHIBITIONS}, protected=protected,
              objective=objective, inputs=inputs, source_digests=sources,
              done_when=["Return evidenced structured result within role authority"],
              after_completion="CONTROL_PLANE_VERIFY_THEN_ADVISOR_REVIEW", authoritative=False)
+    if execution_environment is not None:c["execution_environment"]=validate_binding(execution_environment)
     c["context_id"] = digest({k: v for k, v in c.items() if k != "execution_id"})
     return validate_context(c)
 
